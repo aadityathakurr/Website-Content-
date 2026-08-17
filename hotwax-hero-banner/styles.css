@@ -1,0 +1,664 @@
+/* =========================================================
+   HotWax Systems — hero banner
+   Brand palette taken from hotwaxsystems.com:
+   ink #212429, accent #FF3A2D, deep red #9F2D26
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --ink:        #212429;
+  --ink-soft:   #4b5259;
+  --orange:     #ff3a2d;   /* HotWax accent */
+  --orange-tab: #ff3a2d;
+  --orange-lt:  #ff6a5e;
+  --deep-red:   #9f2d26;
+  --muted:      #8b9298;
+  --line:       #e0e3e5;
+  --tint:       #fdeceb;   /* warm wash behind the showcase */
+}
+
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+::selection { background: #d3d9dc; color: var(--ink); -webkit-text-fill-color: var(--ink); }
+
+img { max-width: 100%; }
+.overflow-hidden { overflow: hidden; }
+
+/* ---------------------------------------------------------
+   Buttons (pill + sliding arrow, as on the source site)
+   --------------------------------------------------------- */
+.rc-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  border: 2px solid transparent;
+  padding: .75rem 2.25rem .75rem 1.5rem;
+  font-family: Sora, Inter, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .1s cubic-bezier(.4,0,.2,1),
+              background-color .1s cubic-bezier(.4,0,.2,1),
+              border-color .1s cubic-bezier(.4,0,.2,1);
+}
+.rc-button:focus-visible { outline: 2px solid var(--muted); outline-offset: 2px; }
+
+.rc-button__arrow { position: relative; }
+.rc-button__arrow::before,
+.rc-button__arrow::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transition: all .15s cubic-bezier(.4,0,.2,1);
+}
+.rc-button__arrow::before { right: -13px; top: calc(50% - 1px); height: 2px; width: 2px; opacity: 0; }
+.rc-button__arrow::after  { right: -12px; top: calc(50% - 4px); height: .5rem; width: .5rem; transform: rotate(-135deg); }
+.rc-button:hover .rc-button__arrow::before { right: -16px; width: .625rem; opacity: 1; }
+.rc-button:hover .rc-button__arrow::after  { right: -17px; }
+
+.rc-button--hero-filled {
+  min-width: 180px;
+  max-width: 100%;
+  border-color: var(--orange);
+  background-color: var(--orange);
+  color: #fff;
+}
+.rc-button--hero-outline {
+  border-color: #4f6169;
+  background-color: transparent;
+  color: var(--ink);
+}
+.rc-button--hero-outline:hover { border-color: var(--ink); }
+
+/* ---------------------------------------------------------
+   Hero copy
+   --------------------------------------------------------- */
+.hero-container { width: 100%; max-width: 1440px; margin: 0 auto; }
+@media (min-width: 1280px) { .hero-container { padding-left: 40px; padding-right: 40px; } }
+
+.hero-content {
+  margin: 40px auto 60px;
+  padding: 0 1rem;
+  text-align: center;
+  max-width: 640px;
+}
+
+.hero-title {
+  font-family: Sora, sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -.07em;
+  margin: 0 0 20px;
+}
+/* gradient sits on each line, so the entrance transform can't
+   break the background-clip painting */
+.hero-title__line {
+  display: block;
+  background: linear-gradient(180deg, #212429, #3d444c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* background-image, not the `background` shorthand — the shorthand
+   would reset background-clip and paint a solid block instead of text */
+.hero-title__line--accent { background-image: linear-gradient(180deg, #ff3a2d, #b9261d); }
+
+.hero-description {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.368;
+  color: var(--ink-soft);
+  margin: 0 0 30px;
+  text-wrap: balance;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 640px) { .hero-cta-group { flex-direction: row; gap: 28px; } }
+
+/* ---------------------------------------------------------
+   Entrance — the copy rises first, the showcase lands last,
+   so the headline and the banner read as one movement
+   --------------------------------------------------------- */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-title__line,
+.hero-description,
+.hero-cta-group,
+.hero-showcase {
+  animation: heroRise .75s cubic-bezier(.22, .8, .3, 1) both;
+}
+.hero-title__line:nth-child(1) { animation-delay: .16s; }
+.hero-title__line:nth-child(2) { animation-delay: .28s; }
+.hero-description        { animation-delay: .42s; }
+.hero-cta-group          { animation-delay: .54s; }
+.hero-showcase           { animation-delay: .66s; animation-duration: .9s; }
+
+@media (min-width: 768px) {
+  .hero-content { margin-top: 60px; margin-bottom: 60px; }
+  .hero-title { font-size: 48px; margin-bottom: 12px; }
+  .hero-description { margin-bottom: 32px; }
+}
+@media (max-width: 767px) {
+  .hero-content { margin: 40px auto; padding: 0 16px; }
+  .hero-title { font-size: 28px; margin-bottom: 16px; }
+  .hero-description { font-size: 14px; margin-bottom: 24px; }
+  .hero-cta-group .rc-button { width: 100%; min-width: auto; }
+}
+
+/* ---------------------------------------------------------
+   Showcase shell — gradient panel + dotted texture
+   --------------------------------------------------------- */
+.tab-content {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #fdeceb 68%, #ff3a2d 112%);
+}
+/* full-bleed: the showcase ignores the 1440px container and runs
+   edge to edge, so square corners rather than the 40px radius */
+.hero-showcase .hero-container {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.tab-content { border-radius: 0; }
+
+.tab-content::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  background: radial-gradient(circle at 1px 1px, rgba(0,0,0,.08) 1px, transparent 1.5px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ---------------------------------------------------------
+   Stage bar — a stepper, not a row of text links.
+   Completed = filled node, current = ringed node,
+   upcoming = hollow node. Progress fills the connectors.
+   --------------------------------------------------------- */
+.hero-navigation { display: none; position: relative; z-index: 3; margin: 20px 0; }
+@media (min-width: 768px)  { .hero-navigation { display: block; margin-top: 40px; } }
+@media (min-width: 1280px) { .hero-navigation { margin-top: 60px; margin-bottom: 34px; } }
+
+.nav-tabs-wrapper { position: relative; margin: 0 auto; }
+
+.nav-tabs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 32px);
+  margin: 0 auto;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  padding: 4px 2px;
+  border: none;
+  background: transparent;
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+}
+
+/* the step marker */
+.tab-node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--line);
+  border-radius: 50%;
+  background: transparent;   /* no chip behind the marker */
+  color: var(--muted);
+  transition: background-color .3s ease, border-color .3s ease,
+              color .3s ease, box-shadow .3s ease;
+}
+.tab-node svg { width: 12px; height: 12px; display: block; }
+
+.tab-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--muted);
+  transition: color .3s ease;
+}
+
+/* only the stage currently on screen is highlighted */
+.nav-tab.current .tab-node {
+  border-color: var(--orange);
+  color: var(--orange);
+  box-shadow: 0 0 0 4px rgba(255, 58, 45, .13);
+}
+.nav-tab.current .tab-text { color: var(--ink); }
+.nav-tab.current { pointer-events: none; }
+
+.nav-tab:hover .tab-node { border-color: var(--orange); color: var(--orange); }
+.nav-tab:hover .tab-text { color: var(--ink); }
+.nav-tab:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 8px; }
+
+/* long labels would burst the pill on narrow desktops */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-tabs { padding: 8px 14px; }
+  .nav-tab { gap: 6px; }
+  .tab-text { font-size: 9.5px; letter-spacing: .04em; }
+  .tab-node { width: 20px; height: 20px; }
+  .tab-node svg { width: 10px; height: 10px; }
+}
+
+/* connector between steps */
+.connection-line {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 2px;
+  margin: 0 10px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+@media (min-width: 1024px) { .connection-line { width: 34px; margin: 0 13px; } }
+@media (min-width: 1280px) { .connection-line { width: 46px; margin: 0 15px; } }
+.line-track,
+.line-progress {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  border-radius: 2px;
+}
+.line-track { width: 100%; background: var(--line); }
+.line-progress { width: 0; background: var(--orange); transition: width .05s linear; }
+.connection-line.completed .line-progress { width: 100% !important; }
+
+/* ---------------------------------------------------------
+   Mobile progress dots
+   --------------------------------------------------------- */
+.nav-dots {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin: 32px 24px;
+}
+@media (min-width: 768px) { .nav-dots { display: none; } }
+
+.nav-dot-track {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  border-radius: 4px;
+  background: var(--line);
+  overflow: hidden;
+}
+.nav-dot-track.completed .nav-dot-progress { width: 100% !important; }
+.nav-dot, .nav-dot-progress { position: absolute; height: 100%; }
+.nav-dot-progress {
+  top: 0; left: 0; width: 0;
+  background: linear-gradient(90deg, var(--orange-tab), var(--orange-lt));
+  border-radius: 4px;
+  transition: width .05s linear;
+}
+.nav-dot { inset: 0; width: 100%; border: none; background: transparent; cursor: pointer; z-index: 1; padding: 0; }
+
+/* ---------------------------------------------------------
+   3D card stack
+   --------------------------------------------------------- */
+.cards-showcase {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: 100%;
+  margin: 0 auto;
+  perspective: 2400px;
+}
+@media (min-width: 768px)  { .cards-showcase { max-width: 540px; } }
+@media (min-width: 1024px) { .cards-showcase { max-width: 580px; } }
+@media (min-width: 1280px) { .cards-showcase { max-width: 720px; } }
+@media (min-width: 1600px) { .cards-showcase { max-width: 820px; } }
+@media (min-width: 1920px) { .cards-showcase { max-width: 900px; } }
+
+.cards-stack {
+  position: relative;
+  min-height: 490px;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: all 1s ease-in-out;
+}
+@media (min-width: 768px)  { .cards-stack { margin-top: 2rem; min-height: 330px; margin-bottom: -58px; } }
+@media (min-width: 1024px) { .cards-stack { min-height: 355px; } }
+@media (min-width: 1280px) { .cards-stack { min-height: 440px; } }
+@media (min-width: 1600px) { .cards-stack { min-height: 500px; } }
+@media (min-width: 1920px) { .cards-stack { min-height: 548px; } }
+
+/* the two ghost cards behind the active one */
+.cards-stack::before,
+.cards-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: none;
+  background: #fff;
+  z-index: -1;
+  border-radius: 40px 40px 0 0;
+  box-shadow: 4.045px 4.045px 8.09px -4.045px #012a3833,
+              -16px 19px 32px -4.045px #091f258f;
+  transform: translate3d(0, 0, 0);
+  transition: all 1s ease-in-out;
+}
+@media (min-width: 768px) {
+  .cards-stack::before, .cards-stack::after { display: block; }
+  .cards-stack { transform: translateZ(90px) rotateX(11deg) rotateY(11deg) rotate(-3.5deg); }
+
+  /* the tilt alternates direction as the carousel advances */
+  .cards-showcase.order .cards-stack,
+  .cards-showcase.manufacturing .cards-stack { transform: translateZ(90px) rotateX(11deg) rotateY(11deg) rotate(-3.5deg); }
+  .cards-showcase.warehouse .cards-stack,
+  .cards-showcase.procurement .cards-stack   { transform: translateZ(90px) rotateX(11deg) rotateY(-11deg) rotate(3.5deg); }
+}
+
+.cards-showcase.order .cards-stack::before,
+.cards-showcase.manufacturing .cards-stack::before { transform: translate3d(-34px, 0, -38px); }
+.cards-showcase.order .cards-stack::after,
+.cards-showcase.manufacturing .cards-stack::after  { transform: translate3d(-17px, 0, -19px); }
+/* the stack leans left, so its shadow falls left too — otherwise the
+   shadow bleeds out of the side the layers aren't on */
+/* card shadow leans with the stack, so only the stacked side has depth */
+.cards-showcase.order .card-wrapper.is-active .main-card-image,
+.cards-showcase.manufacturing .card-wrapper.is-active .main-card-image {
+  filter: drop-shadow(-16px 20px 26px rgba(0, 0, 0, .16));
+}
+.cards-showcase.warehouse .card-wrapper.is-active .main-card-image,
+.cards-showcase.procurement .card-wrapper.is-active .main-card-image {
+  filter: drop-shadow(16px 20px 26px rgba(0, 0, 0, .16));
+}
+
+.cards-showcase.order .cards-stack::before,
+.cards-showcase.order .cards-stack::after,
+.cards-showcase.manufacturing .cards-stack::before,
+.cards-showcase.manufacturing .cards-stack::after { box-shadow: -14px 18px 30px -8px rgba(9, 31, 37, .40); }
+
+.cards-showcase.warehouse .cards-stack::before,
+.cards-showcase.procurement .cards-stack::before { transform: translate3d(34px, 0, -38px); }
+.cards-showcase.warehouse .cards-stack::after,
+.cards-showcase.procurement .cards-stack::after  { transform: translate3d(17px, 0, -19px); }
+/* leaning right — shadow follows to the right */
+.cards-showcase.warehouse .cards-stack::before,
+.cards-showcase.warehouse .cards-stack::after,
+.cards-showcase.procurement .cards-stack::before,
+.cards-showcase.procurement .cards-stack::after { box-shadow:  14px 18px 30px -8px rgba(9, 31, 37, .40); }
+
+/* the two layers behind the live card — offset in real 3D space
+   (translateZ) so they sit further back, not just nudged sideways.
+   Their corners peek out to read as a physical stack. */
+.cards-stack::before { background: #f6f8f9; }
+.cards-stack::after  { background: #fcfdfd; }
+
+.card-wrapper {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 100%;
+  max-width: 680px;
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  opacity: 0;
+}
+@media (min-width: 768px) {
+  .card-wrapper { max-width: 100%; align-items: flex-end; justify-content: center; }
+}
+
+/* mobile: the card fits the screen instead of rendering at its natural 690px */
+.main-card-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px 20px 0 0;
+  background: #fff;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .main-card-image {
+    border-radius: 40px 40px 0 0;
+    background: #fff;
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 690 / 420;
+  }
+}
+.card-wrapper.is-active { opacity: 1; }
+
+/* The leaving card stays opaque, comes to the FRONT and slides
+   down out of frame while un-rotating — the next card is revealed
+   beneath it. This is the source banner's exact mechanic. */
+@media (min-width: 768px) {
+  .card-wrapper.is-leaving {
+    opacity: 1;
+    z-index: 1;
+    transition: all 1s ease-in-out;
+    transform: translate3d(0, 100%, 0) rotateX(0) rotateY(0) rotate(0);
+  }
+}
+.card-wrapper.is-active .main-card-image {
+  /* directional, set per lean below — a centred blur spills out of
+     BOTH edges and reads as a layer on the empty side */
+  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, .13));
+}
+
+/* ---------------------------------------------------------
+   Floating side cards
+   --------------------------------------------------------- */
+.side-images { position: relative; }
+.side-image-group {
+  position: absolute;
+  z-index: 10;
+  top: 0; bottom: 0;
+  display: grid;
+  align-items: center;
+}
+.side-left  .side-image-group { left: 0;  margin-right: auto; }
+.side-right .side-image-group { right: 0; margin-left: auto; }
+
+.side-image { display: none; }
+@media (min-width: 768px) { .side-image { display: block; } }
+.side-image {
+  position: relative;
+  border-radius: 16px;
+  background: #fff;          /* fully solid */
+  box-shadow: 4.045px 4.045px 8.09px -4.045px #012a3833,
+              -16px 19px 32px -4.045px #091f258f;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all .5s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.side-image.order-left-1   { max-width: 224px; left: calc(-100% + 30px); top: 10%; }
+.side-image.order-right-1  { max-width: 242px; right: calc(-100% + 50px); top: 30%; }
+.side-image.order-right-2  { max-width: 230px; right: calc(-100% + 30px); top: 10%; }
+.side-image.warehouse-left-1   { max-width: 230px; left: calc(-100% + 30px); top: 10%; }
+.side-image.warehouse-right-1  { max-width: 224px; right: -100%; top: 30%; }
+.side-image.warehouse-right-2  { max-width: 230px; right: calc(-100% + 30px); top: 10%; }
+.side-image.manufacturing-left-1 { max-width: 224px; left: -100%; top: 10%; }
+.side-image.manufacturing-right-1{ max-width: 224px; right: calc(-100% + 50px); top: 40%; }
+.side-image.manufacturing-right-2{ max-width: 224px; right: calc(-100% + 10px); top: 10%; }
+.side-image.procurement-left-1  { max-width: 230px; left: calc(-100% + 30px); top: 10%; }
+.side-image.procurement-right-2 { max-width: 230px; right: calc(-100% + 40px); top: 12%; }
+
+.side-image.procurement-right-1 { max-width: 242px; right: calc(-100% + 50px); top: 30%; }
+
+@media (min-width: 1024px) {
+  .side-image { max-width: 295px; }
+  
+}
+
+/* staggered reveal */
+/* tightened to match the faster slide pace — the chips used to still
+   be arriving (last one at 1.2s) when the slide was already half over */
+.side-left  .side-image-group.is-active .side-image:nth-child(1) { transition-delay: .2s; }
+.side-left  .side-image-group.is-active .side-image:nth-child(2) { transition-delay: .4s; }
+.side-left  .side-image-group.is-active .side-image:nth-child(3) { transition-delay: .6s; }
+.side-right .side-image-group.is-active .side-image:nth-child(1) { transition-delay: .8s; }
+.side-right .side-image-group.is-active .side-image:nth-child(2) { transition-delay: 1s; }
+.side-right .side-image-group.is-active .side-image:nth-child(3) { transition-delay: 1.2s; }
+
+.side-image-group.is-active { z-index: 20; }
+.side-image-group.is-active .side-image { opacity: 1; transform: translateY(0); }
+
+/* ---------------------------------------------------------
+   Mobile layout (< 768px)
+   Side cards and the 3D tilt are off here, so the stack just
+   needs to size itself to the card's real aspect ratio.
+   --------------------------------------------------------- */
+@media (max-width: 767px) {
+  .hero-showcase { padding: 0; }
+
+  .tab-content { border-radius: 0; }
+  .tab-content::after { inset: 12px; background-size: 16px 16px; }
+
+  .nav-dots { margin: 24px 20px 20px; gap: 6px; }
+
+  /* single-column block, not the 3-column grid — with the side
+     columns hidden the stack would land in an auto column and
+     collapse to zero width */
+  .cards-showcase {
+    display: block;
+    max-width: 100%;
+    padding: 0 16px;
+    perspective: none;
+  }
+
+  /* height follows the artwork's real 690x310 ratio instead of a
+     fixed 490px, which previously left a tall empty orange band */
+  .cards-stack {
+    min-height: 0;
+    aspect-ratio: 690 / 420;
+    transform: none;
+    margin-top: 0;
+  }
+
+  .card-wrapper {
+    max-width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .side-images { display: none; }
+}
+
+/* narrow phones */
+@media (max-width: 380px) {
+  .hero-title { font-size: 26px; }
+  .nav-dots { margin-left: 16px; margin-right: 16px; }
+  .cards-showcase { padding: 0 12px; }
+}
+
+/* ---------------------------------------------------------
+   Trust bar — client logos + company stats
+   --------------------------------------------------------- */
+.rc-container { max-width: 1440px; margin: 0 auto; padding: 0 20px; }
+.rc-hero__logos { position: relative; z-index: 99; margin-top: 2.5rem; }
+@media (min-width: 768px)  { .rc-hero__logos { margin-top: 3.5rem; } }
+@media (min-width: 1024px) { .rc-hero__logos { margin-top: 5rem; } }
+
+.trust-head { text-align: center; margin-bottom: 2rem; }
+.trust-title {
+  display: inline-block;   /* so hover only fires over the text, not the full row */
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .3s ease;
+}
+.trust-title:hover { color: var(--orange); }
+
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 28px 40px;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+/* fixed-height box: square logos (Essilor, Spoonful, Winning Group)
+   fill it, wide ones (United, W2G) are capped by width instead */
+.client-logos li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
+.client-logos img {
+  max-height: 100%;
+  max-width: 150px;
+  width: auto;
+  object-fit: contain;
+  /* plain by default, true brand colour on hover */
+  filter: grayscale(1);
+  opacity: .55;
+  transition: filter .3s ease, opacity .3s ease, transform .3s ease;
+}
+.client-logos li:hover img,
+.client-logos img:focus-visible {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+/* touch devices have no hover — never leave the logos stuck grey */
+@media (hover: none) {
+  .client-logos img { filter: none; opacity: .92; transform: none; }
+}
+@media (max-width: 767px) {
+  .client-logos { gap: 22px 30px; }
+  .client-logos li { height: 36px; }
+  .client-logos img { max-width: 112px; }
+}
+
+body { padding-bottom: 80px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
