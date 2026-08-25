@@ -1,0 +1,255 @@
+/* =========================================================
+   ERP Architecture Graphic
+   A flat illustration cut into three transparent slices and
+   stacked as independent elements, so each layer answers to
+   the pointer on its own.
+
+   Depends on nothing. Drop this file in, drop erp-graphic.js
+   in, use the markup from README.md.
+
+   Palette: override these on .arch3d (or :root) to rebrand.
+   ========================================================= */
+.arch3d {
+  --arch-accent: #e70000;
+  --arch-label: #4b5259;
+  --arch-label-dim: #a8aeb4;
+  --arch-shadow: 39, 50, 62;
+  --arch-font: Montserrat, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Layered 3D architecture illustration.
+   One illustration cut into three transparent slices, stacked as independent
+   elements. Parallax and idle float are written by script.js into the --p-*
+   custom properties; the hover lift is pure CSS on .arch3d__lift, so the two
+   never fight over the same transform. */
+.arch3d {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+}
+
+.arch3d__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 896;
+  perspective: 1100px;
+  container-type: inline-size;
+}
+
+/* Ground shadow. The illustration's own baked shadow was removed: its shape
+   could not be controlled and it fanned out in a curve well past the plate.
+   This one is drawn, so it stays clean at any size and cannot develop a hard
+   edge. It sits outside the scene so it does not move with the parallax,
+   which is what a shadow on the ground should do. */
+.arch3d__stage::before {
+  content: "";
+  position: absolute;
+  left: 27%;
+  right: 27%;
+  top: 79%;
+  height: 9.5%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+      rgba(var(--arch-shadow), .16),
+      rgba(var(--arch-shadow), .07) 55%,
+      rgba(var(--arch-shadow), 0) 100%);
+  pointer-events: none;
+}
+
+.arch3d__scene {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
+
+.arch3d__plate,
+.arch3d__zone {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.arch3d__plate {
+  pointer-events: none;
+}
+
+.arch3d__plate[data-layer="apps"] {
+  transform: translate3d(var(--p-apps-x, 0px), var(--p-apps-y, 0px), var(--p-apps-z, 0px));
+}
+
+.arch3d__plate[data-layer="service"] {
+  transform: translate3d(var(--p-service-x, 0px), var(--p-service-y, 0px), var(--p-service-z, 0px));
+}
+
+.arch3d__plate[data-layer="data"] {
+  transform: translate3d(var(--p-data-x, 0px), var(--p-data-y, 0px), var(--p-data-z, 0px));
+}
+
+.arch3d__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The lift carries every hover response, so it can transition on its own
+   while the parallax transform above it updates every frame. */
+.arch3d__lift {
+  display: block;
+  transform: translateY(0) scale(1);
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1), filter .3s ease;
+}
+
+.arch3d__plate .arch3d__lift {
+  filter: saturate(1) contrast(1);
+}
+
+/* Hit zones. clip-path clips pointer events as well as paint, so each zone
+   answers only for its own layer, and only where that layer's artwork
+   actually is. The polygons trace each slice's visible outline with a small
+   margin, so the pointer has to be near the illustration for anything to
+   happen. */
+.arch3d__zone {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.arch3d__zone[data-layer="apps"] {
+  clip-path: polygon(48.0% 8.8%, 41.1% 13.3%, 34.0% 17.9%, 26.8% 22.4%, 20.7% 27.0%, 24.2% 31.6%, 30.9% 36.2%, 35.6% 40.7%, 73.7% 40.7%, 71.2% 36.2%, 77.9% 31.6%, 81.5% 27.0%, 75.6% 22.4%, 68.2% 17.9%, 60.9% 13.3%, 53.8% 8.8%);
+}
+
+.arch3d__zone[data-layer="service"] {
+  clip-path: polygon(31.8% 38.2%, 26.6% 40.7%, 22.6% 43.4%, 20.9% 46.1%, 22.9% 48.8%, 26.7% 51.5%, 30.5% 54.1%, 32.1% 56.8%, 74.8% 56.8%, 71.8% 54.1%, 75.5% 51.5%, 79.3% 48.8%, 81.4% 46.1%, 79.8% 43.4%, 74.1% 40.7%, 71.6% 38.2%);
+}
+
+.arch3d__zone[data-layer="data"] {
+  clip-path: polygon(29.8% 54.4%, 25.3% 59.5%, 21.2% 64.6%, 22.9% 69.9%, 25.9% 75.0%, 32.9% 80.2%, 39.9% 85.4%, 47.1% 90.6%, 55.2% 90.6%, 62.4% 85.4%, 69.4% 80.2%, 76.3% 75.0%, 78.9% 69.9%, 81.3% 64.6%, 76.3% 59.5%, 70.1% 54.4%);
+}
+
+/* Labels sit where the baked-in text used to, right aligned against the
+   left edge of the slabs. cqw keeps them locked to the illustration as it
+   scales, with a floor so they stay readable on small screens. */
+.arch3d__label {
+  position: absolute;
+  left: 0;
+  right: 82%;
+  text-align: right;
+  font-family: var(--arch-font);
+  font-size: max(11px, 2.05cqw);
+  font-weight: 500;
+  line-height: 1.26;
+  letter-spacing: .005em;
+  color: var(--arch-label);
+  transition: color .28s ease;
+}
+
+.arch3d__plate[data-layer="apps"] .arch3d__label {
+  top: 27.29%;
+  transform: translateY(-50%);
+}
+
+.arch3d__plate[data-layer="service"] .arch3d__label {
+  top: 45.2%;
+  transform: translateY(-50%);
+}
+
+.arch3d__plate[data-layer="data"] .arch3d__label {
+  top: 63.56%;
+  transform: translateY(-50%);
+}
+
+/* Active layer: forward and brighter, the rest held back. */
+.arch3d.is-engaged .arch3d__plate:not(.is-active) .arch3d__img {
+  filter: saturate(.88) opacity(.8);
+}
+
+.arch3d.is-engaged .arch3d__plate:not(.is-active) .arch3d__label {
+  color: var(--arch-label-dim);
+}
+
+.arch3d__plate.is-active .arch3d__label {
+  color: var(--arch-accent);
+  font-weight: 600;
+}
+
+.arch3d__plate.is-active .arch3d__lift {
+  /* The active layer does not move. Any lift shifts one slice against its
+     neighbours and the stack reads as coming apart, so emphasis is carried
+     by the label turning red and by the other layers easing back instead.
+     No drop-shadow either: the filter traces the slice's alpha edge, and the
+     seam feather is a horizontal edge across the full width, so it painted a
+     dark band along the seam. */
+  filter: saturate(1.04);
+  transform: none;
+}
+
+.arch3d__plate.is-active .arch3d__label .arch3d__lift {
+  transform: none;
+}
+
+.arch3d__zone:focus {
+  outline: none;
+}
+
+.arch3d__zone:focus-visible {
+  outline: 2px solid var(--arch-accent);
+  outline-offset: -3px;
+  border-radius: 3px;
+}
+
+/* Tablet: same behavior, less of it. Handled by the amplitude scale in
+   script.js; this only softens the lift. */
+@media (max-width: 960px) {
+  .arch3d {
+    margin-inline: auto;
+  }
+}
+
+/* Narrow screens: the label column is only a fraction of a small stage, so
+   give it more room. "Applications" is the longest token and needs it. */
+@media (max-width: 600px) {
+  .arch3d__label {
+    right: 73%;
+  }
+}
+
+/* No hover available: nothing depends on it. Zones still work as taps, and
+   the resting state stays fully legible. */
+@media (hover: none) {
+  .arch3d.is-engaged .arch3d__plate:not(.is-active) .arch3d__img {
+    filter: saturate(.9) opacity(.86);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .arch3d__lift,
+  .arch3d__plate.is-active .arch3d__lift,
+  .arch3d__plate.is-active .arch3d__label .arch3d__lift {
+    transform: none;
+    transition: filter .2s ease, color .2s ease;
+  }
+}
+
+
+/* Visually hidden, still read aloud. */
+.arch3d .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
