@@ -1,0 +1,491 @@
+[
+  {
+    "name": "headline_group",
+    "label": "Headline",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "name": "line_1",
+        "label": "Line 1",
+        "type": "text",
+        "required": true,
+        "default": "Let's Accomplish"
+      },
+      {
+        "name": "line_2",
+        "label": "Line 2 (accent colour)",
+        "help_text": "Leave empty for a single-line headline.",
+        "type": "text",
+        "default": "Great Together"
+      },
+      {
+        "name": "subhead",
+        "label": "Sub-headline",
+        "type": "richtext",
+        "default": "<p>#1 choice for Apache OFBiz development &amp; support. Build custom supply chain software faster with OFBiz, Solr, NiFi, Superset, and Moqui.</p>"
+      }
+    ]
+  },
+  {
+    "name": "cta_group",
+    "label": "Buttons",
+    "type": "group",
+    "expanded": true,
+    "children": [
+      {
+        "name": "primary_text",
+        "label": "Primary button text",
+        "type": "text",
+        "default": "Connect With Apache OFBiz Experts"
+      },
+      {
+        "name": "primary_link",
+        "label": "Primary button link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false
+        }
+      },
+      {
+        "name": "secondary_text",
+        "label": "Secondary link text",
+        "help_text": "Optional. Leave empty to show only the primary button.",
+        "type": "text",
+        "default": ""
+      },
+      {
+        "name": "secondary_link",
+        "label": "Secondary link",
+        "type": "link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "BLOG"
+        ],
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": ""
+          },
+          "open_in_new_tab": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "slides",
+    "label": "Showcase cards",
+    "help_text": "Each card is one step in the rotating animation. Add, remove or reorder freely — the tabs, progress bars and timing all follow automatically.",
+    "type": "group",
+    "expanded": true,
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    "default": [
+      {
+        "tab_label": "Order Mgmt"
+      },
+      {
+        "tab_label": "Warehouse"
+      },
+      {
+        "tab_label": "Manufacturing"
+      },
+      {
+        "tab_label": "Procurement"
+      }
+    ],
+    "children": [
+      {
+        "name": "tab_label",
+        "label": "Tab label",
+        "type": "text",
+        "required": true,
+        "default": "Order Mgmt"
+      },
+      {
+        "name": "tab_icon",
+        "label": "Tab icon",
+        "help_text": "Small icon shown beside the tab label. Optional — a 16x16 SVG or PNG works best.",
+        "type": "image",
+        "responsive": false,
+        "default": {
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "name": "image",
+        "label": "Card image",
+        "help_text": "The main graphic for this card. Any size — see 'Image fit' below.",
+        "type": "image",
+        "responsive": true,
+        "default": {
+          "src": "",
+          "alt": "",
+          "width": 690,
+          "height": 420
+        }
+      },
+      {
+        "name": "image_fit",
+        "label": "Image fit",
+        "help_text": "Fill = crops to fill the card edge to edge (best for screenshots). Fit = shows the whole image with padding (best for illustrations or transparent PNGs).",
+        "type": "choice",
+        "display": "select",
+        "default": "fill",
+        "choices": [
+          [
+            "fill",
+            "Fill the card (crop if needed)"
+          ],
+          [
+            "fit",
+            "Fit whole image (add padding)"
+          ]
+        ]
+      },
+      {
+        "name": "chips",
+        "label": "Floating info cards",
+        "help_text": "Small cards that float beside the main graphic on desktop. Use them to pull out a number, a proof point or a doc link. Hidden below 768px. Two per side works best.",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 4,
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "position",
+            "label": "Side",
+            "type": "choice",
+            "display": "select",
+            "default": "right",
+            "choices": [
+              [
+                "left",
+                "Left of the card"
+              ],
+              [
+                "right",
+                "Right of the card"
+              ]
+            ]
+          },
+          {
+            "name": "style",
+            "label": "Content",
+            "type": "choice",
+            "display": "select",
+            "default": "text",
+            "choices": [
+              [
+                "text",
+                "Typed info (label, value, caption)"
+              ],
+              [
+                "image",
+                "An image"
+              ]
+            ]
+          },
+          {
+            "name": "label",
+            "label": "Label",
+            "help_text": "Small uppercase line, e.g. BROKERING.",
+            "type": "text",
+            "default": "",
+            "visibility": {
+              "controlling_field": "style",
+              "operator": "EQUAL",
+              "controlling_value_regex": "text"
+            }
+          },
+          {
+            "name": "value",
+            "label": "Value",
+            "help_text": "The headline figure, e.g. 400/min.",
+            "type": "text",
+            "default": "",
+            "visibility": {
+              "controlling_field": "style",
+              "operator": "EQUAL",
+              "controlling_value_regex": "text"
+            }
+          },
+          {
+            "name": "caption",
+            "label": "Caption",
+            "help_text": "One short supporting line.",
+            "type": "text",
+            "default": "",
+            "visibility": {
+              "controlling_field": "style",
+              "operator": "EQUAL",
+              "controlling_value_regex": "text"
+            }
+          },
+          {
+            "name": "image",
+            "label": "Image",
+            "type": "image",
+            "responsive": false,
+            "default": {
+              "src": "",
+              "alt": ""
+            },
+            "visibility": {
+              "controlling_field": "style",
+              "operator": "EQUAL",
+              "controlling_value_regex": "image"
+            }
+          },
+          {
+            "name": "link",
+            "label": "Link (optional)",
+            "help_text": "Makes the card clickable — handy for linking a doc or case study.",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT",
+              "FILE",
+              "BLOG"
+            ],
+            "default": {
+              "url": {
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "trust_group",
+    "label": "Client logos",
+    "type": "group",
+    "expanded": false,
+    "children": [
+      {
+        "name": "show",
+        "label": "Show logo strip",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "title",
+        "label": "Heading",
+        "type": "text",
+        "default": "Leading enterprises that trust HotWax Systems"
+      },
+      {
+        "name": "logos",
+        "label": "Logos",
+        "type": "group",
+        "occurrence": {
+          "min": 0,
+          "max": 20,
+          "default": 0
+        },
+        "children": [
+          {
+            "name": "logo",
+            "label": "Logo",
+            "type": "image",
+            "responsive": false,
+            "default": {
+              "src": "",
+              "alt": ""
+            }
+          },
+          {
+            "name": "link",
+            "label": "Link (optional)",
+            "type": "link",
+            "supported_types": [
+              "EXTERNAL",
+              "CONTENT"
+            ],
+            "default": {
+              "url": {
+                "type": "EXTERNAL",
+                "href": ""
+              },
+              "open_in_new_tab": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "design",
+    "label": "Size & style",
+    "help_text": "Live design controls. Every one updates the banner as you drag it.",
+    "type": "group",
+    "expanded": false,
+    "children": [
+      {
+        "name": "headline_size",
+        "label": "Headline size (desktop)",
+        "type": "number",
+        "display": "slider",
+        "min": 28,
+        "max": 72,
+        "step": 1,
+        "suffix": "px",
+        "default": 48
+      },
+      {
+        "name": "subhead_size",
+        "label": "Sub-headline size",
+        "type": "number",
+        "display": "slider",
+        "min": 13,
+        "max": 24,
+        "step": 1,
+        "suffix": "px",
+        "default": 16
+      },
+      {
+        "name": "card_width",
+        "label": "Card size",
+        "help_text": "Width of the main graphic on desktop. The card keeps its shape, so a wider card is a taller banner.",
+        "type": "number",
+        "display": "slider",
+        "min": 560,
+        "max": 1100,
+        "step": 10,
+        "suffix": "px",
+        "default": 780
+      },
+      {
+        "name": "tilt_angle",
+        "label": "Tilt angle",
+        "help_text": "How far the card rotates in 3D. 0 lays it flat.",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "suffix": "°",
+        "default": 11
+      },
+      {
+        "name": "chip_size",
+        "label": "Floating card size",
+        "type": "number",
+        "display": "slider",
+        "min": 180,
+        "max": 380,
+        "step": 10,
+        "suffix": "px",
+        "default": 280
+      },
+      {
+        "name": "panel_tint",
+        "label": "Panel background",
+        "help_text": "The soft wash behind the graphic. The lower edge blends into the accent colour.",
+        "type": "color",
+        "default": {
+          "color": "#FDECEB",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "panel_pad",
+        "label": "Space above the graphic",
+        "type": "number",
+        "display": "slider",
+        "min": 0,
+        "max": 140,
+        "step": 4,
+        "suffix": "px",
+        "default": 52
+      }
+    ]
+  },
+  {
+    "name": "settings",
+    "label": "Animation & layout",
+    "type": "group",
+    "expanded": false,
+    "children": [
+      {
+        "name": "slide_duration",
+        "label": "Seconds per card",
+        "help_text": "How long each card stays on screen before advancing.",
+        "type": "number",
+        "display": "slider",
+        "min": 1,
+        "max": 12,
+        "step": 0.1,
+        "suffix": "s",
+        "default": 5.0
+      },
+      {
+        "name": "pause_on_hover",
+        "label": "Pause when hovered",
+        "help_text": "Stops the rotation while a visitor's cursor is over the showcase.",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "full_bleed",
+        "label": "Full-width showcase",
+        "help_text": "Lets the showcase panel span the whole browser width, ignoring the page container.",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "show_tilt",
+        "label": "3D card tilt",
+        "help_text": "Angles the card in 3D and alternates direction as the carousel advances.",
+        "type": "boolean",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "name": "accent_color",
+        "label": "Accent colour",
+        "type": "color",
+        "default": {
+          "color": "#FF3A2D",
+          "opacity": 100
+        }
+      },
+      {
+        "name": "ink_color",
+        "label": "Text colour",
+        "type": "color",
+        "default": {
+          "color": "#212429",
+          "opacity": 100
+        }
+      }
+    ]
+  }
+]

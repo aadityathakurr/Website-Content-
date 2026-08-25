@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="420" viewBox="0 0 690 420" fill="none" role="img" aria-label="Plan, Build, Track">
+<rect width="690" height="420" fill="#fff"/>
+<circle cx="228" cy="44" r="3.5" fill="#FF3A2D"/>
+<text x="242" y="48" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="10" letter-spacing="1.6" fill="#9F2D26">MANUFACTURING EXECUTION &amp; PLANNING</text>
+<text x="345" y="92" text-anchor="middle" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.4" fill="#212429">Plan, Build, Track</text>
+<line x1="60" y1="122" x2="630" y2="122" stroke="#E5E7EB" stroke-width="1"/>
+<text x="60" y="156" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1.2" fill="#6B7280">WORK ORDERS</text>
+<text x="60" y="196" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="26" font-weight="600" fill="#212429">1,860</text>
+<circle cx="65" cy="232" r="4.5" fill="#FF3A2D"/>
+<text x="78" y="236" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">BOM versioning</text>
+<circle cx="65" cy="260" r="4.5" fill="#FF3A2D"/>
+<text x="78" y="264" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">Routing steps</text>
+<circle cx="65" cy="288" r="4.5" fill="#F6CFCB"/>
+<text x="78" y="292" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">Shop floor entry</text>
+<circle cx="65" cy="316" r="4.5" fill="#F6CFCB"/>
+<text x="78" y="320" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">Subcontracting</text>
+<line x1="238" y1="140" x2="238" y2="336" stroke="#EEF0F2" stroke-width="1"/>
+<text x="260" y="156" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1.2" fill="#6B7280">ON-TIME BUILD</text>
+<text x="260" y="196" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="26" font-weight="600" fill="#212429">96.2%</text>
+<circle cx="265" cy="232" r="4.5" fill="#FF3A2D"/>
+<text x="278" y="236" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">Capacity planning</text>
+<circle cx="265" cy="260" r="4.5" fill="#FF3A2D"/>
+<text x="278" y="264" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">Material reserve</text>
+<circle cx="265" cy="288" r="4.5" fill="#F6CFCB"/>
+<text x="278" y="292" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">WIP tracking</text>
+<circle cx="265" cy="316" r="4.5" fill="#F6CFCB"/>
+<text x="278" y="320" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">Schedule board</text>
+<line x1="438" y1="140" x2="438" y2="336" stroke="#EEF0F2" stroke-width="1"/>
+<text x="460" y="156" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1.2" fill="#6B7280">SCRAP RATE</text>
+<text x="460" y="196" font-family="'JetBrains Mono', Menlo, Consolas, monospace" font-size="26" font-weight="600" fill="#212429">0.8%</text>
+<circle cx="465" cy="232" r="4.5" fill="#FF3A2D"/>
+<text x="478" y="236" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">Quality gates</text>
+<circle cx="465" cy="260" r="4.5" fill="#FF3A2D"/>
+<text x="478" y="264" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#212429">Lot &amp; serial</text>
+<circle cx="465" cy="288" r="4.5" fill="#F6CFCB"/>
+<text x="478" y="292" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">Yield analysis</text>
+<circle cx="465" cy="316" r="4.5" fill="#F6CFCB"/>
+<text x="478" y="320" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9CA3AF">Rework routing</text>
+</svg>

@@ -1,0 +1,213 @@
+{# Fonts the design needs. Without this the module inherits whatever the
+   theme provides and the type falls back to system sans. #}
+{% require_head %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+{% end_require_head %}
+
+{# ============================================================
+   HotWax Hero Banner
+   Card images, tab labels, copy and logos all come from fields.
+   The carousel reads its slides from the DOM, so adding or
+   removing a card in the sidebar needs no code change.
+   ============================================================ #}
+
+{% set s          = module.settings %}
+{% set d          = module.design %}
+{% set duration   = (s.slide_duration|float * 1000)|round|int %}
+{% set accent     = s.accent_color.color|default('#FF3A2D') %}
+{% set ink        = s.ink_color.color|default('#212429') %}
+{% set slide_list = module.slides %}
+
+{# Design controls ride in as CSS variables, so every slider updates the
+   banner live without touching the stylesheet. #}
+{% set vars %}
+--hws-accent: {{ accent }};
+--hws-ink: {{ ink }};
+--hws-tint: {{ d.panel_tint.color|default('#FDECEB') }};
+--hws-h1: {{ d.headline_size|default(48) }}px;
+--hws-sub: {{ d.subhead_size|default(16) }}px;
+--hws-card-w: {{ d.card_width|default(780) }}px;
+--hws-chip-w: {{ d.chip_size|default(280) }}px;
+--hws-tilt: {{ d.tilt_angle|default(11) }}deg;
+--hws-pad: {{ d.panel_pad|default(52) }}px;
+{% endset %}
+
+{# One floating info card. Renders typed content or an image, and wraps
+   the whole thing in a link when one is set. #}
+{% macro render_chip(chip) %}
+  {% set has_text  = chip.label or chip.value or chip.caption %}
+  {% set has_image = chip.image.src %}
+  {% if has_text or has_image %}
+    {% set tag = 'a' if chip.link.url.href else 'div' %}
+    <{{ tag }} class="hws-chip hws-chip--{{ 'image' if chip.style == 'image' else 'text' }}{% if chip.link.url.href %} hws-chip--link{% endif %}"
+      {% if chip.link.url.href %}href="{{ chip.link.url.href }}"{% if chip.link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}{% endif %}>
+      {% if chip.style == 'image' and has_image %}
+        <img src="{{ chip.image.src }}" alt="{{ chip.image.alt }}" loading="lazy">
+      {% else %}
+        {% if chip.label %}<span class="hws-chip__label">{{ chip.label }}</span>{% endif %}
+        {% if chip.value %}<span class="hws-chip__value">{{ chip.value }}</span>{% endif %}
+        {% if chip.caption %}<span class="hws-chip__caption">{{ chip.caption }}</span>{% endif %}
+      {% endif %}
+    </{{ tag }}>
+  {% endif %}
+{% endmacro %}
+
+<section class="hws-hero{% if s.full_bleed %} hws-hero--bleed{% endif %}{% if not s.show_tilt %} hws-hero--flat{% endif %}"
+         data-hws-hero
+         data-duration="{{ duration }}"
+         data-pause-on-hover="{{ 'true' if s.pause_on_hover else 'false' }}"
+         style="{{ vars }}">
+
+  {# ---------------------------------------------------- copy #}
+  <div class="hws-hero__inner">
+    <div class="hws-hero__content">
+      {% if module.headline_group.line_1 or module.headline_group.line_2 %}
+        <h1 class="hws-hero__title">
+          {% if module.headline_group.line_1 %}
+            <span class="hws-hero__title-line">{{ module.headline_group.line_1 }}</span>
+          {% endif %}
+          {% if module.headline_group.line_2 %}
+            <span class="hws-hero__title-line hws-hero__title-line--accent">{{ module.headline_group.line_2 }}</span>
+          {% endif %}
+        </h1>
+      {% endif %}
+
+      {% if module.headline_group.subhead %}
+        <div class="hws-hero__desc">{{ module.headline_group.subhead }}</div>
+      {% endif %}
+
+      {% if module.cta_group.primary_text or module.cta_group.secondary_text %}
+        <div class="hws-hero__cta">
+          {% if module.cta_group.primary_text %}
+            <a class="hws-btn"
+               href="{{ module.cta_group.primary_link.url.href }}"
+               {% if module.cta_group.primary_link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+              <span class="hws-btn__arrow">{{ module.cta_group.primary_text }}</span>
+            </a>
+          {% endif %}
+          {% if module.cta_group.secondary_text %}
+            <a class="hws-link"
+               href="{{ module.cta_group.secondary_link.url.href }}"
+               {% if module.cta_group.secondary_link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+              {{ module.cta_group.secondary_text }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {# ----------------------------------------------- showcase #}
+  {% if slide_list %}
+    <div class="hws-hero__showcase">
+      <div class="hws-panel">
+
+        {# progress dots (mobile) #}
+        <div class="hws-dots">
+          {% for slide in slide_list %}
+            <div class="hws-dot-track{% if loop.first %} is-active{% endif %}" data-index="{{ loop.index0 }}">
+              <button type="button" class="hws-dot" aria-label="Show {{ slide.tab_label|striptags }}"></button>
+              <span class="hws-dot-progress"></span>
+            </div>
+          {% endfor %}
+        </div>
+
+        {# tabs (desktop) #}
+        <div class="hws-tabs-wrap">
+          <div class="hws-tabs">
+            {% for slide in slide_list %}
+              <button type="button"
+                      class="hws-tab{% if loop.first %} is-active is-current{% endif %}"
+                      data-index="{{ loop.index0 }}">
+                {# always rendered — with no icon it becomes a plain stage dot #}
+                <span class="hws-tab__icon">{% if slide.tab_icon.src %}<img src="{{ slide.tab_icon.src }}" alt="" loading="lazy" width="14" height="14">{% endif %}</span>
+                <span class="hws-tab__text">{{ slide.tab_label }}</span>
+              </button>
+              {% if not loop.last %}
+                <span class="hws-line{% if loop.first %} is-active{% endif %}" data-index="{{ loop.index0 }}">
+                  <span class="hws-line__track"></span><span class="hws-line__progress"></span>
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {# cards #}
+        <div class="hws-stage" data-active="0">
+
+          <div class="hws-side hws-side--left">
+            {% for slide in slide_list %}
+              <div class="hws-chipgroup{% if loop.first %} is-active{% endif %}" data-index="{{ loop.index0 }}">
+                {% for chip in slide.chips %}
+                  {% if chip.position == 'left' %}{{ render_chip(chip) }}{% endif %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="hws-cards">
+            {% for slide in slide_list %}
+              <div class="hws-card hws-card--{{ slide.image_fit|default('fill') }}{% if loop.first %} is-active{% endif %}"
+                   data-index="{{ loop.index0 }}">
+                {% if slide.image.src %}
+                  <img class="hws-card__img"
+                       src="{{ slide.image.src }}"
+                       alt="{{ slide.image.alt|default(slide.tab_label) }}"
+                       {% if slide.image.width %}width="{{ slide.image.width }}"{% endif %}
+                       {% if slide.image.height %}height="{{ slide.image.height }}"{% endif %}
+                       {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                {% else %}
+                  <span class="hws-card__empty">Add an image for “{{ slide.tab_label }}”</span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="hws-side hws-side--right">
+            {% for slide in slide_list %}
+              <div class="hws-chipgroup{% if loop.first %} is-active{% endif %}" data-index="{{ loop.index0 }}">
+                {% for chip in slide.chips %}
+                  {% if chip.position != 'left' %}{{ render_chip(chip) }}{% endif %}
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# -------------------------------------------------- logos #}
+  {% if module.trust_group.show and (module.trust_group.title or module.trust_group.logos) %}
+    <div class="hws-hero__inner">
+      <div class="hws-trust">
+        {% if module.trust_group.title %}
+          <p class="hws-trust__title">{{ module.trust_group.title }}</p>
+        {% endif %}
+        {% if module.trust_group.logos %}
+          <ul class="hws-logos">
+            {% for item in module.trust_group.logos %}
+              {% if item.logo.src %}
+                <li>
+                  {% if item.link.url.href %}
+                    <a href="{{ item.link.url.href }}"
+                       {% if item.link.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                      <img src="{{ item.logo.src }}" alt="{{ item.logo.alt }}" loading="lazy">
+                    </a>
+                  {% else %}
+                    <img src="{{ item.logo.src }}" alt="{{ item.logo.alt }}" loading="lazy">
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+</section>

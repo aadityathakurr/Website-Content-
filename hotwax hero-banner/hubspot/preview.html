@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HotWax Hero — HubSpot module preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hotwax-hero.module/module.css">
+<style>
+  body { margin:0; font-family:Inter,sans-serif; }
+  /* stands in for the HubSpot page column the module sits inside */
+  .page-column { max-width:1200px; margin:0 auto; padding:0 24px; }
+  .note { background:#212429;color:#fff;font:600 12px Inter,sans-serif;padding:10px 24px; }
+</style>
+</head><body>
+<div class="note">HubSpot module preview — the grey band is a simulated 1200px page column, to prove the panel still goes full-bleed inside it</div>
+<div class="page-column">
+
+<section class="hws-hero hws-hero--bleed" data-hws-hero data-duration="5000" data-pause-on-hover="true"
+         style="--hws-accent:#FF3A2D; --hws-ink:#212429; --hws-tint:#FDECEB; --hws-h1:48px; --hws-sub:16px; --hws-card-w:780px; --hws-chip-w:280px; --hws-tilt:11deg; --hws-pad:52px;">
+  <div class="hws-hero__inner">
+    <div class="hws-hero__content">
+      <h1 class="hws-hero__title">
+        <span class="hws-hero__title-line">Let's Accomplish</span>
+        <span class="hws-hero__title-line hws-hero__title-line--accent">Great Together</span>
+      </h1>
+      <div class="hws-hero__desc"><p>#1 choice for Apache OFBiz development &amp; support. Build custom supply chain software faster with OFBiz, Solr, NiFi, Superset, and Moqui.</p></div>
+      <div class="hws-hero__cta">
+        <a class="hws-btn" href="#"><span class="hws-btn__arrow">Connect With Apache OFBiz Experts</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hws-hero__showcase">
+    <div class="hws-panel">
+      <div class="hws-dots">
+          <div class="hws-dot-track is-active" data-index="0">
+            <button type="button" class="hws-dot" aria-label="Show Order Mgmt"></button>
+            <span class="hws-dot-progress"></span>
+          </div>
+          <div class="hws-dot-track" data-index="1">
+            <button type="button" class="hws-dot" aria-label="Show Warehouse"></button>
+            <span class="hws-dot-progress"></span>
+          </div>
+          <div class="hws-dot-track" data-index="2">
+            <button type="button" class="hws-dot" aria-label="Show Manufacturing"></button>
+            <span class="hws-dot-progress"></span>
+          </div>
+          <div class="hws-dot-track" data-index="3">
+            <button type="button" class="hws-dot" aria-label="Show Procurement"></button>
+            <span class="hws-dot-progress"></span>
+          </div>
+      </div>
+      <div class="hws-tabs-wrap"><div class="hws-tabs">
+            <button type="button" class="hws-tab is-active is-current" data-index="0"><span class="hws-tab__icon"></span><span class="hws-tab__text">ORDER MGMT</span>
+            </button>
+            <span class="hws-line is-active" data-index="0">
+              <span class="hws-line__track"></span><span class="hws-line__progress"></span>
+            </span>
+            <button type="button" class="hws-tab" data-index="1"><span class="hws-tab__icon"></span><span class="hws-tab__text">WAREHOUSE</span>
+            </button>
+            <span class="hws-line" data-index="1">
+              <span class="hws-line__track"></span><span class="hws-line__progress"></span>
+            </span>
+            <button type="button" class="hws-tab" data-index="2"><span class="hws-tab__icon"></span><span class="hws-tab__text">MANUFACTURING</span>
+            </button>
+            <span class="hws-line" data-index="2">
+              <span class="hws-line__track"></span><span class="hws-line__progress"></span>
+            </span>
+            <button type="button" class="hws-tab" data-index="3"><span class="hws-tab__icon"></span><span class="hws-tab__text">PROCUREMENT</span>
+            </button>
+      </div></div>
+      <div class="hws-stage" data-active="0">
+        <div class="hws-side hws-side--left">
+<div class="hws-chipgroup is-active" data-index="0"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">CHANNELS</span><span class="hws-chip__value">6 live</span><span class="hws-chip__caption">Web, POS, marketplace</span></div></div>
+<div class="hws-chipgroup" data-index="1"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">BINS</span><span class="hws-chip__value">12,400</span><span class="hws-chip__caption">Across 8 zones</span></div></div>
+<div class="hws-chipgroup" data-index="2"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">BOM DEPTH</span><span class="hws-chip__value">7 levels</span><span class="hws-chip__caption">Nested assemblies</span></div></div>
+<div class="hws-chipgroup" data-index="3"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">SUPPLIERS</span><span class="hws-chip__value">310</span><span class="hws-chip__caption">Scored quarterly</span></div></div>
+        </div>
+        <div class="hws-cards">
+            <div class="hws-card hws-card--fill is-active" data-index="0">
+              <img class="hws-card__img" src="../assets/hero/order-main.svg" alt="Order Mgmt" width="690" height="420">
+            </div>
+            <div class="hws-card hws-card--fill" data-index="1">
+              <img class="hws-card__img" src="../assets/hero/warehouse-main.svg" alt="Warehouse" width="690" height="420">
+            </div>
+            <div class="hws-card hws-card--fit" data-index="2">
+              <img class="hws-card__img" src="../assets/hero/manufacturing-main.svg" alt="Manufacturing" width="690" height="420">
+            </div>
+            <div class="hws-card hws-card--fill" data-index="3">
+              <img class="hws-card__img" src="../assets/hero/procurement-main.svg" alt="Procurement" width="690" height="420">
+            </div>
+        </div>
+        <div class="hws-side hws-side--right">
+<div class="hws-chipgroup is-active" data-index="0"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">BROKERING</span><span class="hws-chip__value">400/min</span><span class="hws-chip__caption">Routed to best node</span></div><a class="hws-chip hws-chip--text hws-chip--link" href="#"><span class="hws-chip__label">PROMISE</span><span class="hws-chip__value">Same day</span><span class="hws-chip__caption">Delivery date shown</span></a></div>
+<div class="hws-chipgroup" data-index="1"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">SCAN RATE</span><span class="hws-chip__value">1.4s</span><span class="hws-chip__caption">Per line item</span></div><a class="hws-chip hws-chip--text hws-chip--link" href="#"><span class="hws-chip__label">SHIPMENTS</span><span class="hws-chip__value">980</span><span class="hws-chip__caption">Staged today</span></a></div>
+<div class="hws-chipgroup" data-index="2"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">SHOP FLOOR</span><span class="hws-chip__value">24 stations</span><span class="hws-chip__caption">Live WIP entry</span></div><a class="hws-chip hws-chip--text hws-chip--link" href="#"><span class="hws-chip__label">PLAN RUN</span><span class="hws-chip__value">3 min</span><span class="hws-chip__caption">Full MRP cycle</span></a></div>
+<div class="hws-chipgroup" data-index="3"><div class="hws-chip hws-chip--text"><span class="hws-chip__label">APPROVALS</span><span class="hws-chip__value">2 steps</span><span class="hws-chip__caption">Value based</span></div><a class="hws-chip hws-chip--text hws-chip--link" href="#"><span class="hws-chip__label">RECEIPTS</span><span class="hws-chip__value">ASN</span><span class="hws-chip__caption">Auto matched</span></a></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hws-hero__inner">
+    <div class="hws-trust">
+      <p class="hws-trust__title">Leading enterprises that trust HotWax Systems</p>
+      <ul class="hws-logos">
+            <li><img src="../assets/clients/essilor.jpg" alt=""></li>
+            <li><img src="../assets/clients/herman-miller.png" alt=""></li>
+            <li><img src="../assets/clients/warby-parker.jpg" alt=""></li>
+            <li><img src="../assets/clients/cabi.svg" alt=""></li>
+            <li><img src="../assets/clients/united.webp" alt=""></li>
+            <li><img src="../assets/clients/winning-group.jpeg" alt=""></li>
+            <li><img src="../assets/clients/w2g.webp" alt=""></li>
+            <li><img src="../assets/clients/spoonful-of-comfort.webp" alt=""></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div>
+<script src="hotwax-hero.module/module.js"></script>
+</body></html>
