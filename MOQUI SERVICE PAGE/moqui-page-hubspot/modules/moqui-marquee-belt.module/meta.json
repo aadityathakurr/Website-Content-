@@ -1,0 +1,13 @@
+{
+  "global": false,
+  "host_template_types": ["PAGE"],
+  "is_available_for_new_content": true,
+  "label": "Moqui Marquee Belt",
+  "css_assets": [
+    { "path": "../../css/moqui-theme.css" }
+  ],
+  "js_assets": [
+    { "path": "../../js/moqui-interactions.js" }
+  ],
+  "tags": ["marquee", "ribbon", "ticker"]
+}

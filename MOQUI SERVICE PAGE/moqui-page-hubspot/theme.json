@@ -1,0 +1,13 @@
+{
+  "name": "hotwax-moqui-service",
+  "label": "HotWax Moqui Service Suite",
+  "preview_path": "./assets/hero/hero-bg.png",
+  "screenshot_path": "./assets/hero/hero-bg.png",
+  "author": {
+    "name": "HotWax Systems",
+    "email": "connect@hotwax.co",
+    "url": "https://www.hotwaxsystems.com"
+  },
+  "version": "1.0.0",
+  "is_available_for_new_content": true
+}

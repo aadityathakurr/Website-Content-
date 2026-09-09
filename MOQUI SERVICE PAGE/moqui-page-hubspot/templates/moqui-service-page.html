@@ -1,0 +1,127 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Moqui Service Page (HotWax Systems)
+  screenshotPath: ../assets/hero/hero-bg.png
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ content.html_title|default("Moqui Solutions, Development & Consulting | Custom ERP & Order Management | HotWax Systems") }}</title>
+  {% if content.meta_description %}
+    <meta name="description" content="{{ content.meta_description }}">
+  {% else %}
+    <meta name="description" content="HotWax Systems builds custom ERP, omnichannel order management, ERP integrations and multi-tenant SaaS platforms on the open-source Moqui Framework. 20+ years of enterprise open-source engineering. Our own OMS runs on Moqui.">
+  {% endif %}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Core Theme Stylesheet -->
+  <link rel="stylesheet" href="{{ get_asset_url('../css/moqui-theme.css') }}">
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .hero__title .line>span { transform: none !important; }
+    </style>
+  </noscript>
+
+  {{ standard_header_includes }}
+</head>
+
+<body class="moqui-page">
+
+  <main id="main">
+
+    <!-- 1. Hero Section -->
+    {% module "moqui_hero" path="../modules/moqui-hero.module" %}
+
+    <!-- 2. Intro Section -->
+    {% module "moqui_intro" path="../modules/moqui-intro.module" %}
+
+    <!-- 3. Capability Marquee Ribbon -->
+    {% module "moqui_marquee" path="../modules/moqui-marquee-belt.module" %}
+
+    <!-- 4. What We Build Bento Showcase & Guide -->
+    {% module "moqui_bento" path="../modules/moqui-bento-solutions.module" %}
+
+    <!-- 5. HotWax Commerce Enterprise Proof Card -->
+    {% module "moqui_proof" path="../modules/moqui-proof-card.module" %}
+
+    <!-- 6. Why HotWax & Client Logos -->
+    {% module "moqui_why_hotwax" path="../modules/moqui-why-hotwax.module" %}
+
+    <!-- 7. Client Feedback Quote -->
+    {% module "moqui_testimonial" path="../modules/moqui-testimonial.module" %}
+
+    <!-- 8. Closing Consultation & FAQ Split -->
+    {% module "moqui_faq_consultation" path="../modules/moqui-faq-consultation.module" %}
+
+  </main>
+
+  <!-- Motion Layer -->
+  <script src="{{ get_asset_url('../js/moqui-interactions.js') }}" defer></script>
+
+  <!-- Structured Data (JSON-LD) for Enterprise SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://www.hotwaxsystems.com/services/moqui-framework-development/#service",
+        "name": "Moqui Development, Consulting and Support Services",
+        "url": "https://www.hotwaxsystems.com/services/moqui-framework-development/",
+        "provider": {
+          "@type": "Organization",
+          "name": "HotWax Systems",
+          "url": "https://www.hotwaxsystems.com/",
+          "logo": "https://www.hotwaxsystems.com/assets/brand/hotwax-systems-logo.svg"
+        },
+        "serviceType": "Enterprise Open-Source Software Development",
+        "description": "Enterprise software development and consulting on the open-source Moqui Ecosystem. Bespoke ERPs, omnichannel order management, integration layers, and multi-tenant SaaS platforms engineered with zero license fees and full code ownership.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Moqui Solutions & Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Omnichannel order management and fulfillment on Moqui" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom ERP and enterprise application development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP augmentation and microservices" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integration and API layer engineering" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-tenant SaaS platform engineering" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI and agentic workflow enablement" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud deployment, DevOps and managed support" } }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.hotwaxsystems.com/services/moqui-framework-development/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is Moqui really free to use commercially?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Moqui Framework and Mantle Business Artifacts are released to the public domain under Creative Commons Zero (CC0-1.0) with a Grant of Patent License. There are no license fees, seat costs or usage restrictions, and you may embed Moqui inside a proprietary commercial product, fork it, or resell software built on it without attribution requirements." } },
+          { "@type": "Question", "name": "How is Moqui different from Apache OFBiz?", "acceptedAnswer": { "@type": "Answer", "text": "Moqui is a complete rewrite rather than a fork, sharing the same architectural lineage of entity engine, service engine and screen framework, with a lighter runtime, a tighter API contract, a consolidated data model and built-in multi-tenancy. Apache OFBiz has the larger community and far more out-of-the-box application modules. Choose OFBiz when packaged modules fit your requirements; choose Moqui when you're building a custom system and want a clean architectural foundation. We build on both. See our Apache OFBiz development and consulting services." } },
+          { "@type": "Question", "name": "We already run NetSuite and Shopify. Does this replace them?", "acceptedAnswer": { "@type": "Answer", "text": "Usually not, and we will say so. The common pattern is that the storefront and the financial system stay where they are, and we build the order management, inventory and fulfillment orchestration layer between them, which is where most of the pain actually sits. Integration to both is well traveled ground for us. If a full replacement is the right answer, that is a separate and much larger conversation." } },
+          { "@type": "Question", "name": "How long until we are live on something?", "acceptedAnswer": { "@type": "Answer", "text": "A first production release typically lands in months rather than years, because the enterprise data model, service layer, security and REST tooling already exist before we start. We scope the first milestone to a single process that hurts, put it in production, and expand from there. You should be skeptical of anyone promising a full ERP replacement on a short timeline, including us." } },
+          { "@type": "Question", "name": "Do you provide Moqui support and maintenance for existing systems?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We take over existing Moqui deployments for support, maintenance, performance tuning, version upgrades and feature development, including systems originally built by other vendors or in-house teams. Engagements include dedicated account management rather than an anonymous ticket queue." } }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.hotwaxsystems.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.hotwaxsystems.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Moqui Solutions, Development and Consulting", "item": "https://www.hotwaxsystems.com/services/moqui-framework-development/" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  {{ standard_footer_includes }}
+</body>
+</html>

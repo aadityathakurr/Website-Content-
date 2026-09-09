@@ -1,0 +1,30 @@
+[
+  {
+    "id": "heading_lines",
+    "name": "heading_lines",
+    "label": "Heading Lines",
+    "type": "text",
+    "default": "A Modern Framework for\nBuilding Enterprise\nApplications"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent Word",
+    "type": "text",
+    "default": "Faster."
+  },
+  {
+    "id": "paragraph_1",
+    "name": "paragraph_1",
+    "label": "Paragraph 1 (Definition & Foundation)",
+    "type": "richtext",
+    "default": "<p>Moqui is an open-source Java and Groovy framework for building custom ERP and commerce applications, built around a Universal Data Model and Universal Service Library with reusable business artifacts. It provides one foundation for business automation applications, multi-instance SaaS, and ready-made apps, with built-in REST APIs.</p>"
+  },
+  {
+    "id": "paragraph_2",
+    "name": "paragraph_2",
+    "label": "Paragraph 2 (HotWax Systems Track Record)",
+    "type": "richtext",
+    "default": "<p>HotWax Systems has built on the open-source Moqui ecosystem since its earliest days, with 100+ engineers delivering enterprise solutions across complex operations. With a proven foundation, we focus on what makes your operation different, helping you launch in months with full ownership of your code, data, and roadmap.</p>"
+  }
+]

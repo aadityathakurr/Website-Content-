@@ -1,0 +1,35 @@
+{# Moqui Hero Section - HubSpot Custom Module #}
+<section class="hero" id="top">
+  {% if module.bg_image.src %}
+    <img class="hero__bg" src="{{ module.bg_image.src }}" alt="{{ module.bg_image.alt }}" aria-hidden="true" fetchpriority="high" decoding="async">
+  {% endif %}
+  <span class="hero__scrim" aria-hidden="true"></span>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <h1 class="hero__title">
+        {% if module.heading_line_1 %}
+          <span class="line"><span>{{ module.heading_line_1 }}</span></span>
+        {% endif %}
+        {% if module.heading_line_2 or module.heading_accent %}
+          <span class="line"><span>{{ module.heading_line_2 }}{% if module.heading_accent %} <em class="accent">{{ module.heading_accent }}</em>{% endif %}</span></span>
+        {% endif %}
+      </h1>
+
+      {% if module.subheading %}
+        <div class="hero__sub reveal" style="--d:.22s">
+          {{ module.subheading }}
+        </div>
+      {% endif %}
+
+      {% if module.cta_group.cta_text %}
+        {% set href = module.cta_group.cta_link.url.href|default('#') %}
+        <div class="hero__cta reveal" style="--d:.3s">
+          <a class="btn btn--filled btn--hero" href="{{ href }}"{% if module.cta_group.cta_link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>
+            {{ module.cta_group.cta_text }}<span class="btn__arrow" aria-hidden="true"></span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

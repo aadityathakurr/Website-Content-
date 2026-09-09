@@ -1,0 +1,197 @@
+[
+  {
+    "id": "brand_logo",
+    "name": "brand_logo",
+    "label": "Brand Logo",
+    "type": "image",
+    "responsive": false,
+    "resizable": false,
+    "help_text": "HotWax Commerce lockup. Upload to the File Manager and pick it here.",
+    "default": {
+      "src": "",
+      "alt": "HotWax Commerce",
+      "width": 1924,
+      "height": 609
+    }
+  },
+  {
+    "id": "tag",
+    "name": "tag",
+    "label": "Card Eyebrow Tag",
+    "type": "text",
+    "default": "PROOF AT ENTERPRISE SCALE"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title (Playfair Display)",
+    "type": "text",
+    "default": "HotWax Commerce runs on Moqui."
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Lead Description",
+    "type": "richtext",
+    "default": "<p>HotWax Commerce is our omnichannel Order Management System, built on the Moqui Framework and Mantle's data model. It runs in production today for Steve Madden, Perry Ellis, Dolce Vita and Cariuma, integrated with Shopify, NetSuite, POS and shipping gateways.</p>"
+  },
+  {
+    "id": "capsules",
+    "name": "capsules",
+    "label": "Capability Capsules",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Capsule Title",
+        "type": "text",
+        "default": "Smart Routing"
+      },
+      {
+        "id": "desc",
+        "name": "desc",
+        "label": "Capsule Description",
+        "type": "text",
+        "default": "Orders brokered to the optimal location in real time"
+      }
+    ],
+    "default": [
+      {
+        "title": "Smart Routing",
+        "desc": "Every order goes to the store or warehouse best placed to ship it"
+      },
+      {
+        "title": "Unified Inventory",
+        "desc": "One live view of stock across warehouses and every store"
+      },
+      {
+        "title": "Ship-from-Store",
+        "desc": "Any store can pick, pack and ship online orders"
+      },
+      {
+        "title": "BOPIS & BORIS",
+        "desc": "Customers buy online, then pick up or return in store"
+      },
+      {
+        "title": "Split Orders",
+        "desc": "One order can ship from several locations at once"
+      },
+      {
+        "title": "Carrier Rules",
+        "desc": "Picks the cheapest shipping option that still hits the delivery promise"
+      }
+    ]
+  },
+  {
+    "id": "highlight_paragraph",
+    "name": "highlight_paragraph",
+    "label": "Highlight Paragraph",
+    "type": "richtext",
+    "default": "<p>Peak season runs on the same system as any other day. No separate setup, no rewrite. Moqui handles the data, the logic and the integrations. It does the real work here.</p>"
+  },
+  {
+    "id": "metrics",
+    "name": "metrics",
+    "label": "Key Throughput Metrics",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "number",
+        "name": "number",
+        "label": "Metric Value (e.g. 3,500+)",
+        "type": "text",
+        "default": "3,500+"
+      },
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Metric Label",
+        "type": "text",
+        "default": "orders downloaded per minute from eCommerce"
+      }
+    ],
+    "default": [
+      {
+        "number": "3,500+",
+        "label": "orders downloaded per minute from eCommerce"
+      },
+      {
+        "number": "400+",
+        "label": "orders brokered per minute to fulfillment locations"
+      },
+      {
+        "number": "35,000+",
+        "label": "product inventory updates per hour"
+      }
+    ]
+  },
+  {
+    "id": "footer_note",
+    "name": "footer_note",
+    "label": "Footer Note",
+    "type": "text",
+    "default": "When we architect your system, we apply patterns already carrying live consumer demand for global brands, not framework theory."
+  },
+  {
+    "id": "cta_link",
+    "name": "cta_link",
+    "label": "CTA Link",
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "href": "https://www.hotwax.co/"
+      },
+      "open_in_new_tab": true,
+      "no_follow": false
+    }
+  },
+  {
+    "id": "guide_banner",
+    "name": "guide_banner",
+    "label": "Architecture Guide Banner (Lead Magnet)",
+    "type": "group",
+    "children": [
+      {
+        "id": "guide_title",
+        "name": "guide_title",
+        "label": "Banner Title",
+        "type": "text",
+        "default": "Not ready to talk? Take the architecture guide instead."
+      },
+      {
+        "id": "guide_desc",
+        "name": "guide_desc",
+        "label": "Banner Description",
+        "type": "richtext",
+        "default": "<p>A short, practical read on engineering custom ERP, order routing and data models on an open-source stack, including the architectural decisions that are expensive to reverse. No sequence, no drip, one email.</p>"
+      },
+      {
+        "id": "guide_btn_text",
+        "name": "guide_btn_text",
+        "label": "Submit Button Text",
+        "type": "text",
+        "default": "SEND IT"
+      },
+      {
+        "id": "form_action",
+        "name": "form_action",
+        "label": "Form Action URL",
+        "type": "text",
+        "help_text": "Where the email is posted. Replace the placeholder with your HubSpot form endpoint.",
+        "default": "/connect/"
+      }
+    ]
+  }
+]

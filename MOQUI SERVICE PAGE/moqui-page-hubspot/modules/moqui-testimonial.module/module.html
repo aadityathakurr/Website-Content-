@@ -1,0 +1,33 @@
+{# Moqui Client Feedback / Testimonial - HubSpot Custom Module #}
+<section class="band band--feedback" id="feedback">
+  <div class="wrap">
+    <div class="testimonial-spotlight reveal">
+      <!-- Left Logo Badge with Red Accent Backplate -->
+      <div class="testimonial-badge" aria-hidden="true">
+        <div class="testimonial-badge__accent"></div>
+        <div class="testimonial-badge__card">
+          {% if module.logo.src %}
+            <img src="{{ module.logo.src }}" alt="{{ module.logo.alt|default('Client logo') }}" class="testimonial-badge__logo" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Right Content Column -->
+      <div class="testimonial-spotlight__content">
+        {% if module.quote %}
+          <blockquote class="testimonial-spotlight__quote">
+            {{ module.quote }}
+          </blockquote>
+        {% endif %}
+        <div class="testimonial-spotlight__cite">
+          {% if module.author_name %}
+            <span class="testimonial-spotlight__author">{{ module.author_name }}</span>
+          {% endif %}
+          {% if module.author_title %}
+            <span class="testimonial-spotlight__role">{{ module.author_title }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

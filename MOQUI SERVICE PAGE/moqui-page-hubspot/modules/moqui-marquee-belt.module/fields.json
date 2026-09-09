@@ -1,0 +1,54 @@
+[
+  {
+    "id": "items",
+    "name": "items",
+    "label": "Marquee Ticker Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 30,
+      "default": 10
+    },
+    "children": [
+      {
+        "id": "text",
+        "name": "text",
+        "label": "Item Text",
+        "type": "text",
+        "default": "Zero License Fees Forever"
+      }
+    ],
+    "default": [
+      {
+        "text": "Zero License Fees Forever"
+      },
+      {
+        "text": "100% Code Ownership"
+      },
+      {
+        "text": "20+ Years in Enterprise Open Source"
+      },
+      {
+        "text": "50+ Global Enterprise Deployments"
+      },
+      {
+        "text": "390+ Mantle Data Entities"
+      },
+      {
+        "text": "400+ Headless REST Endpoints"
+      },
+      {
+        "text": "Escape SaaS Vendor Lock-In"
+      },
+      {
+        "text": "AI-Ready Architecture"
+      },
+      {
+        "text": "Custom Workflows Without Bloat"
+      },
+      {
+        "text": "Dedicated Solution Architects"
+      }
+    ]
+  }
+]

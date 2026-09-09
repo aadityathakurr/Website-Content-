@@ -1,0 +1,65 @@
+{# Why HotWax Systems & Client Logos - HubSpot Custom Module #}
+<section class="band band--warm" id="why-hotwax">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__lead">
+        {% if module.eyebrow %}
+          <p class="eyebrow reveal">{{ module.eyebrow }}</p>
+        {% endif %}
+        <h2 class="h2 reveal" style="--d:.04s">
+          {% if module.title_main %}{{ module.title_main }}<br>{% endif %}
+          {{ module.title_line_2_prefix }} {% if module.title_accent %}<span class="accent">{{ module.title_accent }}</span>{% endif %}
+        </h2>
+      </div>
+      <div class="split__body">
+        {% if module.lead %}
+          <div class="lead reveal" style="--d:.06s">
+            {{ module.lead }}
+          </div>
+        {% endif %}
+
+        {% if module.ticks %}
+          <ul class="ticks">
+            {% for tick in module.ticks %}
+              <li class="reveal" style="--d:{{ loop.index * 0.04 + 0.06 }}s">
+                <strong>{{ tick.strong_text }}</strong>
+                <span class="ticks__sub">{{ tick.sub_text }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if module.logos_banner.logos %}
+      <div class="logos logos--hero reveal" style="--d:.16s">
+        {% if module.logos_banner.label %}
+          <p class="logos__label">{{ module.logos_banner.label }}</p>
+        {% endif %}
+        {# Logo wall. The first four logos fill the visible slots; the rest
+           sit in the reserve block and rotate in, one slot at a time, behind
+           a blur. moqui-interactions.js reads every img inside the wall to
+           build its pool, so adding logos here just adds more pages. #}
+        <div class="logo-cycle" data-logo-cycle>
+          {% for logo in module.logos_banner.logos %}
+            {% if loop.index0 < 4 and logo.image.src %}
+              <div class="logo-cycle__slot">
+                <img src="{{ logo.image.src }}"{% if logo.size_class %} class="{{ logo.size_class }}"{% endif %} alt="{{ logo.image.alt|default(logo.name) }}" loading="lazy" decoding="async">
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          {% if module.logos_banner.logos|length > 4 %}
+            <div class="logo-cycle__reserve" aria-hidden="true">
+              {% for logo in module.logos_banner.logos %}
+                {% if loop.index0 >= 4 and logo.image.src %}
+                  <img src="{{ logo.image.src }}"{% if logo.size_class %} class="{{ logo.size_class }}"{% endif %} alt="{{ logo.image.alt|default(logo.name) }}" loading="lazy" decoding="async">
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>

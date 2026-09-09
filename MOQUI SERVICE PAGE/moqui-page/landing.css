@@ -1,0 +1,1660 @@
+/* =========================================================
+   HotWax Systems - Moqui CONVERSION LANDING PAGE
+   Additive layer. Loads AFTER styles.css and inherits every
+   brand token from it. Nothing here overrides the service
+   page; this file only adds the components the conversion
+   structure needs.
+
+   Structure follows the TK Kader landing page framework:
+   1-3  who / what / big result, all inside the headline block
+   4    money shot
+   5    why should I trust you
+   6    frictionless call to action
+   7    validate and agitate the problem
+   8    features, solution and benefit paired
+   9    testimonials and case studies
+   10   closing call to action, repeated throughout
+
+   Motion policy inherited from styles.css: transform and
+   opacity only, everything gated behind prefers-reduced-motion.
+   ========================================================= */
+
+:root {
+  --lp-shadow: 0 1px 2px rgba(33, 36, 41, .04), 0 12px 32px rgba(33, 36, 41, .07);
+  --lp-shadow-lg: 0 2px 4px rgba(33, 36, 41, .05), 0 30px 70px rgba(33, 36, 41, .12);
+  --lp-ink-900: #14171a;
+  --lp-console: #14181d;
+  --lp-console-2: #1b2027;
+  --lp-console-line: #2a313a;
+  --lp-green: #1f9d55;
+  --lp-amber: #c47b00;
+}
+
+/* =========================================================
+   SHARED PRIMITIVES
+   ========================================================= */
+
+.lp-kicker {
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  margin: 0 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lp-kicker::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--orange);
+  flex: none;
+}
+
+.lp-kicker--center {
+  justify-content: center;
+}
+
+.lp-h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  color: var(--maroon);
+  font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.12;
+  letter-spacing: -.015em;
+  margin: 0 0 20px;
+}
+
+.lp-h2--center {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 20ch;
+}
+
+.lp-deck {
+  font-size: 18px;
+  line-height: 1.66;
+  color: var(--ink-soft);
+  font-weight: 500;
+  max-width: 62ch;
+  margin: 0 0 14px;
+}
+
+.lp-deck--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.lp-deck strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.lp-band {
+  padding: clamp(72px, 8vw, 118px) 0;
+  position: relative;
+}
+
+.lp-band--tint {
+  background: var(--tint-soft);
+  border-block: 1px solid var(--line-warm);
+}
+
+.lp-band--paper {
+  background: var(--paper-2);
+  border-block: 1px solid var(--line);
+}
+
+.lp-band--dark {
+  background: var(--lp-ink-900);
+}
+
+.lp-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(44px, 5vw, 66px);
+}
+
+/* =========================================================
+   1-3. HERO: who this is for, what this is, the big result
+   All three answered above the fold, inside the headline
+   block, for the three second back button test.
+   ========================================================= */
+
+.lp-hero {
+  position: relative;
+  padding: clamp(52px, 6vw, 84px) 0 0;
+  background:
+    radial-gradient(900px 520px at 12% -6%, #fff4f2 0%, rgba(255, 244, 242, 0) 68%),
+    radial-gradient(760px 460px at 92% 8%, #fdf1ef 0%, rgba(253, 241, 239, 0) 70%),
+    var(--paper);
+  overflow: hidden;
+}
+
+.lp-hero__inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+/* WHO this is for. Named explicitly rather than implied. */
+.lp-hero__who {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 12px;
+  border: 1px solid var(--line-warm);
+  background: #fff;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  box-shadow: 0 1px 2px rgba(33, 36, 41, .05);
+  margin-bottom: 26px;
+}
+
+.lp-hero__who svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.lp-hero__title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  color: var(--maroon);
+  font-size: clamp(34px, 5.6vw, 70px);
+  line-height: 1.04;
+  letter-spacing: -.022em;
+  margin: 0 0 22px;
+}
+
+.lp-hero__title .accent {
+  color: var(--orange);
+  font-style: normal;
+}
+
+/* WHAT this is, spelled out so nobody has to guess the
+   category. Sits directly under the headline. */
+.lp-hero__what {
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+.lp-hero__what span {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.lp-hero__what i {
+  font-style: normal;
+  color: var(--muted);
+  margin: 0 7px;
+}
+
+/* On narrow screens the two clauses wrap mid-separator and strand
+   an orphaned bullet, so stack them and drop the bullet instead. */
+@media (max-width: 760px) {
+  .lp-hero__what i {
+    display: none;
+  }
+
+  .lp-hero__what span {
+    display: block;
+    margin-top: 7px;
+  }
+}
+
+.lp-hero__sub {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 500;
+  max-width: 68ch;
+  margin: 0 auto 34px;
+}
+
+.lp-hero__sub strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.lp-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* Friction remover. TK: the more you ask for, the worse it
+   converts, so state up front how little is being asked. */
+.lp-hero__friction {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 clamp(46px, 5vw, 64px);
+}
+
+.lp-hero__friction span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.lp-hero__friction svg {
+  width: 14px;
+  height: 14px;
+  color: var(--lp-green);
+  flex: none;
+}
+
+/* =========================================================
+   4. MONEY SHOT
+   The product, at its best angle, immediately after the
+   headline. Built as live markup rather than a flat image so
+   it stays sharp and can carry real motion.
+   ========================================================= */
+
+.money {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+.money__frame {
+  border-radius: 14px 14px 0 0;
+  background: var(--lp-console);
+  box-shadow: var(--lp-shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--lp-console-line);
+  border-bottom: 0;
+  transform: translateY(28px);
+  opacity: 0;
+  transition: transform .9s var(--ease-out), opacity .9s var(--ease-out);
+}
+
+.money__frame.is-in {
+  transform: none;
+  opacity: 1;
+}
+
+/* window chrome */
+.money__bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: var(--lp-console-2);
+  border-bottom: 1px solid var(--lp-console-line);
+}
+
+.money__dots {
+  display: flex;
+  gap: 7px;
+  flex: none;
+}
+
+.money__dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #3a424c;
+}
+
+.money__dots i:first-child {
+  background: #e05c4b;
+}
+
+.money__dots i:nth-child(2) {
+  background: #d9a13a;
+}
+
+.money__dots i:nth-child(3) {
+  background: #4fa86a;
+}
+
+.money__tab {
+  font-family: Montserrat, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #8b97a5;
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.money__tab b {
+  color: #eef2f6;
+  font-weight: 700;
+}
+
+.money__tab em {
+  font-style: normal;
+  color: #5d6874;
+}
+
+.money__live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #6fd08c;
+  flex: none;
+}
+
+.money__live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6fd08c;
+  box-shadow: 0 0 0 0 rgba(111, 208, 140, .6);
+  animation: moneyPulse 2s infinite;
+}
+
+@keyframes moneyPulse {
+  70% {
+    box-shadow: 0 0 0 9px rgba(111, 208, 140, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(111, 208, 140, 0);
+  }
+}
+
+.money__body {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+}
+
+/* left rail */
+.money__rail {
+  border-right: 1px solid var(--lp-console-line);
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #11151a;
+}
+
+.money__rail span {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #5d6874;
+}
+
+.money__rail span svg {
+  width: 16px;
+  height: 16px;
+}
+
+.money__rail span.is-on {
+  background: rgba(231, 0, 0, .14);
+  color: #ff6a5c;
+}
+
+.money__main {
+  padding: 18px;
+  min-width: 0;
+}
+
+/* KPI row: real published throughput figures */
+.money__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.money__kpi {
+  background: var(--lp-console-2);
+  border: 1px solid var(--lp-console-line);
+  border-radius: 9px;
+  padding: 12px 13px;
+}
+
+.money__kpi dd {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 700;
+  color: #f4f7fa;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.money__kpi dd .u {
+  color: #ff6a5c;
+}
+
+.money__kpi dt {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #78838f;
+  margin-top: 7px;
+  line-height: 1.4;
+}
+
+.money__kpi--good dd {
+  color: #6fd08c;
+}
+
+/* order pipeline */
+.money__flow {
+  background: var(--lp-console-2);
+  border: 1px solid var(--lp-console-line);
+  border-radius: 9px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.money__flowhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.money__flowhead h3 {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #aab4bf;
+}
+
+.money__flowhead p {
+  margin: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #6b7682;
+}
+
+.money__stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  position: relative;
+}
+
+.money__stage {
+  border: 1px solid var(--lp-console-line);
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #171c22;
+  position: relative;
+  overflow: hidden;
+}
+
+.money__stage b {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #78838f;
+  margin-bottom: 8px;
+}
+
+.money__stage strong {
+  display: block;
+  font-size: 19px;
+  font-weight: 700;
+  color: #f4f7fa;
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+
+.money__stage i {
+  display: block;
+  font-style: normal;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #6b7682;
+  margin-top: 6px;
+}
+
+/* the travelling packet, stage to stage */
+.money__stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6a5c, transparent);
+  transform: translateX(-100%);
+  animation: moneySweep 3.2s linear infinite;
+}
+
+.money__stage:nth-child(2)::after {
+  animation-delay: .8s;
+}
+
+.money__stage:nth-child(3)::after {
+  animation-delay: 1.6s;
+}
+
+.money__stage:nth-child(4)::after {
+  animation-delay: 2.4s;
+}
+
+@keyframes moneySweep {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  55%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* order table */
+.money__tablewrap {
+  background: var(--lp-console-2);
+  border: 1px solid var(--lp-console-line);
+  border-radius: 9px;
+  /* The columns are nowrap and total about 607px, so this has to
+     scroll rather than clip, otherwise Status is unreachable on
+     anything narrower than a laptop. min-width:0 keeps it from
+     forcing its min-content width onto the grid track. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.money__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+}
+
+.money__table th {
+  text-align: left;
+  padding: 9px 13px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #6b7682;
+  border-bottom: 1px solid var(--lp-console-line);
+  background: #171c22;
+  white-space: nowrap;
+}
+
+.money__table td {
+  padding: 9px 13px;
+  color: #b9c3ce;
+  border-bottom: 1px solid rgba(42, 49, 58, .6);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.money__table tr:last-child td {
+  border-bottom: 0;
+}
+
+.money__table td:first-child {
+  color: #eef2f6;
+  font-weight: 700;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.pill::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pill--ship {
+  background: rgba(111, 208, 140, .13);
+  color: #6fd08c;
+}
+
+.pill--pick {
+  background: rgba(255, 106, 92, .13);
+  color: #ff8878;
+}
+
+.pill--hold {
+  background: rgba(217, 161, 58, .14);
+  color: #dcb45e;
+}
+
+/* honest label: this is an illustrative interface */
+.money__caption {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 16px auto 0;
+  max-width: 60ch;
+}
+
+/* =========================================================
+   5. WHY SHOULD I TRUST YOU
+   Recognizable logos and hard credentials, placed high, while
+   the visitor is still deciding whether to stay.
+   ========================================================= */
+
+.trust {
+  padding: clamp(38px, 4vw, 52px) 0;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.trust__label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 26px;
+}
+
+.trust__label b {
+  color: var(--ink);
+}
+
+.trust__creds {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 34px;
+}
+
+.trust__cred {
+  background: #fff;
+  padding: 22px 20px;
+  text-align: center;
+}
+
+.trust__cred dd {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--maroon);
+  line-height: 1;
+}
+
+.trust__cred dd .u {
+  color: var(--orange);
+}
+
+.trust__cred dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 11px;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   6. CALL TO ACTION BANDS
+   Repeated at every decision point, always the same offer so
+   the visitor never has to relearn it.
+   ========================================================= */
+
+.ctaband {
+  background: var(--maroon);
+  border-radius: var(--cardradius);
+  padding: clamp(34px, 4vw, 52px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaband::before {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(231, 0, 0, .38), transparent 66%);
+  pointer-events: none;
+}
+
+.ctaband>* {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaband__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #f0b8b4;
+  margin: 0 0 12px;
+}
+
+.ctaband h2,
+.ctaband h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(23px, 2.6vw, 33px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.18;
+  margin: 0 0 12px;
+  letter-spacing: -.015em;
+}
+
+.ctaband p {
+  margin: 0;
+  color: #f3dedc;
+  font-size: 15.5px;
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 56ch;
+}
+
+.ctaband__act {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  flex: none;
+}
+
+.btn--onmaroon {
+  background: #fff;
+  color: var(--maroon);
+  border-color: #fff;
+  justify-content: center;
+}
+
+.btn--onmaroon:hover {
+  background: var(--tint);
+  border-color: var(--tint);
+  color: var(--maroon);
+}
+
+.btn--ghostlight {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .45);
+  justify-content: center;
+}
+
+.btn--ghostlight:hover {
+  background: rgba(255, 255, 255, .1);
+  border-color: #fff;
+  color: #fff;
+}
+
+.ctaband__fine {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #dcb5b2;
+  text-align: center;
+  margin: 2px 0 0;
+}
+
+/* =========================================================
+   7. VALIDATE AND AGITATE THE PROBLEM
+   For the visitor who is interested but still reasoning it
+   out. Name the problem, prove it is not theirs alone, then
+   quantify what it costs.
+   ========================================================= */
+
+.problem__grid {
+  display: grid;
+  grid-template-columns: 1.02fr .98fr;
+  gap: clamp(28px, 4vw, 58px);
+  align-items: start;
+}
+
+.symptoms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.symptoms li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 13px;
+  align-items: start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 15px 17px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: border-color .3s ease, transform .45s var(--ease-out);
+}
+
+.symptoms li:hover {
+  border-color: var(--line-warm);
+  transform: translateX(3px);
+}
+
+.symptoms li strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.symptoms li svg {
+  width: 22px;
+  height: 22px;
+  color: var(--orange);
+  flex: none;
+  margin-top: 1px;
+}
+
+.problem__aside {
+  position: sticky;
+  top: 32px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: clamp(24px, 2.6vw, 32px);
+  box-shadow: var(--lp-shadow);
+}
+
+.problem__aside h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--maroon);
+  margin: 0 0 14px;
+  line-height: 1.25;
+}
+
+.problem__aside p {
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+
+.problem__aside p:last-child {
+  margin-bottom: 0;
+}
+
+.costs {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+}
+
+.costs li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.costs b {
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.costs span {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* the two roads, packaged versus from scratch */
+.roads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: clamp(34px, 4vw, 50px);
+}
+
+/* three roads: two that hurt, and the way out */
+.roads--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 980px) {
+  .roads--three {
+    grid-template-columns: 1fr;
+  }
+}
+
+.road {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  background: #fff;
+}
+
+.road--out {
+  background: var(--tint-soft);
+  border-color: var(--line-warm);
+}
+
+.road h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  margin: 0 0 14px;
+}
+
+.road ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.road li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding-left: 22px;
+  position: relative;
+}
+
+.road li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .52em;
+  width: 11px;
+  height: 2px;
+  background: var(--muted);
+}
+
+.road--out li::before {
+  background: var(--orange);
+  height: 11px;
+  top: .28em;
+  width: 11px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #fff 0 32%, var(--orange) 34% 100%);
+}
+
+/* =========================================================
+   8. FEATURE, SOLUTION, BENEFIT
+   Every capability states the mechanism and then what the
+   visitor actually gets from it. Never feature only.
+   ========================================================= */
+
+.fb {
+  display: grid;
+  gap: 16px;
+}
+
+.fbrow {
+  display: grid;
+  grid-template-columns: 62px 1.25fr 1fr;
+  gap: clamp(20px, 2.6vw, 40px);
+  align-items: start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--cardradius);
+  padding: clamp(24px, 2.8vw, 34px);
+  transition: border-color .3s ease, box-shadow .4s ease, transform .5s var(--ease-out);
+}
+
+.fbrow:hover {
+  border-color: var(--line-warm);
+  box-shadow: var(--lp-shadow);
+  transform: translateY(-3px);
+}
+
+.fbrow__num {
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--maroon);
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--tint);
+  display: grid;
+  place-items: center;
+  flex: none;
+  transition: var(--cardease);
+}
+
+.fbrow:hover .fbrow__num {
+  background: var(--maroon);
+  color: #fff;
+}
+
+.fbrow__what h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(20px, 2.1vw, 26px);
+  font-weight: 700;
+  color: var(--maroon);
+  line-height: 1.2;
+  margin: 0 0 12px;
+  letter-spacing: -.01em;
+}
+
+.fbrow__what p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.fbrow__what p+p {
+  margin-top: 10px;
+}
+
+/* the benefit half, visually separated so it never reads as
+   more feature copy */
+.fbrow__benefit {
+  border-left: 2px solid var(--line-warm);
+  padding-left: clamp(18px, 2vw, 26px);
+}
+
+.fbrow__benefit b {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  margin-bottom: 11px;
+}
+
+.fbrow__benefit p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.fbrow__benefit ul {
+  list-style: none;
+  margin: 13px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.fbrow__benefit li {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding-left: 21px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.fbrow__benefit li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .42em;
+  width: 11px;
+  height: 6px;
+  border-left: 2px solid var(--lp-green);
+  border-bottom: 2px solid var(--lp-green);
+  transform: rotate(-45deg);
+}
+
+/* =========================================================
+   9. TESTIMONIALS AND CASE STUDIES
+   The last stop for the visitor who will not book yet but is
+   still reading. Email in exchange for the detail.
+   ========================================================= */
+
+.cases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.case {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--cardradius);
+  background: #fff;
+  padding: 26px;
+  transition: var(--cardease), transform .5s var(--ease-out), box-shadow .4s ease;
+}
+
+.case:hover {
+  background: var(--cardhoverbg);
+  border-color: var(--cardhoverbg);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(140, 28, 36, .22);
+}
+
+.case__tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--deep-red);
+  margin: 0 0 14px;
+  transition: color .3s ease;
+}
+
+.case:hover .case__tag {
+  color: #f0b8b4;
+}
+
+.case h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--maroon);
+  line-height: 1.24;
+  margin: 0 0 12px;
+  transition: color .3s ease;
+}
+
+.case:hover h3 {
+  color: #fff;
+}
+
+.case p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 500;
+  margin: 0 0 18px;
+  transition: color .3s ease;
+}
+
+.case:hover p {
+  color: rgba(255, 255, 255, .88);
+}
+
+.case__metrics {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--line);
+  transition: border-color .3s ease;
+}
+
+.case:hover .case__metrics {
+  border-color: rgba(255, 255, 255, .24);
+}
+
+.case__metrics div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.case__metrics dt {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color .3s ease;
+}
+
+.case__metrics dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color .3s ease;
+  text-align: right;
+}
+
+.case:hover .case__metrics dt {
+  color: rgba(255, 255, 255, .7);
+}
+
+.case:hover .case__metrics dd {
+  color: #fff;
+}
+
+.case__foot {
+  margin-top: auto;
+}
+
+.case__get {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  transition: color .3s ease, gap .3s ease;
+}
+
+.case__get svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+.case:hover .case__get {
+  color: #fff;
+  gap: 13px;
+}
+
+/* email capture, deliberately one field */
+.gate {
+  margin-top: clamp(30px, 3.4vw, 44px);
+  border: 1px solid var(--line-warm);
+  background: var(--tint-soft);
+  border-radius: var(--cardradius);
+  padding: clamp(26px, 3vw, 38px);
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 420px);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: center;
+}
+
+.gate h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(20px, 2.2vw, 27px);
+  font-weight: 700;
+  color: var(--maroon);
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.gate p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.gate__form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gate__form label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.gate__form input {
+  flex: 1 1 190px;
+  min-width: 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.gate__form input::placeholder {
+  color: var(--muted);
+}
+
+.gate__form input:focus {
+  outline: 0;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(231, 0, 0, .12);
+}
+
+.gate__fine {
+  flex: 1 0 100%;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* pull quote on the dark band */
+.vquote {
+  max-width: 900px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.vquote blockquote {
+  margin: 0 0 26px;
+}
+
+.vquote blockquote p {
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(23px, 3.1vw, 38px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -.012em;
+}
+
+.vquote blockquote p em {
+  color: #ff8878;
+  font-style: normal;
+}
+
+.vquote figcaption {
+  font-size: 13px;
+  font-weight: 600;
+  color: #96a0ab;
+}
+
+.vquote figcaption b {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+/* =========================================================
+   10. STICKY CALL TO ACTION
+   Appears once the visitor is past the hero, so the offer is
+   never more than one click away.
+   ========================================================= */
+
+.stickycta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  background: rgba(20, 23, 26, .96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #2a313a;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  transform: translateY(105%);
+  transition: transform .45s var(--ease-out);
+}
+
+.stickycta.is-on {
+  transform: none;
+}
+
+.stickycta p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #dfe5ea;
+}
+
+.stickycta p b {
+  color: #fff;
+  font-weight: 700;
+}
+
+.stickycta .btn {
+  flex: none;
+}
+
+.stickycta__close {
+  background: none;
+  border: 0;
+  color: #78838f;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color .25s ease;
+}
+
+.stickycta__close:hover {
+  color: #fff;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1080px) {
+  .fbrow {
+    grid-template-columns: 52px 1fr;
+  }
+
+  .fbrow__benefit {
+    grid-column: 2;
+    border-left: 0;
+    border-top: 2px solid var(--line-warm);
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+
+  .cases {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .money__kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .problem__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .problem__aside {
+    position: static;
+  }
+
+  .ctaband {
+    grid-template-columns: 1fr;
+  }
+
+  .gate {
+    grid-template-columns: 1fr;
+  }
+
+  .trust__creds {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .money__stages {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .money__rail {
+    display: none;
+  }
+
+  .money__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .roads,
+  .cases {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-hero__title {
+    font-size: clamp(29px, 8vw, 40px);
+  }
+
+  .stickycta {
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .stickycta p {
+    display: none;
+  }
+
+  .stickycta .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .fbrow {
+    grid-template-columns: 1fr;
+  }
+
+  .fbrow__benefit {
+    grid-column: 1;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .money__frame,
+  .money__frame.is-in {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  .money__stage::after,
+  .money__live i {
+    animation: none;
+  }
+
+  .money__stage::after {
+    display: none;
+  }
+
+  .symptoms li:hover,
+  .fbrow:hover,
+  .case:hover {
+    transform: none;
+  }
+
+  .stickycta {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   LAYOUT CORRECTIONS FOUND IN RENDER
+   ========================================================= */
+
+/* The headline is one long clause, so at the inherited 940px
+   it broke as "Custom ERP and Order / Management," and left a
+   single word stranded on its own line.
+
+   Measured: "Custom ERP and Order Management," is 1025px wide
+   at Playfair Display 700 62px with this letter-spacing. .wrap
+   contributes 24px of inline padding each side, so the box has
+   to be at least 1073px for the clause to hold. 1120px leaves
+   headroom for font loading differences. */
+.lp-hero__inner {
+  max-width: 1120px;
+}
+
+.lp-hero__title {
+  font-size: clamp(34px, 4.9vw, 62px);
+}
+
+/* .logos carries its own top margin, 38px of padding and a rule
+   because on the service page it follows body copy. Here it
+   follows .trust__label, so all three are redundant and were
+   opening a gap with a stray line in it. */
+.trust .logos {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* .trust already closes with its own bottom padding, so the
+   following band only needs enough room to separate, not a
+   second full band's worth. */
+.trust+.lp-band {
+  padding-top: clamp(18px, 2vw, 30px);
+}

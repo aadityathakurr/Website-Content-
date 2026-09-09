@@ -1,0 +1,76 @@
+{# Moqui FAQ & Consultation Split - HubSpot Custom Module #}
+<section class="band band--tint closing" id="faq">
+  <div class="wrap closing__grid">
+
+    <!-- left: Unified Enterprise Consultation Card -->
+    <aside class="closing__cta">
+      <div class="advisory-card reveal spotlight">
+
+        <div class="advisory-card__content">
+          <div class="advisory-card__top">
+            <div class="advisory-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+              </svg>
+              <span class="advisory-card__pulse"></span>
+            </div>
+
+
+            <h2 class="advisory-card__title">
+              {% if module.advisory_card.title_main %}{{ module.advisory_card.title_main }}<br>{% endif %}
+              {{ module.advisory_card.title_line_2_prefix }} {% if module.advisory_card.title_accent %}<span class="accent">{{ module.advisory_card.title_accent }}</span>{% endif %} {{ module.advisory_card.title_suffix }}
+            </h2>
+
+            {% if module.advisory_card.subtext %}
+              <div class="advisory-card__sub">
+                {{ module.advisory_card.subtext }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if module.advisory_card.btn_text %}
+            {% set href = module.advisory_card.btn_link.url.href|default('/connect/') %}
+            <div class="advisory-card__actions">
+              <a class="btn btn--filled advisory-card__btn" href="{{ href }}"{% if module.advisory_card.btn_link.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>
+                {{ module.advisory_card.btn_text }}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </aside>
+
+    <!-- right: FAQ -->
+    <div class="closing__faq">
+      {% if module.faq.eyebrow %}
+        <p class="eyebrow eyebrow--static">{{ module.faq.eyebrow }}</p>
+      {% endif %}
+      {% if module.faq.title %}
+        <h2 class="h2 reveal" style="--d:.06s">{{ module.faq.title }}</h2>
+      {% endif %}
+
+      {% if module.faq.items %}
+        <div class="faq">
+          {% for item in module.faq.items %}
+            <div class="faq__item reveal">
+              <button class="faq__q" type="button" aria-expanded="false">
+                <span>{{ item.question }}</span>
+              </button>
+              <div class="faq__content">
+                <div class="faq__inner">
+                  <div class="faq__a">
+                    {{ item.answer }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,137 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Section Eyebrow",
+    "type": "text",
+    "default": "Scalable Enterprise Solutions"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Section Title (Playfair Display)",
+    "type": "text",
+    "default": "What we build with Moqui"
+  },
+  {
+    "id": "hero_card",
+    "name": "hero_card",
+    "label": "Hero Card (Large Column)",
+    "type": "group",
+    "children": [
+      {
+        "id": "hero_title",
+        "name": "hero_title",
+        "label": "Card Title",
+        "type": "text",
+        "default": "Build Custom Enterprise Applications"
+      },
+      {
+        "id": "hero_desc",
+        "name": "hero_desc",
+        "label": "Card Description",
+        "type": "richtext",
+        "default": "<p>Build a bespoke ERP using a unified data model and pre-built services tailored to your most complex workflows. Your platform adapts and grows smoothly alongside your business without requiring costly code rewrites.</p>"
+      },
+      {
+        "id": "engines_title",
+        "name": "engines_title",
+        "label": "Engines Capsule Title",
+        "type": "text",
+        "default": "Pre-Built Mantle Business Engines"
+      },
+      {
+        "id": "engines",
+        "name": "engines",
+        "label": "Engine Chips",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 12,
+          "default": 6
+        },
+        "children": [
+          {
+            "id": "label",
+            "name": "label",
+            "label": "Chip Label",
+            "type": "text",
+            "default": "Order Management"
+          }
+        ],
+        "default": [
+          {
+            "label": "Order Management"
+          },
+          {
+            "label": "Inventory Management"
+          },
+          {
+            "label": "Fulfillment & Routing"
+          },
+          {
+            "label": "Warehouse & 3PL"
+          },
+          {
+            "label": "Procurement & POs"
+          },
+          {
+            "label": "Returns & Exchanges"
+          }
+        ]
+      },
+      {
+        "id": "engines_lead",
+        "name": "engines_lead",
+        "label": "Engine List Lead-in",
+        "type": "text",
+        "default": "Core pre-built business engines ready to configure and scale:"
+      }
+    ]
+  },
+  {
+    "id": "bento_cards",
+    "name": "bento_cards",
+    "label": "Right Bento Cards (2x2 Grid)",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    "children": [
+      {
+        "id": "card_title",
+        "name": "card_title",
+        "label": "Card Title",
+        "type": "text",
+        "default": "ERP Augmentation & Microservices"
+      },
+      {
+        "id": "card_desc",
+        "name": "card_desc",
+        "label": "Card Description",
+        "type": "richtext",
+        "default": "<p>Extend NetSuite or replace one rigid SaaS tool with a focused micro-application that resolves a single bottleneck. No re-platform, no disruption to what already works. Most engagements start here.</p>"
+      }
+    ],
+    "default": [
+      {
+        "card_title": "ERP Augmentation & Microservices",
+        "card_desc": "<p>Extend NetSuite or replace one rigid SaaS tool with a focused micro-application that resolves a single bottleneck. No re-platform, no disruption to what already works. Most engagements start here.</p>"
+      },
+      {
+        "card_title": "Multi-Tenant SaaS Platforms",
+        "card_desc": "<p>Ship commercial products on built-in multi-instance provisioning and isolated per-tenant databases, with Mantle\u2019s subscription primitives handling signup and access. Delivery becomes a configuration decision.</p>"
+      },
+      {
+        "card_title": "Integration & Unified API Layers",
+        "card_desc": "<p>REST, GraphQL, webhook and message-based connectors linking Moqui to storefronts, ERPs, WMS platforms, payment and shipping providers, and data warehouses. Composable and MACH architectures are a natural fit.</p>"
+      },
+      {
+        "card_title": "AI & Agentic Workflows",
+        "card_desc": "<p>Service-oriented design means an AI agent can call business logic over REST with nothing re-architected. We wire Moqui to the Model Context Protocol, with your authorization rules still enforced.</p>"
+      }
+    ]
+  }
+]

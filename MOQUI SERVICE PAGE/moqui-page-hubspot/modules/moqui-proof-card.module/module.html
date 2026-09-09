@@ -1,0 +1,149 @@
+{# HotWax Commerce Proof Card - HubSpot Custom Module #}
+<section class="band band--proof" id="proof">
+  <div class="wrap">
+    <article class="proofcard reveal spotlight">
+      <div class="proofcard__bg" aria-hidden="true">
+        <svg class="proofcard__bg-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(500, 500)">
+            <g class="proof-hex-group" transform="scale(23) translate(-19.05, -21.05)">
+              <polygon class="proof-hex proof-hex--top-1" points="7.3,7.3 7.3,13.8 12.9,17 18.5,13.8 18.5,7.3 12.9,4.1" />
+              <polygon class="proof-hex proof-hex--top-2" points="19.5,7.3 19.5,13.8 25.1,17 30.8,13.8 30.8,7.3 25.1,4.1" />
+              <polygon class="proof-hex proof-hex--mid-1" points="1.2,17.8 1.2,24.3 6.8,27.6 12.4,24.3 12.4,17.8 6.8,14.6" />
+              <polygon class="proof-hex proof-hex--mid-2" points="13.4,17.8 13.4,24.3 19,27.6 24.7,24.3 24.7,17.8 19,14.6" />
+              <polygon class="proof-hex proof-hex--mid-3" points="25.6,17.8 25.6,24.3 31.2,27.6 36.9,24.3 36.9,17.8 31.2,14.6" />
+              <polygon class="proof-hex proof-hex--bot-1" points="7.3,28.2 7.3,34.7 12.9,38 18.5,34.7 18.5,28.2 12.9,25" />
+              <polygon class="proof-hex proof-hex--bot-2" points="19.5,28.2 19.5,34.7 25.1,38 30.8,34.7 30.8,28.2 25.1,25" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="proofcard__body">
+        <div class="proofcard__head">
+          {% if module.brand_logo.src %}
+            <img class="proofcard__logo" src="{{ module.brand_logo.src }}" alt="{{ module.brand_logo.alt|default('HotWax Commerce') }}">
+          {% endif %}
+          {% if module.tag %}
+            <p class="proofcard__tag">{{ module.tag }}</p>
+          {% endif %}
+        </div>
+
+        {% if module.title %}
+          <h2 class="proofcard__title">{{ module.title }}</h2>
+        {% endif %}
+
+        {% if module.lead %}
+          <div class="proofcard__lead">
+            {{ module.lead }}
+          </div>
+        {% endif %}
+
+        {% if module.capsules %}
+          <div class="proofcard__capsules">
+            {% for capsule in module.capsules %}
+              <div class="proof-capsule">
+                <span class="proof-capsule__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    {% if loop.index == 1 %}
+                      <circle cx="6" cy="19" r="2.5" />
+                      <circle cx="6" cy="5" r="2.5" />
+                      <circle cx="18" cy="12" r="2.5" />
+                      <path d="M8.5 5h3a4 4 0 0 1 4 4v0a4 4 0 0 0 4 4h1M8.5 19h3a4 4 0 0 0 4-4v0a4 4 0 0 1 4-4h1" />
+                    {% elif loop.index == 2 %}
+                      <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" />
+                      <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                      <path d="M16 16h5v5" />
+                    {% elif loop.index == 3 %}
+                      <path d="M3 9l1-6h16l1 6" />
+                      <path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0" />
+                      <path d="M4 14v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6" />
+                      <path d="M9 21v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5" />
+                    {% elif loop.index == 4 %}
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                      <line x1="3" y1="6" x2="21" y2="6" />
+                      <path d="M16 10a4 4 0 0 1-8 0" />
+                    {% elif loop.index == 5 %}
+                      <circle cx="6" cy="6" r="3" />
+                      <circle cx="18" cy="18" r="3" />
+                      <circle cx="18" cy="6" r="3" />
+                      <path d="M6 9v3a6 6 0 0 0 6 6h3M9 6h6" />
+                    {% else %}
+                      <rect x="1" y="3" width="15" height="13" rx="1" />
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
+                      <circle cx="5.5" cy="18.5" r="2.5" />
+                      <circle cx="18.5" cy="18.5" r="2.5" />
+                    {% endif %}
+                  </svg>
+                </span>
+                <div class="proof-capsule__text">
+                  <strong class="proof-capsule__title">{{ capsule.title }}</strong>
+                  <span class="proof-capsule__desc">{{ capsule.desc }}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if module.highlight_paragraph %}
+          {{ module.highlight_paragraph }}
+        {% endif %}
+
+        {% if module.metrics %}
+          <dl class="proofcard__metrics">
+            {% for metric in module.metrics %}
+              <div>
+                <dd>{{ metric.number }}</dd>
+                <dt>{{ metric.label }}</dt>
+              </div>
+            {% endfor %}
+          </dl>
+        {% endif %}
+
+        <div class="proofcard__footer">
+          {% if module.footer_note %}
+            <p class="proofcard__note">{{ module.footer_note }}</p>
+          {% endif %}
+
+          {% if module.cta_link.text %}
+            {% set href = module.cta_link.url.url.href|default('#') %}
+            <a class="link proofcard__link" href="{{ href }}"{% if module.cta_link.url.open_in_new_tab %} target="_blank" rel="noopener"{% endif %}>
+              {{ module.cta_link.text }}<span class="link__arrow" aria-hidden="true"></span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+
+    {# Architecture guide banner. It sits inside the proof section on the
+       page, after the proof card, so it lives here rather than with the
+       bento grid. #}
+    {% if module.guide_banner.guide_title %}
+      <div class="guide-banner reveal" style="--d:.2s">
+        <div class="guide-banner__content">
+          <h3 class="guide-banner__title">{{ module.guide_banner.guide_title }}</h3>
+          {% if module.guide_banner.guide_desc %}
+            <div class="guide-banner__desc">
+              {{ module.guide_banner.guide_desc }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="guide-banner__action">
+          <form class="guide-banner__form" action="{{ module.guide_banner.form_action|default('/connect/') }}" method="post"
+            onsubmit="event.preventDefault(); this.innerHTML='<div class=\'guide-banner__success\'><span>✓</span> The architecture guide is on its way to your inbox.</div>';">
+            <div class="guide-banner__input-wrap">
+              <input class="guide-banner__input" type="email" name="email" placeholder="you@company.com" required aria-label="Work Email Address">
+              <button class="guide-banner__btn" type="submit">
+                <span>{{ module.guide_banner.guide_btn_text|default('SEND IT') }}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,101 @@
+{# Moqui Bento Solutions & Architecture Guide - HubSpot Custom Module #}
+<section class="band" id="solutions">
+  <div class="wrap">
+    {% if module.eyebrow %}
+      <p class="eyebrow eyebrow--center reveal">{{ module.eyebrow }}</p>
+    {% endif %}
+    {% if module.title %}
+      <h2 class="subhead reveal" style="--d:.14s">{{ module.title }}</h2>
+    {% endif %}
+
+    <div class="bento-showcase">
+      <!-- COLUMN 1: HERO FEATURE CARD -->
+      <div class="bento-col bento-col--hero">
+        <article class="bento-hero reveal spotlight" style="--d:.04s">
+          <div class="bento-hero__header">
+            <div class="bento-hero__top">
+              <span class="bento-hero__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="2" />
+                  <rect x="14" y="3" width="7" height="7" rx="2" />
+                  <rect x="14" y="14" width="7" height="7" rx="2" />
+                  <rect x="3" y="14" width="7" height="7" rx="2" />
+                  <path d="M10 6.5h4M10 17.5h4M6.5 10v4M17.5 10v4" />
+                </svg>
+              </span>
+            </div>
+
+            {% if module.hero_card.hero_title %}
+              <h3 class="bento-hero__title">{{ module.hero_card.hero_title }}</h2>
+            {% endif %}
+            {% if module.hero_card.hero_desc %}
+              <div class="bento-hero__desc">
+                {{ module.hero_card.hero_desc }}
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Pre-Built Mantle Business Engines -->
+          <div class="bento-hero__engines">
+            {% if module.hero_card.engines_lead %}
+                <p class="bento-hero__lead-engines">{{ module.hero_card.engines_lead }}</p>
+              {% endif %}
+              <div class="bento-hero__capsule">
+              {% for engine in module.hero_card.engines %}
+                <div class="bento-chip-hero">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span>{{ engine.label }}</span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- COLUMN 2: 2x2 BENTO GRID -->
+      <div class="bento-grid-right">
+        {% for card in module.bento_cards %}
+          <article class="bento-card bento-card--square reveal spotlight" style="--d:{{ loop.index * 0.04 + 0.04 }}s">
+            <div class="bento-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                {% if loop.index == 1 %}
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                  <circle cx="12" cy="12" r="4" />
+                {% elif loop.index == 2 %}
+                  <path d="M4 6a8 3 0 1 0 16 0A8 3 0 1 0 4 6" />
+                  <path d="M4 6v6a8 3 0 0 0 16 0V6" />
+                  <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                  <circle cx="12" cy="6" r="1.2" />
+                  <circle cx="12" cy="12" r="1.2" />
+                  <circle cx="12" cy="18" r="1.2" />
+                {% elif loop.index == 3 %}
+                  <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
+                  <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
+                  <circle cx="12" cy="12" r="1" />
+                {% else %}
+                  <rect x="4" y="8" width="16" height="12" rx="3" />
+                  <path d="M12 8V4M9 2h6" />
+                  <circle cx="9" cy="13" r="1.5" />
+                  <circle cx="15" cy="13" r="1.5" />
+                  <path d="M9 17h6" />
+                  <path d="M1.5 12v4M22.5 12v4" />
+                {% endif %}
+              </svg>
+            </div>
+            <div class="bento-card__head">
+              <h3 class="bento-card__title">{{ card.card_title }}</h2>
+            </div>
+            {% if card.card_desc %}
+              <div class="bento-card__desc">
+                {{ card.card_desc }}
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>

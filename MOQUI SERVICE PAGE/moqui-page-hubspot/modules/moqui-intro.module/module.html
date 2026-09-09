@@ -1,0 +1,32 @@
+{# Moqui Intro Section - HubSpot Custom Module #}
+<section class="band intro" id="intro">
+  <div class="wrap">
+    <div class="split intro__split">
+      <div class="split__lead">
+        <h2 class="h2 intro__title reveal">
+          {% set lines = module.heading_lines|split('\n') %}
+          {% for line in lines %}
+            {% if line|trim %}
+              <span>{{ line|trim }}</span>
+            {% endif %}
+          {% endfor %}
+          {% if module.heading_accent %}
+            <span class="accent">{{ module.heading_accent }}</span>
+          {% endif %}
+        </h2>
+      </div>
+      <div class="split__body intro__body">
+        {% if module.paragraph_1 %}
+          <div class="intro-block reveal" style="--d:.08s">
+            {{ module.paragraph_1 }}
+          </div>
+        {% endif %}
+        {% if module.paragraph_2 %}
+          <div class="intro-block reveal" style="--d:.14s">
+            {{ module.paragraph_2 }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

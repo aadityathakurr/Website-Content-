@@ -1,0 +1,137 @@
+[
+  {
+    "id": "advisory_card",
+    "name": "advisory_card",
+    "label": "Left Consultation Card",
+    "type": "group",
+    "children": [
+      {
+        "id": "title_main",
+        "name": "title_main",
+        "label": "Title Line 1 (Playfair Display)",
+        "type": "text",
+        "default": "It's your vision."
+      },
+      {
+        "id": "title_line_2_prefix",
+        "name": "title_line_2_prefix",
+        "label": "Title Line 2 Prefix",
+        "type": "text",
+        "default": "How will you"
+      },
+      {
+        "id": "title_accent",
+        "name": "title_accent",
+        "label": "Title Accent Word",
+        "type": "text",
+        "default": "build"
+      },
+      {
+        "id": "title_suffix",
+        "name": "title_suffix",
+        "label": "Title Suffix",
+        "type": "text",
+        "default": "it?"
+      },
+      {
+        "id": "subtext",
+        "name": "subtext",
+        "label": "Subtext Description",
+        "type": "richtext",
+        "default": "<p>Tell us what your operation needs to do that your current systems can't. In thirty minutes, a solution architect will tell you straight: is Moqui the right fit, what would it take to build, and is it worth doing.</p>"
+      },
+      {
+        "id": "btn_text",
+        "name": "btn_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Talk to a Solution Architect"
+      },
+      {
+        "id": "btn_link",
+        "name": "btn_link",
+        "label": "Button Link",
+        "type": "url",
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "/connect/"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "faq",
+    "name": "faq",
+    "label": "Right FAQ Accordion",
+    "type": "group",
+    "children": [
+      {
+        "id": "eyebrow",
+        "name": "eyebrow",
+        "label": "FAQ Eyebrow",
+        "type": "text",
+        "default": "Frequently asked"
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "FAQ Title (Playfair Display)",
+        "type": "text",
+        "default": "Moqui questions, answered"
+      },
+      {
+        "id": "items",
+        "name": "items",
+        "label": "FAQ Items",
+        "type": "group",
+        "occurrence": {
+          "min": 1,
+          "max": 20,
+          "default": 5
+        },
+        "children": [
+          {
+            "id": "question",
+            "name": "question",
+            "label": "Question",
+            "type": "text",
+            "default": "Is Moqui really free to use commercially?"
+          },
+          {
+            "id": "answer",
+            "name": "answer",
+            "label": "Answer",
+            "type": "richtext",
+            "default": "<p>Yes. Moqui and Mantle are public domain under Creative Commons Zero (CC0-1.0), with a patent grant. No license fees, no seat costs, no usage limits. You can embed Moqui in a commercial product, fork it, or resell what you build on it, with no attribution required.</p>"
+          }
+        ],
+        "default": [
+          {
+            "question": "Is Moqui really free to use commercially?",
+            "answer": "<p>Yes. Moqui and Mantle are public domain under Creative Commons Zero (CC0-1.0), with a patent grant. No license fees, no seat costs, no usage limits. You can embed Moqui in a commercial product, fork it, or resell what you build on it, with no attribution required.</p>"
+          },
+          {
+            "question": "How is Moqui different from Apache OFBiz?",
+            "answer": "<p>Moqui is a rewrite, not a fork. Same architectural lineage, but lighter, with a tighter API, one consolidated data model and built-in multi-tenancy. OFBiz has the bigger community and far more ready-made modules. Choose OFBiz when those modules fit. Choose Moqui when you are building something custom. We work with both. See our <a href=\"/services/apache-ofbiz-development-and-consulting/\">Apache OFBiz development and consulting</a> services.</p>"
+          },
+          {
+            "question": "We already run NetSuite and Shopify. Does this replace them?",
+            "answer": "<p>Usually not, and we will tell you so. Most often your storefront and finance system stay where they are, and we build the order, inventory and fulfillment layer between them. That is where the pain usually sits. A full replacement is a much bigger conversation.</p>"
+          },
+          {
+            "question": "How long until we are live on something?",
+            "answer": "<p>Months, not years. The data model, service layer, security and REST tooling already exist before we start, so we are not building foundations. We pick one process that hurts, put it in production, then expand from there. Be skeptical of anyone promising a full ERP replacement fast, including us.</p>"
+          },
+          {
+            "question": "Do you provide Moqui support and maintenance for existing systems?",
+            "answer": "<p>Yes. We take on existing Moqui systems for support, maintenance, performance tuning, upgrades and new features, including ones built by other vendors or your own team. You get a named account contact, not a ticket queue.</p>"
+          }
+        ]
+      }
+    ]
+  }
+]

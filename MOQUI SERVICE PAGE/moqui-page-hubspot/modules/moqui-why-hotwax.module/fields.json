@@ -1,0 +1,245 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Section Eyebrow",
+    "type": "text",
+    "default": "Why HotWax Systems"
+  },
+  {
+    "id": "title_main",
+    "name": "title_main",
+    "label": "Title Line 1",
+    "type": "text",
+    "default": "Among the first,"
+  },
+  {
+    "id": "title_line_2_prefix",
+    "name": "title_line_2_prefix",
+    "label": "Title Line 2 Prefix",
+    "type": "text",
+    "default": "and still"
+  },
+  {
+    "id": "title_accent",
+    "name": "title_accent",
+    "label": "Title Accent Word",
+    "type": "text",
+    "default": "building."
+  },
+  {
+    "id": "lead",
+    "name": "lead",
+    "label": "Lead Description",
+    "type": "richtext",
+    "default": "<p>HotWax Systems has been building with open-source enterprise software for 20+ years and has been a Moqui supporter from the beginning. Our team combines deep Moqui experience with decades of open-source engineering expertise.</p>"
+  },
+  {
+    "id": "ticks",
+    "name": "ticks",
+    "label": "Credential Points",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 10,
+      "default": 6
+    },
+    "children": [
+      {
+        "id": "strong_text",
+        "name": "strong_text",
+        "label": "Key Title",
+        "type": "text",
+        "default": "Sponsored the definitive Moqui book"
+      },
+      {
+        "id": "sub_text",
+        "name": "sub_text",
+        "label": "Sub Description",
+        "type": "richtext",
+        "default": "<em>Making Apps with Moqui: Holistic Enterprise Applications Made Easy</em>"
+      }
+    ],
+    "default": [
+      {
+        "strong_text": "Sponsored the definitive Moqui book",
+        "sub_text": "<em>Making Apps with Moqui: Holistic Enterprise Applications Made Easy</em>"
+      },
+      {
+        "strong_text": "Built our own project management system on Moqui",
+        "sub_text": "We use the framework ourselves, not just for client projects."
+      },
+      {
+        "strong_text": "Built HotWax Commerce on Moqui and Mantle",
+        "sub_text": "A production enterprise application built on the ecosystem."
+      },
+      {
+        "strong_text": "Largest team of Apache OFBiz contributors and committers",
+        "sub_text": "Deep open-source expertise that extends back more than two decades."
+      },
+      {
+        "strong_text": "50+ enterprises served",
+        "sub_text": "Experience delivering and maintaining mission-critical enterprise software."
+      },
+      {
+        "strong_text": "Dedicated account management",
+        "sub_text": "Direct access to our senior engineering team, not an anonymous ticket queue."
+      }
+    ]
+  },
+  {
+    "id": "logos_banner",
+    "name": "logos_banner",
+    "label": "Client Logos Marquee Banner",
+    "type": "group",
+    "children": [
+      {
+        "id": "label",
+        "name": "label",
+        "label": "Banner Label",
+        "type": "richtext",
+        "default": "Enterprise systems delivered for <strong>50+ organizations</strong> worldwide, including"
+      },
+      {
+        "id": "logos",
+        "name": "logos",
+        "label": "Client Logos (first four fill the wall, the rest rotate in)",
+        "type": "group",
+        "occurrence": {
+          "min": 4,
+          "max": 24,
+          "default": 8
+        },
+        "children": [
+          {
+            "id": "name",
+            "name": "name",
+            "label": "Client Name",
+            "type": "text",
+            "default": "Client"
+          },
+          {
+            "id": "image",
+            "name": "image",
+            "label": "Logo",
+            "type": "image",
+            "responsive": false,
+            "resizable": false,
+            "help_text": "Upload to the HubSpot File Manager, then pick it here.",
+            "default": {
+              "src": "",
+              "alt": "Client",
+              "width": 0,
+              "height": 0
+            }
+          },
+          {
+            "id": "size_class",
+            "name": "size_class",
+            "label": "Logo Shape",
+            "type": "choice",
+            "display": "select",
+            "help_text": "Square marks sit larger; wide marks stay wide.",
+            "choices": [
+              [
+                "",
+                "Wide mark (default)"
+              ],
+              [
+                "logo--sq",
+                "Square mark"
+              ],
+              [
+                "logo--md",
+                "Medium mark"
+              ]
+            ],
+            "default": ""
+          }
+        ],
+        "default": [
+          {
+            "name": "Warby Parker",
+            "image": {
+              "src": "",
+              "alt": "Warby Parker",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": "logo--sq"
+          },
+          {
+            "name": "Herman Miller",
+            "image": {
+              "src": "",
+              "alt": "Herman Miller",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": ""
+          },
+          {
+            "name": "Cabi",
+            "image": {
+              "src": "",
+              "alt": "Cabi",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": "logo--sq"
+          },
+          {
+            "name": "EssilorLuxottica",
+            "image": {
+              "src": "",
+              "alt": "EssilorLuxottica",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": "logo--sq"
+          },
+          {
+            "name": "United",
+            "image": {
+              "src": "",
+              "alt": "United",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": ""
+          },
+          {
+            "name": "Winning Group",
+            "image": {
+              "src": "",
+              "alt": "Winning Group",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": "logo--sq"
+          },
+          {
+            "name": "W2G",
+            "image": {
+              "src": "",
+              "alt": "W2G",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": ""
+          },
+          {
+            "name": "Spoonful of Comfort",
+            "image": {
+              "src": "",
+              "alt": "Spoonful of Comfort",
+              "width": 0,
+              "height": 0
+            },
+            "size_class": "logo--md"
+          }
+        ]
+      }
+    ]
+  }
+]

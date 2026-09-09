@@ -1,0 +1,12 @@
+{# Moqui Capability Marquee Ribbon - HubSpot Custom Module #}
+<div class="marquee marquee--belt" aria-hidden="true">
+  <div class="marquee__track">
+    {% for item in module.items %}
+      <span>{{ item.text }}</span><i>&bull;</i>
+    {% endfor %}
+    {# Duplicate loop for seamless CSS translate marquee #}
+    {% for item in module.items %}
+      <span>{{ item.text }}</span><i>&bull;</i>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,69 @@
+[
+  {
+    "id": "heading_line_1",
+    "name": "heading_line_1",
+    "label": "Heading Line 1",
+    "type": "text",
+    "default": "Moqui Development,"
+  },
+  {
+    "id": "heading_line_2",
+    "name": "heading_line_2",
+    "label": "Heading Line 2",
+    "type": "text",
+    "default": "Consulting and"
+  },
+  {
+    "id": "heading_accent",
+    "name": "heading_accent",
+    "label": "Heading Accent Word",
+    "type": "text",
+    "default": "Support"
+  },
+  {
+    "id": "subheading",
+    "name": "subheading",
+    "label": "Subheading",
+    "type": "richtext",
+    "default": "Enterprise-grade systems engineered around your operations,<br>not a vendor's roadmap."
+  },
+  {
+    "id": "cta_group",
+    "name": "cta_group",
+    "label": "Call To Action Button",
+    "type": "group",
+    "children": [
+      {
+        "id": "cta_text",
+        "name": "cta_text",
+        "label": "Button Text",
+        "type": "text",
+        "default": "Talk to a Moqui Expert"
+      },
+      {
+        "id": "cta_link",
+        "name": "cta_link",
+        "label": "Button Link",
+        "type": "url",
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "/connect/"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "bg_image",
+    "name": "bg_image",
+    "label": "Background Image (Optional)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  }
+]

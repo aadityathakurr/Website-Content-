@@ -1,0 +1,23 @@
+[
+  {
+    "id": "quote",
+    "name": "quote",
+    "label": "Quote Text",
+    "type": "text",
+    "default": "HotWax gave us what enterprise SaaS never could: complete ownership of our core retail workflows with zero recurring license penalties. Their engineering depth cut our deployment timeline in half."
+  },
+  {
+    "id": "author_name",
+    "name": "author_name",
+    "label": "Author Name",
+    "type": "text",
+    "default": "Steve Madden"
+  },
+  {
+    "id": "author_title",
+    "name": "author_title",
+    "label": "Author Title/Role",
+    "type": "text",
+    "default": "VP of Enterprise Omnichannel Systems"
+  }
+]
