@@ -1,0 +1,15 @@
+{
+  "label": "S&M Testimonials",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "\"What IT leaders say\" testimonials for the Apache OFBiz Support and Maintenance (S&M) page. Featured card plus stack on desktop, one-at-a-time carousel on phones.",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

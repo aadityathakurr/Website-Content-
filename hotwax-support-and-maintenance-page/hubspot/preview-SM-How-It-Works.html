@@ -1,0 +1,343 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M How It Works
+   Self-contained: every class starts with .hwx-how, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-how{
+  --hwx-how-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-how-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-how-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-how-bg,#fafafa);
+  color:var(--hwx-how-text,#4d4547);
+  font-family:var(--hwx-how-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-how-pad-top,60px);
+  padding-bottom:var(--hwx-how-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-how *,.hwx-how *::before,.hwx-how *::after{box-sizing:border-box}
+
+.hwx-how__wrap{
+  max-width:var(--hwx-how-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-how-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-how__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-how__title{
+  margin:0;
+  font-family:var(--hwx-how-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-how-ink,#141112);
+  text-wrap:balance;
+}
+/* chosen heading words turn red while the section is hovered (mouse only) */
+.hwx-how__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-how--hover:hover .hwx-how__hl{color:var(--hwx-how-heading-hover,#e70000);-webkit-text-fill-color:var(--hwx-how-heading-hover,#e70000)}
+}
+.hwx-how__intro{font-size:18px;max-width:62ch}
+.hwx-how__intro p{margin:0}
+.hwx-how__intro p + p{margin-top:10px}
+.hwx-how__intro strong,.hwx-how__intro b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* steps */
+.hwx-how__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+.hwx-how__step{position:relative;padding-top:28px;border-top:2px solid var(--hwx-how-line,#e6dfe0)}
+.hwx-how__step::before{
+  content:"";position:absolute;top:-2px;left:0;width:48px;height:2px;
+  background:var(--hwx-how-accent,#e70000);
+  transition:width .5s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover:hover) and (min-width:761px){
+  .hwx-how--hover .hwx-how__step:hover::before{width:100%}
+}
+.hwx-how__n{display:block;margin-bottom:16px;font:700 44px/1 var(--hwx-how-body)}
+.hwx-how--num-outline .hwx-how__n{color:transparent;-webkit-text-stroke:1.2px var(--hwx-how-number,#8c1c24)}
+.hwx-how--num-solid .hwx-how__n{color:var(--hwx-how-number,#8c1c24)}
+.hwx-how__step-title{margin:0;font:600 22px/1.12 var(--hwx-how-display);color:var(--hwx-how-ink,#141112)}
+.hwx-how__step-text{margin-top:10px;font-size:15px;line-height:1.7}
+.hwx-how__step-text p{margin:0}
+.hwx-how__step-text p + p{margin-top:8px}
+.hwx-how__step-text strong,.hwx-how__step-text b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* closing line */
+.hwx-how__closing{margin:40px 0 0;font-size:16px;color:var(--hwx-how-text,#4d4547)}
+.hwx-how__closing a{color:var(--hwx-how-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-how__closing a:hover{text-decoration:underline}
+.hwx-how a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-how__steps > .is-clone{display:none}.hwx-how__steps{transform:none!important}}
+
+/* scroll reveal (module.js) */
+.hwx-how--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-how--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 52px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 52px)}
+  .hwx-how--cols-4 .hwx-how__steps,.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 32px}
+}
+@media (max-width:760px){
+  .hwx-how__steps,.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:minmax(0,1fr);gap:28px}
+
+  /* one full card at a time: module.js slides the list with transform (swipe and arrows) */
+  .hwx-how--carousel .hwx-how__viewport{overflow:hidden;padding:4px 0 6px;margin:-4px 0 -6px}
+  .hwx-how--carousel .hwx-how__steps{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-how--carousel .hwx-how__steps.is-dragging{transition:none}
+  .hwx-how--carousel .hwx-how__step{
+    flex:0 0 100%;min-width:0;overflow:hidden;
+    background:var(--hwx-how-card,#fff);
+    border:1px solid var(--hwx-how-line,#e6dfe0);border-top:2px solid var(--hwx-how-line,#e6dfe0);
+    border-radius:18px;padding:24px 22px 26px;
+  }
+  .hwx-how--carousel .hwx-how__step::before{left:22px;top:0;width:40px;max-width:calc(100% - 44px);border-radius:0 0 2px 2px}
+  .hwx-how--carousel .hwx-how__step.is-current::before{width:calc(100% - 44px)}
+
+}
+@media (max-width:640px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 44px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 44px)}
+  .hwx-how__head{margin-bottom:36px}
+  .hwx-how__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-how *{transition:none!important}
+  .hwx-how--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-how .hwx-how__closing a,
+.hwx-how .hwx-how__closing a:link,
+.hwx-how .hwx-how__closing a:visited,
+.hwx-how .hwx-how__closing a:hover,
+.hwx-how .hwx-how__closing a:focus,
+.hwx-how .hwx-how__closing a:active{color:var(--hwx-how-link,#e70000)!important;text-decoration:none}
+.hwx-how .hwx-how__closing a:hover{text-decoration:underline}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+  
+    
+    
+  
+
+
+
+
+<section
+  class="hwx-how hwx-how--cols-4 hwx-how--num-solid hwx-how--carousel hwx-how--hover hwx-how--reveal"
+  id="how"
+  data-autoplay="true"
+  data-interval="5"
+  style="
+    --hwx-how-bg: #FAFAFA;
+    --hwx-how-ink: #141112;
+    --hwx-how-heading-hover: #E70000;
+    --hwx-how-text: #4D4547;
+    --hwx-how-accent: #E70000;
+    --hwx-how-number: #8C1C24;
+    --hwx-how-line: #E6DFE0;
+    --hwx-how-card: #FFFFFF;
+    --hwx-how-link: #E70000;
+    --hwx-how-pad-top: 60px;
+    --hwx-how-pad-bottom: 60px;
+    --hwx-how-width: 1180px;
+  ">
+  <div class="hwx-how__wrap">
+
+    <div class="hwx-how__head">
+      
+      <h2 class="hwx-how__title">How Apache OFBiz support works with <span class="hwx-how__hl">HotWax</span>.</h2>
+      <div class="hwx-how__intro"><p>Built by us, another vendor, or your own team, the path is the same. One team learns your system, fixes what is urgent first, and stays with you.</p></div>
+    </div>
+
+    
+      <div class="hwx-how__viewport">
+      <ol class="hwx-how__steps">
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">1</span>
+            
+            <h3 class="hwx-how__step-title">Handover and access</h3>
+            <div class="hwx-how__step-text"><p>We start from your code repository and environments. If another vendor holds them today, we help you request a complete handover.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">2</span>
+            
+            <h3 class="hwx-how__step-title">Review</h3>
+            <div class="hwx-how__step-text"><p>We study your release, custom code, integrations, and infrastructure, and write down what we find, so the knowledge stops living in one person's head.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">3</span>
+            
+            <h3 class="hwx-how__step-title">Stabilize</h3>
+            <div class="hwx-how__step-text"><p>We fix what hurts most first: blocking bugs, pending security releases, and the slow spots your users feel every day. Where it helps, we can overlap with your current vendor before taking over.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">4</span>
+            
+            <h3 class="hwx-how__step-title">Ongoing support</h3>
+            <div class="hwx-how__step-text"><p>The same engineers stay on your system for upgrades, fixes, and whatever the business needs next. Clients can keep 3 to 4 HotWax engineers as their permanent team.</p></div>
+          </li>
+        
+      </ol>
+      </div>
+
+    
+
+    
+      
+      <p class="hwx-how__closing">Switching from another vendor? <a href="#talk">Talk to an Apache OFBiz expert</a> about your handover.</p>
+    
+
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M How It Works
+// Phones: one full step card at a time, looping in one direction (after the last step the first one slides in
+// from the right; before the first, the last one slides in from the left). Swipe drags the card with the finger
+// and snaps; optional auto-slide pauses while the visitor touches the cards. The card in view gets the full red line.
+// All sizes: optional scroll reveal for the heading and the steps. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = window.matchMedia('(max-width:760px)');
+
+  [].forEach.call(document.querySelectorAll('.hwx-how--carousel'), function (section) {
+    var list = section.querySelector('.hwx-how__steps');
+    if (!list) return;
+    var items = [].slice.call(list.children), n = items.length;
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 5) * 1000;
+    var timer = null;
+
+    // Copies of the last and first card sit at the two ends of the track. Stepping past the last card slides
+    // forward onto the copy of the first, then jumps (without animation) to the real first card, so the
+    // carousel always moves in the direction of the swipe and never rewinds across every card.
+    function copy(el) {
+      var c = el.cloneNode(true);
+      c.classList.add('is-clone');
+      c.setAttribute('aria-hidden', 'true');
+      [].forEach.call(c.querySelectorAll('[id]'), function (x) { x.removeAttribute('id'); });
+      return c;
+    }
+    var head = copy(items[n - 1]), tail = copy(items[0]);
+    list.insertBefore(head, list.firstChild);
+    list.appendChild(tail);
+    var pos = 1, tm = null;
+
+    function place(dx, animate) {
+      if (!phone.matches) { list.style.transform = ''; return; }
+      list.classList.toggle('is-dragging', !animate);
+      var gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+      list.style.transform = 'translateX(' + (-pos * (list.offsetWidth + gap) + (dx || 0)) + 'px)';
+    }
+    function settle() {
+      if (pos === 0) { pos = n; place(0, false); }
+      else if (pos === n + 1) { pos = 1; place(0, false); }
+    }
+    function step(d) {
+      clearTimeout(tm);
+      settle();
+      void list.offsetWidth; // apply the jump before the next slide starts
+      pos += d;
+      place(0, true);
+      mark();
+      tm = setTimeout(settle, 520);
+    }
+
+    // the step in view gets the full red line; the others are hidden from screen readers
+    function mark() {
+      var cur = ((pos - 1) % n + n) % n;
+      items.forEach(function (li, k) {
+        var on = k === cur;
+        li.classList.toggle('is-current', phone.matches && on);
+        if (phone.matches && !on) li.setAttribute('aria-hidden', 'true');
+        else li.removeAttribute('aria-hidden');
+      });
+      head.classList.toggle('is-current', phone.matches && pos === 0);
+      tail.classList.toggle('is-current', phone.matches && pos === n + 1);
+    }
+
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      stop();
+      if (!autoplay || still || !phone.matches) return;
+      timer = setInterval(function () { step(1); }, interval);
+    }
+
+    // swipe: follow the finger, then snap; a quick flick (20px) or a 40px drag moves one card;
+    // vertical moves are left to the page scroll
+    var sx = 0, sy = 0, dx = 0, t0 = 0, mode = null;
+    list.addEventListener('touchstart', function (e) {
+      if (!phone.matches) return;
+      stop(); clearTimeout(tm); settle();
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now();
+    }, { passive: true });
+    list.addEventListener('touchmove', function (e) {
+      if (!phone.matches) return;
+      var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+      if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+      if (mode !== 'x') return;
+      dx = mx;
+      place(dx, false);
+    }, { passive: true });
+    var swipeEnd = function () {
+      if (mode === 'x' && (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300))) step(dx < 0 ? 1 : -1);
+      else place(0, true);
+      mode = null; dx = 0;
+      setTimeout(play, 3000);
+    };
+    list.addEventListener('touchend', swipeEnd);
+    list.addEventListener('touchcancel', swipeEnd);
+
+    var reset = function () { clearTimeout(tm); settle(); place(0, false); mark(); play(); };
+    if (phone.addEventListener) phone.addEventListener('change', reset); else phone.addListener(reset);
+    window.addEventListener('resize', function () { place(0, false); });
+    reset();
+  });
+
+  // Scroll reveal, only for parts that start below the first screen.
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-how--reveal .hwx-how__head, .hwx-how--reveal .hwx-how__viewport'), function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+</script></body></html>

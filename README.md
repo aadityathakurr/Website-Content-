@@ -6,7 +6,7 @@ ready to lift into a real site.
 | Template | What it is | Built for |
 |---|---|---|
 | [hotwax-hero-banner](hotwax-hero-banner/) | Animated hero banner — rotating showcase of solution cards with floating info chips, stage bar and client logo strip. Ships as a static page **and** a HubSpot custom module. | HotWax Systems |
-| [hotwax-support-and-maintenance-page](hotwax-support-and-maintenance-page/) | Apache OFBiz Support and Maintenance landing page (banner, services, team, how it works, comparison, testimonials, contact and FAQ). One self-contained page. [Live preview](https://aadityathakurr.github.io/Website-Content-/hotwax-support-and-maintenance-page/) | HotWax Systems |
+| [hotwax-support-and-maintenance-page](hotwax-support-and-maintenance-page/) | Apache OFBiz Support and Maintenance landing page: `common/` (shared page code) and `hubspot/` (editable S&M HubSpot modules). [Live preview](https://aadityathakurr.github.io/Website-Content-/hotwax-support-and-maintenance-page/) | HotWax Systems |
 
 ## Running any template
 

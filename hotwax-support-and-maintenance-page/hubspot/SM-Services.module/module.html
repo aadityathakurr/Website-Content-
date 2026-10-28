@@ -1,0 +1,95 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Services ("Apache OFBiz support and maintenance, from one team.")
+  Desktop: services in a 2-column list (1 or 3 columns from the Style tab).
+  Phones: each description shows one line with "Know more"; tapping it shows the full text and the icon pops.
+  Headline, intro, every service (icon, title, text) and the link labels come from the fields.
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+{% set mob = module.phone %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.heading|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-svc__hl">')|replace(']', '</span>') %}
+
+{# Built-in icon artwork (drawn inside the hexagon frame); the strokes follow the "Icon lines" color #}
+{% set icons = {
+  "integration": '<circle cx="14" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="26" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M17 20h6" stroke="currentColor" stroke-width="1.8"/>',
+  "upgrade": '<path d="M14 22l6-6 6 6M20 16v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  "security": '<path d="M20 11l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9v-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+  "bug": '<circle cx="18" cy="18" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M22 22l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  "performance": '<path d="M12 25a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 25l4-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  "monitoring": '<path d="M11 21h4l2-5 4 9 2-4h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  "cloud": '<path d="M14 25h12a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 14 25z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+  "data": '<ellipse cx="20" cy="14.5" rx="6" ry="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 14.5v10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-10M14 19.5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>'
+} %}
+
+<section
+  class="hwx-svc hwx-svc--cols-{{ module.style.columns|default('2') }}{% if mob.clamp_on_phones %} hwx-svc--clamp{% endif %}{% if module.style.hover_effects %} hwx-svc--hover{% endif %}{% if module.style.reveal_on_scroll %} hwx-svc--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  data-more="{{ (mob.more_label or 'Know more')|escape }}"
+  data-less="{{ (mob.less_label or 'Show less')|escape }}"
+  style="
+    --hwx-svc-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-svc-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-svc-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-svc-hover: {{ c.hover_color.color|default('#8C1C24') }};
+    --hwx-svc-heading-hover: {{ c.heading_hover_color.color|default('#E70000') }};
+    --hwx-svc-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-svc-icon: {{ c.icon_color.color|default('#E70000') }};
+    --hwx-svc-icon-fill: {{ c.icon_fill.color|default('#FFF0EA') }};
+    --hwx-svc-icon-frame: {{ c.icon_frame.color|default('#E74000') }};
+    --hwx-svc-link: {{ c.link_color.color|default('#E70000') }};
+    --hwx-svc-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-svc-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-svc-width: {{ module.style.content_width|default(1180) }}px;
+  ">
+  <div class="hwx-svc__wrap">
+
+    <div class="hwx-svc__head">
+      {% set tag = module.heading_tag|default('h2') %}
+      {% if module.heading %}<{{ tag }} class="hwx-svc__title">{{ title }}</{{ tag }}>{% endif %}
+      {% if module.intro %}<div class="hwx-svc__intro">{{ module.intro }}</div>{% endif %}
+    </div>
+
+    {% if module.services %}
+      <div class="hwx-svc__list">
+        {% for item in module.services %}
+          <div class="hwx-svc__item">
+            {% if item.icon == 'custom' and item.custom_icon and item.custom_icon.src %}
+              <img class="hwx-svc__hx hwx-svc__hx--img" src="{{ item.custom_icon.src }}" alt="" width="40" height="40" loading="lazy" decoding="async">
+            {% elif item.icon != 'none' %}
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                {{ icons[item.icon] if icons[item.icon] else icons.integration }}
+              </svg>
+            {% else %}
+              <span class="hwx-svc__hx" aria-hidden="true"></span>
+            {% endif %}
+            <div class="hwx-svc__body">
+              {% if item.service_title %}<h3 class="hwx-svc__name">{{ item.service_title|escape }}</h3>{% endif %}
+              {% if item.service_text %}<p class="hwx-svc__text" id="hwx-svc-{{ name|replace('.', '-')|replace('_', '-') }}-{{ loop.index }}">{{ item.service_text|escape }}</p>{% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

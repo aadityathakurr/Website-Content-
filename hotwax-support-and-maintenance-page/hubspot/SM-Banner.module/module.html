@@ -1,0 +1,75 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Banner
+  Every text, link, image, color and size below comes from the module fields (fields.json),
+  so marketers can edit the banner from the HubSpot page editor without touching code.
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+{% set bg = module.background %}
+{% set overlay = (bg.overlay_strength|default(40)) / 100 %}
+{% set bg_src = bg.background_image.src if bg.background_image and bg.background_image.src else "" %}
+
+<section
+  class="hwx-banner hwx-banner--{{ module.style.text_align|default('center') }}{% if module.style.animate_on_load %} hwx-banner--animate{% endif %}"
+  id="hwx-banner-{{ name|replace('.', '-')|replace('_', '-') }}"
+  style="
+    --hwx-banner-img: {% if bg_src %}url('{{ bg_src }}'){% else %}none{% endif %};
+    --hwx-banner-pos: {{ bg.background_position|default('center') }};
+    --hwx-banner-overlay: {{ overlay }};
+    --hwx-banner-min-h: {{ module.style.min_height|default(680) }}px;
+    --hwx-banner-width: {{ module.style.content_width|default(980) }}px;
+    --hwx-banner-fallback: {{ c.fallback_background.color|default('#2A0B0E') }};
+    --hwx-banner-text: {{ c.text_color.color|default('#FFFFFF') }};
+    --hwx-banner-highlight: {{ c.highlight_color.color|default('#FF6A2B') }};
+    --hwx-banner-note-color: {{ c.note_color.color|default('#FFFFFF') }};
+    --hwx-banner-note-opacity: {{ (module.style.note_opacity|default(62)) / 100 }};
+    --hwx-banner-btn-bg: {{ c.button_background.color|default('#E70000') }};
+    --hwx-banner-btn-text: {{ c.button_text.color|default('#FFFFFF') }};
+  ">
+  <div class="hwx-banner__inner">
+
+    {% if module.eyebrow.show_eyebrow and module.eyebrow.eyebrow_text %}
+      <p class="hwx-banner__eyebrow">{{ module.eyebrow.eyebrow_text|escape|replace('®', '<sup class="hwx-banner__tm">®</sup>') }}</p>
+    {% endif %}
+
+    {% set tag = module.heading.heading_tag|default('h1') %}
+    <{{ tag }} class="hwx-banner__title">
+      {%- if module.heading.heading_before -%}{{ module.heading.heading_before|escape }} {% endif -%}
+      {%- if module.heading.heading_highlight -%}<span class="hwx-banner__hl">{{ module.heading.heading_highlight|escape }}</span>{%- endif -%}
+      {%- if module.heading.heading_after %} {{ module.heading.heading_after|escape }}{% endif -%}
+    </{{ tag }}>
+
+    {% if module.subheadline %}
+      <div class="hwx-banner__sub">{{ module.subheadline }}</div>
+    {% endif %}
+
+    {% if module.button.show_button and module.button.button_text %}
+      {% set link = module.button.button_link %}
+      <div class="hwx-banner__actions">
+        {#- inline !important: an inline style with !important outranks EVERY stylesheet rule,
+            including a theme rule that uses !important itself. Last-resort guard so the CTA
+            can never render in the theme's link blue. Colour still comes from the field. -#}
+        <a class="hwx-banner__btn"
+           style="color:{{ c.button_text.color|default('#FFFFFF') }}!important;-webkit-text-fill-color:{{ c.button_text.color|default('#FFFFFF') }}!important;text-decoration:none!important;"
+           href="{{ link.url.href or '#talk' }}"
+           {% if link.open_in_new_tab %}target="_blank"{% endif %}
+           {% if link.open_in_new_tab or link.no_follow %}rel="{% if link.no_follow %}nofollow {% endif %}{% if link.open_in_new_tab %}noopener{% endif %}"{% endif %}>
+          {{ module.button.button_text|escape }}
+          {% if module.button.show_arrow %}
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {% endif %}
+        </a>
+      </div>
+    {% endif %}
+
+    {% if module.note.show_note and module.note.note_text %}
+      <p class="hwx-banner__note{% if module.note.hide_on_mobile %} hwx-banner__note--desktop-only{% endif %}">{{ module.note.note_text|escape }}</p>
+    {% endif %}
+
+  </div>
+</section>

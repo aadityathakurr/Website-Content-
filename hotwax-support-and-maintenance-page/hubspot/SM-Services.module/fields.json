@@ -1,0 +1,465 @@
+[
+  {
+    "type": "text",
+    "name": "heading",
+    "label": "Headline",
+    "default": "Apache OFBiz support and maintenance, from one team.",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+  },
+  {
+    "type": "text",
+    "name": "heading_hover_words",
+    "label": "Words that change color on hover",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none.",
+    "default": "one team"
+  },
+  {
+    "type": "choice",
+    "name": "heading_tag",
+    "label": "Heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "intro",
+    "label": "Intro",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Everything that keeps a live Apache OFBiz system healthy: the integration that breaks, the upgrade you keep postponing, and the 2 a.m. production issue.</p>"
+  },
+  {
+    "type": "group",
+    "name": "services",
+    "label": "Services",
+    "help_text": "Shown in this order. Add, remove or drag to reorder.",
+    "occurrence": {
+      "min": 1,
+      "max": 16,
+      "default": 8,
+      "sorting_label_field": "services.service_title"
+    },
+    "children": [
+      {
+        "type": "choice",
+        "name": "icon",
+        "label": "Icon",
+        "display": "select",
+        "choices": [
+          [
+            "integration",
+            "Integration (linked circles)"
+          ],
+          [
+            "upgrade",
+            "Upgrade (arrow up)"
+          ],
+          [
+            "security",
+            "Security (shield)"
+          ],
+          [
+            "bug",
+            "Bug fixes (magnifier)"
+          ],
+          [
+            "performance",
+            "Performance (gauge)"
+          ],
+          [
+            "monitoring",
+            "Monitoring (pulse)"
+          ],
+          [
+            "cloud",
+            "Cloud"
+          ],
+          [
+            "data",
+            "Data (database)"
+          ],
+          [
+            "custom",
+            "Custom image"
+          ],
+          [
+            "none",
+            "No icon"
+          ]
+        ],
+        "default": "integration"
+      },
+      {
+        "type": "image",
+        "name": "custom_icon",
+        "label": "Custom icon image",
+        "help_text": "Square SVG or PNG, shown at 40 x 40 px.",
+        "resizable": false,
+        "responsive": true,
+        "show_loading": false,
+        "visibility": {
+          "controlling_field_path": "services.icon",
+          "controlling_value_regex": "custom",
+          "operator": "EQUAL"
+        },
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "type": "text",
+        "name": "service_title",
+        "label": "Service title",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "service_text",
+        "label": "Description",
+        "default": "",
+        "allow_new_line": true,
+        "show_emoji_picker": false
+      }
+    ],
+    "default": [
+      {
+        "icon": "integration",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Apache OFBiz integration support",
+        "service_text": "Carriers, marketplaces, accounting, and other systems stay connected to Apache OFBiz, and get repaired when an API changes."
+      },
+      {
+        "icon": "upgrade",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Apache OFBiz upgrades",
+        "service_text": "Move to a current release with your custom components mapped and tested before cutover."
+      },
+      {
+        "icon": "security",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Security releases and patches",
+        "service_text": "Official Apache OFBiz security releases applied to your system and tested against your customizations."
+      },
+      {
+        "icon": "bug",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Bug fixes and root cause analysis",
+        "service_text": "Production issues traced to their real cause, so the same incident does not come back next month."
+      },
+      {
+        "icon": "performance",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Performance tuning",
+        "service_text": "Faster screens, reports, and batch jobs as your order volume grows."
+      },
+      {
+        "icon": "monitoring",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Proactive monitoring",
+        "service_text": "Problems flagged early, before they reach your warehouse floor or order desk."
+      },
+      {
+        "icon": "cloud",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Cloud and on-premise support",
+        "service_text": "Apache OFBiz on AWS, Azure, Google Cloud, or your own servers, with the DevOps work that comes with it."
+      },
+      {
+        "icon": "data",
+        "custom_icon": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "service_title": "Data migration",
+        "service_text": "Legacy data moved into Apache OFBiz and validated before anyone switches over."
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "phone",
+    "label": "Phone view",
+    "expanded": false,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "clamp_on_phones",
+        "label": "Show one line of each description with \"Know more\"",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Off shows every description in full on phones."
+      },
+      {
+        "type": "text",
+        "name": "more_label",
+        "label": "Open link text",
+        "visibility": {
+          "controlling_field_path": "phone.clamp_on_phones",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Know more"
+      },
+      {
+        "type": "text",
+        "name": "less_label",
+        "label": "Close link text",
+        "visibility": {
+          "controlling_field_path": "phone.clamp_on_phones",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Show less"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets buttons link here with #services. Letters, numbers and dashes only.",
+    "default": "services"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "columns",
+        "label": "Columns on desktop",
+        "help_text": "Tablets show at most 2; phones show 1.",
+        "display": "select",
+        "choices": [
+          [
+            "2",
+            "2"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        "default": "2"
+      },
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60,
+        "help_text": "Tablets cap at 52px and phones at 44px."
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline and service titles",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_hover_color",
+            "label": "Heading words on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "hover_color",
+            "label": "Service title on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Divider lines",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_color",
+            "label": "Icon lines",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_fill",
+            "label": "Icon hexagon fill",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFF0EA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_frame",
+            "label": "Icon hexagon outline",
+            "show_opacity": false,
+            "default": {
+              "color": "#E74000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "link_color",
+            "label": "\"Know more\" link (phones)",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hover_effects",
+        "label": "Hover effects",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Heading words turn red, icons tilt and service titles change color (mouse only)."
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Turn off if the theme or another module already loads these fonts."
+      }
+    ]
+  }
+]

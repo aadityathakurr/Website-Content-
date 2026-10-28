@@ -1,0 +1,332 @@
+[
+  {
+    "type": "group",
+    "name": "heading",
+    "label": "Headline",
+    "expanded": true,
+    "children": [
+      {
+        "type": "text",
+        "name": "heading_text",
+        "label": "Headline text",
+        "default": "Your business runs on Apache OFBiz. Who is looking after it?",
+        "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+      },
+      {
+        "type": "text",
+        "name": "hover_phrases",
+        "label": "Words that change color on hover",
+        "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Headline words on hover\". Leave empty for none.",
+        "default": "Apache OFBiz, ?"
+      },
+      {
+        "type": "choice",
+        "name": "heading_tag",
+        "label": "Heading level",
+        "display": "select",
+        "choices": [
+          [
+            "h2",
+            "H2"
+          ],
+          [
+            "h3",
+            "H3"
+          ]
+        ],
+        "default": "h2"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "lead_text",
+    "label": "Lead line",
+    "help_text": "Short line under the headline. Leave empty to hide it.",
+    "default": "Sound familiar?"
+  },
+  {
+    "type": "group",
+    "name": "agitate",
+    "label": "Key message",
+    "expanded": true,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_agitate",
+        "label": "Show key message",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "name": "agitate_text",
+        "label": "Key message text",
+        "help_text": "Bold text shows in the darker heading color.",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link",
+          "standard_emphasis"
+        ],
+        "visibility": {
+          "controlling_field_path": "agitate.show_agitate",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "<p><strong>You don't need a new system.</strong> You need people who know this one inside out.</p>"
+      },
+      {
+        "type": "boolean",
+        "name": "show_accent_line",
+        "label": "Show red line on the left",
+        "display": "toggle",
+        "visibility": {
+          "controlling_field_path": "agitate.show_agitate",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "signs",
+    "label": "Problem points",
+    "help_text": "Add, remove or drag to reorder the points.",
+    "occurrence": {
+      "min": 1,
+      "max": 10,
+      "default": 4,
+      "sorting_label_field": "signs.sign_text"
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "sign_text",
+        "label": "Point",
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "sign_text": "Your original developer or vendor has left, and no one fully understands the system anymore."
+      },
+      {
+        "sign_text": "You're stuck on an outdated version and unsure how to upgrade safely."
+      },
+      {
+        "sign_text": "The same bugs keep coming back, despite repeated fixes."
+      },
+      {
+        "sign_text": "Your system slows down as your business grows."
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets other buttons link here with #problem. Letters, numbers and dashes only.",
+    "default": "problem"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "layout",
+        "label": "Layout",
+        "help_text": "Two columns puts the points beside the headline. Phones always stack.",
+        "display": "select",
+        "choices": [
+          [
+            "columns",
+            "Two columns"
+          ],
+          [
+            "stacked",
+            "Stacked"
+          ]
+        ],
+        "default": "columns"
+      },
+      {
+        "type": "choice",
+        "name": "icon",
+        "label": "Point icon",
+        "display": "select",
+        "choices": [
+          [
+            "hexagon",
+            "Hexagon"
+          ],
+          [
+            "check",
+            "Check circle"
+          ],
+          [
+            "dot",
+            "Dot"
+          ],
+          [
+            "none",
+            "No icon"
+          ]
+        ],
+        "default": "hexagon"
+      },
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "help_text": "Tablets cap at 52px and phones at 44px.",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "number",
+        "name": "column_gap",
+        "label": "Gap between the two columns",
+        "display": "slider",
+        "min": 24,
+        "max": 120,
+        "step": 4,
+        "suffix": "px",
+        "default": 64
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline and points",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "hover_color",
+            "label": "Headline words on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "accent_color",
+            "label": "Key message line",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_color",
+            "label": "Point icons",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Divider lines",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hover_effects",
+        "label": "Hover effects",
+        "help_text": "Headline words change color, points nudge right and icons turn.",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "help_text": "Turn off if the theme or another module already loads these fonts.",
+        "display": "toggle",
+        "default": true
+      }
+    ]
+  }
+]

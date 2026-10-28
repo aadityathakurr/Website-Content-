@@ -1,0 +1,591 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M Team
+   Self-contained: every class starts with .hwx-team, so it will not clash with the HubSpot theme.
+   Colors, sizes and spacing come from the module fields through the CSS variables on the <section>. */
+
+.hwx-team{
+  --hwx-team-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-team-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-team-bg,#fafafa);
+  color:var(--hwx-team-text,#4d4547);
+  font-family:var(--hwx-team-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-team-pad-top,60px);
+  padding-bottom:var(--hwx-team-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-team *,.hwx-team *::before,.hwx-team *::after{box-sizing:border-box}
+
+.hwx-team__wrap{
+  max-width:var(--hwx-team-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* top row: kicker and headline on the left, intro and credential points on the right */
+.hwx-team__copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 64px;align-items:end;margin-bottom:44px}
+.hwx-team__kicker{margin:0 0 14px;font:600 12px/1.4 var(--hwx-team-body);letter-spacing:.16em;text-transform:uppercase;color:var(--hwx-team-kicker,#e70000)}
+.hwx-team__title{
+  margin:0;
+  font-family:var(--hwx-team-display);
+  font-weight:700;
+  font-size:clamp(30px,3.4vw,44px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-team-ink,#141112);
+  text-wrap:balance;
+}
+/* chosen heading words change color while the section is hovered (mouse only); set in the module fields */
+.hwx-team__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-team:hover .hwx-team__hl{color:var(--hwx-team-heading-hover,#e70000);-webkit-text-fill-color:var(--hwx-team-heading-hover,#e70000)}
+}
+.hwx-team__intro{font-size:16px;line-height:1.7}
+.hwx-team__intro p{margin:0}
+.hwx-team__intro p + p{margin-top:10px}
+.hwx-team__intro strong,.hwx-team__intro b{color:var(--hwx-team-ink,#141112);font-weight:600}
+.hwx-team__creds{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.hwx-team__creds li{display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4}
+.hwx-team__creds svg{flex:none;margin-top:1px;color:var(--hwx-team-icon,#e70000)}
+.hwx-team__creds b,.hwx-team__creds strong{color:var(--hwx-team-ink,#141112);font-weight:600}
+.hwx-team__creds a{color:inherit}
+
+/* card row: --hwx-team-per cards are visible; module.js moves the track one card at a time in an endless loop */
+.hwx-team__carousel{position:relative;min-width:0;--hwx-team-gap:24px}
+.hwx-team__stage{overflow:hidden;touch-action:pan-y;margin-top:-30px;padding:30px 0 50px}
+.hwx-team__track{display:flex;gap:var(--hwx-team-gap);will-change:transform;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.hwx-team__card{
+  flex:0 0 calc((100% - (var(--hwx-team-per,3) - 1) * var(--hwx-team-gap)) / var(--hwx-team-per,3));
+  min-width:0;height:var(--hwx-team-card-h,540px);
+  display:flex;flex-direction:column;
+  background:var(--hwx-team-card,#fff);
+  border:1px solid var(--hwx-team-line,#e6dfe0);
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 50px -40px rgba(60,10,15,.45);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+/* a single person (or fewer people than the row holds) is centred, with no movement */
+.hwx-team__carousel.is-static .hwx-team__track{justify-content:center;transform:none!important}
+
+.hwx-team__photo{flex:1 1 auto;min-height:0;position:relative;overflow:hidden;background:#e9e2e1}
+.hwx-team__photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:var(--hwx-team-photo-pos,50% 18%);
+  transition:transform 1.2s cubic-bezier(.16,1,.3,1), filter .5s ease;
+}
+.hwx-team--gray .hwx-team__photo img{filter:grayscale(1)}
+.hwx-team__initials{position:absolute;inset:0;display:grid;place-items:center;font:700 72px/1 var(--hwx-team-display);color:var(--hwx-team-role,#8c1c24);opacity:.35}
+@media (hover:hover){
+  .hwx-team__card:hover{transform:translateY(-6px);box-shadow:0 36px 60px -38px rgba(60,10,15,.55)}
+  .hwx-team__card:hover .hwx-team__photo img{transform:scale(1.04)}
+  .hwx-team--gray .hwx-team__card:hover .hwx-team__photo img{filter:grayscale(0)}
+}
+
+.hwx-team__info{flex:0 0 auto;min-width:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:20px 22px 22px;min-height:178px}
+.hwx-team__role{margin:0;font:600 11.5px/1.4 var(--hwx-team-body);letter-spacing:.12em;text-transform:uppercase;color:var(--hwx-team-role,#8c1c24)}
+.hwx-team__role.is-highlight{color:var(--hwx-team-role-hl,#e70000)}
+.hwx-team__name{margin:8px 0 0;font:700 24px/1.15 var(--hwx-team-display);color:var(--hwx-team-ink,#141112);text-wrap:balance}
+.hwx-team__job{margin:6px 0 0;font-size:14.5px;line-height:1.5;color:var(--hwx-team-text,#4d4547)}
+
+/* "View profile" link under the job title: opens the person's LinkedIn */
+.hwx-team__profile{
+  display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:12px;
+  font:600 14px/1.3 var(--hwx-team-body);color:var(--hwx-team-link,#e70000);text-decoration:none;
+}
+.hwx-team__profile svg{transition:transform .2s ease}
+.hwx-team__profile:hover{text-decoration:underline}
+.hwx-team__profile:hover svg{transform:translateX(3px)}
+.hwx-team__profile:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:4px}
+
+/* arrows under the cards, on the right */
+.hwx-team__nav{margin-top:-14px;display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.hwx-team__arrows{display:flex;gap:12px;margin-left:auto}
+.hwx-team__arrow{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--hwx-team-line,#e6dfe0);background:var(--hwx-team-card,#fff);color:var(--hwx-team-ink,#141112);
+  display:grid;place-items:center;cursor:pointer;padding:0;
+  box-shadow:0 8px 20px -14px rgba(60,10,15,.5);
+  transition:background .2s, color .2s, border-color .2s, transform .2s;
+}
+.hwx-team__arrow:hover{background:var(--hwx-team-arrow-hover,#8c1c24);border-color:var(--hwx-team-arrow-hover,#8c1c24);color:#fff;transform:translateY(-2px)}
+.hwx-team__arrow:focus-visible{outline:3px solid #00a2e1;outline-offset:3px}
+.hwx-team__carousel.is-static .hwx-team__nav{display:none}
+/* phones use swipe and auto-advance, so the arrows are for larger screens only */
+@media (max-width:760px){.hwx-team__nav{display:none}}
+/* phones: the intro line can be hidden ("Hide intro on phones"), so the cards come sooner */
+@media (max-width:760px){.hwx-team--phone-no-intro .hwx-team__intro{display:none}.hwx-team--phone-no-intro .hwx-team__creds{margin-top:0}}
+@media (max-width:760px), (hover:none){.hwx-team__card:has(.hwx-team__profile) .hwx-team__photo{cursor:pointer}}
+
+/* scroll reveal (module.js) */
+.hwx-team--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-team--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-team{padding-top:min(var(--hwx-team-pad-top,60px), 52px);padding-bottom:min(var(--hwx-team-pad-bottom,60px), 52px)}
+}
+/* tablets: at most 2 cards; phones: 1 card */
+@media (max-width:980px){
+  .hwx-team__copy{grid-template-columns:minmax(0,1fr);align-items:start;margin-bottom:32px}
+  .hwx-team__carousel{--hwx-team-gap:18px}
+  .hwx-team__card{flex-basis:calc((100% - (min(var(--hwx-team-per,3), 2) - 1) * var(--hwx-team-gap)) / min(var(--hwx-team-per,3), 2))}
+}
+@media (max-width:640px){
+  .hwx-team{padding-top:min(var(--hwx-team-pad-top,60px), 44px);padding-bottom:min(var(--hwx-team-pad-bottom,60px), 44px)}
+  .hwx-team__card{flex-basis:100%;height:min(var(--hwx-team-card-h,540px), 520px)}
+  .hwx-team__info{padding:18px 20px 20px;min-height:168px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-team__track,.hwx-team__card,.hwx-team__photo img{transition:none}
+  .hwx-team--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-team a.hwx-team__profile,
+.hwx-team a.hwx-team__profile:link,
+.hwx-team a.hwx-team__profile:visited,
+.hwx-team a.hwx-team__profile:focus,
+.hwx-team a.hwx-team__profile:active{color:var(--hwx-team-link,#e70000)!important;-webkit-text-fill-color:var(--hwx-team-link,#e70000)!important;text-decoration:none!important}
+.hwx-team a.hwx-team__profile:hover{color:var(--hwx-team-link,#e70000)!important;-webkit-text-fill-color:var(--hwx-team-link,#e70000)!important;text-decoration:underline!important}
+.hwx-team a.hwx-team__profile svg,
+.hwx-team a.hwx-team__profile svg path{stroke:var(--hwx-team-link,#e70000)!important;fill:none!important}
+.hwx-team .hwx-team__intro a,
+.hwx-team .hwx-team__intro a:link,
+.hwx-team .hwx-team__intro a:visited,
+.hwx-team .hwx-team__intro a:hover,
+.hwx-team .hwx-team__intro a:focus,
+.hwx-team .hwx-team__intro a:active{color:inherit!important}
+.hwx-team .hwx-team__creds a,
+.hwx-team .hwx-team__creds a:link,
+.hwx-team .hwx-team__creds a:visited,
+.hwx-team .hwx-team__creds a:hover,
+.hwx-team .hwx-team__creds a:focus,
+.hwx-team .hwx-team__creds a:active{color:inherit!important}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+
+
+
+<section
+  class="hwx-team hwx-team--gray hwx-team--phone-no-intro hwx-team--reveal"
+  id="team"
+  data-autoplay="true"
+  data-interval="4"
+  data-swipe="true"
+  data-per="3"
+  style="
+    --hwx-team-bg: #FAFAFA;
+    --hwx-team-ink: #141112;
+    --hwx-team-heading-hover: #E70000;
+    --hwx-team-text: #4D4547;
+    --hwx-team-kicker: #E70000;
+    --hwx-team-icon: #E70000;
+    --hwx-team-role: #8C1C24;
+    --hwx-team-role-hl: #E70000;
+    --hwx-team-card: #FFFFFF;
+    --hwx-team-line: #E6DFE0;
+    --hwx-team-arrow-hover: #8C1C24;
+    --hwx-team-link: #E70000;
+    --hwx-team-pad-top: 60px;
+    --hwx-team-pad-bottom: 60px;
+    --hwx-team-width: 1180px;
+    --hwx-team-per: 3;
+    --hwx-team-card-h: 540px;
+    --hwx-team-photo-pos: 50% 18%;
+  ">
+  <div class="hwx-team__wrap">
+
+    <div class="hwx-team__copy">
+      <div class="hwx-team__lead">
+        <p class="hwx-team__kicker">The Apache OFBiz team at HotWax Systems</p>
+        
+        <h2 class="hwx-team__title">Support from the people who maintain the platform.</h2>
+      </div>
+      <div class="hwx-team__more">
+      <div class="hwx-team__intro"><p>Chances are, part of the Apache OFBiz code your business runs on was written by the people on this team.</p></div>
+      
+        <ul class="hwx-team__creds">
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span>Led by the <b>Apache OFBiz PMC Chair</b></span>
+              </li>
+            
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span><b>PMC members and committers</b> with write access to the Apache OFBiz codebase</span>
+              </li>
+            
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span>Every Apache role is <b>public on apache.org</b></span>
+              </li>
+            
+          
+        </ul>
+      
+      </div>
+    </div>
+
+    
+      <div class="hwx-team__carousel" aria-roledescription="carousel" aria-label="The Apache OFBiz team at HotWax Systems">
+        <div class="hwx-team__stage">
+          <div class="hwx-team__track">
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="1 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/jacopo-cappellato.jpg" alt="Jacopo Cappellato" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role is-highlight">Apache OFBiz PMC Chair</p>
+                <h3 class="hwx-team__name">Jacopo Cappellato</h3>
+                <p class="hwx-team__job">Co-founder and CTO, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/jacopoc/" target="_blank" rel="noopener" aria-label="View profile: Jacopo Cappellato on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="2 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/anil-patel.jpg" alt="Anil Patel" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Anil Patel</h3>
+                <p class="hwx-team__job">Co-founder and CEO, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/anilpatelhwc/" target="_blank" rel="noopener" aria-label="View profile: Anil Patel on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="3 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/ashish-vijaywargiya.jpg" alt="Ashish Vijaywargiya" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Ashish Vijaywargiya</h3>
+                <p class="hwx-team__job">VP of Operations, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/ashishvijaywargiya/" target="_blank" rel="noopener" aria-label="View profile: Ashish Vijaywargiya on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="4 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/swapnil-shah.jpg" alt="Swapnil Shah" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Swapnil Shah</h3>
+                <p class="hwx-team__job">VP of Consulting, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/swapnil-s/" target="_blank" rel="noopener" aria-label="View profile: Swapnil Shah on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="5 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/mridul-pathak.jpg" alt="Mridul Pathak" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Mridul Pathak</h3>
+                <p class="hwx-team__job">VP of Technology, HotWax Systems</p>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="6 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/divesh-dutta.jpg" alt="Divesh Dutta" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz Committer</p>
+                <h3 class="hwx-team__name">Divesh Dutta</h3>
+                <p class="hwx-team__job">Director of Marketing and Growth, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/diveshdutta/" target="_blank" rel="noopener" aria-label="View profile: Divesh Dutta on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="7 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/deepak-dixit.jpg" alt="Deepak Dixit" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Deepak Dixit</h3>
+                <p class="hwx-team__job">Vice President of Technology, HotWax Commerce</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/dixitdeepak/" target="_blank" rel="noopener" aria-label="View profile: Deepak Dixit on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="8 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/arun-patidar.jpg" alt="Arun Patidar" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Arun Patidar</h3>
+                <p class="hwx-team__job">VP of Information Systems, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/arunpatidar/" target="_blank" rel="noopener" aria-label="View profile: Arun Patidar on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="9 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/ratnesh-upadhyay.jpg" alt="Ratnesh Upadhyay" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz Contributor</p>
+                <h3 class="hwx-team__name">Ratnesh Upadhyay</h3>
+                <p class="hwx-team__job">Senior Manager, HotWax Systems</p>
+                
+                  <a class="hwx-team__profile" href="https://www.linkedin.com/in/ratneshupadhyay/" target="_blank" rel="noopener" aria-label="View profile: Ratnesh Upadhyay on LinkedIn">View profile<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                
+              </div>
+            </article>
+          
+          </div>
+        </div>
+        
+          <div class="hwx-team__nav">
+            
+            <div class="hwx-team__arrows">
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--prev" aria-label="Previous person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--next" aria-label="Next person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            </div>
+            
+          </div>
+        
+      </div>
+    
+
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M Team
+// A row of person cards (3 at a time by default, 2 on tablets, 1 on phones) that moves one card at a time in an
+// endless loop: arrows, auto-advance (pauses while the cursor is on a card or for keyboard focus), swipe.
+// The loop works with copies of the cards placed before and after the real ones; copies are hidden from screen readers.
+// On phones and touch screens a tap on the photo opens the person's LinkedIn profile.
+// Settings come from data attributes the module writes from its fields. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  [].forEach.call(document.querySelectorAll('.hwx-team'), function (section) {
+    var root = section.querySelector('.hwx-team__carousel');
+    if (!root) return;
+    var stage = root.querySelector('.hwx-team__stage');
+    var track = root.querySelector('.hwx-team__track');
+    var real = [].slice.call(track.children);
+    var total = real.length;
+
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 4) * 1000;
+    var swipe = section.getAttribute('data-swipe') === 'true';
+    var timer = null, hover = false, keyFocus = false, busy = false;
+
+    // how many cards fit in the row right now (CSS decides: the field value, at most 2 on tablets, 1 on phones)
+    function perView() {
+      var w = real[0].getBoundingClientRect().width;
+      return w ? Math.max(1, Math.round(stage.clientWidth / w)) : 1;
+    }
+    // with no more people than fit in the row there is nothing to move
+    if (total <= perView()) { root.classList.add('is-static'); return; }
+
+    // copies of every card before and after the real ones, so the row can keep moving in either direction
+    function copy(card) {
+      var c = card.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      c.classList.add('is-clone');
+      [].forEach.call(c.querySelectorAll('a, button'), function (el) { el.setAttribute('tabindex', '-1'); });
+      return c;
+    }
+    real.slice().reverse().forEach(function (card) { track.insertBefore(copy(card), track.firstChild); });
+    real.forEach(function (card) { track.appendChild(copy(card)); });
+
+    var pos = total; // index of the first visible card among all cards (copies included)
+
+    function step() {
+      var cards = track.children;
+      return cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+    }
+    function place(animate) {
+      track.style.transition = animate && !still ? '' : 'none';
+      track.style.transform = 'translateX(' + (-pos * step()) + 'px)';
+      if (!animate || still) { void track.offsetWidth; track.style.transition = ''; }
+    }
+    // after a move ends on a copy, jump without animation to the same card in the real set
+    // (a timer, not 'transitionend', so the loop can never get stuck when the browser skips that event)
+    var moveTimer = null;
+    function settle() {
+      busy = false;
+      if (pos >= total * 2) { pos -= total; place(false); }
+      else if (pos < total) { pos += total; place(false); }
+    }
+    function go(n, force) {
+      if (busy && !force) return;
+      clearTimeout(moveTimer);
+      pos = n;
+      busy = true;
+      place(true);
+      moveTimer = setTimeout(settle, still ? 0 : 820);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      stop();
+      if (!autoplay || still || hover || keyFocus) return;
+      timer = setInterval(function () { go(pos + 1); }, interval);
+    }
+
+    var prevBtn = root.querySelector('.hwx-team__arrow--prev');
+    var nextBtn = root.querySelector('.hwx-team__arrow--next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(pos - 1); play(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(pos + 1); play(); });
+
+    // pause only while the cursor is ON a person card (not the gaps or arrows); resume when it leaves
+    track.addEventListener('mouseover', function (e) {
+      var on = !!e.target.closest('.hwx-team__card');
+      if (on !== hover) { hover = on; if (on) stop(); else play(); }
+    });
+    track.addEventListener('mouseleave', function () { if (hover) { hover = false; play(); } });
+    // keyboard users (Tab) also pause it; clicking an arrow with the mouse never leaves it paused
+    root.addEventListener('focusin', function (e) {
+      var kb = false;
+      try { kb = e.target.matches(':focus-visible'); } catch (err) { kb = false; }
+      if (kb) {
+        keyFocus = true; stop();
+        // bring a focused card into view
+        var card = e.target.closest('.hwx-team__card');
+        var i = card ? [].indexOf.call(track.children, card) : -1;
+        if (i >= 0 && (i < pos || i >= pos + perView())) go(i, true);
+      }
+    });
+    root.addEventListener('focusout', function () { if (keyFocus) { keyFocus = false; play(); } });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { go(pos - 1); }
+      if (e.key === 'ArrowRight') { go(pos + 1); }
+    });
+
+    // swipe: the row follows the finger; a quick flick or a 40px drag moves one card; vertical moves scroll the page
+    var swiped = 0;
+    if (swipe) {
+      var sx = 0, sy = 0, dx = 0, t0 = 0, mode = null;
+      stage.addEventListener('touchstart', function (e) {
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now(); stop();
+      }, { passive: true });
+      stage.addEventListener('touchmove', function (e) {
+        var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+        if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+        if (mode !== 'x' || busy) return;
+        dx = mx;
+        swiped = Date.now();
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(' + (-pos * step() + dx) + 'px)';
+      }, { passive: true });
+      var swipeEnd = function () {
+        if (mode === 'x' && !busy) {
+          if (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300)) go(dx < 0 ? pos + 1 : pos - 1);
+          else place(true);
+        }
+        mode = null; dx = 0;
+        setTimeout(play, 4000);
+      };
+      stage.addEventListener('touchend', swipeEnd);
+      stage.addEventListener('touchcancel', swipeEnd);
+    }
+
+    // phones and touch screens: a tap on a photo opens that person's LinkedIn (a swipe never does)
+    var touch = window.matchMedia('(max-width:760px), (hover:none)');
+    track.addEventListener('click', function (e) {
+      if (!touch.matches || !e.target.closest('.hwx-team__photo')) return;
+      if (Date.now() - swiped < 500) return;
+      var link = e.target.closest('.hwx-team__card').querySelector('.hwx-team__profile');
+      if (link) window.open(link.href, '_blank', 'noopener');
+    });
+
+    // keep the right card in place when the window is resized (the number of visible cards can change)
+    var rt;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { clearTimeout(moveTimer); settle(); place(false); }, 120); });
+
+    place(false);
+    play();
+  });
+
+  // Scroll reveal for the top text and the card row, only when they start below the first screen
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-team--reveal .hwx-team__copy, .hwx-team--reveal .hwx-team__carousel'), function (el, i) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.style.transitionDelay = (i % 2) * 70 + 'ms';
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+</script></body></html>

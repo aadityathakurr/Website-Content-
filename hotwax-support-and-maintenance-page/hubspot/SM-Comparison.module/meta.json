@@ -1,0 +1,15 @@
+{
+  "label": "S&M Comparison",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "\"Compare your options for Apache OFBiz support\" table for the Apache OFBiz Support and Maintenance (S&M) page. On phones each row becomes a card with every answer visible.",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

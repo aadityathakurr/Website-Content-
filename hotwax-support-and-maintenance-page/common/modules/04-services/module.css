@@ -1,0 +1,29 @@
+/* 04-services: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.svc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 64px;border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:44px 1fr;gap:18px;padding:28px 0;border-bottom:1px solid var(--line)}
+.svc h3{font:600 19px/1.35 var(--body);color:var(--ink)}
+.svc p{margin-top:6px;font-size:15px;line-height:1.65}
+.svc .hx{width:40px;height:40px}
+@media (max-width:820px){
+  .svc-list{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .svc{grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0}
+  .svc .hx{width:32px;height:32px}
+  .svc h3{font-size:16px;line-height:1.35;padding-top:5px}
+  .svc p{margin-top:4px;font-size:14.5px;line-height:1.6;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden}
+  .svc.is-open p{display:block;-webkit-line-clamp:unset;overflow:visible}
+  .svc.is-open .hx{transform:translateY(-3px) rotate(-6deg);animation:svcPop .55s cubic-bezier(.34,1.56,.64,1)}
+  .svc-more{display:inline-block;margin-top:4px;padding:2px 0;border:0;background:none;font:600 13.5px/1.4 var(--body);color:var(--red);cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .svc-more:focus-visible{outline:3px solid var(--cyan);outline-offset:2px;border-radius:4px}
+}
+@media (min-width:761px){
+  .svc-more{display:none}
+}
+.svc{transition:transform .25s ease}
+.svc .hx{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+@media (hover:hover){
+  .svc:hover .hx{transform:translateY(-3px) rotate(-6deg)}
+  .svc:hover h3{color:var(--maroon)}
+}
+.hx{display:block}

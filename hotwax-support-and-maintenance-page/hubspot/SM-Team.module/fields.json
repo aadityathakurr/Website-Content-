@@ -1,0 +1,644 @@
+[
+  {
+    "type": "text",
+    "name": "kicker",
+    "label": "Kicker (small red line above the headline)",
+    "default": "The Apache OFBiz team at HotWax Systems"
+  },
+  {
+    "type": "text",
+    "name": "heading",
+    "label": "Headline",
+    "default": "Support from the people who maintain the platform.",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+  },
+  {
+    "id": "sm_team_heading_hover_words",
+    "name": "heading_hover_words",
+    "type": "text",
+    "label": "Words that change color on hover",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "default": "",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none."
+  },
+  {
+    "type": "choice",
+    "name": "heading_tag",
+    "label": "Heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "intro",
+    "label": "Intro",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Chances are, part of the Apache OFBiz code your business runs on was written by the people on this team.</p>"
+  },
+  {
+    "id": "sm_team_hide_intro_on_phones",
+    "name": "hide_intro_on_phones",
+    "label": "Hide intro on phones",
+    "type": "boolean",
+    "display": "toggle",
+    "required": false,
+    "locked": false,
+    "help_text": "On phones the intro text is hidden so the cards come sooner. The credential points still show.",
+    "default": true
+  },
+  {
+    "type": "group",
+    "name": "credentials",
+    "label": "Credential points",
+    "help_text": "Bold text shows in the darker heading color. Add, remove or drag to reorder.",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 3,
+      "sorting_label_field": "credentials.cred_text"
+    },
+    "children": [
+      {
+        "type": "richtext",
+        "name": "cred_text",
+        "label": "Point",
+        "enabled_features": [
+          "bold",
+          "link"
+        ],
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "cred_text": "<p>Led by the <b>Apache OFBiz PMC Chair</b></p>"
+      },
+      {
+        "cred_text": "<p><b>PMC members and committers</b> with write access to the Apache OFBiz codebase</p>"
+      },
+      {
+        "cred_text": "<p>Every Apache role is <b>public on apache.org</b></p>"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "members",
+    "label": "Team members",
+    "help_text": "One card per person, shown in this order. Drag to reorder.",
+    "occurrence": {
+      "min": 1,
+      "max": 20,
+      "default": 9,
+      "sorting_label_field": "members.person_name"
+    },
+    "children": [
+      {
+        "type": "image",
+        "name": "photo",
+        "label": "Photo",
+        "help_text": "Portrait, at least 600 x 900 px. Photos from the team-photos folder are already cropped.",
+        "resizable": false,
+        "responsive": true,
+        "show_loading": false,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "type": "text",
+        "name": "role",
+        "label": "Apache role",
+        "help_text": "Use the role exactly as listed on apache.org, e.g. Apache OFBiz PMC Member.",
+        "default": "Apache OFBiz PMC Member"
+      },
+      {
+        "type": "boolean",
+        "name": "highlight_role",
+        "label": "Show role in the highlight color",
+        "display": "toggle",
+        "default": false,
+        "help_text": "Used for the PMC Chair."
+      },
+      {
+        "type": "text",
+        "name": "person_name",
+        "label": "Name",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "job_title",
+        "label": "Job title, company",
+        "default": ""
+      },
+      {
+        "type": "url",
+        "name": "linkedin",
+        "label": "LinkedIn profile URL",
+        "help_text": "Leave empty to hide the LinkedIn button for this person.",
+        "supported_types": [
+          "EXTERNAL"
+        ],
+        "default": {
+          "content_id": null,
+          "href": "",
+          "type": "EXTERNAL"
+        }
+      }
+    ],
+    "default": [
+      {
+        "photo": {
+          "src": "",
+          "alt": "Jacopo Cappellato",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Chair",
+        "highlight_role": true,
+        "job_title": "Co-founder and CTO, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/jacopoc/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Jacopo Cappellato"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Anil Patel",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "Co-founder and CEO, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/anilpatelhwc/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Anil Patel"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Ashish Vijaywargiya",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "VP of Operations, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/ashishvijaywargiya/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Ashish Vijaywargiya"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Swapnil Shah",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "VP of Consulting, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/swapnil-s/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Swapnil Shah"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Mridul Pathak",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "VP of Technology, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Mridul Pathak"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Divesh Dutta",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz Committer",
+        "highlight_role": false,
+        "job_title": "Director of Marketing and Growth, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/diveshdutta/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Divesh Dutta"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Deepak Dixit",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "Vice President of Technology, HotWax Commerce",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/dixitdeepak/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Deepak Dixit"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Arun Patidar",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz PMC Member",
+        "highlight_role": false,
+        "job_title": "VP of Information Systems, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/arunpatidar/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Arun Patidar"
+      },
+      {
+        "photo": {
+          "src": "",
+          "alt": "Ratnesh Upadhyay",
+          "loading": "lazy"
+        },
+        "role": "Apache OFBiz Contributor",
+        "highlight_role": false,
+        "job_title": "Senior Manager, HotWax Systems",
+        "linkedin": {
+          "content_id": null,
+          "href": "https://www.linkedin.com/in/ratneshupadhyay/",
+          "type": "EXTERNAL"
+        },
+        "person_name": "Ratnesh Upadhyay"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "profile_label",
+    "label": "LinkedIn link text",
+    "help_text": "Red link under each person's title that opens their LinkedIn. People without a LinkedIn URL show no link.",
+    "default": "View profile"
+  },
+  {
+    "type": "text",
+    "name": "carousel_label",
+    "label": "Carousel name for screen readers",
+    "default": "The Apache OFBiz team at HotWax Systems"
+  },
+  {
+    "type": "group",
+    "name": "carousel",
+    "label": "Carousel behavior",
+    "expanded": false,
+    "children": [
+      {
+        "id": "sm_team_cards_visible",
+        "name": "cards_visible",
+        "label": "Cards visible at once (desktop)",
+        "type": "choice",
+        "display": "select",
+        "required": false,
+        "locked": false,
+        "help_text": "Tablets show at most 2 cards and phones show 1.",
+        "choices": [
+          [
+            "4",
+            "4"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "2",
+            "2"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ],
+        "default": "3"
+      },
+      {
+        "type": "boolean",
+        "name": "autoplay",
+        "label": "Auto-advance (one card at a time)",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Pauses while the visitor hovers or uses the keyboard."
+      },
+      {
+        "type": "number",
+        "name": "interval",
+        "label": "Seconds per card",
+        "display": "slider",
+        "min": 2,
+        "max": 15,
+        "step": 1,
+        "suffix": "s",
+        "default": 4,
+        "visibility": {
+          "controlling_field_path": "carousel.autoplay",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "help_text": "How long the row waits before moving one card."
+      },
+      {
+        "type": "boolean",
+        "name": "show_arrows",
+        "label": "Show arrows (tablets and desktop; phones use swipe)",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "swipe",
+        "label": "Swipe on touch screens",
+        "display": "toggle",
+        "default": true
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets buttons link here with #team. Letters, numbers and dashes only.",
+    "default": "team"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60,
+        "help_text": "Tablets cap at 52px and phones at 44px."
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "number",
+        "name": "card_height",
+        "label": "Card height (desktop)",
+        "display": "slider",
+        "min": 420,
+        "max": 700,
+        "step": 10,
+        "suffix": "px",
+        "default": 540,
+        "help_text": "Height of each person card; the photo fills the space above the details."
+      },
+      {
+        "type": "choice",
+        "name": "photo_focus",
+        "label": "Photo focus point",
+        "help_text": "Which part of each photo stays in view when it is cropped.",
+        "display": "select",
+        "choices": [
+          [
+            "50% 18%",
+            "Face (top)"
+          ],
+          [
+            "50% 50%",
+            "Center"
+          ],
+          [
+            "50% 0%",
+            "Very top"
+          ]
+        ],
+        "default": "50% 18%"
+      },
+      {
+        "type": "boolean",
+        "name": "grayscale_photos",
+        "label": "Black and white photos",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "kicker_color",
+            "label": "Kicker",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline, names, bold text",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "sm_team_heading_hover_color",
+            "name": "heading_hover_color",
+            "type": "color",
+            "label": "Heading words on hover",
+            "required": false,
+            "locked": false,
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text and job titles",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_color",
+            "label": "Credential icons",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "role_color",
+            "label": "Apache role",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "highlight_role_color",
+            "label": "Highlighted role (PMC Chair)",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "card_background",
+            "label": "Card and arrow background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Card and arrow border",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "arrow_hover",
+            "label": "Arrow on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "profile_link_color",
+            "label": "\"View profile\" link",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Turn off if the theme or another module already loads these fonts."
+      }
+    ]
+  }
+]

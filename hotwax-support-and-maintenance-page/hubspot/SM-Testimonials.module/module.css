@@ -1,0 +1,172 @@
+/* HotWax Systems | Module: S&M Testimonials
+   Self-contained: every class starts with .hwx-voices, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-voices{
+  --hwx-voices-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-voices-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-voices-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-voices-bg,#fafafa);
+  color:var(--hwx-voices-text,#4d4547);
+  font-family:var(--hwx-voices-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-voices-pad-top,60px);
+  padding-bottom:var(--hwx-voices-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-voices *,.hwx-voices *::before,.hwx-voices *::after{box-sizing:border-box}
+
+.hwx-voices__wrap{
+  max-width:var(--hwx-voices-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-voices-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-voices__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-voices__title{
+  margin:0;
+  font-family:var(--hwx-voices-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-voices-ink,#141112);
+  text-wrap:balance;
+}
+/* chosen heading words turn red while the section is hovered (mouse only) */
+.hwx-voices__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-voices--hover:hover .hwx-voices__hl{color:var(--hwx-voices-heading-hover,#e70000);-webkit-text-fill-color:var(--hwx-voices-heading-hover,#e70000)}
+}
+.hwx-voices__intro{font-size:18px;max-width:62ch}
+.hwx-voices__intro p{margin:0}
+
+/* layouts */
+.hwx-voices--featured .hwx-voices__list{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
+.hwx-voices__stack{display:grid;gap:28px}
+.hwx-voices--grid .hwx-voices__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:stretch}
+
+/* cards */
+.hwx-voices__card{
+  margin:0;min-width:0;
+  display:flex;flex-direction:column;gap:26px;
+  padding:36px;
+  background:var(--hwx-voices-card,#fff);
+  border:1px solid var(--hwx-voices-line,#e6dfe0);
+  border-radius:22px;
+}
+.hwx-voices--hover .hwx-voices__card{transition:transform .3s ease, box-shadow .3s ease}
+.hwx-voices--hover .hwx-voices__card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -30px rgba(60,10,15,.4)}
+.hwx-voices__qm{height:26px;font:700 72px/.6 var(--hwx-voices-display);color:var(--hwx-voices-qm,#e74000)}
+.hwx-voices__quote{margin:0;padding:0;border:0;font:400 19px/1.6 var(--hwx-voices-display);color:var(--hwx-voices-ink,#141112);quotes:none}
+
+.hwx-voices__who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.hwx-voices__avatar{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;object-fit:cover;
+  font:600 16px/1 var(--hwx-voices-body);
+  background:var(--hwx-voices-avatar-bg,#f3e9ea);color:var(--hwx-voices-avatar-text,#8c1c24);
+}
+.hwx-voices__name{display:block;font:600 15px/1.3 var(--hwx-voices-body);color:var(--hwx-voices-ink,#141112)}
+.hwx-voices__role{display:block;font-size:13px;line-height:1.4;color:var(--hwx-voices-muted,#7a7173)}
+
+/* featured card */
+.hwx-voices__card.is-feature{padding:44px;background:var(--hwx-voices-feature,#8c1c24);border-color:var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__quote{font-size:clamp(22px,2.3vw,28px);line-height:1.45;color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+.hwx-voices__card.is-feature .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+/* closing line */
+.hwx-voices__more{margin:36px 0 0;font-size:15.5px;color:var(--hwx-voices-text,#4d4547)}
+.hwx-voices__more a{display:inline-flex;align-items:center;gap:6px;margin-left:4px;color:var(--hwx-voices-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-voices__more a:hover{text-decoration:underline}
+.hwx-voices a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-voices__list > .is-clone{display:none}.hwx-voices__list{transform:none!important}}
+
+/* desktop rotation: when more than two testimonials sit beside the featured card, two show at a time and
+   module.js rotates them; every slot keeps the height of the tallest testimonial so nothing jumps */
+@media (min-width:761px){
+  .hwx-voices__stack.is-rotating{grid-template-rows:repeat(2,minmax(var(--hwx-voices-slot-h,0px),auto))}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card{display:none}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card.is-shown{display:flex;animation:hwxVoicesIn .5s ease both}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card.is-shown + .hwx-voices__card.is-shown{animation-delay:.08s}
+}
+@keyframes hwxVoicesIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* scroll reveal (module.js) */
+.hwx-voices--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-voices--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 52px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-voices--featured .hwx-voices__list{grid-template-columns:minmax(0,1fr)}
+  .hwx-voices__card,.hwx-voices__card.is-feature{padding:28px}
+}
+@media (max-width:760px){
+  /* one card at a time; all cards share the same light look on phones */
+  /* module.js slides the list with transform (swipe, arrows, auto-slide) */
+  .hwx-voices--carousel .hwx-voices__viewport{overflow:hidden;padding:6px 0 10px;margin:-6px 0 -10px}
+  .hwx-voices--carousel .hwx-voices__list{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-voices--carousel .hwx-voices__list.is-dragging{transition:none}
+  .hwx-voices--carousel .hwx-voices__stack{display:contents}
+  .hwx-voices--carousel .hwx-voices__card,
+  .hwx-voices--carousel .hwx-voices__card.is-feature{
+    flex:0 0 100%;min-width:0;min-height:300px;gap:22px;
+    padding:28px 24px;border-radius:20px;
+    /* every card on phones uses the featured card colors */
+    background:var(--hwx-voices-feature,#8c1c24);border:1px solid var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff);
+    transform:none;box-shadow:none;
+  }
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__quote{font:400 19px/1.55 var(--hwx-voices-display);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+}
+@media (max-width:640px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 44px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 44px)}
+  .hwx-voices__head{margin-bottom:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-voices *{transition:none!important;animation:none!important}
+  .hwx-voices--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-voices .hwx-voices__more a,
+.hwx-voices .hwx-voices__more a:link,
+.hwx-voices .hwx-voices__more a:visited,
+.hwx-voices .hwx-voices__more a:hover,
+.hwx-voices .hwx-voices__more a:focus,
+.hwx-voices .hwx-voices__more a:active{color:var(--hwx-voices-link,#e70000)!important;text-decoration:none}
+.hwx-voices .hwx-voices__more a:hover{text-decoration:underline}
+/* themes often give <blockquote> a background box, padding, a border and their own quote marks:
+   none of that belongs on these cards */
+.hwx-voices .hwx-voices__card .hwx-voices__quote{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:0!important;margin:0!important;quotes:none!important;
+  color:var(--hwx-voices-ink,#141112)!important;-webkit-text-fill-color:currentColor!important;
+}
+.hwx-voices .hwx-voices__card .hwx-voices__quote::before,
+.hwx-voices .hwx-voices__card .hwx-voices__quote::after{content:none!important;display:none!important}
+.hwx-voices .hwx-voices__card.is-feature .hwx-voices__quote{color:var(--hwx-voices-feature-text,#fff)!important}
+@media (max-width:760px){
+  .hwx-voices.hwx-voices--carousel .hwx-voices__card .hwx-voices__quote{color:var(--hwx-voices-feature-text,#fff)!important}
+}

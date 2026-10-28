@@ -1,0 +1,393 @@
+[
+  {
+    "type": "text",
+    "name": "heading",
+    "label": "Headline",
+    "default": "Compare your options for Apache OFBiz support.",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+  },
+  {
+    "id": "sm_cmp_heading_hover_words",
+    "name": "heading_hover_words",
+    "type": "text",
+    "label": "Words that change color on hover",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "default": "",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none."
+  },
+  {
+    "type": "choice",
+    "name": "heading_tag",
+    "label": "Heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "intro",
+    "label": "Intro",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Most teams weigh three paths. Here is how they compare.</p>"
+  },
+  {
+    "type": "group",
+    "name": "columns",
+    "label": "Column headings",
+    "expanded": true,
+    "children": [
+      {
+        "type": "text",
+        "name": "corner_label",
+        "label": "First column heading",
+        "default": "What matters"
+      },
+      {
+        "type": "text",
+        "name": "option_a",
+        "label": "Alternative 1",
+        "default": "Your own team alone"
+      },
+      {
+        "type": "text",
+        "name": "option_b",
+        "label": "Alternative 2",
+        "default": "A generalist IT vendor"
+      },
+      {
+        "type": "text",
+        "name": "option_us",
+        "label": "Highlighted column (HotWax)",
+        "default": "HotWax Systems"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "rows",
+    "label": "Rows",
+    "help_text": "One row per point of comparison. Add, remove or drag to reorder.",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 6,
+      "sorting_label_field": "rows.row_label"
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "row_label",
+        "label": "What matters",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "option_a",
+        "label": "Alternative 1",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "option_b",
+        "label": "Alternative 2",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "option_us",
+        "label": "HotWax",
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "label": "Apache OFBiz depth",
+        "option_a": "Limited to what one or two people know",
+        "option_b": "Learns your system on your time",
+        "option_us": "Apache OFBiz committers, led by the PMC Chair"
+      },
+      {
+        "label": "Framework-level bugs",
+        "option_a": "Worked around in custom code",
+        "option_b": "Worked around in custom code",
+        "option_us": "Fixed at the source in Apache OFBiz"
+      },
+      {
+        "label": "Upgrades",
+        "option_a": "Often postponed",
+        "option_b": "Risky without Apache OFBiz depth",
+        "option_us": "Planned around your custom code"
+      },
+      {
+        "label": "Disruption to the business",
+        "option_a": "Low, until something breaks",
+        "option_b": "Low, while they learn the system",
+        "option_us": "Low: your system keeps running while we improve it"
+      },
+      {
+        "label": "What you pay for",
+        "option_a": "Staff time pulled from other work",
+        "option_b": "Hourly or project fees",
+        "option_us": "Support for the system you already own"
+      },
+      {
+        "label": "Who owns the code",
+        "option_a": "You",
+        "option_b": "Varies by contract",
+        "option_us": "You. No vendor lock-in"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "mobile",
+    "label": "Phone view",
+    "help_text": "On phones each row becomes a card: both alternatives first, under these short names, then the HotWax answer.",
+    "expanded": false,
+    "children": [
+      {
+        "type": "text",
+        "name": "short_a",
+        "label": "Short name for alternative 1",
+        "default": "Your own team"
+      },
+      {
+        "type": "text",
+        "name": "short_b",
+        "label": "Short name for alternative 2",
+        "default": "Generalist vendor"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets buttons link here with #compare. Letters, numbers and dashes only.",
+    "default": "compare"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60,
+        "help_text": "Tablets cap at 52px and phones at 44px."
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline, row labels, HotWax text",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "sm_cmp_heading_hover_color",
+            "name": "heading_hover_color",
+            "type": "color",
+            "label": "Heading words on hover",
+            "required": false,
+            "locked": false,
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text and alternative cells",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "muted_color",
+            "label": "Small labels",
+            "show_opacity": false,
+            "default": {
+              "color": "#7A7173",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "card_background",
+            "label": "Table card",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Lines and borders",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "us_header_background",
+            "label": "HotWax column heading",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "us_header_text",
+            "label": "HotWax column heading text",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "us_cell_background",
+            "label": "HotWax cells",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFF6F3",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "us_border",
+            "label": "HotWax column border",
+            "show_opacity": false,
+            "default": {
+              "color": "#F5D6CF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "icon_color",
+            "label": "HotWax icons (check on desktop, hexagon on phones)",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "dot_color",
+            "label": "Alternative dots",
+            "show_opacity": false,
+            "default": {
+              "color": "#D6CBCC",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hover_effects",
+        "label": "Row hover highlight",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Turn off if the theme or another module already loads these fonts."
+      }
+    ]
+  }
+]

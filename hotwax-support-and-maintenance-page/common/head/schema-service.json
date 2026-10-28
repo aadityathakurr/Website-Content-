@@ -1,0 +1,97 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Apache OFBiz Support and Maintenance",
+  "serviceType": "Apache OFBiz support and maintenance",
+  "url": "https://www.hotwaxsystems.com/services/apache-ofbiz-support-and-maintenance",
+  "provider": {
+    "@type": "Organization",
+    "name": "HotWax Systems",
+    "url": "https://www.hotwaxsystems.com/",
+    "sameAs": [
+      "https://www.linkedin.com/company/hotwax-systems/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Salt Lake City",
+      "addressRegion": "UT",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": [
+    "United States",
+    "Canada",
+    "Europe"
+  ],
+  "description": "Integrations, upgrades, security releases, bug fixes, performance tuning, monitoring, cloud support, and data migration for Apache OFBiz systems, from the world's largest team of Apache OFBiz committers.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Apache OFBiz support services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Apache OFBiz integration support",
+          "description": "Carriers, marketplaces, accounting, and other systems stay connected to Apache OFBiz, and get repaired when an API changes."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Apache OFBiz upgrades",
+          "description": "Move to a current release with your custom components mapped and tested before cutover."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Security releases and patches",
+          "description": "Official Apache OFBiz security releases applied to your system and tested against your customizations."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bug fixes and root cause analysis",
+          "description": "Production issues traced to their real cause, so the same incident does not come back next month."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Performance tuning",
+          "description": "Faster screens, reports, and batch jobs as your order volume grows."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Proactive monitoring",
+          "description": "Problems flagged early, before they reach your warehouse floor or order desk."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cloud and on-premise support",
+          "description": "Apache OFBiz on AWS, Azure, Google Cloud, or your own servers, with the DevOps work that comes with it."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Data migration",
+          "description": "Legacy data moved into Apache OFBiz and validated before anyone switches over."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you support older Apache OFBiz releases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We support systems on older releases, review the gap to the current one, and plan the upgrade around your custom code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you take over a system another vendor built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We start from your code and environments, then our engineers learn and document the system before taking over support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is HotWax Systems the right partner for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Companies where Apache OFBiz runs a core process such as orders, inventory, warehouse, manufacturing, or procurement. If a packaged product fits you better, we will tell you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Our code is heavily customized. Is that a problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Customized Apache OFBiz systems are what we support every day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we have to upgrade before you support us?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We stabilize the system you run today, then recommend whether and when to upgrade. The decision stays yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you replace our in-house developers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We work alongside your team and add the Apache OFBiz depth it is missing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You do. No vendor lock-in. The code, the data, and the roadmap stay yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support Apache OFBiz in the cloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. AWS, Azure, Google Cloud, or your own servers, including the DevOps work that comes with it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you also support Moqui?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. See our Moqui development, consulting and support services."
+      }
+    }
+  ]
+}

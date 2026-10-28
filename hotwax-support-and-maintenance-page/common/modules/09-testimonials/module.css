@@ -1,0 +1,37 @@
+/* 09-testimonials: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.voices{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
+.voices-more{margin-top:36px;font-size:15.5px;color:var(--text)}
+.voices-more a{display:inline-flex;align-items:center;gap:6px;margin-left:4px;color:var(--red);font-weight:600;text-decoration:none}
+.voices-more a:hover{text-decoration:underline}
+.voice{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:36px;display:flex;flex-direction:column;gap:26px;min-width:0}
+.voice blockquote{margin:0;font:400 19px/1.6 var(--display);color:var(--ink)}
+.voice.feature{background:var(--maroon);border-color:var(--maroon);color:#fff;padding:44px}
+.voice.feature blockquote{color:#fff;font-size:clamp(22px,2.3vw,28px);line-height:1.45}
+.voice .qm{font:700 72px/0.6 var(--display);color:var(--orange);height:26px}
+.voice.feature .qm{color:#ff8a5c}
+.who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:600 16px/1 var(--body);background:#f3e9ea;color:var(--maroon);flex:none}
+.feature .avatar{background:rgba(255,255,255,.14);color:#fff}
+.who b{display:block;font:600 15px/1.3 var(--body);color:var(--ink)}
+.who span{font-size:13px;line-height:1.4;color:var(--muted)}
+.feature .who b{color:#fff}
+.feature .who span{color:rgba(255,255,255,.7)}
+.stack{display:grid;gap:28px}
+@media (max-width:900px){
+  .voices{grid-template-columns:1fr}
+  .voice,.voice.feature{padding:28px}
+}
+.voice{transition:transform .3s ease,box-shadow .3s ease}
+.voice:hover{transform:translateY(-4px);box-shadow:0 24px 48px -30px rgba(60,10,15,.4)}
+@media (max-width:760px){
+  .voices-viewport{overflow:hidden;padding:6px 0 10px;margin:-6px 0 -10px}
+  .voices{display:flex;gap:14px;align-items:stretch;touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+  .voices.is-dragging{transition:none}
+  .voices .stack{display:contents}
+  .voices .voice,.voices .voice.feature{flex:0 0 100%;min-width:0;background:var(--maroon);border:1px solid var(--maroon);color:#fff;padding:28px 24px;border-radius:20px;min-height:300px;display:flex;flex-direction:column;gap:22px;transform:none;box-shadow:none}
+  .voices .voice.feature blockquote,.voices .voice blockquote{color:#fff;font:400 19px/1.55 var(--display)}
+  .voices .voice .qm,.voices .voice.feature .qm{color:#ff8a5c}
+  .voices .voice .avatar{background:rgba(255,255,255,.14);color:#fff}
+  .voices .voice .who b{color:#fff}
+  .voices .voice .who span{color:rgba(255,255,255,.7)}
+}

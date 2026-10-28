@@ -1,0 +1,335 @@
+[
+  {
+    "type": "text",
+    "name": "title",
+    "label": "Title",
+    "default": "Talk to an Apache OFBiz Expert",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+  },
+  {
+    "id": "sm_cta_heading_hover_words",
+    "name": "heading_hover_words",
+    "type": "text",
+    "label": "Words that change color on hover",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "show_emoji_picker": false,
+    "default": "",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none."
+  },
+  {
+    "type": "choice",
+    "name": "title_tag",
+    "label": "Title heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ],
+      [
+        "p",
+        "Plain text (no heading)"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "description",
+    "label": "Description",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Have an Apache OFBiz system that needs attention? Connect with our Apache OFBiz experts to talk through upgrades, fixes, and ongoing support for your business.</p>"
+  },
+  {
+    "type": "form",
+    "name": "form",
+    "label": "Form",
+    "help_text": "Pick a one-field form with an Email field (label \"Work email\", placeholder \"Email Address\", button \"Submit\"). For new-editor forms the thank-you message is set on the form itself in Marketing > Forms.",
+    "default": {
+      "response_type": "inline",
+      "message": "<p>Thanks. An Apache OFBiz expert will be in touch.</p>"
+    }
+  },
+  {
+    "type": "choice",
+    "name": "form_type",
+    "label": "Form type",
+    "help_text": "New forms editor: forms made in HubSpot's current form editor (most forms today). Legacy: forms from the older builder.",
+    "display": "radio",
+    "choices": [
+      [
+        "new",
+        "New forms editor"
+      ],
+      [
+        "legacy",
+        "Legacy form"
+      ]
+    ],
+    "default": "new"
+  },
+  {
+    "type": "choice",
+    "name": "form_region",
+    "label": "HubSpot region (new forms)",
+    "help_text": "The data region of the HubSpot account. It is in the account's site address, e.g. hs-sites-na2.com means na2.",
+    "display": "select",
+    "choices": [
+      [
+        "na1",
+        "na1 (US)"
+      ],
+      [
+        "na2",
+        "na2 (US)"
+      ],
+      [
+        "eu1",
+        "eu1 (Europe)"
+      ],
+      [
+        "ap1",
+        "ap1 (Asia Pacific)"
+      ]
+    ],
+    "default": "na2",
+    "visibility": {
+      "controlling_field_path": "form_type",
+      "controlling_value_regex": "new",
+      "operator": "EQUAL"
+    }
+  },
+  {
+    "type": "boolean",
+    "name": "hide_form_labels",
+    "label": "Hide field labels (keep them for screen readers)",
+    "help_text": "On keeps the one-row look: the placeholder shows inside the box.",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Optional. Letters, numbers and dashes only.",
+    "default": ""
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "CTA style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "help_text": "0 keeps the bar close to the section above, as in the design.",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 0
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "help_text": "Tablets cap at 52px and phones at 44px.",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "number",
+        "name": "corner_radius",
+        "label": "Card corner radius",
+        "display": "slider",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "suffix": "px",
+        "default": 22
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "card_background",
+            "label": "Card background",
+            "show_opacity": false,
+            "default": {
+              "color": "#A22B2A",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "title_color",
+            "label": "Title",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "id": "sm_cta_heading_hover_color",
+            "name": "heading_hover_color",
+            "type": "color",
+            "label": "Heading words on hover",
+            "required": false,
+            "locked": false,
+            "show_opacity": false,
+            "default": {
+              "color": "#FFB38A",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Description",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "number",
+            "name": "text_opacity",
+            "label": "Description opacity",
+            "display": "slider",
+            "min": 40,
+            "max": 100,
+            "step": 1,
+            "suffix": "%",
+            "default": 86
+          },
+          {
+            "type": "color",
+            "name": "input_background",
+            "label": "Email box",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "input_text",
+            "label": "Email box text",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "button_background",
+            "label": "Button",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "button_hover",
+            "label": "Button on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#FF1A1A",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "button_text",
+            "label": "Button text",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "button_uppercase",
+        "label": "Button text in capitals",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "card_shadow",
+        "label": "Card shadow",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Montserrat",
+        "help_text": "Turn off if the theme or another module already loads it.",
+        "display": "toggle",
+        "default": true
+      }
+    ]
+  }
+]

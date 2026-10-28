@@ -1,0 +1,86 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Problem ("Who is looking after it?")
+  Every text, list item, icon, color and size below comes from the module fields (fields.json).
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+{% set h = module.heading %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": h.heading_text|escape} %}
+{% if h.hover_phrases %}
+  {% for phrase in h.hover_phrases|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-problem__hv">')|replace(']', '</span>') %}
+
+<section
+  class="hwx-problem hwx-problem--{{ module.style.layout|default('columns') }}{% if module.style.hover_effects %} hwx-problem--hover{% endif %}{% if module.style.reveal_on_scroll %} hwx-problem--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  style="
+    --hwx-problem-bg: {{ c.background.color|default('#FAFAFA') }};
+    --hwx-problem-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-problem-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-problem-accent: {{ c.accent_color.color|default('#E70000') }};
+    --hwx-problem-hover: {{ c.hover_color.color|default('#E70000') }};
+    --hwx-problem-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-problem-icon: {{ c.icon_color.color|default('#E70000') }};
+    --hwx-problem-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-problem-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-problem-width: {{ module.style.content_width|default(1180) }}px;
+    --hwx-problem-gap: {{ module.style.column_gap|default(64) }}px;
+  ">
+  <div class="hwx-problem__wrap">
+
+    <div class="hwx-problem__head">
+      {% set tag = h.heading_tag|default('h2') %}
+      {% if h.heading_text %}
+        <{{ tag }} class="hwx-problem__title">{{ title }}</{{ tag }}>
+      {% endif %}
+
+      {% if module.lead_text %}
+        <p class="hwx-problem__lead">{{ module.lead_text|escape }}</p>
+      {% endif %}
+
+      {% if module.agitate.show_agitate and module.agitate.agitate_text %}
+        <div class="hwx-problem__agitate{% if module.agitate.show_accent_line %} hwx-problem__agitate--line{% endif %}">{{ module.agitate.agitate_text }}</div>
+      {% endif %}
+    </div>
+
+    {% if module.signs %}
+      <ul class="hwx-problem__signs">
+        {% for item in module.signs %}
+          {% if item.sign_text %}
+            <li class="hwx-problem__sign">
+              {% if module.style.icon != 'none' %}
+                <svg class="hwx-problem__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                  {% if module.style.icon == 'check' %}
+                    <circle cx="12" cy="12" r="10.5" fill="currentColor"/><path d="M7.5 12.3l3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  {% elif module.style.icon == 'dot' %}
+                    <circle cx="12" cy="12" r="5" fill="currentColor"/>
+                  {% else %}
+                    <path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/>
+                  {% endif %}
+                </svg>
+              {% endif %}
+              <span>{{ item.sign_text|escape }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+  </div>
+</section>

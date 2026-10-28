@@ -1,0 +1,2614 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M Banner
+   Self-contained: every class starts with .hwx-banner, so it will not clash with the HubSpot theme.
+   Colors, image, height and width come from the module fields through the CSS variables
+   set on the <section> in module.html. */
+
+.hwx-banner{
+  --hwx-banner-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-banner-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:var(--hwx-banner-min-h,680px);
+  color:var(--hwx-banner-text,#fff);
+  font-family:var(--hwx-banner-body);
+  background:
+    radial-gradient(ellipse 55% 60% at 50% 50%, rgba(20,4,6,calc(var(--hwx-banner-overlay,.4) * 1.05)) 0%, rgba(20,4,6,0) 100%),
+    linear-gradient(180deg,
+      rgba(26,6,9,var(--hwx-banner-overlay,.4)) 0%,
+      rgba(26,6,9,calc(var(--hwx-banner-overlay,.4) * .75)) 50%,
+      rgba(18,4,6,calc(var(--hwx-banner-overlay,.4) * 1.45)) 100%),
+    var(--hwx-banner-img,none) var(--hwx-banner-pos,center) / cover no-repeat,
+    var(--hwx-banner-fallback,#2a0b0e);
+}
+.hwx-banner *,.hwx-banner *::before,.hwx-banner *::after{box-sizing:border-box}
+
+.hwx-banner__inner{
+  flex:1;
+  width:100%;
+  max-width:var(--hwx-banner-width,980px);
+  margin:0 auto;
+  padding:48px max(20px, env(safe-area-inset-right,0px)) 64px max(20px, env(safe-area-inset-left,0px));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+}
+.hwx-banner--center .hwx-banner__inner{align-items:center;text-align:center}
+.hwx-banner--left .hwx-banner__inner{align-items:flex-start;text-align:left}
+
+/* eyebrow */
+.hwx-banner__eyebrow{
+  margin:0 0 22px;
+  font:600 15px/1.4 var(--hwx-banner-body);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--hwx-banner-text,#fff);
+  opacity:.88;
+}
+.hwx-banner--center .hwx-banner__eyebrow{padding-left:.16em}
+.hwx-banner__tm{
+  font-size:.62em;
+  line-height:0;
+  position:relative;
+  top:-.55em;
+  vertical-align:baseline;
+  letter-spacing:0;
+  margin-left:-.14em;
+  margin-right:.06em;
+}
+
+/* headline */
+.hwx-banner__title{
+  margin:0;
+  max-width:14em;
+  font-family:var(--hwx-banner-display);
+  font-weight:700;
+  font-size:clamp(38px,5vw,68px);
+  line-height:1.1;
+  letter-spacing:-.015em;
+  color:var(--hwx-banner-text,#fff);
+  text-wrap:balance;
+}
+.hwx-banner__hl{color:var(--hwx-banner-highlight,#ff6a2b)}
+
+/* subheadline (rich text) */
+.hwx-banner__sub{
+  margin-top:24px;
+  max-width:54ch;
+  font-size:18px;
+  line-height:1.65;
+  font-weight:300;
+  color:var(--hwx-banner-text,#fff);
+  opacity:.82;
+}
+.hwx-banner__sub p{margin:0}
+.hwx-banner__sub p + p{margin-top:12px}
+.hwx-banner__sub strong,.hwx-banner__sub b{font-weight:500;opacity:1}
+
+/* button */
+.hwx-banner__actions{
+  margin-top:36px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px 24px;
+  align-items:center;
+}
+.hwx-banner--center .hwx-banner__actions{justify-content:center}
+.hwx-banner__btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:17px 28px;
+  border:0;
+  border-radius:999px;
+  background:var(--hwx-banner-btn-bg,#e70000);
+  color:var(--hwx-banner-btn-text,#fff);
+  font:600 15px/1 var(--hwx-banner-body);
+  text-decoration:none;
+  box-shadow:0 10px 24px -10px rgba(231,0,0,.65);
+  transition:transform .15s ease, filter .15s ease;
+}
+.hwx-banner__btn:hover{transform:translateY(-1px);filter:brightness(.92);color:var(--hwx-banner-btn-text,#fff)}
+.hwx-banner__btn svg{transition:transform .15s ease}
+.hwx-banner__btn:hover svg{transform:translateX(3px)}
+.hwx-banner__btn:focus-visible{outline:3px solid #00a2e1;outline-offset:3px}
+
+/* small proof line under the button */
+.hwx-banner__note{
+  margin:18px 0 0;
+  font-size:13.5px;
+  letter-spacing:.02em;
+  color:var(--hwx-banner-text,#fff);
+  opacity:.62;
+}
+
+/* load-in animation (can be switched off in the module's Style tab) */
+@keyframes hwxBannerUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hwx-banner--animate .hwx-banner__inner > *{animation:hwxBannerUp .8s cubic-bezier(.2,.7,.2,1) both}
+.hwx-banner--animate .hwx-banner__inner > *:nth-child(2){animation-delay:.08s}
+.hwx-banner--animate .hwx-banner__inner > *:nth-child(3){animation-delay:.16s}
+.hwx-banner--animate .hwx-banner__inner > *:nth-child(4){animation-delay:.24s}
+.hwx-banner--animate .hwx-banner__inner > *:nth-child(5){animation-delay:.32s}
+
+/* tablets */
+@media (max-width:1020px){
+  .hwx-banner{min-height:min(var(--hwx-banner-min-h,680px), 540px)}
+  .hwx-banner__inner{padding-block:40px 52px}
+}
+/* phones */
+@media (max-width:760px){
+  .hwx-banner__note--desktop-only{display:none}
+}
+@media (max-width:560px){
+  .hwx-banner{min-height:0}
+  .hwx-banner__inner{padding-block:32px 44px}
+  .hwx-banner__sub{font-size:16px}
+  .hwx-banner__btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-banner--animate .hwx-banner__inner > *{animation:none}
+  .hwx-banner__btn,.hwx-banner__btn svg{transition:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-banner a.hwx-banner__btn,
+.hwx-banner a.hwx-banner__btn:link,
+.hwx-banner a.hwx-banner__btn:visited,
+.hwx-banner a.hwx-banner__btn:hover,
+.hwx-banner a.hwx-banner__btn:focus,
+.hwx-banner a.hwx-banner__btn:active{color:var(--hwx-banner-btn-text,#fff)!important;text-decoration:none!important}
+.hwx-banner .hwx-banner__sub a,
+.hwx-banner .hwx-banner__sub a:link,
+.hwx-banner .hwx-banner__sub a:visited,
+.hwx-banner .hwx-banner__sub a:hover,
+.hwx-banner .hwx-banner__sub a:focus,
+.hwx-banner .hwx-banner__sub a:active{color:inherit!important;text-decoration:underline}
+
+/* HotWax Systems | Module: S&M Problem
+   Self-contained: every class starts with .hwx-problem, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables
+   set on the <section> in module.html. */
+
+.hwx-problem{
+  --hwx-problem-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-problem-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-problem-bg,#fafafa);
+  color:var(--hwx-problem-text,#4d4547);
+  font-family:var(--hwx-problem-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-problem-pad-top,60px);
+  padding-bottom:var(--hwx-problem-pad-bottom,60px);
+}
+.hwx-problem *,.hwx-problem *::before,.hwx-problem *::after{box-sizing:border-box}
+
+.hwx-problem__wrap{
+  max-width:var(--hwx-problem-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:var(--hwx-problem-gap,64px);
+  align-items:center;
+}
+.hwx-problem--stacked .hwx-problem__wrap{grid-template-columns:minmax(0,1fr);gap:40px;max-width:min(var(--hwx-problem-width,1180px), 860px)}
+
+/* left: headline, lead, agitate line */
+.hwx-problem__head{display:grid;gap:18px}
+.hwx-problem__title{
+  margin:0;
+  font-family:var(--hwx-problem-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-problem-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-problem__hv{transition:color .35s ease}
+.hwx-problem--hover:hover .hwx-problem__hv{color:var(--hwx-problem-hover,#e70000)}
+
+.hwx-problem__lead{margin:0;font-size:18px;color:var(--hwx-problem-text,#4d4547)}
+
+.hwx-problem__agitate{
+  margin-top:12px;
+  font-size:19px;
+  line-height:1.75;
+  color:var(--hwx-problem-text,#4d4547);
+  max-width:58ch;
+}
+.hwx-problem__agitate--line{padding-left:18px;border-left:3px solid var(--hwx-problem-accent,#e70000)}
+.hwx-problem__agitate p{margin:0}
+.hwx-problem__agitate p + p{margin-top:10px}
+.hwx-problem__agitate strong,.hwx-problem__agitate b{color:var(--hwx-problem-ink,#141112);font-weight:600}
+.hwx-problem__agitate a{color:var(--hwx-problem-accent,#e70000)}
+
+/* right: list of signs */
+.hwx-problem__signs{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.hwx-problem__sign{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:14px;
+  padding:22px 0;
+  border-bottom:1px solid var(--hwx-problem-line,#e6dfe0);
+  font-size:18px;
+  font-weight:400;
+  line-height:1.55;
+  color:var(--hwx-problem-ink,#141112);
+}
+.hwx-problem__sign:first-child{border-top:1px solid var(--hwx-problem-line,#e6dfe0)}
+.hwx-problem__icon{margin-top:2px;color:var(--hwx-problem-icon,#e70000)}
+
+.hwx-problem--hover .hwx-problem__sign{transition:padding-left .25s ease}
+.hwx-problem--hover .hwx-problem__sign:hover{padding-left:6px}
+.hwx-problem--hover .hwx-problem__icon{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hwx-problem--hover .hwx-problem__sign:hover .hwx-problem__icon{transform:rotate(30deg) scale(1.08)}
+
+/* scroll reveal (module.js adds .is-hidden only to items below the first screen) */
+.hwx-problem--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-problem--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-problem{
+    padding-top:min(var(--hwx-problem-pad-top,60px), 52px);
+    padding-bottom:min(var(--hwx-problem-pad-bottom,60px), 52px);
+  }
+}
+@media (max-width:900px){
+  .hwx-problem__wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+@media (max-width:640px){
+  .hwx-problem{
+    padding-top:min(var(--hwx-problem-pad-top,60px), 44px);
+    padding-bottom:min(var(--hwx-problem-pad-bottom,60px), 44px);
+  }
+  .hwx-problem__lead{font-size:16px}
+  .hwx-problem__agitate{font-size:17px}
+  .hwx-problem__sign{font-size:16px;padding:18px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-problem *{transition:none!important}
+  .hwx-problem--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-problem .hwx-problem__agitate a,
+.hwx-problem .hwx-problem__agitate a:link,
+.hwx-problem .hwx-problem__agitate a:visited,
+.hwx-problem .hwx-problem__agitate a:hover,
+.hwx-problem .hwx-problem__agitate a:focus,
+.hwx-problem .hwx-problem__agitate a:active{color:var(--hwx-problem-accent,#e70000)!important}
+
+/* HotWax Systems | Module: S&M Services
+   Self-contained: every class starts with .hwx-svc, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-svc{
+  --hwx-svc-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-svc-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-svc-bg,#fafafa);
+  color:var(--hwx-svc-text,#4d4547);
+  font-family:var(--hwx-svc-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-svc-pad-top,60px);
+  padding-bottom:var(--hwx-svc-pad-bottom,60px);
+}
+.hwx-svc *,.hwx-svc *::before,.hwx-svc *::after{box-sizing:border-box}
+
+.hwx-svc__wrap{
+  max-width:var(--hwx-svc-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-svc__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-svc__title{
+  margin:0;
+  font-family:var(--hwx-svc-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-svc-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-svc__intro{font-size:18px;max-width:62ch}
+.hwx-svc__intro p{margin:0}
+.hwx-svc__intro p + p{margin-top:10px}
+.hwx-svc__intro strong,.hwx-svc__intro b{color:var(--hwx-svc-ink,#141112);font-weight:600}
+
+/* service list */
+.hwx-svc__list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 64px;border-top:1px solid var(--hwx-svc-line,#e6dfe0)}
+.hwx-svc--cols-3 .hwx-svc__list{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 48px}
+.hwx-svc--cols-1 .hwx-svc__list{grid-template-columns:minmax(0,1fr)}
+.hwx-svc__item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:28px 0;border-bottom:1px solid var(--hwx-svc-line,#e6dfe0)}
+.hwx-svc__hx{display:block;width:40px;height:40px;color:var(--hwx-svc-icon,#e70000);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hwx-svc__hx--img{object-fit:contain}
+.hwx-svc__name{margin:0;font:600 19px/1.35 var(--hwx-svc-body);color:var(--hwx-svc-ink,#141112);transition:color .25s ease}
+.hwx-svc__text{margin:6px 0 0;font-size:15px;line-height:1.65}
+
+/* hover (mouse devices only, so a tap on a phone never leaves the icon tilted) */
+@media (hover:hover){
+  .hwx-svc--hover .hwx-svc__item:hover .hwx-svc__hx{transform:translateY(-3px) rotate(-6deg)}
+  .hwx-svc--hover .hwx-svc__item:hover .hwx-svc__name{color:var(--hwx-svc-hover,#8c1c24)}
+}
+
+/* "Know more" link: added by module.js, used on phones only */
+.hwx-svc__more{display:none}
+
+/* scroll reveal (module.js) */
+.hwx-svc--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-svc--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@keyframes hwxSvcPop{0%{transform:none}45%{transform:translateY(-5px) rotate(-12deg) scale(1.08)}100%{transform:translateY(-3px) rotate(-6deg)}}
+
+@media (max-width:1020px){
+  .hwx-svc{padding-top:min(var(--hwx-svc-pad-top,60px), 52px);padding-bottom:min(var(--hwx-svc-pad-bottom,60px), 52px)}
+  .hwx-svc--cols-3 .hwx-svc__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+}
+@media (max-width:820px){
+  .hwx-svc__list,.hwx-svc--cols-3 .hwx-svc__list{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:760px){
+  .hwx-svc__item{grid-template-columns:32px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0}
+  .hwx-svc__hx{width:32px;height:32px}
+  .hwx-svc__name{font-size:16px;line-height:1.35;padding-top:5px}
+  .hwx-svc__text{margin-top:4px;font-size:14.5px;line-height:1.6}
+
+  /* one line of each description, "Know more" opens the rest */
+  .hwx-svc--clamp .hwx-svc__text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden}
+  .hwx-svc--clamp .hwx-svc__item.is-open .hwx-svc__text{display:block;-webkit-line-clamp:unset;overflow:visible}
+  .hwx-svc--clamp .hwx-svc__item.is-open .hwx-svc__hx{transform:translateY(-3px) rotate(-6deg);animation:hwxSvcPop .55s cubic-bezier(.34,1.56,.64,1)}
+  .hwx-svc--clamp .hwx-svc__more{
+    display:inline-block;margin-top:4px;padding:2px 0;border:0;background:none;
+    font:600 13.5px/1.4 var(--hwx-svc-body);color:var(--hwx-svc-link,#e70000);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .hwx-svc--clamp .hwx-svc__more[hidden]{display:none}
+  .hwx-svc__more:focus-visible{outline:3px solid #00a2e1;outline-offset:2px;border-radius:4px}
+}
+@media (max-width:640px){
+  .hwx-svc{padding-top:min(var(--hwx-svc-pad-top,60px), 44px);padding-bottom:min(var(--hwx-svc-pad-bottom,60px), 44px)}
+  .hwx-svc__head{margin-bottom:36px}
+  .hwx-svc__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-svc *{transition:none!important;animation:none!important}
+  .hwx-svc--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* HotWax Systems | Module: S&M CTA
+   Self-contained: every class starts with .hwx-cta. The rules under .hwx-cta__form style the
+   HubSpot form markup (.hs-form, .hs-input, .hs-button) so the chosen form looks like the design. */
+
+.hwx-cta{
+  --hwx-cta-font:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-cta-section-bg,#fafafa);
+  padding-top:var(--hwx-cta-pad-top,0px);
+  padding-bottom:var(--hwx-cta-pad-bottom,60px);
+  font-family:var(--hwx-cta-font);
+}
+.hwx-cta *,.hwx-cta *::before,.hwx-cta *::after{box-sizing:border-box}
+
+.hwx-cta__wrap{
+  max-width:var(--hwx-cta-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+.hwx-cta__card{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:20px 40px;
+  align-items:center;
+  padding:42px 48px;
+  border-radius:var(--hwx-cta-radius,22px);
+  background:var(--hwx-cta-card-bg,#a22b2a);
+}
+.hwx-cta--shadow .hwx-cta__card{box-shadow:0 30px 60px -30px rgba(140,28,36,.45)}
+
+/* copy */
+.hwx-cta__title{
+  margin:0;
+  font:700 clamp(21px,2vw,26px)/1.25 var(--hwx-cta-font);
+  letter-spacing:-.01em;
+  color:var(--hwx-cta-title,#fff);
+}
+.hwx-cta__text{
+  margin-top:8px;
+  max-width:52ch;
+  font-size:14.5px;
+  font-weight:300;
+  line-height:1.6;
+  color:var(--hwx-cta-text,#fff);
+  opacity:var(--hwx-cta-text-opacity,.86);
+}
+.hwx-cta__text p{margin:0}
+.hwx-cta__text p + p{margin-top:8px}
+.hwx-cta__text a{color:inherit}
+
+/* HubSpot form: email field + button on one row */
+.hwx-cta__form .hs-form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px 14px;
+  align-items:start;
+  margin:0;
+}
+.hwx-cta__form .hs-form fieldset{max-width:none!important;margin:0;padding:0;border:0}
+.hwx-cta__form .hs-form fieldset .hs-form-field,
+.hwx-cta__form .hs-form .hs-form-field{width:100%!important;float:none!important;margin:0;padding:0}
+.hwx-cta__form .hs-form .input{margin:0!important}
+.hwx-cta__form .hs-form-field > label{display:block;margin:0 0 6px;font-size:13px;font-weight:500;color:var(--hwx-cta-title,#fff)}
+.hwx-cta--hide-labels .hwx-cta__form .hs-form-field > label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hwx-cta__form .hs-form-required{color:inherit}
+
+.hwx-cta__form input[type="email"],
+.hwx-cta__form input[type="text"],
+.hwx-cta__form input[type="tel"],
+.hwx-cta__form .hs-input:not([type="checkbox"]):not([type="radio"]){
+  width:100%!important;
+  height:50px;
+  margin:0;
+  padding:0 18px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-input-bg,#fff);
+  color:var(--hwx-cta-input-text,#141112);
+  font:500 15px/1 var(--hwx-cta-font);
+  box-shadow:none;
+}
+.hwx-cta__form input::placeholder{color:#8b9298;opacity:1}
+.hwx-cta__form input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.45)}
+
+.hwx-cta__form .hs_submit,.hwx-cta__form .hs_submit .actions{margin:0;padding:0}
+.hwx-cta--hide-labels .hwx-cta__form .hs_submit{align-self:start}
+.hwx-cta:not(.hwx-cta--hide-labels) .hwx-cta__form .hs_submit{align-self:end}
+.hwx-cta__form .hs-button,
+.hwx-cta__form input[type="submit"],
+.hwx-cta__form button[type="submit"]{
+  height:50px;
+  margin:0;
+  padding:0 26px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-btn-bg,#e70000);
+  color:var(--hwx-cta-btn-text,#fff);
+  font:700 13.5px/1 var(--hwx-cta-font);
+  letter-spacing:.06em;
+  cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.4);
+  transition:background .2s, transform .2s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.hwx-cta--caps .hwx-cta__form .hs-button,
+.hwx-cta--caps .hwx-cta__form input[type="submit"],
+.hwx-cta--caps .hwx-cta__form button[type="submit"]{text-transform:uppercase;letter-spacing:.14em}
+.hwx-cta__form .hs-button:hover,
+.hwx-cta__form input[type="submit"]:hover,
+.hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a);transform:translateY(-1px)}
+
+/* anything else the form adds (errors, consent text, recaptcha) spans the full row */
+.hwx-cta__form .hs-form > :not(fieldset):not(.hs-form-field):not(.hs_submit){grid-column:1 / -1}
+.hwx-cta__form .hs-error-msgs{list-style:none;margin:8px 0 0;padding:0}
+.hwx-cta__form .hs-error-msg,.hwx-cta__form .hs-main-font-element{font-size:13px;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .legal-consent-container,.hwx-cta__form .hs-richtext{font-size:12px;line-height:1.5;color:var(--hwx-cta-text,#fff);opacity:.8}
+.hwx-cta__form .submitted-message{font-size:15px;line-height:1.6;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .submitted-message p{margin:0}
+
+/* editor-only preview notice */
+.hwx-cta__notice{margin:0;font-size:12px;color:var(--hwx-cta-title,#fff);opacity:.75}
+.hwx-cta__placeholder input{cursor:default}
+
+/* scroll reveal (module.js) */
+.hwx-cta--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-cta--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-cta__card{grid-template-columns:minmax(0,1fr);padding:26px 22px}
+}
+@media (max-width:640px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 44px)}
+}
+@media (max-width:480px){
+  .hwx-cta__card{padding:22px 18px;gap:16px}
+  .hwx-cta__title{font-size:20px}
+  .hwx-cta__text{font-size:14px}
+  .hwx-cta__form .hs-form{grid-template-columns:minmax(0,1fr);gap:10px}
+  .hwx-cta__form .hs-button,
+  .hwx-cta__form input[type="submit"],
+  .hwx-cta__form button[type="submit"]{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-cta *{transition:none!important}
+  .hwx-cta--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-cta .hwx-cta__text a,
+.hwx-cta .hwx-cta__text a:link,
+.hwx-cta .hwx-cta__text a:visited,
+.hwx-cta .hwx-cta__text a:hover,
+.hwx-cta .hwx-cta__text a:focus,
+.hwx-cta .hwx-cta__text a:active{color:inherit!important;text-decoration:underline}
+.hwx-cta .hwx-cta__form .hs-button,
+.hwx-cta .hwx-cta__form input[type="submit"],
+.hwx-cta .hwx-cta__form button[type="submit"]{background:var(--hwx-cta-btn-bg,#e70000)!important;color:var(--hwx-cta-btn-text,#fff)!important;border:0!important}
+.hwx-cta .hwx-cta__form .hs-button:hover,
+.hwx-cta .hwx-cta__form input[type="submit"]:hover,
+.hwx-cta .hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a)!important}
+
+/* HotWax Systems | Module: S&M Team
+   Self-contained: every class starts with .hwx-team, so it will not clash with the HubSpot theme.
+   Colors, sizes and spacing come from the module fields through the CSS variables on the <section>. */
+
+.hwx-team{
+  --hwx-team-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-team-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-team-bg,#fafafa);
+  color:var(--hwx-team-text,#4d4547);
+  font-family:var(--hwx-team-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-team-pad-top,60px);
+  padding-bottom:var(--hwx-team-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-team *,.hwx-team *::before,.hwx-team *::after{box-sizing:border-box}
+
+.hwx-team__wrap{
+  max-width:var(--hwx-team-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  gap:64px;
+  align-items:center;
+}
+
+/* left column */
+.hwx-team__copy{align-self:center;padding-bottom:76px}
+.hwx-team__kicker{margin:0 0 14px;font:600 12px/1.4 var(--hwx-team-body);letter-spacing:.16em;text-transform:uppercase;color:var(--hwx-team-kicker,#e70000)}
+.hwx-team__title{
+  margin:0;
+  font-family:var(--hwx-team-display);
+  font-weight:700;
+  font-size:clamp(28px,2.8vw,38px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-team-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-team__intro{margin-top:18px;font-size:16px;line-height:1.7}
+.hwx-team__intro p{margin:0}
+.hwx-team__intro p + p{margin-top:10px}
+.hwx-team__intro strong,.hwx-team__intro b{color:var(--hwx-team-ink,#141112);font-weight:600}
+.hwx-team__creds{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.hwx-team__creds li{display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4}
+.hwx-team__creds svg{flex:none;margin-top:1px;color:var(--hwx-team-icon,#e70000)}
+.hwx-team__creds b,.hwx-team__creds strong{color:var(--hwx-team-ink,#141112);font-weight:600}
+.hwx-team__creds a{color:inherit}
+
+/* carousel */
+.hwx-team__carousel{position:relative;min-width:0}
+.hwx-team__stage{position:relative;touch-action:pan-y;height:var(--hwx-team-card-h,460px);max-width:var(--hwx-team-card-w,600px);margin:0 auto}
+.hwx-team__card{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:row;
+  background:var(--hwx-team-card,#fff);
+  border:1px solid var(--hwx-team-line,#e6dfe0);
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 40px 70px -45px rgba(60,10,15,.5);
+  opacity:0;visibility:hidden;transform:translateX(60px) scale(.97);
+  transition:opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1), visibility 0s 1s;
+}
+.hwx-team__card.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .9s ease, transform 1s cubic-bezier(.16,1,.3,1), visibility 0s}
+.hwx-team__card.is-leaving{opacity:0;visibility:visible;transform:translateX(-60px) scale(.97)}
+.hwx-team__card.is-leaving.from-left{transform:translateX(60px) scale(.97)}
+
+.hwx-team__photo{flex:0 0 52%;min-height:0;position:relative;overflow:hidden;background:#e9e2e1}
+.hwx-team__photo img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:var(--hwx-team-photo-pos,50% 18%);
+  transform:scale(1.08);transition:transform 1.6s cubic-bezier(.16,1,.3,1);
+}
+.hwx-team--gray .hwx-team__photo img{filter:grayscale(1)}
+.hwx-team__card.is-active .hwx-team__photo img{transform:scale(1)}
+.hwx-team__card.is-active:hover .hwx-team__photo img{transform:scale(1.03)}
+.hwx-team__initials{position:absolute;inset:0;display:grid;place-items:center;font:700 72px/1 var(--hwx-team-display);color:var(--hwx-team-role,#8c1c24);opacity:.35}
+
+.hwx-team__info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;text-align:right;padding:84px 30px 32px}
+.hwx-team__info > *{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .7s cubic-bezier(.16,1,.3,1)}
+.hwx-team__card.is-active .hwx-team__info > *{opacity:1;transform:none}
+.hwx-team__card.is-active .hwx-team__info > :nth-child(1){transition-delay:.25s}
+.hwx-team__card.is-active .hwx-team__info > :nth-child(2){transition-delay:.35s}
+.hwx-team__card.is-active .hwx-team__info > :nth-child(3){transition-delay:.45s}
+.hwx-team__role{margin:0;font:600 12px/1.4 var(--hwx-team-body);letter-spacing:.12em;text-transform:uppercase;color:var(--hwx-team-role,#8c1c24)}
+.hwx-team__role.is-highlight{color:var(--hwx-team-role-hl,#e70000)}
+.hwx-team__name{margin:10px 0 0;font:700 30px/1.15 var(--hwx-team-display);color:var(--hwx-team-ink,#141112);text-wrap:balance}
+.hwx-team__job{margin:10px 0 0;font-size:15.5px;line-height:1.5;color:var(--hwx-team-text,#4d4547)}
+
+/* LinkedIn button: appears on hover (always visible on touch screens) */
+.hwx-team__in{
+  position:absolute;right:22px;top:22px;width:46px;height:46px;border-radius:12px;
+  display:grid;place-items:center;background:var(--hwx-team-in,#0a66c2);color:#fff;
+  box-shadow:0 10px 22px -10px rgba(10,102,194,.7);
+  opacity:0;transform:translateY(-8px) scale(.9);
+  transition:opacity .25s ease, transform .3s cubic-bezier(.34,1.56,.64,1), filter .2s;
+}
+.hwx-team__card:hover .hwx-team__in,.hwx-team__in:focus-visible{opacity:1;transform:none}
+.hwx-team__in:hover{filter:brightness(.7)}
+.hwx-team__in:focus-visible{outline:3px solid #00a2e1;outline-offset:3px}
+/* phones and touch screens: the whole photo opens LinkedIn, so the small button is hidden (still read by screen readers) */
+@media (max-width:760px), (hover:none){.hwx-team__in{opacity:0!important;pointer-events:none}}
+
+.hwx-team__nav{margin-top:24px;display:flex;justify-content:center;gap:14px}
+.hwx-team__arrow{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--hwx-team-line,#e6dfe0);background:var(--hwx-team-card,#fff);color:var(--hwx-team-ink,#141112);
+  display:grid;place-items:center;cursor:pointer;padding:0;
+  box-shadow:0 8px 20px -14px rgba(60,10,15,.5);
+  transition:background .2s, color .2s, border-color .2s, transform .2s;
+}
+.hwx-team__arrow:hover{background:var(--hwx-team-arrow-hover,#8c1c24);border-color:var(--hwx-team-arrow-hover,#8c1c24);color:#fff;transform:translateY(-2px)}
+.hwx-team__arrow:focus-visible{outline:3px solid #00a2e1;outline-offset:3px}
+/* phones use swipe and auto-advance, so the arrows are for desktop only */
+@media (max-width:760px){.hwx-team__nav{display:none}}
+@media (max-width:760px), (hover:none){.hwx-team__card:has(.hwx-team__in) .hwx-team__photo{cursor:pointer}}
+
+/* scroll reveal (module.js) */
+.hwx-team--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-team--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-team{padding-top:min(var(--hwx-team-pad-top,60px), 52px);padding-bottom:min(var(--hwx-team-pad-bottom,60px), 52px)}
+}
+@media (max-width:980px){
+  .hwx-team__wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+  .hwx-team__copy{padding-bottom:0}
+  .hwx-team__stage{height:min(var(--hwx-team-card-h,460px), 440px)}
+}
+@media (max-width:640px){
+  .hwx-team{padding-top:min(var(--hwx-team-pad-top,60px), 44px);padding-bottom:min(var(--hwx-team-pad-bottom,60px), 44px)}
+}
+@media (max-width:560px){
+  .hwx-team__stage{height:560px}
+  .hwx-team__card{flex-direction:column}
+  .hwx-team__photo{flex:1 1 auto}
+  .hwx-team__info{flex:0 0 auto;padding:18px 20px 22px}
+  .hwx-team__name{font-size:24px;margin-top:6px}
+  .hwx-team__job{margin-top:6px}
+  .hwx-team__in{right:14px;top:14px;width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-team__card,.hwx-team__card.is-active,.hwx-team__photo img,.hwx-team__info > *{transition:none;transform:none}
+  .hwx-team__info > *{opacity:1}
+  .hwx-team--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-team a.hwx-team__in,
+.hwx-team a.hwx-team__in:link,
+.hwx-team a.hwx-team__in:visited,
+.hwx-team a.hwx-team__in:hover,
+.hwx-team a.hwx-team__in:focus,
+.hwx-team a.hwx-team__in:active{color:#fff!important;text-decoration:none!important}
+.hwx-team .hwx-team__intro a,
+.hwx-team .hwx-team__intro a:link,
+.hwx-team .hwx-team__intro a:visited,
+.hwx-team .hwx-team__intro a:hover,
+.hwx-team .hwx-team__intro a:focus,
+.hwx-team .hwx-team__intro a:active{color:inherit!important}
+.hwx-team .hwx-team__creds a,
+.hwx-team .hwx-team__creds a:link,
+.hwx-team .hwx-team__creds a:visited,
+.hwx-team .hwx-team__creds a:hover,
+.hwx-team .hwx-team__creds a:focus,
+.hwx-team .hwx-team__creds a:active{color:inherit!important}
+
+/* HotWax Systems | Module: S&M How It Works
+   Self-contained: every class starts with .hwx-how, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-how{
+  --hwx-how-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-how-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-how-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-how-bg,#fafafa);
+  color:var(--hwx-how-text,#4d4547);
+  font-family:var(--hwx-how-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-how-pad-top,60px);
+  padding-bottom:var(--hwx-how-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-how *,.hwx-how *::before,.hwx-how *::after{box-sizing:border-box}
+
+.hwx-how__wrap{
+  max-width:var(--hwx-how-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-how-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-how__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-how__title{
+  margin:0;
+  font-family:var(--hwx-how-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-how-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-how__intro{font-size:18px;max-width:62ch}
+.hwx-how__intro p{margin:0}
+.hwx-how__intro p + p{margin-top:10px}
+.hwx-how__intro strong,.hwx-how__intro b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* steps */
+.hwx-how__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+.hwx-how__step{position:relative;padding-top:28px;border-top:2px solid var(--hwx-how-line,#e6dfe0)}
+.hwx-how__step::before{
+  content:"";position:absolute;top:-2px;left:0;width:48px;height:2px;
+  background:var(--hwx-how-accent,#e70000);
+  transition:width .5s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover:hover) and (min-width:761px){
+  .hwx-how--hover .hwx-how__step:hover::before{width:100%}
+}
+.hwx-how__n{display:block;margin-bottom:16px;font:700 44px/1 var(--hwx-how-body)}
+.hwx-how--num-outline .hwx-how__n{color:transparent;-webkit-text-stroke:1.2px var(--hwx-how-number,#8c1c24)}
+.hwx-how--num-solid .hwx-how__n{color:var(--hwx-how-number,#8c1c24)}
+.hwx-how__step-title{margin:0;font:600 22px/1.12 var(--hwx-how-display);color:var(--hwx-how-ink,#141112)}
+.hwx-how__step-text{margin-top:10px;font-size:15px;line-height:1.7}
+.hwx-how__step-text p{margin:0}
+.hwx-how__step-text p + p{margin-top:8px}
+.hwx-how__step-text strong,.hwx-how__step-text b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* closing line */
+.hwx-how__closing{margin:40px 0 0;font-size:16px;color:var(--hwx-how-text,#4d4547)}
+.hwx-how__closing a{color:var(--hwx-how-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-how__closing a:hover{text-decoration:underline}
+.hwx-how a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-how__steps > .is-clone{display:none}.hwx-how__steps{transform:none!important}}
+
+/* scroll reveal (module.js) */
+.hwx-how--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-how--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 52px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 52px)}
+  .hwx-how--cols-4 .hwx-how__steps,.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 32px}
+}
+@media (max-width:760px){
+  .hwx-how__steps,.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:minmax(0,1fr);gap:28px}
+
+  /* one full card at a time: module.js slides the list with transform (swipe and arrows) */
+  .hwx-how--carousel .hwx-how__viewport{overflow:hidden;padding:4px 0 6px;margin:-4px 0 -6px}
+  .hwx-how--carousel .hwx-how__steps{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-how--carousel .hwx-how__steps.is-dragging{transition:none}
+  .hwx-how--carousel .hwx-how__step{
+    flex:0 0 100%;min-width:0;overflow:hidden;
+    background:var(--hwx-how-card,#fff);
+    border:1px solid var(--hwx-how-line,#e6dfe0);border-top:2px solid var(--hwx-how-line,#e6dfe0);
+    border-radius:18px;padding:24px 22px 26px;
+  }
+  .hwx-how--carousel .hwx-how__step::before{left:22px;top:0;width:40px;max-width:calc(100% - 44px);border-radius:0 0 2px 2px}
+  .hwx-how--carousel .hwx-how__step.is-current::before{width:calc(100% - 44px)}
+
+}
+@media (max-width:640px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 44px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 44px)}
+  .hwx-how__head{margin-bottom:36px}
+  .hwx-how__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-how *{transition:none!important}
+  .hwx-how--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-how .hwx-how__closing a,
+.hwx-how .hwx-how__closing a:link,
+.hwx-how .hwx-how__closing a:visited,
+.hwx-how .hwx-how__closing a:hover,
+.hwx-how .hwx-how__closing a:focus,
+.hwx-how .hwx-how__closing a:active{color:var(--hwx-how-link,#e70000)!important;text-decoration:none}
+.hwx-how .hwx-how__closing a:hover{text-decoration:underline}
+
+/* HotWax Systems | Module: S&M Comparison
+   Self-contained: every class starts with .hwx-cmp. The table rules reset common theme table
+   styles (uppercase headers, zebra rows, borders) so the theme cannot change the design. */
+
+.hwx-cmp{
+  --hwx-cmp-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-cmp-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-cmp-bg,#fafafa);
+  color:var(--hwx-cmp-text,#4d4547);
+  font-family:var(--hwx-cmp-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-cmp-pad-top,60px);
+  padding-bottom:var(--hwx-cmp-pad-bottom,60px);
+}
+.hwx-cmp *,.hwx-cmp *::before,.hwx-cmp *::after{box-sizing:border-box}
+.hwx-cmp p{margin:0}
+
+.hwx-cmp__wrap{
+  max-width:var(--hwx-cmp-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-cmp__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-cmp__title{
+  margin:0;
+  font-family:var(--hwx-cmp-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-cmp-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-cmp__intro{font-size:18px;max-width:62ch}
+.hwx-cmp__intro p + p{margin-top:10px}
+.hwx-cmp__intro strong,.hwx-cmp__intro b{color:var(--hwx-cmp-ink,#141112);font-weight:600}
+
+/* ---------- table ---------- */
+.hwx-cmp__table-wrap{
+  background:var(--hwx-cmp-card,#fff);
+  border:1px solid var(--hwx-cmp-line,#e6dfe0);
+  border-radius:26px;
+  padding:14px;
+  box-shadow:0 40px 80px -60px rgba(60,10,15,.4);
+  overflow-x:auto;
+}
+.hwx-cmp__table{
+  width:100%;min-width:780px;margin:0;
+  table-layout:fixed;border-collapse:separate;border-spacing:0;border:0;
+  font-size:15px;background:transparent;
+}
+.hwx-cmp__table col{width:25%}
+.hwx-cmp__table col.hwx-cmp__c-label{width:20%}
+.hwx-cmp__table col.hwx-cmp__c-us{width:30%}
+.hwx-cmp__table th,.hwx-cmp__table td{
+  padding:20px 24px;text-align:left;vertical-align:top;line-height:1.55;
+  border:0;border-bottom:1px solid var(--hwx-cmp-line,#e6dfe0);
+  background:transparent;color:inherit;
+  text-transform:none;letter-spacing:0;font-weight:inherit;
+  transition:background .2s;
+}
+.hwx-cmp__table thead th{height:84px;vertical-align:middle}
+.hwx-cmp__corner{font:600 12px/1.4 var(--hwx-cmp-body);letter-spacing:.12em;text-transform:uppercase;color:var(--hwx-cmp-muted,#7a7173)}
+.hwx-cmp__opt{display:block;font:600 18px/1.3 var(--hwx-cmp-display);color:var(--hwx-cmp-ink,#141112)}
+.hwx-cmp__table tbody th{font:600 15px/1.5 var(--hwx-cmp-body);color:var(--hwx-cmp-ink,#141112)}
+.hwx-cmp__table tbody tr:last-child th,.hwx-cmp__table tbody tr:last-child td{border-bottom:0}
+
+.hwx-cmp__cell{display:flex;align-items:flex-start;gap:12px;color:var(--hwx-cmp-text,#4d4547)}
+.hwx-cmp__cell > span:last-child{min-width:0}
+.hwx-cmp__dot{flex:0 0 8px;width:8px;height:8px;margin-top:8px;border-radius:50%;background:var(--hwx-cmp-dot,#d6cbcc)}
+.hwx-cmp__ic{flex:none;margin-top:2px;color:var(--hwx-cmp-icon,#e70000)}
+
+/* HotWax column */
+.hwx-cmp__table .hwx-cmp__us{
+  background:var(--hwx-cmp-us-cell,#fff6f3);
+  border-left:1px solid var(--hwx-cmp-us-border,#f5d6cf);
+  border-right:1px solid var(--hwx-cmp-us-border,#f5d6cf);
+}
+.hwx-cmp__table td.hwx-cmp__us .hwx-cmp__cell{color:var(--hwx-cmp-ink,#141112);font-weight:600}
+.hwx-cmp__table thead th.hwx-cmp__us{background:var(--hwx-cmp-us-head,#8c1c24);border-color:var(--hwx-cmp-us-head,#8c1c24);border-radius:18px 18px 0 0}
+.hwx-cmp__us-name{display:block;font:700 19px/1.2 var(--hwx-cmp-display);color:var(--hwx-cmp-us-head-text,#fff)}
+.hwx-cmp__table tbody tr:last-child td.hwx-cmp__us{border-radius:0 0 18px 18px;border-bottom:1px solid var(--hwx-cmp-us-border,#f5d6cf)}
+
+/* row hover */
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover th,
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover td:not(.hwx-cmp__us){background:rgba(140,28,36,.025)}
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover td.hwx-cmp__us{filter:brightness(.985)}
+
+/* ---------- phones: card per row (see the 760px rule below) ---------- */
+.hwx-cmp__mobile{display:none}
+
+/* scroll reveal (module.js) */
+.hwx-cmp--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-cmp--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-cmp{padding-top:min(var(--hwx-cmp-pad-top,60px), 52px);padding-bottom:min(var(--hwx-cmp-pad-bottom,60px), 52px)}
+}
+@media (max-width:760px){
+  .hwx-cmp__table-wrap{display:none}
+  .hwx-cmp__mobile{display:grid;gap:10px}
+  .hwx-cmp__m-row{background:var(--hwx-cmp-card,#fff);border:1px solid var(--hwx-cmp-line,#e6dfe0);border-radius:16px;padding:14px 14px 13px}
+  .hwx-cmp__m-label{margin:0 0 8px!important;font:600 15px/1.3 var(--hwx-cmp-body);color:var(--hwx-cmp-ink,#141112)}
+  .hwx-cmp__m-us{display:flex;gap:9px;align-items:flex-start;margin-top:10px;padding:9px 11px;border-radius:12px;background:var(--hwx-cmp-us-cell,#fff6f3);border:1px solid var(--hwx-cmp-us-border,#f5d6cf)}
+  .hwx-cmp__m-us .hwx-cmp__ic{margin-top:2px}
+  .hwx-cmp__m-us p{font-size:14px;line-height:1.4;font-weight:600;color:var(--hwx-cmp-ink,#141112)}
+  .hwx-cmp__m-who{display:block;margin-bottom:2px;font:700 10.5px/1.4 var(--hwx-cmp-body);letter-spacing:.1em;text-transform:uppercase;color:var(--hwx-cmp-us-head,#8c1c24)}
+  .hwx-cmp__m-them{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin:0;padding:0 2px}
+  .hwx-cmp__m-them dt{font:600 10.5px/1.4 var(--hwx-cmp-body);letter-spacing:.08em;text-transform:uppercase;color:var(--hwx-cmp-muted,#7a7173)}
+  .hwx-cmp__m-them dd{margin:2px 0 0;font-size:13px;line-height:1.4;color:var(--hwx-cmp-text,#4d4547)}
+}
+@media (max-width:640px){
+  .hwx-cmp{padding-top:min(var(--hwx-cmp-pad-top,60px), 44px);padding-bottom:min(var(--hwx-cmp-pad-bottom,60px), 44px)}
+  .hwx-cmp__head{margin-bottom:36px}
+  .hwx-cmp__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-cmp *{transition:none!important}
+  .hwx-cmp--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* HotWax Systems | Module: S&M Testimonials
+   Self-contained: every class starts with .hwx-voices, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-voices{
+  --hwx-voices-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-voices-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-voices-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-voices-bg,#fafafa);
+  color:var(--hwx-voices-text,#4d4547);
+  font-family:var(--hwx-voices-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-voices-pad-top,60px);
+  padding-bottom:var(--hwx-voices-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-voices *,.hwx-voices *::before,.hwx-voices *::after{box-sizing:border-box}
+
+.hwx-voices__wrap{
+  max-width:var(--hwx-voices-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-voices-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-voices__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-voices__title{
+  margin:0;
+  font-family:var(--hwx-voices-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-voices-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-voices__intro{font-size:18px;max-width:62ch}
+.hwx-voices__intro p{margin:0}
+
+/* layouts */
+.hwx-voices--featured .hwx-voices__list{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
+.hwx-voices__stack{display:grid;gap:28px}
+.hwx-voices--grid .hwx-voices__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:stretch}
+
+/* cards */
+.hwx-voices__card{
+  margin:0;min-width:0;
+  display:flex;flex-direction:column;gap:26px;
+  padding:36px;
+  background:var(--hwx-voices-card,#fff);
+  border:1px solid var(--hwx-voices-line,#e6dfe0);
+  border-radius:22px;
+}
+.hwx-voices--hover .hwx-voices__card{transition:transform .3s ease, box-shadow .3s ease}
+.hwx-voices--hover .hwx-voices__card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -30px rgba(60,10,15,.4)}
+.hwx-voices__qm{height:26px;font:700 72px/.6 var(--hwx-voices-display);color:var(--hwx-voices-qm,#e74000)}
+.hwx-voices__quote{margin:0;padding:0;border:0;font:400 19px/1.6 var(--hwx-voices-display);color:var(--hwx-voices-ink,#141112);quotes:none}
+
+.hwx-voices__who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.hwx-voices__avatar{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;object-fit:cover;
+  font:600 16px/1 var(--hwx-voices-body);
+  background:var(--hwx-voices-avatar-bg,#f3e9ea);color:var(--hwx-voices-avatar-text,#8c1c24);
+}
+.hwx-voices__name{display:block;font:600 15px/1.3 var(--hwx-voices-body);color:var(--hwx-voices-ink,#141112)}
+.hwx-voices__role{display:block;font-size:13px;line-height:1.4;color:var(--hwx-voices-muted,#7a7173)}
+
+/* featured card */
+.hwx-voices__card.is-feature{padding:44px;background:var(--hwx-voices-feature,#8c1c24);border-color:var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__quote{font-size:clamp(22px,2.3vw,28px);line-height:1.45;color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+.hwx-voices__card.is-feature .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+/* closing line */
+.hwx-voices__more{margin:36px 0 0;font-size:15.5px;color:var(--hwx-voices-text,#4d4547)}
+.hwx-voices__more a{display:inline-flex;align-items:center;gap:6px;margin-left:4px;color:var(--hwx-voices-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-voices__more a:hover{text-decoration:underline}
+.hwx-voices a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-voices__list > .is-clone{display:none}.hwx-voices__list{transform:none!important}}
+
+/* scroll reveal (module.js) */
+.hwx-voices--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-voices--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 52px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-voices--featured .hwx-voices__list{grid-template-columns:minmax(0,1fr)}
+  .hwx-voices__card,.hwx-voices__card.is-feature{padding:28px}
+}
+@media (max-width:760px){
+  /* one card at a time; all cards share the same light look on phones */
+  /* module.js slides the list with transform (swipe, arrows, auto-slide) */
+  .hwx-voices--carousel .hwx-voices__viewport{overflow:hidden;padding:6px 0 10px;margin:-6px 0 -10px}
+  .hwx-voices--carousel .hwx-voices__list{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-voices--carousel .hwx-voices__list.is-dragging{transition:none}
+  .hwx-voices--carousel .hwx-voices__stack{display:contents}
+  .hwx-voices--carousel .hwx-voices__card,
+  .hwx-voices--carousel .hwx-voices__card.is-feature{
+    flex:0 0 100%;min-width:0;min-height:300px;gap:22px;
+    padding:28px 24px;border-radius:20px;
+    /* every card on phones uses the featured card colors */
+    background:var(--hwx-voices-feature,#8c1c24);border:1px solid var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff);
+    transform:none;box-shadow:none;
+  }
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__quote{font:400 19px/1.55 var(--hwx-voices-display);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+}
+@media (max-width:640px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 44px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 44px)}
+  .hwx-voices__head{margin-bottom:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-voices *{transition:none!important}
+  .hwx-voices--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-voices .hwx-voices__more a,
+.hwx-voices .hwx-voices__more a:link,
+.hwx-voices .hwx-voices__more a:visited,
+.hwx-voices .hwx-voices__more a:hover,
+.hwx-voices .hwx-voices__more a:focus,
+.hwx-voices .hwx-voices__more a:active{color:var(--hwx-voices-link,#e70000)!important;text-decoration:none}
+.hwx-voices .hwx-voices__more a:hover{text-decoration:underline}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+<section
+  class="hwx-banner hwx-banner--center hwx-banner--animate"
+  id="hwx-banner-widget-0"
+  style="
+    --hwx-banner-img: url('hero-warehouse-banner.jpg');
+    --hwx-banner-pos: center;
+    --hwx-banner-overlay: 0.42;
+    --hwx-banner-min-h: 680px;
+    --hwx-banner-width: 980px;
+    --hwx-banner-fallback: #2A0B0E;
+    --hwx-banner-text: #FFFFFF;
+    --hwx-banner-highlight: #FF6A2B;
+    --hwx-banner-btn-bg: #E70000;
+    --hwx-banner-btn-text: #FFFFFF;
+  ">
+  <div class="hwx-banner__inner">
+
+    
+
+    
+    <h1 class="hwx-banner__title">Keep Apache OFBiz <span class="hwx-banner__hl">connected, secure, and running.</span></h1>
+
+    
+      <div class="hwx-banner__sub"><p>Integrations, upgrades, bug fixes, and proactive maintenance from <strong>the world's largest team of Apache OFBiz committers.</strong></p></div>
+    
+
+    
+      
+      <div class="hwx-banner__actions">
+        <a class="hwx-banner__btn"
+           href="#talk"
+           
+           >
+          Talk to an Apache OFBiz expert
+          
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          
+        </a>
+      </div>
+    
+
+    
+      <p class="hwx-banner__note hwx-banner__note--desktop-only">Trusted by 50+ enterprises across the USA and Canada</p>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+
+
+
+<section
+  class="hwx-problem hwx-problem--columns hwx-problem--hover hwx-problem--reveal"
+  id="problem"
+  style="
+    --hwx-problem-bg: #FAFAFA;
+    --hwx-problem-ink: #141112;
+    --hwx-problem-text: #4D4547;
+    --hwx-problem-accent: #E70000;
+    --hwx-problem-hover: #E70000;
+    --hwx-problem-line: #E6DFE0;
+    --hwx-problem-icon: #E70000;
+    --hwx-problem-pad-top: 60px;
+    --hwx-problem-pad-bottom: 60px;
+    --hwx-problem-width: 1180px;
+    --hwx-problem-gap: 64px;
+  ">
+  <div class="hwx-problem__wrap">
+
+    <div class="hwx-problem__head">
+      
+      
+        <h2 class="hwx-problem__title">Your business runs on <span class="hwx-problem__hv">Apache OFBiz</span>. Who is looking after it<span class="hwx-problem__hv">?</span></h2>
+      
+
+      
+        <p class="hwx-problem__lead">Sound familiar?</p>
+      
+
+      
+        <div class="hwx-problem__agitate hwx-problem__agitate--line"><p><strong>You don't need a new system.</strong> You need people who know this one inside out.</p></div>
+      
+    </div>
+
+    
+      <ul class="hwx-problem__signs">
+        
+          
+            <li class="hwx-problem__sign">
+              
+                <svg class="hwx-problem__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                  
+                    <path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/>
+                  
+                </svg>
+              
+              <span>Your original developer or vendor has left, and no one fully understands the system anymore.</span>
+            </li>
+          
+        
+          
+            <li class="hwx-problem__sign">
+              
+                <svg class="hwx-problem__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                  
+                    <path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/>
+                  
+                </svg>
+              
+              <span>You&#39;re stuck on an outdated version and unsure how to upgrade safely.</span>
+            </li>
+          
+        
+          
+            <li class="hwx-problem__sign">
+              
+                <svg class="hwx-problem__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                  
+                    <path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/>
+                  
+                </svg>
+              
+              <span>The same bugs keep coming back, despite repeated fixes.</span>
+            </li>
+          
+        
+          
+            <li class="hwx-problem__sign">
+              
+                <svg class="hwx-problem__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                  
+                    <path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/>
+                  
+                </svg>
+              
+              <span>Your system slows down as your business grows.</span>
+            </li>
+          
+        
+      </ul>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+<section
+  class="hwx-svc hwx-svc--cols-2 hwx-svc--clamp hwx-svc--hover hwx-svc--reveal"
+  id="services"
+  data-more="Know more"
+  data-less="Show less"
+  style="
+    --hwx-svc-bg: #FAFAFA;
+    --hwx-svc-ink: #141112;
+    --hwx-svc-text: #4D4547;
+    --hwx-svc-hover: #8C1C24;
+    --hwx-svc-line: #E6DFE0;
+    --hwx-svc-icon: #E70000;
+    --hwx-svc-icon-fill: #FFF0EA;
+    --hwx-svc-icon-frame: #E74000;
+    --hwx-svc-link: #E70000;
+    --hwx-svc-pad-top: 60px;
+    --hwx-svc-pad-bottom: 60px;
+    --hwx-svc-width: 1180px;
+  ">
+  <div class="hwx-svc__wrap">
+
+    <div class="hwx-svc__head">
+      
+      <h2 class="hwx-svc__title">Apache OFBiz support and maintenance, from one team.</h2>
+      <div class="hwx-svc__intro"><p>Everything that keeps a live Apache OFBiz system healthy: the integration that breaks, the upgrade you keep postponing, and the 2 a.m. production issue.</p></div>
+    </div>
+
+    
+      <div class="hwx-svc__list">
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <circle cx="14" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="26" cy="20" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M17 20h6" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Apache OFBiz integration support</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-1">Carriers, marketplaces, accounting, and other systems stay connected to Apache OFBiz, and get repaired when an API changes.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <path d="M14 22l6-6 6 6M20 16v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Apache OFBiz upgrades</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-2">Move to a current release with your custom components mapped and tested before cutover.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <path d="M20 11l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9v-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Security releases and patches</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-3">Official Apache OFBiz security releases applied to your system and tested against your customizations.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <circle cx="18" cy="18" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M22 22l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Bug fixes and root cause analysis</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-4">Production issues traced to their real cause, so the same incident does not come back next month.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <path d="M12 25a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 25l4-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Performance tuning</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-5">Faster screens, reports, and batch jobs as your order volume grows.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <path d="M11 21h4l2-5 4 9 2-4h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Proactive monitoring</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-6">Problems flagged early, before they reach your warehouse floor or order desk.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <path d="M14 25h12a4 4 0 0 0 0-8 6 6 0 0 0-11.5 1.5A3.3 3.3 0 0 0 14 25z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Cloud and on-premise support</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-7">Apache OFBiz on AWS, Azure, Google Cloud, or your own servers, with the DevOps work that comes with it.</p>
+            </div>
+          </div>
+        
+          <div class="hwx-svc__item">
+            
+              <svg class="hwx-svc__hx" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 2l15.6 9v18L20 38 4.4 29V11z" fill="var(--hwx-svc-icon-fill,#fff0ea)" stroke="var(--hwx-svc-icon-frame,#e74000)" stroke-width="1.2"/>
+                <ellipse cx="20" cy="14.5" rx="6" ry="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 14.5v10c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-10M14 19.5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            
+            <div class="hwx-svc__body">
+              <h3 class="hwx-svc__name">Data migration</h3>
+              <p class="hwx-svc__text" id="hwx-svc-widget-2-8">Legacy data moved into Apache OFBiz and validated before anyone switches over.</p>
+            </div>
+          </div>
+        
+      </div>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+<section
+  class="hwx-cta hwx-cta--hide-labels hwx-cta--caps hwx-cta--shadow hwx-cta--reveal"
+  
+  style="
+    --hwx-cta-section-bg: #FAFAFA;
+    --hwx-cta-card-bg: #A22B2A;
+    --hwx-cta-title: #FFFFFF;
+    --hwx-cta-text: #FFFFFF;
+    --hwx-cta-text-opacity: 0.86;
+    --hwx-cta-input-bg: #FFFFFF;
+    --hwx-cta-input-text: #141112;
+    --hwx-cta-btn-bg: #E70000;
+    --hwx-cta-btn-hover: #FF1A1A;
+    --hwx-cta-btn-text: #FFFFFF;
+    --hwx-cta-pad-top: 0px;
+    --hwx-cta-pad-bottom: 60px;
+    --hwx-cta-width: 1180px;
+    --hwx-cta-radius: 22px;
+  ">
+  <div class="hwx-cta__wrap">
+    <div class="hwx-cta__card">
+
+      <div class="hwx-cta__copy">
+        
+        <h2 class="hwx-cta__title">Talk to an Apache OFBiz Expert</h2>
+        <div class="hwx-cta__text"><p>Have an Apache OFBiz system that needs attention? Connect with our Apache OFBiz experts to talk through upgrades, fixes, and ongoing support for your business.</p></div>
+      </div>
+
+      <div class="hwx-cta__form">
+        
+          
+          <form class="hs-form hwx-cta__placeholder" onsubmit="return false" aria-label="Form preview">
+            <div class="hs_email hs-form-field">
+              <label>Work email</label>
+              <div class="input"><input class="hs-input" type="email" placeholder="Email Address" disabled></div>
+            </div>
+            <div class="hs_submit"><div class="actions"><input class="hs-button primary" type="submit" value="Submit" disabled></div></div>
+            <p class="hwx-cta__notice">Choose a HubSpot form in the module's Form field. This preview is not shown on the live page.</p>
+          </form>
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+<section
+  class="hwx-team hwx-team--gray hwx-team--reveal"
+  id="team"
+  data-autoplay="true"
+  data-interval="6"
+  data-swipe="true"
+  style="
+    --hwx-team-bg: #FAFAFA;
+    --hwx-team-ink: #141112;
+    --hwx-team-text: #4D4547;
+    --hwx-team-kicker: #E70000;
+    --hwx-team-icon: #E70000;
+    --hwx-team-role: #8C1C24;
+    --hwx-team-role-hl: #E70000;
+    --hwx-team-card: #FFFFFF;
+    --hwx-team-line: #E6DFE0;
+    --hwx-team-arrow-hover: #8C1C24;
+    --hwx-team-in: #0A66C2;
+    --hwx-team-pad-top: 60px;
+    --hwx-team-pad-bottom: 60px;
+    --hwx-team-width: 1180px;
+    --hwx-team-card-w: 600px;
+    --hwx-team-card-h: 460px;
+    --hwx-team-photo-pos: 50% 18%;
+  ">
+  <div class="hwx-team__wrap">
+
+    <div class="hwx-team__copy">
+      <p class="hwx-team__kicker">The Apache OFBiz team at HotWax Systems</p>
+      
+      <h2 class="hwx-team__title">Support from the people who maintain the platform.</h2>
+      <div class="hwx-team__intro"><p>Chances are, part of the Apache OFBiz code your business runs on was written by the people on this team.</p></div>
+      
+        <ul class="hwx-team__creds">
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span>Led by the <b>Apache OFBiz PMC Chair</b></span>
+              </li>
+            
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span><b>PMC members and committers</b> with write access to the Apache OFBiz codebase</span>
+              </li>
+            
+          
+            
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                
+                <span>Every Apache role is <b>public on apache.org</b></span>
+              </li>
+            
+          
+        </ul>
+      
+    </div>
+
+    
+      <div class="hwx-team__carousel" aria-roledescription="carousel" aria-label="The Apache OFBiz team at HotWax Systems">
+        <div class="hwx-team__stage">
+          
+            <article class="hwx-team__card is-active" aria-roledescription="slide" aria-label="1 of 9">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/jacopo-cappellato.jpg" alt="Jacopo Cappellato" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role is-highlight">Apache OFBiz PMC Chair</p>
+                <h3 class="hwx-team__name">Jacopo Cappellato</h3>
+                <p class="hwx-team__job">Co-founder and CTO, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/jacopoc/" target="_blank" rel="noopener" aria-label="Jacopo Cappellato on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="2 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/anil-patel.jpg" alt="Anil Patel" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Anil Patel</h3>
+                <p class="hwx-team__job">Co-founder and CEO, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/anilpatelhwc/" target="_blank" rel="noopener" aria-label="Anil Patel on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="3 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/ashish-vijaywargiya.jpg" alt="Ashish Vijaywargiya" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Ashish Vijaywargiya</h3>
+                <p class="hwx-team__job">VP of Operations, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/ashishvijaywargiya/" target="_blank" rel="noopener" aria-label="Ashish Vijaywargiya on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="4 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/swapnil-shah.jpg" alt="Swapnil Shah" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Swapnil Shah</h3>
+                <p class="hwx-team__job">VP of Consulting, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/swapnil-s/" target="_blank" rel="noopener" aria-label="Swapnil Shah on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="5 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/mridul-pathak.jpg" alt="Mridul Pathak" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Mridul Pathak</h3>
+                <p class="hwx-team__job">VP of Technology, HotWax Systems</p>
+              </div>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="6 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/divesh-dutta.jpg" alt="Divesh Dutta" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz Committer</p>
+                <h3 class="hwx-team__name">Divesh Dutta</h3>
+                <p class="hwx-team__job">Director of Marketing and Growth, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/diveshdutta/" target="_blank" rel="noopener" aria-label="Divesh Dutta on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="7 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/deepak-dixit.jpg" alt="Deepak Dixit" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Deepak Dixit</h3>
+                <p class="hwx-team__job">Vice President of Technology, HotWax Commerce</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/dixitdeepak/" target="_blank" rel="noopener" aria-label="Deepak Dixit on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="8 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/arun-patidar.jpg" alt="Arun Patidar" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz PMC Member</p>
+                <h3 class="hwx-team__name">Arun Patidar</h3>
+                <p class="hwx-team__job">VP of Information Systems, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/arunpatidar/" target="_blank" rel="noopener" aria-label="Arun Patidar on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="9 of 9" aria-hidden="true">
+              <div class="hwx-team__photo">
+                
+                  <img src="team-photos/ratnesh-upadhyay.jpg" alt="Ratnesh Upadhyay" loading="lazy" decoding="async">
+                
+              </div>
+              <div class="hwx-team__info">
+                <p class="hwx-team__role">Apache OFBiz Contributor</p>
+                <h3 class="hwx-team__name">Ratnesh Upadhyay</h3>
+                <p class="hwx-team__job">Senior Manager, HotWax Systems</p>
+              </div>
+              
+                <a class="hwx-team__in" href="https://www.linkedin.com/in/ratneshupadhyay/" target="_blank" rel="noopener" aria-label="Ratnesh Upadhyay on LinkedIn">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+              
+            </article>
+          
+        </div>
+        
+          <div class="hwx-team__nav">
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--prev" aria-label="Previous person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--next" aria-label="Next person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        
+      </div>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+<section
+  class="hwx-how hwx-how--cols-4 hwx-how--num-solid hwx-how--carousel hwx-how--hover hwx-how--reveal"
+  id="how"
+  data-autoplay="true"
+  data-interval="5"
+  style="
+    --hwx-how-bg: #FAFAFA;
+    --hwx-how-ink: #141112;
+    --hwx-how-text: #4D4547;
+    --hwx-how-accent: #E70000;
+    --hwx-how-number: #8C1C24;
+    --hwx-how-line: #E6DFE0;
+    --hwx-how-card: #FFFFFF;
+    --hwx-how-link: #E70000;
+    --hwx-how-pad-top: 60px;
+    --hwx-how-pad-bottom: 60px;
+    --hwx-how-width: 1180px;
+  ">
+  <div class="hwx-how__wrap">
+
+    <div class="hwx-how__head">
+      
+      <h2 class="hwx-how__title">How Apache OFBiz support works with HotWax.</h2>
+      <div class="hwx-how__intro"><p>Built by us, another vendor, or your own team, the path is the same. One team learns your system, fixes what is urgent first, and stays with you.</p></div>
+    </div>
+
+    
+      <div class="hwx-how__viewport">
+      <ol class="hwx-how__steps">
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">1</span>
+            
+            <h3 class="hwx-how__step-title">Handover and access</h3>
+            <div class="hwx-how__step-text"><p>We start from your code repository and environments. If another vendor holds them today, we help you request a complete handover.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">2</span>
+            
+            <h3 class="hwx-how__step-title">Review</h3>
+            <div class="hwx-how__step-text"><p>We study your release, custom code, integrations, and infrastructure, and write down what we find, so the knowledge stops living in one person's head.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">3</span>
+            
+            <h3 class="hwx-how__step-title">Stabilize</h3>
+            <div class="hwx-how__step-text"><p>We fix what hurts most first: blocking bugs, pending security releases, and the slow spots your users feel every day. Where it helps, we can overlap with your current vendor before taking over.</p></div>
+          </li>
+        
+          <li class="hwx-how__step">
+            
+              <span class="hwx-how__n" aria-hidden="true">4</span>
+            
+            <h3 class="hwx-how__step-title">Ongoing support</h3>
+            <div class="hwx-how__step-text"><p>The same engineers stay on your system for upgrades, fixes, and whatever the business needs next. Clients can keep 3 to 4 HotWax engineers as their permanent team.</p></div>
+          </li>
+        
+      </ol>
+      </div>
+
+    
+
+    
+      
+      <p class="hwx-how__closing">Switching from another vendor? <a href="#talk">Talk to an Apache OFBiz expert</a> about your handover.</p>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+
+<section
+  class="hwx-cmp hwx-cmp--hover hwx-cmp--reveal"
+  id="compare"
+  style="
+    --hwx-cmp-bg: #FAFAFA;
+    --hwx-cmp-ink: #141112;
+    --hwx-cmp-text: #4D4547;
+    --hwx-cmp-muted: #7A7173;
+    --hwx-cmp-card: #FFFFFF;
+    --hwx-cmp-line: #E6DFE0;
+    --hwx-cmp-us-head: #8C1C24;
+    --hwx-cmp-us-head-text: #FFFFFF;
+    --hwx-cmp-us-cell: #FFF6F3;
+    --hwx-cmp-us-border: #F5D6CF;
+    --hwx-cmp-icon: #E70000;
+    --hwx-cmp-dot: #D6CBCC;
+    --hwx-cmp-pad-top: 60px;
+    --hwx-cmp-pad-bottom: 60px;
+    --hwx-cmp-width: 1180px;
+  ">
+  <div class="hwx-cmp__wrap">
+
+    <div class="hwx-cmp__head">
+      
+      <h2 class="hwx-cmp__title">Compare your options for Apache OFBiz support.</h2>
+      <div class="hwx-cmp__intro"><p>Most teams weigh three paths. Here is how they compare.</p></div>
+    </div>
+
+    
+      
+      <div class="hwx-cmp__table-wrap">
+        <table class="hwx-cmp__table">
+          <colgroup><col class="hwx-cmp__c-label"><col><col><col class="hwx-cmp__c-us"></colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><span class="hwx-cmp__corner">What matters</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">Your own team alone</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">A generalist IT vendor</span></th>
+              <th scope="col" class="hwx-cmp__us"><span class="hwx-cmp__us-name">HotWax Systems</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Limited to what one or two people know</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Learns your system on your time</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Apache OFBiz committers, led by the PMC Chair</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Worked around in custom code</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Worked around in custom code</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fixed at the source in Apache OFBiz</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Often postponed</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Risky without Apache OFBiz depth</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Planned around your custom code</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Low, until something breaks</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Low, while they learn the system</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Low: your system keeps running while we improve it</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Staff time pulled from other work</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Hourly or project fees</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Support for the system you already own</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row"></th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>You</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Varies by contract</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You. No vendor lock-in</span></div></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      
+      <div class="hwx-cmp__mobile">
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Limited to what one or two people know</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Learns your system on your time</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Apache OFBiz committers, led by the PMC Chair</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Worked around in custom code</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Worked around in custom code</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Fixed at the source in Apache OFBiz</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Often postponed</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Risky without Apache OFBiz depth</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Planned around your custom code</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Low, until something breaks</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Low, while they learn the system</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Low: your system keeps running while we improve it</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Staff time pulled from other work</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Hourly or project fees</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Support for the system you already own</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label"></p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>You</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Varies by contract</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>You. No vendor lock-in</p>
+            </div>
+          </div>
+        
+      </div>
+    
+
+  </div>
+</section>
+
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+<section
+  class="hwx-voices hwx-voices--featured hwx-voices--carousel hwx-voices--hover hwx-voices--reveal"
+  id="voices"
+  data-autoplay="true"
+  data-interval="5"
+  style="
+    --hwx-voices-bg: #FAFAFA;
+    --hwx-voices-ink: #141112;
+    --hwx-voices-text: #4D4547;
+    --hwx-voices-muted: #7A7173;
+    --hwx-voices-card: #FFFFFF;
+    --hwx-voices-line: #E6DFE0;
+    --hwx-voices-feature: #8C1C24;
+    --hwx-voices-feature-text: #FFFFFF;
+    --hwx-voices-qm: #E74000;
+    --hwx-voices-feature-qm: #FF8A5C;
+    --hwx-voices-avatar-bg: #F3E9EA;
+    --hwx-voices-avatar-text: #8C1C24;
+    --hwx-voices-link: #E70000;
+    --hwx-voices-pad-top: 60px;
+    --hwx-voices-pad-bottom: 60px;
+    --hwx-voices-width: 1180px;
+  ">
+  <div class="hwx-voices__wrap">
+
+    
+      <div class="hwx-voices__head">
+        
+        <h2 class="hwx-voices__title">What IT leaders say after working with us.</h2>
+        
+      </div>
+    
+
+    
+      <div class="hwx-voices__viewport">
+      <div class="hwx-voices__list">
+        
+          
+  <figure class="hwx-voices__card is-feature">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">We selected HotWax Systems because the team brought extensive Apache OFBiz experience, particularly with bringing several of the founding members, authors and architects of the OFBiz open-source platform itself.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">KS</span>
+      
+      <div>
+        <b class="hwx-voices__name">Kris Shenk</b>
+        <span class="hwx-voices__role">Cabi</span>
+      </div>
+    </figcaption>
+  </figure>
+
+          <div class="hwx-voices__stack">
+            
+  <figure class="hwx-voices__card">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">HotWax Systems as an organization proved to be a skilled, trustworthy, and hardworking vendor.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">MK</span>
+      
+      <div>
+        <b class="hwx-voices__name">Michael Knott</b>
+        <span class="hwx-voices__role">Sr. Manager, IT Applications Development · United</span>
+      </div>
+    </figcaption>
+  </figure>
+
+  <figure class="hwx-voices__card">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">We needed a partner… to be creative, inspiring, patient, and excel at detail management.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">KG</span>
+      
+      <div>
+        <b class="hwx-voices__name">Kelli Gierz</b>
+        <span class="hwx-voices__role">Program Manager · Herman Miller</span>
+      </div>
+    </figcaption>
+  </figure>
+
+          </div>
+        
+      </div>
+      </div>
+
+    
+
+    
+      
+      <p class="hwx-voices__more">See how other teams run on Apache OFBiz. <a href="https://www.hotwaxsystems.com/industry-case-studies">Read our industry case studies<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a></p>
+    
+
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M Banner
+// No JavaScript needed: the load-in animation is pure CSS and every setting comes from the fields.
+// This file is kept so the module has the standard HubSpot structure.
+
+// HotWax Systems | Module: S&M Problem
+// Scroll reveal for the headline block and each list item. Runs only when "Reveal on scroll"
+// is on, and only for items that start below the first screen, so the page is complete at rest.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var sections = document.querySelectorAll('.hwx-problem--reveal');
+  [].forEach.call(sections, function (section) {
+    var items = section.querySelectorAll('.hwx-problem__head, .hwx-problem__sign');
+    var vh = window.innerHeight;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.remove('is-hidden');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+
+    [].forEach.call(items, function (el, i) {
+      if (el.getBoundingClientRect().top < vh) return;
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      el.classList.add('is-hidden');
+      // add the transition a frame later so the hidden state applies without animating
+      requestAnimationFrame(function () { el.classList.add('is-ready'); });
+      io.observe(el);
+    });
+  });
+})();
+
+// HotWax Systems | Module: S&M Services
+// Phones: each description shows one line with a "Know more" link; tapping it shows the full text
+// (the link turns into "Show less") and the icon pops. The link hides itself when a description
+// already fits on one line. All sizes: optional scroll reveal. Works for several copies on one page.
+(function () {
+  var phone = window.matchMedia('(max-width:760px)');
+
+  [].forEach.call(document.querySelectorAll('.hwx-svc--clamp'), function (section) {
+    var more = section.getAttribute('data-more') || 'Know more';
+    var less = section.getAttribute('data-less') || 'Show less';
+    var items = [].slice.call(section.querySelectorAll('.hwx-svc__item'));
+
+    items.forEach(function (item) {
+      var text = item.querySelector('.hwx-svc__text');
+      if (!text) return;
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hwx-svc__more';
+      b.textContent = more;
+      b.setAttribute('aria-expanded', 'false');
+      if (text.id) b.setAttribute('aria-controls', text.id);
+      text.insertAdjacentElement('afterend', b);
+      b.addEventListener('click', function () {
+        var on = !item.classList.contains('is-open');
+        item.classList.toggle('is-open', on);
+        b.textContent = on ? less : more;
+        b.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+    });
+
+    function check() {
+      items.forEach(function (item) {
+        var text = item.querySelector('.hwx-svc__text'), b = item.querySelector('.hwx-svc__more');
+        if (!text || !b || item.classList.contains('is-open')) return;
+        b.hidden = phone.matches && text.scrollHeight <= text.clientHeight + 1;
+      });
+    }
+    window.addEventListener('resize', check);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+    check();
+  });
+
+  // Scroll reveal for the heading and each service, only when they start below the first screen
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-svc--reveal .hwx-svc__head, .hwx-svc--reveal .hwx-svc__item'), function (el, i) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+
+// HotWax Systems | Module: S&M CTA
+// Scroll reveal for the card. Runs only when "Reveal on scroll" is on, and only when the card
+// starts below the first screen. Form submission is handled by HubSpot, not by this file.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var cards = document.querySelectorAll('.hwx-cta--reveal .hwx-cta__card');
+  if (!cards.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+
+  [].forEach.call(cards, function (card) {
+    if (card.getBoundingClientRect().top < window.innerHeight) return;
+    card.classList.add('is-hidden');
+    requestAnimationFrame(function () { card.classList.add('is-ready'); });
+    io.observe(card);
+  });
+})();
+
+// HotWax Systems | Module: S&M Team
+// One person card at a time: arrows (desktop), auto-advance (pauses on hover and focus), swipe on touch screens.
+// On phones and touch screens a tap on the photo opens the person's LinkedIn profile.
+// Settings come from data attributes the module writes from its fields. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  [].forEach.call(document.querySelectorAll('.hwx-team'), function (section) {
+    var root = section.querySelector('.hwx-team__carousel');
+    if (!root) return;
+    var cards = [].slice.call(root.querySelectorAll('.hwx-team__card'));
+    if (cards.length < 2) return;
+
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 6) * 1000;
+    var swipe = section.getAttribute('data-swipe') === 'true';
+    var cur = 0, timer = null, hover = false;
+
+    // back = true when moving to the previous person: the old card leaves to the right, the new one comes from the left
+    function go(n, back) {
+      var prev = cards[cur];
+      cur = (n + cards.length) % cards.length;
+      if (prev === cards[cur]) return;
+      var next = cards[cur];
+      prev.classList.remove('is-active');
+      prev.classList.add('is-leaving');
+      prev.classList.toggle('from-left', !!back);
+      prev.setAttribute('aria-hidden', 'true');
+      setTimeout(function () { prev.classList.remove('is-leaving', 'from-left'); }, 1000);
+      if (back) {
+        next.style.transition = 'none';
+        next.style.transform = 'translateX(-60px) scale(.97)';
+        void next.offsetWidth;
+        next.style.transition = '';
+        next.style.transform = '';
+      }
+      next.classList.add('is-active');
+      next.removeAttribute('aria-hidden');
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      if (!autoplay || still || hover) return;
+      stop();
+      timer = setInterval(function () { go(cur + 1); }, interval);
+    }
+
+    var prevBtn = root.querySelector('.hwx-team__arrow--prev');
+    var nextBtn = root.querySelector('.hwx-team__arrow--next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(cur - 1, true); play(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(cur + 1); play(); });
+
+    root.addEventListener('mouseenter', function () { hover = true; stop(); });
+    root.addEventListener('mouseleave', function () { hover = false; play(); });
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { go(cur - 1, true); }
+      if (e.key === 'ArrowRight') { go(cur + 1); }
+    });
+
+    // swipe: the card follows the finger; a quick flick or a 40px drag changes person; vertical moves scroll the page
+    if (swipe) {
+      var stage = root.querySelector('.hwx-team__stage'), sx = 0, sy = 0, dx = 0, t0 = 0, mode = null, swiped = 0;
+      stage.addEventListener('touchstart', function (e) {
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now(); stop();
+      }, { passive: true });
+      stage.addEventListener('touchmove', function (e) {
+        var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+        if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+        if (mode !== 'x') return;
+        dx = mx;
+        swiped = Date.now();
+        cards[cur].style.transition = 'none';
+        cards[cur].style.transform = 'translateX(' + dx + 'px)';
+      }, { passive: true });
+      var swipeEnd = function () {
+        cards[cur].style.transition = '';
+        cards[cur].style.transform = '';
+        if (mode === 'x' && (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300))) go(dx < 0 ? cur + 1 : cur - 1, dx > 0);
+        mode = null; dx = 0;
+        setTimeout(play, 4000);
+      };
+      stage.addEventListener('touchend', swipeEnd);
+      stage.addEventListener('touchcancel', swipeEnd);
+    }
+
+    // phones and touch screens: a tap anywhere on the photo opens that person's LinkedIn (a swipe never does)
+    var touch = window.matchMedia('(max-width:760px), (hover:none)');
+    root.querySelector('.hwx-team__stage').addEventListener('click', function (e) {
+      if (!touch.matches || !e.target.closest('.hwx-team__photo')) return;
+      if (typeof swiped !== 'undefined' && Date.now() - swiped < 500) return;
+      var link = cards[cur].querySelector('.hwx-team__in');
+      if (link) window.open(link.href, '_blank', 'noopener');
+    });
+
+    play();
+  });
+
+  // Scroll reveal for the left column and the carousel, only when they start below the first screen
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-team--reveal .hwx-team__copy, .hwx-team--reveal .hwx-team__carousel'), function (el, i) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.style.transitionDelay = (i % 2) * 70 + 'ms';
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+
+// HotWax Systems | Module: S&M How It Works
+// Phones: one full step card at a time, looping in one direction (after the last step the first one slides in
+// from the right; before the first, the last one slides in from the left). Swipe drags the card with the finger
+// and snaps; optional auto-slide pauses while the visitor touches the cards. The card in view gets the full red line.
+// All sizes: optional scroll reveal for the heading and the steps. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = window.matchMedia('(max-width:760px)');
+
+  [].forEach.call(document.querySelectorAll('.hwx-how--carousel'), function (section) {
+    var list = section.querySelector('.hwx-how__steps');
+    if (!list) return;
+    var items = [].slice.call(list.children), n = items.length;
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 5) * 1000;
+    var timer = null;
+
+    // Copies of the last and first card sit at the two ends of the track. Stepping past the last card slides
+    // forward onto the copy of the first, then jumps (without animation) to the real first card, so the
+    // carousel always moves in the direction of the swipe and never rewinds across every card.
+    function copy(el) {
+      var c = el.cloneNode(true);
+      c.classList.add('is-clone');
+      c.setAttribute('aria-hidden', 'true');
+      [].forEach.call(c.querySelectorAll('[id]'), function (x) { x.removeAttribute('id'); });
+      return c;
+    }
+    var head = copy(items[n - 1]), tail = copy(items[0]);
+    list.insertBefore(head, list.firstChild);
+    list.appendChild(tail);
+    var pos = 1, tm = null;
+
+    function place(dx, animate) {
+      if (!phone.matches) { list.style.transform = ''; return; }
+      list.classList.toggle('is-dragging', !animate);
+      var gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+      list.style.transform = 'translateX(' + (-pos * (list.offsetWidth + gap) + (dx || 0)) + 'px)';
+    }
+    function settle() {
+      if (pos === 0) { pos = n; place(0, false); }
+      else if (pos === n + 1) { pos = 1; place(0, false); }
+    }
+    function step(d) {
+      clearTimeout(tm);
+      settle();
+      void list.offsetWidth; // apply the jump before the next slide starts
+      pos += d;
+      place(0, true);
+      mark();
+      tm = setTimeout(settle, 520);
+    }
+
+    // the step in view gets the full red line; the others are hidden from screen readers
+    function mark() {
+      var cur = ((pos - 1) % n + n) % n;
+      items.forEach(function (li, k) {
+        var on = k === cur;
+        li.classList.toggle('is-current', phone.matches && on);
+        if (phone.matches && !on) li.setAttribute('aria-hidden', 'true');
+        else li.removeAttribute('aria-hidden');
+      });
+      head.classList.toggle('is-current', phone.matches && pos === 0);
+      tail.classList.toggle('is-current', phone.matches && pos === n + 1);
+    }
+
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      stop();
+      if (!autoplay || still || !phone.matches) return;
+      timer = setInterval(function () { step(1); }, interval);
+    }
+
+    // swipe: follow the finger, then snap; a quick flick (20px) or a 40px drag moves one card;
+    // vertical moves are left to the page scroll
+    var sx = 0, sy = 0, dx = 0, t0 = 0, mode = null;
+    list.addEventListener('touchstart', function (e) {
+      if (!phone.matches) return;
+      stop(); clearTimeout(tm); settle();
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now();
+    }, { passive: true });
+    list.addEventListener('touchmove', function (e) {
+      if (!phone.matches) return;
+      var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+      if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+      if (mode !== 'x') return;
+      dx = mx;
+      place(dx, false);
+    }, { passive: true });
+    var swipeEnd = function () {
+      if (mode === 'x' && (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300))) step(dx < 0 ? 1 : -1);
+      else place(0, true);
+      mode = null; dx = 0;
+      setTimeout(play, 3000);
+    };
+    list.addEventListener('touchend', swipeEnd);
+    list.addEventListener('touchcancel', swipeEnd);
+
+    var reset = function () { clearTimeout(tm); settle(); place(0, false); mark(); play(); };
+    if (phone.addEventListener) phone.addEventListener('change', reset); else phone.addListener(reset);
+    window.addEventListener('resize', function () { place(0, false); });
+    reset();
+  });
+
+  // Scroll reveal, only for parts that start below the first screen.
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-how--reveal .hwx-how__head, .hwx-how--reveal .hwx-how__viewport'), function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+
+// HotWax Systems | Module: S&M Comparison
+// Scroll reveal for the heading, the table and the phone cards (only when they start below the first screen).
+// The phone view needs no script: every answer is visible. Works for several copies on one page.
+(function () {
+  // Scroll reveal, only for parts that start below the first screen
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-cmp--reveal .hwx-cmp__head, .hwx-cmp--reveal .hwx-cmp__table-wrap, .hwx-cmp--reveal .hwx-cmp__mobile'), function (el) {
+    if (el.offsetParent === null || el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+
+// HotWax Systems | Module: S&M Testimonials
+// Phones: one full card at a time, looping in one direction like the steps (no rewind from the last card to
+// the first). Swipe drags the card with the finger and snaps; optional auto-slide pauses
+// while the visitor touches the cards.
+// All sizes: optional scroll reveal for the heading and the cards. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = window.matchMedia('(max-width:760px)');
+
+  [].forEach.call(document.querySelectorAll('.hwx-voices--carousel'), function (section) {
+    var list = section.querySelector('.hwx-voices__list');
+    if (!list) return;
+    var items = [].slice.call(list.querySelectorAll('.hwx-voices__card')), n = items.length;
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 5) * 1000;
+    var timer = null;
+
+    // Copies of the last and first card sit at the two ends of the track. Stepping past the last card slides
+    // forward onto the copy of the first, then jumps (without animation) to the real first card, so the
+    // carousel always moves in the direction of the swipe and never rewinds across every card.
+    function copy(el) {
+      var c = el.cloneNode(true);
+      c.classList.add('is-clone');
+      c.setAttribute('aria-hidden', 'true');
+      [].forEach.call(c.querySelectorAll('[id]'), function (x) { x.removeAttribute('id'); });
+      return c;
+    }
+    var head = copy(items[n - 1]), tail = copy(items[0]);
+    list.insertBefore(head, list.firstChild);
+    list.appendChild(tail);
+    var pos = 1, tm = null;
+
+    function place(dx, animate) {
+      if (!phone.matches) { list.style.transform = ''; return; }
+      list.classList.toggle('is-dragging', !animate);
+      var gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+      list.style.transform = 'translateX(' + (-pos * (list.offsetWidth + gap) + (dx || 0)) + 'px)';
+    }
+    function settle() {
+      if (pos === 0) { pos = n; place(0, false); }
+      else if (pos === n + 1) { pos = 1; place(0, false); }
+    }
+    function step(d) {
+      clearTimeout(tm);
+      settle();
+      void list.offsetWidth; // apply the jump before the next slide starts
+      pos += d;
+      place(0, true);
+      mark();
+      tm = setTimeout(settle, 520);
+    }
+
+    function mark() {
+      var cur = ((pos - 1) % n + n) % n;
+      items.forEach(function (c, k) {
+        if (phone.matches && k !== cur) c.setAttribute('aria-hidden', 'true');
+        else c.removeAttribute('aria-hidden');
+      });
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      stop();
+      if (!autoplay || still || !phone.matches) return;
+      timer = setInterval(function () { step(1); }, interval);
+    }
+
+
+    // swipe: follow the finger, then snap; a quick flick (20px) or a 40px drag moves one card;
+    // vertical moves are left to the page scroll
+    var sx = 0, sy = 0, dx = 0, t0 = 0, mode = null;
+    list.addEventListener('touchstart', function (e) {
+      if (!phone.matches) return;
+      stop(); clearTimeout(tm); settle();
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now();
+    }, { passive: true });
+    list.addEventListener('touchmove', function (e) {
+      if (!phone.matches) return;
+      var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+      if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+      if (mode !== 'x') return;
+      dx = mx;
+      place(dx, false);
+    }, { passive: true });
+    var swipeEnd = function () {
+      if (mode === 'x' && (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300))) step(dx < 0 ? 1 : -1);
+      else place(0, true);
+      mode = null; dx = 0;
+      setTimeout(play, 3000);
+    };
+    list.addEventListener('touchend', swipeEnd);
+    list.addEventListener('touchcancel', swipeEnd);
+
+    var reset = function () { clearTimeout(tm); settle(); place(0, false); mark(); play(); };
+    if (phone.addEventListener) phone.addEventListener('change', reset); else phone.addListener(reset);
+    window.addEventListener('resize', function () { place(0, false); });
+    reset();
+  });
+
+  // Scroll reveal, only for parts that start below the first screen.
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-voices--reveal .hwx-voices__head, .hwx-voices--reveal .hwx-voices__viewport'), function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+</script></body></html>

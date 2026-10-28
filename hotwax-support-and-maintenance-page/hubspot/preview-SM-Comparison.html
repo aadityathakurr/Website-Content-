@@ -1,0 +1,328 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M Comparison
+   Self-contained: every class starts with .hwx-cmp. The table rules reset common theme table
+   styles (uppercase headers, zebra rows, borders) so the theme cannot change the design. */
+
+.hwx-cmp{
+  --hwx-cmp-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-cmp-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-cmp-bg,#fafafa);
+  color:var(--hwx-cmp-text,#4d4547);
+  font-family:var(--hwx-cmp-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-cmp-pad-top,60px);
+  padding-bottom:var(--hwx-cmp-pad-bottom,60px);
+}
+.hwx-cmp *,.hwx-cmp *::before,.hwx-cmp *::after{box-sizing:border-box}
+.hwx-cmp p{margin:0}
+
+.hwx-cmp__wrap{
+  max-width:var(--hwx-cmp-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-cmp__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-cmp__title{
+  margin:0;
+  font-family:var(--hwx-cmp-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-cmp-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-cmp__intro{font-size:18px;max-width:62ch}
+.hwx-cmp__intro p + p{margin-top:10px}
+.hwx-cmp__intro strong,.hwx-cmp__intro b{color:var(--hwx-cmp-ink,#141112);font-weight:600}
+
+/* ---------- table ---------- */
+.hwx-cmp__table-wrap{
+  background:var(--hwx-cmp-card,#fff);
+  border:1px solid var(--hwx-cmp-line,#e6dfe0);
+  border-radius:26px;
+  padding:14px;
+  box-shadow:0 40px 80px -60px rgba(60,10,15,.4);
+  overflow-x:auto;
+}
+.hwx-cmp__table{
+  width:100%;min-width:780px;margin:0;
+  table-layout:fixed;border-collapse:separate;border-spacing:0;border:0;
+  font-size:15px;background:transparent;
+}
+.hwx-cmp__table col{width:25%}
+.hwx-cmp__table col.hwx-cmp__c-label{width:20%}
+.hwx-cmp__table col.hwx-cmp__c-us{width:30%}
+.hwx-cmp__table th,.hwx-cmp__table td{
+  padding:20px 24px;text-align:left;vertical-align:top;line-height:1.55;
+  border:0;border-bottom:1px solid var(--hwx-cmp-line,#e6dfe0);
+  background:transparent;color:inherit;
+  text-transform:none;letter-spacing:0;font-weight:inherit;
+  transition:background .2s;
+}
+.hwx-cmp__table thead th{height:84px;vertical-align:middle}
+.hwx-cmp__corner{font:600 12px/1.4 var(--hwx-cmp-body);letter-spacing:.12em;text-transform:uppercase;color:var(--hwx-cmp-muted,#7a7173)}
+.hwx-cmp__opt{display:block;font:600 18px/1.3 var(--hwx-cmp-display);color:var(--hwx-cmp-ink,#141112)}
+.hwx-cmp__table tbody th{font:600 15px/1.5 var(--hwx-cmp-body);color:var(--hwx-cmp-ink,#141112)}
+.hwx-cmp__table tbody tr:last-child th,.hwx-cmp__table tbody tr:last-child td{border-bottom:0}
+
+.hwx-cmp__cell{display:flex;align-items:flex-start;gap:12px;color:var(--hwx-cmp-text,#4d4547)}
+.hwx-cmp__cell > span:last-child{min-width:0}
+.hwx-cmp__dot{flex:0 0 8px;width:8px;height:8px;margin-top:8px;border-radius:50%;background:var(--hwx-cmp-dot,#d6cbcc)}
+.hwx-cmp__ic{flex:none;margin-top:2px;color:var(--hwx-cmp-icon,#e70000)}
+
+/* HotWax column */
+.hwx-cmp__table .hwx-cmp__us{
+  background:var(--hwx-cmp-us-cell,#fff6f3);
+  border-left:1px solid var(--hwx-cmp-us-border,#f5d6cf);
+  border-right:1px solid var(--hwx-cmp-us-border,#f5d6cf);
+}
+.hwx-cmp__table td.hwx-cmp__us .hwx-cmp__cell{color:var(--hwx-cmp-ink,#141112);font-weight:600}
+.hwx-cmp__table thead th.hwx-cmp__us{background:var(--hwx-cmp-us-head,#8c1c24);border-color:var(--hwx-cmp-us-head,#8c1c24);border-radius:18px 18px 0 0}
+.hwx-cmp__us-name{display:block;font:700 19px/1.2 var(--hwx-cmp-display);color:var(--hwx-cmp-us-head-text,#fff)}
+.hwx-cmp__table tbody tr:last-child td.hwx-cmp__us{border-radius:0 0 18px 18px;border-bottom:1px solid var(--hwx-cmp-us-border,#f5d6cf)}
+
+/* row hover */
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover th,
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover td:not(.hwx-cmp__us){background:rgba(140,28,36,.025)}
+.hwx-cmp--hover .hwx-cmp__table tbody tr:hover td.hwx-cmp__us{filter:brightness(.985)}
+
+/* ---------- phones: card per row (see the 760px rule below) ---------- */
+.hwx-cmp__mobile{display:none}
+
+/* scroll reveal (module.js) */
+.hwx-cmp--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-cmp--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-cmp{padding-top:min(var(--hwx-cmp-pad-top,60px), 52px);padding-bottom:min(var(--hwx-cmp-pad-bottom,60px), 52px)}
+}
+@media (max-width:760px){
+  .hwx-cmp__table-wrap{display:none}
+  .hwx-cmp__mobile{display:grid;gap:10px}
+  .hwx-cmp__m-row{background:var(--hwx-cmp-card,#fff);border:1px solid var(--hwx-cmp-line,#e6dfe0);border-radius:16px;padding:14px 14px 13px}
+  .hwx-cmp__m-label{margin:0 0 8px!important;font:600 15px/1.3 var(--hwx-cmp-body);color:var(--hwx-cmp-ink,#141112)}
+  .hwx-cmp__m-us{display:flex;gap:9px;align-items:flex-start;margin-top:10px;padding:9px 11px;border-radius:12px;background:var(--hwx-cmp-us-cell,#fff6f3);border:1px solid var(--hwx-cmp-us-border,#f5d6cf)}
+  .hwx-cmp__m-us .hwx-cmp__ic{margin-top:2px}
+  .hwx-cmp__m-us p{font-size:14px;line-height:1.4;font-weight:600;color:var(--hwx-cmp-ink,#141112)}
+  .hwx-cmp__m-who{display:block;margin-bottom:2px;font:700 10.5px/1.4 var(--hwx-cmp-body);letter-spacing:.1em;text-transform:uppercase;color:var(--hwx-cmp-us-head,#8c1c24)}
+  .hwx-cmp__m-them{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin:0;padding:0 2px}
+  .hwx-cmp__m-them dt{font:600 10.5px/1.4 var(--hwx-cmp-body);letter-spacing:.08em;text-transform:uppercase;color:var(--hwx-cmp-muted,#7a7173)}
+  .hwx-cmp__m-them dd{margin:2px 0 0;font-size:13px;line-height:1.4;color:var(--hwx-cmp-text,#4d4547)}
+}
+@media (max-width:640px){
+  .hwx-cmp{padding-top:min(var(--hwx-cmp-pad-top,60px), 44px);padding-bottom:min(var(--hwx-cmp-pad-bottom,60px), 44px)}
+  .hwx-cmp__head{margin-bottom:36px}
+  .hwx-cmp__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-cmp *{transition:none!important}
+  .hwx-cmp--reveal .is-hidden{opacity:1;transform:none}
+}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+
+
+<section
+  class="hwx-cmp hwx-cmp--hover hwx-cmp--reveal"
+  id="compare"
+  style="
+    --hwx-cmp-bg: #FAFAFA;
+    --hwx-cmp-ink: #141112;
+    --hwx-cmp-text: #4D4547;
+    --hwx-cmp-muted: #7A7173;
+    --hwx-cmp-card: #FFFFFF;
+    --hwx-cmp-line: #E6DFE0;
+    --hwx-cmp-us-head: #8C1C24;
+    --hwx-cmp-us-head-text: #FFFFFF;
+    --hwx-cmp-us-cell: #FFF6F3;
+    --hwx-cmp-us-border: #F5D6CF;
+    --hwx-cmp-icon: #E70000;
+    --hwx-cmp-dot: #D6CBCC;
+    --hwx-cmp-pad-top: 60px;
+    --hwx-cmp-pad-bottom: 60px;
+    --hwx-cmp-width: 1180px;
+  ">
+  <div class="hwx-cmp__wrap">
+
+    <div class="hwx-cmp__head">
+      
+      <h2 class="hwx-cmp__title">Compare your options for Apache OFBiz support.</h2>
+      <div class="hwx-cmp__intro"><p>Most teams weigh three paths. Here is how they compare.</p></div>
+    </div>
+
+    
+      
+      <div class="hwx-cmp__table-wrap">
+        <table class="hwx-cmp__table">
+          <colgroup><col class="hwx-cmp__c-label"><col><col><col class="hwx-cmp__c-us"></colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><span class="hwx-cmp__corner">What matters</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">Your own team alone</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">A generalist IT vendor</span></th>
+              <th scope="col" class="hwx-cmp__us"><span class="hwx-cmp__us-name">HotWax Systems</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <th scope="row">Apache OFBiz depth</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Limited to what one or two people know</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Learns your system on your time</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Apache OFBiz committers, led by the PMC Chair</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row">Framework-level bugs</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Worked around in custom code</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Worked around in custom code</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fixed at the source in Apache OFBiz</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row">Upgrades</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Often postponed</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Risky without Apache OFBiz depth</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Planned around your custom code</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row">Disruption to the business</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Low, until something breaks</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Low, while they learn the system</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Low: your system keeps running while we improve it</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row">What you pay for</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Staff time pulled from other work</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Hourly or project fees</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Support for the system you already own</span></div></td>
+              </tr>
+            
+              <tr>
+                <th scope="row">Who owns the code</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>You</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>Varies by contract</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell"><svg class="hwx-cmp__ic" width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span>You. No vendor lock-in</span></div></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      
+      <div class="hwx-cmp__mobile">
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">Apache OFBiz depth</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Limited to what one or two people know</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Learns your system on your time</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Apache OFBiz committers, led by the PMC Chair</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">Framework-level bugs</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Worked around in custom code</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Worked around in custom code</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Fixed at the source in Apache OFBiz</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">Upgrades</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Often postponed</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Risky without Apache OFBiz depth</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Planned around your custom code</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">Disruption to the business</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Low, until something breaks</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Low, while they learn the system</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Low: your system keeps running while we improve it</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">What you pay for</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>Staff time pulled from other work</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Hourly or project fees</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>Support for the system you already own</p>
+            </div>
+          </div>
+        
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">Who owns the code</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>Your own team</dt><dd>You</dd></div>
+              <div><dt>Generalist vendor</dt><dd>Varies by contract</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">HotWax Systems</span>You. No vendor lock-in</p>
+            </div>
+          </div>
+        
+      </div>
+    
+
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M Comparison
+// Scroll reveal for the heading, the table and the phone cards (only when they start below the first screen).
+// The phone view needs no script: every answer is visible. Works for several copies on one page.
+(function () {
+  // Scroll reveal, only for parts that start below the first screen
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-cmp--reveal .hwx-cmp__head, .hwx-cmp--reveal .hwx-cmp__table-wrap, .hwx-cmp--reveal .hwx-cmp__mobile'), function (el) {
+    if (el.offsetParent === null || el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+</script></body></html>

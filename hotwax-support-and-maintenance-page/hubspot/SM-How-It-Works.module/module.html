@@ -1,0 +1,86 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M How It Works ("How Apache OFBiz support works with HotWax.")
+  Headline, intro, each step (number, title, text) and the closing line with its link come from the fields.
+  On phones the steps become a swipe carousel with auto-slide (can be switched off).
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.heading|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-how__hl">')|replace(']', '</span>') %}
+{% set foot = module.closing %}
+
+<section
+  class="hwx-how hwx-how--cols-{{ module.style.columns|default('4') }} hwx-how--num-{{ module.style.number_style|default('solid') }}{% if module.style.mobile_carousel %} hwx-how--carousel{% endif %}{% if module.style.hover_effects %} hwx-how--hover{% endif %}{% if module.style.reveal_on_scroll %} hwx-how--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  data-autoplay="{{ 'true' if module.style.auto_slide else 'false' }}"
+  data-interval="{{ module.style.auto_slide_seconds|default(5) }}"
+  style="
+    --hwx-how-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-how-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-how-heading-hover: {{ c.heading_hover_color.color|default('#E70000') }};
+    --hwx-how-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-how-accent: {{ c.accent_color.color|default('#E70000') }};
+    --hwx-how-number: {{ c.number_color.color|default('#8C1C24') }};
+    --hwx-how-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-how-card: {{ c.card_background.color|default('#FFFFFF') }};
+    --hwx-how-link: {{ c.link_color.color|default('#E70000') }};
+    --hwx-how-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-how-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-how-width: {{ module.style.content_width|default(1180) }}px;
+  ">
+  <div class="hwx-how__wrap">
+
+    <div class="hwx-how__head">
+      {% set tag = module.heading_tag|default('h2') %}
+      {% if module.heading %}<{{ tag }} class="hwx-how__title">{{ title }}</{{ tag }}>{% endif %}
+      {% if module.intro %}<div class="hwx-how__intro">{{ module.intro }}</div>{% endif %}
+    </div>
+
+    {% if module.steps %}
+      <div class="hwx-how__viewport">
+      <ol class="hwx-how__steps">
+        {% for step in module.steps %}
+          <li class="hwx-how__step">
+            {% if module.style.number_style != 'none' %}
+              <span class="hwx-how__n" aria-hidden="true">{{ step.number if step.number else loop.index }}</span>
+            {% endif %}
+            {% if step.step_title %}<h3 class="hwx-how__step-title">{{ step.step_title|escape }}</h3>{% endif %}
+            {% if step.step_text %}<div class="hwx-how__step-text">{{ step.step_text }}</div>{% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+      </div>
+
+    {% endif %}
+
+    {% if foot.show_closing %}
+      {% set link = foot.link %}
+      <p class="hwx-how__closing">
+        {%- if foot.text_before %}{{ foot.text_before|escape }} {% endif -%}
+        {%- if foot.link_text -%}
+          <a href="{{ link.url.href or '#talk' }}"{% if link.open_in_new_tab %} target="_blank"{% endif %}{% if link.open_in_new_tab or link.no_follow %} rel="{% if link.no_follow %}nofollow {% endif %}{% if link.open_in_new_tab %}noopener{% endif %}"{% endif %}>{{ foot.link_text|escape }}</a>
+        {%- endif -%}
+        {%- if foot.text_after %} {{ foot.text_after|escape }}{% endif -%}
+      </p>
+    {% endif %}
+
+  </div>
+</section>

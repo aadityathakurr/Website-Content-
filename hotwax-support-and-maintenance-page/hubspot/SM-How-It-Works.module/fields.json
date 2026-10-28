@@ -1,0 +1,433 @@
+[
+  {
+    "type": "text",
+    "name": "heading",
+    "label": "Headline",
+    "default": "How Apache OFBiz support works with HotWax.",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown."
+  },
+  {
+    "type": "text",
+    "name": "heading_hover_words",
+    "label": "Words that change color on hover",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none.",
+    "default": "HotWax"
+  },
+  {
+    "type": "choice",
+    "name": "heading_tag",
+    "label": "Heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "intro",
+    "label": "Intro",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Built by us, another vendor, or your own team, the path is the same. One team learns your system, fixes what is urgent first, and stays with you.</p>"
+  },
+  {
+    "type": "group",
+    "name": "steps",
+    "label": "Steps",
+    "help_text": "Shown in this order. Add, remove or drag to reorder.",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4,
+      "sorting_label_field": "steps.step_title"
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "number",
+        "label": "Number (optional)",
+        "help_text": "Leave empty to number the steps automatically (1, 2, 3...).",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "step_title",
+        "label": "Step title",
+        "default": ""
+      },
+      {
+        "type": "richtext",
+        "name": "step_text",
+        "label": "Step text",
+        "enabled_features": [
+          "bold",
+          "italic",
+          "link"
+        ],
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "number": "",
+        "step_title": "Handover and access",
+        "step_text": "<p>We start from your code repository and environments. If another vendor holds them today, we help you request a complete handover.</p>"
+      },
+      {
+        "number": "",
+        "step_title": "Review",
+        "step_text": "<p>We study your release, custom code, integrations, and infrastructure, and write down what we find, so the knowledge stops living in one person's head.</p>"
+      },
+      {
+        "number": "",
+        "step_title": "Stabilize",
+        "step_text": "<p>We fix what hurts most first: blocking bugs, pending security releases, and the slow spots your users feel every day. Where it helps, we can overlap with your current vendor before taking over.</p>"
+      },
+      {
+        "number": "",
+        "step_title": "Ongoing support",
+        "step_text": "<p>The same engineers stay on your system for upgrades, fixes, and whatever the business needs next. Clients can keep 3 to 4 HotWax engineers as their permanent team.</p>"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "closing",
+    "label": "Closing line",
+    "expanded": true,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_closing",
+        "label": "Show closing line",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "text",
+        "name": "text_before",
+        "label": "Text before the link",
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Switching from another vendor?"
+      },
+      {
+        "type": "text",
+        "name": "link_text",
+        "label": "Link text",
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Talk to an Apache OFBiz expert"
+      },
+      {
+        "type": "link",
+        "name": "link",
+        "label": "Link",
+        "help_text": "#talk scrolls to the contact form section.",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "PHONE_NUMBER"
+        ],
+        "show_advanced_rel_options": true,
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "#talk"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "type": "text",
+        "name": "text_after",
+        "label": "Text after the link",
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "about your handover."
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets buttons link here with #how. Letters, numbers and dashes only.",
+    "default": "how"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "columns",
+        "label": "Steps per row (desktop)",
+        "help_text": "Tablets show 2 per row; phones show one card at a time.",
+        "display": "select",
+        "choices": [
+          [
+            "4",
+            "4"
+          ],
+          [
+            "3",
+            "3"
+          ],
+          [
+            "2",
+            "2"
+          ]
+        ],
+        "default": "4"
+      },
+      {
+        "type": "choice",
+        "name": "number_style",
+        "label": "Number style",
+        "display": "select",
+        "choices": [
+          [
+            "solid",
+            "Solid"
+          ],
+          [
+            "outline",
+            "Outline"
+          ],
+          [
+            "none",
+            "No number"
+          ]
+        ],
+        "default": "solid"
+      },
+      {
+        "type": "boolean",
+        "name": "mobile_carousel",
+        "label": "Swipe carousel on phones",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Off stacks the steps one under another."
+      },
+      {
+        "type": "boolean",
+        "name": "auto_slide",
+        "label": "Auto-slide on phones",
+        "help_text": "Pauses while the visitor touches the cards.",
+        "display": "toggle",
+        "visibility": {
+          "controlling_field_path": "style.mobile_carousel",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": true
+      },
+      {
+        "type": "number",
+        "name": "auto_slide_seconds",
+        "label": "Seconds per step",
+        "display": "slider",
+        "min": 2,
+        "max": 15,
+        "step": 1,
+        "suffix": "s",
+        "visibility": {
+          "controlling_field_path": "style.mobile_carousel",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": 5
+      },
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60,
+        "help_text": "Tablets cap at 52px and phones at 44px."
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline and step titles",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_hover_color",
+            "label": "Heading words on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "accent_color",
+            "label": "Red line on each step",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "number_color",
+            "label": "Step numbers",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Divider lines and card borders",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "card_background",
+            "label": "Phone cards",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "link_color",
+            "label": "Closing link",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hover_effects",
+        "label": "Hover effect",
+        "display": "toggle",
+        "default": true,
+        "help_text": "The red line runs across the step on hover (desktop)."
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Turn off if the theme or another module already loads these fonts."
+      }
+    ]
+  }
+]

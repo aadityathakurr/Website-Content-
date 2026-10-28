@@ -1,0 +1,251 @@
+/* HotWax Systems | Module: S&M CTA
+   Self-contained: every class starts with .hwx-cta. The rules under .hwx-cta__form style the
+   HubSpot form markup (.hs-form, .hs-input, .hs-button) so the chosen form looks like the design. */
+
+.hwx-cta{
+  --hwx-cta-font:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-cta-section-bg,#fafafa);
+  padding-top:var(--hwx-cta-pad-top,0px);
+  padding-bottom:var(--hwx-cta-pad-bottom,60px);
+  font-family:var(--hwx-cta-font);
+}
+.hwx-cta *,.hwx-cta *::before,.hwx-cta *::after{box-sizing:border-box}
+
+.hwx-cta__wrap{
+  max-width:var(--hwx-cta-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+.hwx-cta__card{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:20px 40px;
+  align-items:center;
+  padding:42px 48px;
+  border-radius:var(--hwx-cta-radius,22px);
+  background:var(--hwx-cta-card-bg,#a22b2a);
+}
+.hwx-cta--shadow .hwx-cta__card{box-shadow:0 30px 60px -30px rgba(140,28,36,.45)}
+
+/* copy */
+.hwx-cta__title{
+  margin:0;
+  font:700 clamp(21px,2vw,26px)/1.25 var(--hwx-cta-font);
+  letter-spacing:-.01em;
+  color:var(--hwx-cta-title,#fff);
+}
+/* chosen heading words change color while the section is hovered (mouse only); set in the module fields */
+.hwx-cta__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-cta:hover .hwx-cta__hl{color:var(--hwx-cta-heading-hover,#ffb38a);-webkit-text-fill-color:var(--hwx-cta-heading-hover,#ffb38a)}
+}
+.hwx-cta__text{
+  margin-top:8px;
+  max-width:52ch;
+  font-size:14.5px;
+  font-weight:300;
+  line-height:1.6;
+  color:var(--hwx-cta-text,#fff);
+  opacity:var(--hwx-cta-text-opacity,.86);
+}
+.hwx-cta__text p{margin:0}
+.hwx-cta__text p + p{margin-top:8px}
+.hwx-cta__text a{color:inherit}
+
+/* HubSpot form: email field + button on one row */
+.hwx-cta__form .hs-form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px 14px;
+  align-items:start;
+  margin:0;
+}
+.hwx-cta__form .hs-form fieldset{max-width:none!important;margin:0;padding:0;border:0}
+.hwx-cta__form .hs-form fieldset .hs-form-field,
+.hwx-cta__form .hs-form .hs-form-field{width:100%!important;float:none!important;margin:0;padding:0}
+.hwx-cta__form .hs-form .input{margin:0!important}
+.hwx-cta__form .hs-form-field > label{display:block;margin:0 0 6px;font-size:13px;font-weight:500;color:var(--hwx-cta-title,#fff)}
+.hwx-cta--hide-labels .hwx-cta__form .hs-form-field > label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hwx-cta__form .hs-form-required{color:inherit}
+
+.hwx-cta__form input[type="email"],
+.hwx-cta__form input[type="text"],
+.hwx-cta__form input[type="tel"],
+.hwx-cta__form .hs-input:not([type="checkbox"]):not([type="radio"]){
+  width:100%!important;
+  height:50px;
+  margin:0;
+  padding:0 18px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-input-bg,#fff);
+  color:var(--hwx-cta-input-text,#141112);
+  font:500 15px/1 var(--hwx-cta-font);
+  box-shadow:none;
+}
+.hwx-cta__form input::placeholder{color:#8b9298;opacity:1}
+.hwx-cta__form input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.45)}
+
+.hwx-cta__form .hs_submit,.hwx-cta__form .hs_submit .actions{margin:0;padding:0}
+.hwx-cta--hide-labels .hwx-cta__form .hs_submit{align-self:start}
+.hwx-cta:not(.hwx-cta--hide-labels) .hwx-cta__form .hs_submit{align-self:end}
+.hwx-cta__form .hs-button,
+.hwx-cta__form input[type="submit"],
+.hwx-cta__form button[type="submit"]{
+  height:50px;
+  margin:0;
+  padding:0 26px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-btn-bg,#e70000);
+  color:var(--hwx-cta-btn-text,#fff);
+  font:700 13.5px/1 var(--hwx-cta-font);
+  letter-spacing:.06em;
+  cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.4);
+  transition:background .2s, transform .2s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.hwx-cta--caps .hwx-cta__form .hs-button,
+.hwx-cta--caps .hwx-cta__form input[type="submit"],
+.hwx-cta--caps .hwx-cta__form button[type="submit"]{text-transform:uppercase;letter-spacing:.14em}
+.hwx-cta__form .hs-button:hover,
+.hwx-cta__form input[type="submit"]:hover,
+.hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a);transform:translateY(-1px)}
+
+/* anything else the form adds (errors, consent text, recaptcha) spans the full row */
+.hwx-cta__form .hs-form > :not(fieldset):not(.hs-form-field):not(.hs_submit){grid-column:1 / -1}
+.hwx-cta__form .hs-error-msgs{list-style:none;margin:8px 0 0;padding:0}
+.hwx-cta__form .hs-error-msg,.hwx-cta__form .hs-main-font-element{font-size:13px;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .legal-consent-container,.hwx-cta__form .hs-richtext{font-size:12px;line-height:1.5;color:var(--hwx-cta-text,#fff);opacity:.8}
+.hwx-cta__form .submitted-message{font-size:15px;line-height:1.6;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .submitted-message p{margin:0}
+
+/* editor-only preview notice */
+.hwx-cta__notice{margin:0;font-size:12px;color:var(--hwx-cta-title,#fff);opacity:.75}
+.hwx-cta__placeholder input{cursor:default}
+
+/* scroll reveal (module.js) */
+.hwx-cta--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-cta--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-cta__card{grid-template-columns:minmax(0,1fr);padding:26px 22px}
+}
+@media (max-width:640px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 44px)}
+}
+@media (max-width:480px){
+  .hwx-cta__card{padding:22px 18px;gap:16px}
+  .hwx-cta__title{font-size:20px}
+  .hwx-cta__text{font-size:14px}
+  .hwx-cta__form .hs-form{grid-template-columns:minmax(0,1fr);gap:10px}
+  .hwx-cta__form .hs-button,
+  .hwx-cta__form input[type="submit"],
+  .hwx-cta__form button[type="submit"]{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-cta *{transition:none!important}
+  .hwx-cta--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-cta .hwx-cta__text a,
+.hwx-cta .hwx-cta__text a:link,
+.hwx-cta .hwx-cta__text a:visited,
+.hwx-cta .hwx-cta__text a:hover,
+.hwx-cta .hwx-cta__text a:focus,
+.hwx-cta .hwx-cta__text a:active{color:inherit!important;text-decoration:underline}
+.hwx-cta .hwx-cta__form .hs-button,
+.hwx-cta .hwx-cta__form input[type="submit"],
+.hwx-cta .hwx-cta__form button[type="submit"]{background:var(--hwx-cta-btn-bg,#e70000)!important;color:var(--hwx-cta-btn-text,#fff)!important;border:0!important}
+.hwx-cta .hwx-cta__form .hs-button:hover,
+.hwx-cta .hwx-cta__form input[type="submit"]:hover,
+.hwx-cta .hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a)!important}
+
+/* ---------- forms built in HubSpot's NEW forms editor ----------
+   These render with their own markup (.hs-form-frame > form.hsfc-Form > .hsfc-Step > .hsfc-Row ...
+   .hsfc-NavigationRow > .hsfc-Button) and their own default look (blue button, stacked layout).
+   1) their style variables are set to this module's colours, 2) the same look is applied directly
+   with !important, so the email box and the button match the design whatever the form theme says. */
+.hwx-cta .hwx-cta__form{
+  --hsf-global__font-family:var(--hwx-cta-font);
+  --hsf-global__font-size:15px;
+  --hsf-global__color:var(--hwx-cta-title,#fff);
+  --hsf-background__background-color:transparent;
+  --hsf-background__padding:0;
+  --hsf-row__vertical-spacing:0;
+  --hsf-row__horizontal-spacing:14px;
+  --hsf-field-label__color:var(--hwx-cta-title,#fff);
+  --hsf-field-input__background-color:var(--hwx-cta-input-bg,#fff);
+  --hsf-field-input__color:var(--hwx-cta-input-text,#141112);
+  --hsf-field-input__placeholder-color:#8b9298;
+  --hsf-field-input__border-color:transparent;
+  --hsf-field-input__border-width:0;
+  --hsf-field-input__border-radius:10px;
+  --hsf-field-input__padding:0 18px;
+  --hsf-button__background-color:var(--hwx-cta-btn-bg,#e70000);
+  --hsf-button__color:var(--hwx-cta-btn-text,#fff);
+  --hsf-button__border-radius:10px;
+  --hsf-button__font-family:var(--hwx-cta-font);
+  --hsf-button__font-weight:700;
+  --hsf-button__padding:0 26px;
+  --hsf-erroralert__color:var(--hwx-cta-title,#fff);
+  --hsf-richtext__color:var(--hwx-cta-text,#fff);
+}
+.hwx-cta .hwx-cta__form .hs-form-frame,
+.hwx-cta .hwx-cta__form .hsfc-FormWrapper,
+.hwx-cta .hwx-cta__form .hsfc-Form{margin:0!important;padding:0!important;background:transparent!important;max-width:none!important;width:100%!important;box-shadow:none!important}
+/* one row: email field on the left, button on the right; everything else (errors, consent text) on its own line */
+.hwx-cta .hwx-cta__form .hsfc-Step__Content{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:10px 14px;align-items:start;padding:0!important;
+}
+.hwx-cta .hwx-cta__form .hsfc-Step__Content > *{grid-column:1 / -1;margin:0!important}
+.hwx-cta .hwx-cta__form .hsfc-Step__Content > .hsfc-Row:first-of-type{grid-column:1}
+.hwx-cta .hwx-cta__form .hsfc-Step__Content > .hsfc-NavigationRow{grid-column:2;grid-row:1}
+.hwx-cta .hwx-cta__form .hsfc-Row{margin:0!important;padding:0!important;gap:0!important}
+.hwx-cta .hwx-cta__form .hsfc-TextField,
+.hwx-cta .hwx-cta__form .hsfc-EmailField{width:100%!important;margin:0!important;padding:0!important}
+.hwx-cta .hwx-cta__form .hsfc-FieldLabel{display:block;margin:0 0 6px;font:500 13px/1.3 var(--hwx-cta-font);color:var(--hwx-cta-title,#fff)!important}
+.hwx-cta--hide-labels .hwx-cta__form .hsfc-FieldLabel{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+.hwx-cta .hwx-cta__form .hsfc-TextInput,
+.hwx-cta .hwx-cta__form .hsfc-Step input[type="email"],
+.hwx-cta .hwx-cta__form .hsfc-Step input[type="text"]{
+  width:100%!important;height:50px!important;margin:0!important;padding:0 18px!important;
+  border:0!important;border-radius:10px!important;box-shadow:none!important;
+  background:var(--hwx-cta-input-bg,#fff)!important;color:var(--hwx-cta-input-text,#141112)!important;
+  -webkit-text-fill-color:var(--hwx-cta-input-text,#141112)!important;
+  font:500 15px/1 var(--hwx-cta-font)!important;
+}
+.hwx-cta .hwx-cta__form .hsfc-TextInput::placeholder{color:#8b9298!important;-webkit-text-fill-color:#8b9298!important;opacity:1}
+.hwx-cta .hwx-cta__form .hsfc-TextInput:focus{outline:none!important;box-shadow:0 0 0 3px rgba(255,255,255,.45)!important}
+.hwx-cta .hwx-cta__form .hsfc-NavigationRow,
+.hwx-cta .hwx-cta__form .hsfc-NavigationRow__Buttons{margin:0!important;padding:0!important;display:flex!important;justify-content:flex-start!important}
+.hwx-cta--hide-labels .hwx-cta__form .hsfc-NavigationRow{align-self:start}
+.hwx-cta:not(.hwx-cta--hide-labels) .hwx-cta__form .hsfc-NavigationRow{align-self:end}
+.hwx-cta .hwx-cta__form .hsfc-Button{
+  height:50px!important;min-height:50px;margin:0!important;padding:0 26px!important;
+  border:0!important;border-radius:10px!important;cursor:pointer;
+  background:var(--hwx-cta-btn-bg,#e70000)!important;color:var(--hwx-cta-btn-text,#fff)!important;
+  -webkit-text-fill-color:var(--hwx-cta-btn-text,#fff)!important;
+  font:700 13.5px/1 var(--hwx-cta-font)!important;letter-spacing:.06em;white-space:nowrap;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.4)!important;transition:background .2s, transform .2s;
+}
+.hwx-cta--caps .hwx-cta__form .hsfc-Button{text-transform:uppercase;letter-spacing:.14em}
+.hwx-cta .hwx-cta__form .hsfc-Button:hover{background:var(--hwx-cta-btn-hover,#ff1a1a)!important;transform:translateY(-1px)}
+.hwx-cta .hwx-cta__form .hsfc-ErrorAlert,
+.hwx-cta .hwx-cta__form .hsfc-FieldError{margin:6px 0 0!important;font-size:13px!important;color:var(--hwx-cta-title,#fff)!important}
+.hwx-cta .hwx-cta__form .hsfc-RichText,
+.hwx-cta .hwx-cta__form .hsfc-PostSubmit{font-size:12px;line-height:1.5;color:var(--hwx-cta-text,#fff)!important}
+.hwx-cta .hwx-cta__form .hsfc-PostSubmit{font-size:15px}
+@media (max-width:480px){
+  .hwx-cta .hwx-cta__form .hsfc-Step__Content{grid-template-columns:minmax(0,1fr)}
+  .hwx-cta .hwx-cta__form .hsfc-Step__Content > .hsfc-NavigationRow{grid-column:1;grid-row:auto}
+  .hwx-cta .hwx-cta__form .hsfc-NavigationRow__Buttons,.hwx-cta .hwx-cta__form .hsfc-Button{width:100%!important}
+}

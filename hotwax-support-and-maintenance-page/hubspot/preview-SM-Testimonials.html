@@ -1,0 +1,478 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M Testimonials
+   Self-contained: every class starts with .hwx-voices, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-voices{
+  --hwx-voices-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-voices-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-voices-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-voices-bg,#fafafa);
+  color:var(--hwx-voices-text,#4d4547);
+  font-family:var(--hwx-voices-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-voices-pad-top,60px);
+  padding-bottom:var(--hwx-voices-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-voices *,.hwx-voices *::before,.hwx-voices *::after{box-sizing:border-box}
+
+.hwx-voices__wrap{
+  max-width:var(--hwx-voices-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-voices-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-voices__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-voices__title{
+  margin:0;
+  font-family:var(--hwx-voices-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-voices-ink,#141112);
+  text-wrap:balance;
+}
+/* chosen heading words turn red while the section is hovered (mouse only) */
+.hwx-voices__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-voices--hover:hover .hwx-voices__hl{color:var(--hwx-voices-heading-hover,#e70000);-webkit-text-fill-color:var(--hwx-voices-heading-hover,#e70000)}
+}
+.hwx-voices__intro{font-size:18px;max-width:62ch}
+.hwx-voices__intro p{margin:0}
+
+/* layouts */
+.hwx-voices--featured .hwx-voices__list{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
+.hwx-voices__stack{display:grid;gap:28px}
+.hwx-voices--grid .hwx-voices__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:stretch}
+
+/* cards */
+.hwx-voices__card{
+  margin:0;min-width:0;
+  display:flex;flex-direction:column;gap:26px;
+  padding:36px;
+  background:var(--hwx-voices-card,#fff);
+  border:1px solid var(--hwx-voices-line,#e6dfe0);
+  border-radius:22px;
+}
+.hwx-voices--hover .hwx-voices__card{transition:transform .3s ease, box-shadow .3s ease}
+.hwx-voices--hover .hwx-voices__card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -30px rgba(60,10,15,.4)}
+.hwx-voices__qm{height:26px;font:700 72px/.6 var(--hwx-voices-display);color:var(--hwx-voices-qm,#e74000)}
+.hwx-voices__quote{margin:0;padding:0;border:0;font:400 19px/1.6 var(--hwx-voices-display);color:var(--hwx-voices-ink,#141112);quotes:none}
+
+.hwx-voices__who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.hwx-voices__avatar{
+  flex:none;width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;object-fit:cover;
+  font:600 16px/1 var(--hwx-voices-body);
+  background:var(--hwx-voices-avatar-bg,#f3e9ea);color:var(--hwx-voices-avatar-text,#8c1c24);
+}
+.hwx-voices__name{display:block;font:600 15px/1.3 var(--hwx-voices-body);color:var(--hwx-voices-ink,#141112)}
+.hwx-voices__role{display:block;font-size:13px;line-height:1.4;color:var(--hwx-voices-muted,#7a7173)}
+
+/* featured card */
+.hwx-voices__card.is-feature{padding:44px;background:var(--hwx-voices-feature,#8c1c24);border-color:var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__quote{font-size:clamp(22px,2.3vw,28px);line-height:1.45;color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+.hwx-voices__card.is-feature .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+.hwx-voices__card.is-feature .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+/* closing line */
+.hwx-voices__more{margin:36px 0 0;font-size:15.5px;color:var(--hwx-voices-text,#4d4547)}
+.hwx-voices__more a{display:inline-flex;align-items:center;gap:6px;margin-left:4px;color:var(--hwx-voices-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-voices__more a:hover{text-decoration:underline}
+.hwx-voices a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-voices__list > .is-clone{display:none}.hwx-voices__list{transform:none!important}}
+
+/* desktop rotation: when more than two testimonials sit beside the featured card, two show at a time and
+   module.js rotates them; every slot keeps the height of the tallest testimonial so nothing jumps */
+@media (min-width:761px){
+  .hwx-voices__stack.is-rotating{grid-template-rows:repeat(2,minmax(var(--hwx-voices-slot-h,0px),auto))}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card{display:none}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card.is-shown{display:flex;animation:hwxVoicesIn .5s ease both}
+  .hwx-voices__stack.is-rotating > .hwx-voices__card.is-shown + .hwx-voices__card.is-shown{animation-delay:.08s}
+}
+@keyframes hwxVoicesIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* scroll reveal (module.js) */
+.hwx-voices--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-voices--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 52px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-voices--featured .hwx-voices__list{grid-template-columns:minmax(0,1fr)}
+  .hwx-voices__card,.hwx-voices__card.is-feature{padding:28px}
+}
+@media (max-width:760px){
+  /* one card at a time; all cards share the same light look on phones */
+  /* module.js slides the list with transform (swipe, arrows, auto-slide) */
+  .hwx-voices--carousel .hwx-voices__viewport{overflow:hidden;padding:6px 0 10px;margin:-6px 0 -10px}
+  .hwx-voices--carousel .hwx-voices__list{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-voices--carousel .hwx-voices__list.is-dragging{transition:none}
+  .hwx-voices--carousel .hwx-voices__stack{display:contents}
+  .hwx-voices--carousel .hwx-voices__card,
+  .hwx-voices--carousel .hwx-voices__card.is-feature{
+    flex:0 0 100%;min-width:0;min-height:300px;gap:22px;
+    padding:28px 24px;border-radius:20px;
+    /* every card on phones uses the featured card colors */
+    background:var(--hwx-voices-feature,#8c1c24);border:1px solid var(--hwx-voices-feature,#8c1c24);color:var(--hwx-voices-feature-text,#fff);
+    transform:none;box-shadow:none;
+  }
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__quote{font:400 19px/1.55 var(--hwx-voices-display);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__qm{color:var(--hwx-voices-feature-qm,#ff8a5c)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__avatar{background:rgba(255,255,255,.14);color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__name{color:var(--hwx-voices-feature-text,#fff)}
+  .hwx-voices--carousel .hwx-voices__card .hwx-voices__role{color:var(--hwx-voices-feature-text,#fff);opacity:.7}
+
+}
+@media (max-width:640px){
+  .hwx-voices{padding-top:min(var(--hwx-voices-pad-top,60px), 44px);padding-bottom:min(var(--hwx-voices-pad-bottom,60px), 44px)}
+  .hwx-voices__head{margin-bottom:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-voices *{transition:none!important;animation:none!important}
+  .hwx-voices--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-voices .hwx-voices__more a,
+.hwx-voices .hwx-voices__more a:link,
+.hwx-voices .hwx-voices__more a:visited,
+.hwx-voices .hwx-voices__more a:hover,
+.hwx-voices .hwx-voices__more a:focus,
+.hwx-voices .hwx-voices__more a:active{color:var(--hwx-voices-link,#e70000)!important;text-decoration:none}
+.hwx-voices .hwx-voices__more a:hover{text-decoration:underline}
+/* themes often give <blockquote> a background box, padding, a border and their own quote marks:
+   none of that belongs on these cards */
+.hwx-voices .hwx-voices__card .hwx-voices__quote{
+  background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+  padding:0!important;margin:0!important;quotes:none!important;
+  color:var(--hwx-voices-ink,#141112)!important;-webkit-text-fill-color:currentColor!important;
+}
+.hwx-voices .hwx-voices__card .hwx-voices__quote::before,
+.hwx-voices .hwx-voices__card .hwx-voices__quote::after{content:none!important;display:none!important}
+.hwx-voices .hwx-voices__card.is-feature .hwx-voices__quote{color:var(--hwx-voices-feature-text,#fff)!important}
+@media (max-width:760px){
+  .hwx-voices.hwx-voices--carousel .hwx-voices__card .hwx-voices__quote{color:var(--hwx-voices-feature-text,#fff)!important}
+}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+
+
+
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+<section
+  class="hwx-voices hwx-voices--featured hwx-voices--carousel hwx-voices--hover hwx-voices--reveal"
+  id="voices"
+  data-autoplay="true"
+  data-interval="5"
+  style="
+    --hwx-voices-bg: #FAFAFA;
+    --hwx-voices-ink: #141112;
+    --hwx-voices-heading-hover: #E70000;
+    --hwx-voices-text: #4D4547;
+    --hwx-voices-muted: #7A7173;
+    --hwx-voices-card: #FFFFFF;
+    --hwx-voices-line: #E6DFE0;
+    --hwx-voices-feature: #8C1C24;
+    --hwx-voices-feature-text: #FFFFFF;
+    --hwx-voices-qm: #E74000;
+    --hwx-voices-feature-qm: #FF8A5C;
+    --hwx-voices-avatar-bg: #F3E9EA;
+    --hwx-voices-avatar-text: #8C1C24;
+    --hwx-voices-link: #E70000;
+    --hwx-voices-pad-top: 60px;
+    --hwx-voices-pad-bottom: 60px;
+    --hwx-voices-width: 1180px;
+  ">
+  <div class="hwx-voices__wrap">
+
+    
+      <div class="hwx-voices__head">
+        
+        <h2 class="hwx-voices__title">What <span class="hwx-voices__hl">IT leaders</span> say after working with us.</h2>
+        
+      </div>
+    
+
+    
+      <div class="hwx-voices__viewport">
+      <div class="hwx-voices__list">
+        
+          
+  <figure class="hwx-voices__card is-feature">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">We selected HotWax Systems because the team brought extensive Apache OFBiz experience, particularly with bringing several of the founding members, authors and architects of the OFBiz open-source platform itself.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">KS</span>
+      
+      <div>
+        <b class="hwx-voices__name">Kris Shenk</b>
+        <span class="hwx-voices__role">Cabi</span>
+      </div>
+    </figcaption>
+  </figure>
+
+          <div class="hwx-voices__stack">
+            
+  <figure class="hwx-voices__card">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">HotWax Systems as an organization proved to be a skilled, trustworthy, and hardworking vendor.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">MK</span>
+      
+      <div>
+        <b class="hwx-voices__name">Michael Knott</b>
+        <span class="hwx-voices__role">Sr. Manager, IT Applications Development · United</span>
+      </div>
+    </figcaption>
+  </figure>
+
+  <figure class="hwx-voices__card">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">We needed a partner… to be creative, inspiring, patient, and excel at detail management.</blockquote>
+    <figcaption class="hwx-voices__who">
+      
+        <span class="hwx-voices__avatar" aria-hidden="true">KG</span>
+      
+      <div>
+        <b class="hwx-voices__name">Kelli Gierz</b>
+        <span class="hwx-voices__role">Program Manager · Herman Miller</span>
+      </div>
+    </figcaption>
+  </figure>
+
+          </div>
+        
+      </div>
+      </div>
+
+    
+
+    
+      
+      <p class="hwx-voices__more">See how other teams run on Apache OFBiz. <a href="https://www.hotwaxsystems.com/industry-case-studies">Read our industry case studies<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a></p>
+    
+
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M Testimonials
+// Phones: one full card at a time, looping in one direction like the steps (no rewind from the last card to
+// the first). Swipe drags the card with the finger and snaps; optional auto-slide pauses
+// while the visitor touches the cards.
+// Desktop: beside the featured card, testimonials rotate two at a time (paused while the cursor is over them).
+// All sizes: optional scroll reveal for the heading and the cards. Works for several copies on one page.
+(function () {
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = window.matchMedia('(max-width:760px)');
+
+  [].forEach.call(document.querySelectorAll('.hwx-voices--carousel'), function (section) {
+    var list = section.querySelector('.hwx-voices__list');
+    if (!list) return;
+    var items = [].slice.call(list.querySelectorAll('.hwx-voices__card')), n = items.length;
+    var autoplay = section.getAttribute('data-autoplay') === 'true';
+    var interval = Math.max(2, parseFloat(section.getAttribute('data-interval')) || 5) * 1000;
+    var timer = null;
+
+    // Copies of the last and first card sit at the two ends of the track. Stepping past the last card slides
+    // forward onto the copy of the first, then jumps (without animation) to the real first card, so the
+    // carousel always moves in the direction of the swipe and never rewinds across every card.
+    function copy(el) {
+      var c = el.cloneNode(true);
+      c.classList.add('is-clone');
+      c.setAttribute('aria-hidden', 'true');
+      [].forEach.call(c.querySelectorAll('[id]'), function (x) { x.removeAttribute('id'); });
+      return c;
+    }
+    var head = copy(items[n - 1]), tail = copy(items[0]);
+    list.insertBefore(head, list.firstChild);
+    list.appendChild(tail);
+    var pos = 1, tm = null;
+
+    function place(dx, animate) {
+      if (!phone.matches) { list.style.transform = ''; return; }
+      list.classList.toggle('is-dragging', !animate);
+      var gap = parseFloat(getComputedStyle(list).columnGap) || 0;
+      list.style.transform = 'translateX(' + (-pos * (list.offsetWidth + gap) + (dx || 0)) + 'px)';
+    }
+    function settle() {
+      if (pos === 0) { pos = n; place(0, false); }
+      else if (pos === n + 1) { pos = 1; place(0, false); }
+    }
+    function step(d) {
+      clearTimeout(tm);
+      settle();
+      void list.offsetWidth; // apply the jump before the next slide starts
+      pos += d;
+      place(0, true);
+      mark();
+      tm = setTimeout(settle, 520);
+    }
+
+    function mark() {
+      var cur = ((pos - 1) % n + n) % n;
+      items.forEach(function (c, k) {
+        if (phone.matches && k !== cur) c.setAttribute('aria-hidden', 'true');
+        else c.removeAttribute('aria-hidden');
+      });
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function play() {
+      stop();
+      if (!autoplay || still || !phone.matches) return;
+      timer = setInterval(function () { step(1); }, interval);
+    }
+
+
+    // swipe: follow the finger, then snap; a quick flick (20px) or a 40px drag moves one card;
+    // vertical moves are left to the page scroll
+    var sx = 0, sy = 0, dx = 0, t0 = 0, mode = null;
+    list.addEventListener('touchstart', function (e) {
+      if (!phone.matches) return;
+      stop(); clearTimeout(tm); settle();
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; dx = 0; mode = null; t0 = Date.now();
+    }, { passive: true });
+    list.addEventListener('touchmove', function (e) {
+      if (!phone.matches) return;
+      var mx = e.touches[0].clientX - sx, my = e.touches[0].clientY - sy;
+      if (!mode && (Math.abs(mx) > 6 || Math.abs(my) > 6)) mode = Math.abs(mx) > Math.abs(my) ? 'x' : 'y';
+      if (mode !== 'x') return;
+      dx = mx;
+      place(dx, false);
+    }, { passive: true });
+    var swipeEnd = function () {
+      if (mode === 'x' && (Math.abs(dx) > 40 || (Math.abs(dx) > 20 && Date.now() - t0 < 300))) step(dx < 0 ? 1 : -1);
+      else place(0, true);
+      mode = null; dx = 0;
+      setTimeout(play, 3000);
+    };
+    list.addEventListener('touchend', swipeEnd);
+    list.addEventListener('touchcancel', swipeEnd);
+
+    var reset = function () { clearTimeout(tm); settle(); place(0, false); mark(); play(); };
+    if (phone.addEventListener) phone.addEventListener('change', reset); else phone.addListener(reset);
+    window.addEventListener('resize', function () { place(0, false); });
+    reset();
+  });
+
+  // Desktop: the testimonials beside the featured card rotate two at a time. The cursor on a card (or keyboard
+  // focus in the section) pauses the rotation; it resumes as soon as the cursor leaves the card.
+  var desktop = window.matchMedia('(min-width:761px)');
+  [].forEach.call(document.querySelectorAll('.hwx-voices__stack.is-rotating'), function (stack) {
+    var section = stack.closest('.hwx-voices');
+    var cards = [].slice.call(stack.children).filter(function (c) { return c.classList.contains('hwx-voices__card'); });
+    var n = cards.length, start = 0, timer = null, resume = null, overCard = false, keyFocus = false;
+    var interval = Math.max(3, parseFloat(stack.getAttribute('data-interval')) || 6) * 1000;
+
+    function show() {
+      cards.forEach(function (c, k) {
+        var on = k === start % n || k === (start + 1) % n;
+        c.classList.toggle('is-shown', on);
+        if (desktop.matches && !on) c.setAttribute('aria-hidden', 'true');
+        else if (desktop.matches) c.removeAttribute('aria-hidden');
+      });
+    }
+    // every slot as tall as the tallest testimonial, so the featured card and the page never jump
+    function measure() {
+      if (!desktop.matches) { stack.style.removeProperty('--hwx-voices-slot-h'); return; }
+      var max = 0;
+      cards.forEach(function (c) {
+        var was = c.classList.contains('is-shown');
+        c.classList.add('is-shown'); c.style.animation = 'none'; c.style.minHeight = '0';
+        max = Math.max(max, c.offsetHeight);
+        c.style.animation = ''; c.style.minHeight = '';
+        if (!was) c.classList.remove('is-shown');
+      });
+      stack.style.setProperty('--hwx-voices-slot-h', max + 'px');
+    }
+    function next() { start = (start + 2) % n; show(); }
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+      if (resume) { clearTimeout(resume); resume = null; }
+    }
+    // soon = true after the visitor stops reading: the next pair comes after ~2s instead of a full cycle
+    function play(soon) {
+      stop();
+      if (still || overCard || keyFocus || !desktop.matches) return;
+      var first = soon ? Math.min(2000, interval) : interval;
+      resume = setTimeout(function () { resume = null; next(); timer = setInterval(next, interval); }, first);
+    }
+
+    // pause only while the cursor is ON a testimonial card (the featured one or the two beside it);
+    // moving into the gap next to a card, or anywhere else, resumes it straight away
+    var list = section.querySelector('.hwx-voices__list');
+    list.addEventListener('mouseover', function (e) {
+      var on = !!(e.target.closest && e.target.closest('.hwx-voices__card'));
+      if (on === overCard) return;
+      overCard = on;
+      if (on) stop(); else play(true);
+    });
+    list.addEventListener('mouseleave', function () { if (overCard) { overCard = false; play(true); } });
+    // keyboard users (Tab) also pause it; a mouse click never does
+    section.addEventListener('focusin', function (e) {
+      var kb = false;
+      try { kb = e.target.matches(':focus-visible'); } catch (err) { kb = false; }
+      if (kb) { keyFocus = true; stop(); }
+    });
+    section.addEventListener('focusout', function () { if (keyFocus) { keyFocus = false; play(true); } });
+    var onChange = function () { measure(); show(); play(); };
+    if (desktop.addEventListener) desktop.addEventListener('change', onChange); else desktop.addListener(onChange);
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    show(); measure(); play();
+  });
+
+  // Scroll reveal, only for parts that start below the first screen.
+  if (still || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  [].forEach.call(document.querySelectorAll('.hwx-voices--reveal .hwx-voices__head, .hwx-voices--reveal .hwx-voices__viewport'), function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add('is-hidden');
+    requestAnimationFrame(function () { el.classList.add('is-ready'); });
+    io.observe(el);
+  });
+})();
+</script></body></html>

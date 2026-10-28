@@ -1,0 +1,46 @@
+/* 01-hero: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.hero{padding-block:0}
+.hero > .wrap{max-width:none;padding-left:0;padding-right:0}
+.hero-card{
+  --hero-img:url("assets/images/hero-warehouse-banner.jpg");
+  position:relative;overflow:hidden;border-radius:0;color:#fff;
+  min-height:680px;display:flex;flex-direction:column;
+  background:
+    radial-gradient(ellipse 55% 60% at 50% 50%, rgba(20,4,6,.42) 0%, rgba(20,4,6,0) 100%),
+    linear-gradient(180deg, rgba(26,6,9,.42) 0%, rgba(26,6,9,.30) 50%, rgba(18,4,6,.58) 100%),
+    var(--hero-img) 50% 50% / cover no-repeat,
+    #2a0b0e;
+}
+.hero-inner{flex:1;width:100%;max-width:980px;margin:0 auto;padding:48px max(20px, env(safe-area-inset-right,0px)) 64px max(20px, env(safe-area-inset-left,0px));min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.crumb{font:600 15px/1.4 var(--body);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.88);margin:0 0 22px;text-align:center;padding-left:.16em}
+.crumb a{text-decoration:none;color:rgba(255,255,255,.6)}
+.crumb a:hover{color:#fff}
+.crumb span{margin:0 8px;color:rgba(255,255,255,.35)}
+.hero h1{color:#fff;font-size:clamp(38px,5vw,68px);max-width:14em;letter-spacing:-.015em;line-height:1.1}
+.hero h1 .hl{color:#ff6a2b}
+.hero-note{margin-top:18px;font-size:13.5px;letter-spacing:.02em;color:rgba(255,255,255,.62)}
+.hero-sub{margin-top:24px;font-size:18px;line-height:1.65;color:rgba(255,255,255,.8);max-width:54ch}
+.hero-sub strong{color:#fff;font-weight:500}
+.hero-actions{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:center}
+.tm{font-size:.62em;line-height:0;position:relative;top:-.55em;vertical-align:baseline;letter-spacing:0;margin-left:-.14em;margin-right:.06em}
+@media (max-width:1020px){
+  .hero-inner{padding-block:40px 52px}
+  .hero-card{min-height:540px}
+}
+@media (max-width:560px){
+  .hero-inner{padding-block:32px 44px}
+  .hero-card{min-height:0}
+  .hero-sub{font-size:16px}
+  .hero-actions .btn{width:100%}
+}
+@keyframes heroUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-inner > *{animation:heroUp .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-inner > *:nth-child(2){animation-delay:.08s}
+.hero-inner > *:nth-child(3){animation-delay:.16s}
+.hero-inner > *:nth-child(4){animation-delay:.24s}
+@media (prefers-reduced-motion:reduce){
+  .hero-inner > *{animation:none}
+}
+
+/* phones: hide the "Trusted by 50+" line to keep the banner compact */
+@media (max-width:760px){.hero-note{display:none}}

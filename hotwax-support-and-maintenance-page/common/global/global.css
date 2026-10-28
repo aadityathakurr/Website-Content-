@@ -1,0 +1,75 @@
+/* Global styles: brand tokens, base type, buttons, section spacing, scroll reveal.
+   Load once on the page (HubSpot template stylesheet or a global CSS file). */
+:root{
+  color-scheme: light;
+  --red:#E70000;
+  --orange:#E74000;
+  --maroon:#8C1C24;
+  --wine:#2a0b0e;
+  --ink:#141112;
+  --text:#4d4547;
+  --muted:#7a7173;
+  --line:#e6dfe0;
+  --ground:#FAFAFA;
+  --paper:#ffffff;
+  --cyan:#00A2E1;
+  --display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --radius:28px;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{
+  margin:0;background:var(--ground);color:var(--text);
+  font-family:var(--body);font-weight:300;font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.ground{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:var(--ground);
+}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);color:var(--ink);font-weight:700;line-height:1.12;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.01em}
+h3{font-size:22px;font-weight:600}
+p{margin:0}
+/* visually hidden text for screen readers */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px, env(safe-area-inset-left,0px));padding-right:max(20px, env(safe-area-inset-right,0px))}
+.hl{color:var(--orange)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;
+  padding:17px 28px;border-radius:999px;border:0;transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(231,0,0,.65)}
+.btn-primary:hover{background:#c90000;transform:translateY(-1px)}
+.btn-primary svg{transition:transform .15s ease}
+.btn-primary:hover svg{transform:translateX(3px)}
+@media (max-width:560px){
+  :root{--radius:22px}
+}
+.section{padding-block:60px}
+@media (max-width:1020px){
+  .section{padding-block:52px}
+}
+.head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.head p{font-size:18px;color:var(--text);max-width:62ch}
+@media (max-width:640px){
+  .section{padding-block:44px}
+  .head{margin-bottom:36px}
+  .head p{font-size:16px}
+}
+.section .head .hv{transition:color .35s ease}
+@media (hover:hover){
+  .section:hover .head .hv{color:var(--red)}
+}
+@keyframes svcPop{0%{transform:none}45%{transform:translateY(-5px) rotate(-12deg) scale(1.08)}100%{transform:translateY(-3px) rotate(-6deg)}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}

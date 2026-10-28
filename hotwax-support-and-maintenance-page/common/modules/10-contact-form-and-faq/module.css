@@ -1,0 +1,52 @@
+/* 10-contact-form-and-faq: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.cta-card form{background:#fff;border-radius:20px;padding:32px;color:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:18px;min-width:0;align-content:start}
+.field{display:grid;gap:7px;min-width:0}
+.field.full{grid-column:1 / -1}
+.cta-card label{font:600 12.5px/1.3 var(--body);color:var(--ink)}
+.cta-card label .opt{font-weight:400;color:var(--muted)}
+.cta-card input,.cta-card select,.cta-card textarea{font:400 15px/1.4 var(--body);color:var(--ink);background:#fbf8f8;border:1px solid #e3d9da;border-radius:10px;padding:13px 14px;width:100%;min-width:0}
+.cta-card textarea{resize:vertical;min-height:92px}
+.cta-card input:focus,.cta-card select:focus,.cta-card textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(231,0,0,.12);background:#fff}
+.cta-card form .btn{grid-column:1 / -1;width:100%;margin-top:4px}
+.form-fine{grid-column:1 / -1;font-size:12.5px;color:var(--muted);text-align:center;line-height:1.5}
+.form-done{grid-column:1 / -1;text-align:center;padding:40px 10px}
+.form-done h3{font-size:26px}
+.form-done p{margin-top:10px;font-size:15px;color:var(--text)}
+@media (max-width:560px){
+  .cta-card form{grid-template-columns:1fr;padding:22px}
+}
+.talk-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.cta-card{border-radius:var(--radius);color:#fff;padding:44px;position:sticky;top:24px;
+  background:var(--maroon);border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 44px -10px rgba(140,28,36,.35),0 4px 14px rgba(0,0,0,.15)}
+.cta-card h2{color:#fff;font-size:clamp(28px,2.8vw,38px)}
+.cta-lead{margin-top:14px;margin-bottom:28px;font-size:16px;line-height:1.65;color:rgba(255,255,255,.76)}
+@media (max-width:960px){
+  .talk-grid{grid-template-columns:1fr;gap:48px}
+  .cta-card{position:static;padding:32px 22px}
+}
+.closing__faq{padding-top:8px;min-width:0}
+.faq-eyebrow{font:700 15.5px/1.7 var(--body);letter-spacing:1.55px;text-transform:uppercase;color:#8b9298;margin-bottom:16px}
+.faq-h2{font:700 clamp(25px,2.7vw,37px)/1.15 var(--display);color:var(--maroon)}
+.faq{margin-top:32px;border-top:1px solid #e0e3e5}
+.faq__item{border-bottom:1px solid #e0e3e5;border-radius:14px;margin:4px 0;transition:background-color .32s,border-color .32s}
+.faq__item:hover{background:rgba(140,28,36,.024)}
+.faq__item.is-open{background:rgba(140,28,36,.04);border-color:rgba(140,28,36,.16)}
+.faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 12px;background:none;border:0;cursor:pointer;text-align:left;font:700 20px/1.25 var(--display);color:var(--maroon);transition:color .22s}
+.faq__item:hover .faq__q,.faq__item.is-open .faq__q{color:#a8121c}
+.faq__q::after{content:"";flex:0 0 auto;width:30px;height:30px;border-radius:50%;background-color:#fff;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 6px rgba(0,0,0,.04);
+  background-image:linear-gradient(var(--orange),var(--orange)),linear-gradient(var(--orange),var(--orange));background-size:12px 2px,2px 12px;background-position:center;background-repeat:no-repeat;
+  transition:transform .36s cubic-bezier(.34,1.56,.64,1),background-color .24s,border-color .24s,box-shadow .24s}
+.faq__item:hover .faq__q::after{border-color:var(--orange);box-shadow:0 4px 10px rgba(231,0,0,.12)}
+.faq__item.is-open .faq__q::after{background-color:var(--maroon);background-image:linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);border-color:var(--maroon);box-shadow:0 4px 12px rgba(140,28,36,.25);transform:rotate(135deg)}
+.faq__content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.16,1,.3,1)}
+.faq__item.is-open .faq__content{grid-template-rows:1fr}
+.faq__inner{overflow:hidden;opacity:0;transform:translate3d(0,-6px,0);transition:opacity .32s,transform .38s cubic-bezier(.16,1,.3,1)}
+.faq__item.is-open .faq__inner{opacity:1;transform:none}
+.faq__a{padding:0 48px 20px 12px}
+.faq__a p{margin:0;font-size:16px;line-height:1.714;font-weight:400;color:#333}
+.faq__a a{color:var(--orange);text-decoration:underline;text-underline-offset:2px}
+@media (max-width:480px){
+  .faq__q{font-size:17px;padding:18px 8px}
+  .faq__a{padding:0 12px 18px 8px}
+  .faq__a p{font-size:15px}
+}

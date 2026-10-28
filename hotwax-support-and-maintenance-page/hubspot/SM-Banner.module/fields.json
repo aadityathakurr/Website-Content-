@@ -1,0 +1,397 @@
+[
+  {
+    "type": "group",
+    "name": "eyebrow",
+    "label": "Eyebrow (small line above the headline)",
+    "expanded": true,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_eyebrow",
+        "label": "Show eyebrow",
+        "display": "toggle",
+        "default": false
+      },
+      {
+        "type": "text",
+        "name": "eyebrow_text",
+        "label": "Eyebrow text",
+        "help_text": "Type ® where the trademark sign should appear; it is raised and sized automatically.",
+        "visibility": {
+          "controlling_field_path": "eyebrow.show_eyebrow",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Apache OFBiz® Support and Maintenance"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "heading",
+    "label": "Headline",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "heading_tag",
+        "label": "Heading level",
+        "help_text": "Keep H1 when this banner is the first section of the page (one H1 per page for SEO).",
+        "display": "select",
+        "choices": [
+          [
+            "h1",
+            "H1"
+          ],
+          [
+            "h2",
+            "H2"
+          ]
+        ],
+        "default": "h1"
+      },
+      {
+        "type": "text",
+        "name": "heading_before",
+        "label": "Text before the highlight",
+        "default": "Keep Apache OFBiz"
+      },
+      {
+        "type": "text",
+        "name": "heading_highlight",
+        "label": "Highlighted text (shown in the highlight color)",
+        "default": "connected, secure, and running."
+      },
+      {
+        "type": "text",
+        "name": "heading_after",
+        "label": "Text after the highlight (optional)",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "type": "richtext",
+    "name": "subheadline",
+    "label": "Subheadline",
+    "help_text": "Use bold for the part that should stand out.",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link",
+      "standard_emphasis"
+    ],
+    "default": "<p>Integrations, upgrades, bug fixes, and proactive maintenance from <strong>the world's largest team of Apache OFBiz committers.</strong></p>"
+  },
+  {
+    "type": "group",
+    "name": "button",
+    "label": "Button",
+    "expanded": true,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_button",
+        "label": "Show button",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "text",
+        "name": "button_text",
+        "label": "Button text",
+        "visibility": {
+          "controlling_field_path": "button.show_button",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Talk to an Apache OFBiz expert"
+      },
+      {
+        "type": "link",
+        "name": "button_link",
+        "label": "Button link",
+        "help_text": "Use #talk to scroll to the contact form section, or paste any page URL.",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE",
+          "EMAIL_ADDRESS",
+          "PHONE_NUMBER"
+        ],
+        "show_advanced_rel_options": true,
+        "visibility": {
+          "controlling_field_path": "button.show_button",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "#talk"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "type": "boolean",
+        "name": "show_arrow",
+        "label": "Show arrow icon",
+        "display": "toggle",
+        "visibility": {
+          "controlling_field_path": "button.show_button",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "note",
+    "label": "Proof line under the button",
+    "expanded": false,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_note",
+        "label": "Show proof line",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "text",
+        "name": "note_text",
+        "label": "Proof line text",
+        "visibility": {
+          "controlling_field_path": "note.show_note",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Trusted by 50+ enterprises across the USA and Canada"
+      },
+      {
+        "type": "boolean",
+        "name": "hide_on_mobile",
+        "label": "Hide on phones (under 760px)",
+        "display": "toggle",
+        "visibility": {
+          "controlling_field_path": "note.show_note",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "background",
+    "label": "Background",
+    "expanded": false,
+    "children": [
+      {
+        "type": "image",
+        "name": "background_image",
+        "label": "Background image",
+        "help_text": "Recommended 2400 x 1350 px JPG, under 400 KB. Upload hero-warehouse-banner.jpg from the hubspot-modules folder.",
+        "resizable": false,
+        "responsive": true,
+        "show_loading": false,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "eager"
+        }
+      },
+      {
+        "type": "choice",
+        "name": "background_position",
+        "label": "Image focus point",
+        "display": "select",
+        "choices": [
+          [
+            "center",
+            "Center"
+          ],
+          [
+            "top",
+            "Top"
+          ],
+          [
+            "bottom",
+            "Bottom"
+          ],
+          [
+            "left center",
+            "Left"
+          ],
+          [
+            "right center",
+            "Right"
+          ]
+        ],
+        "default": "center"
+      },
+      {
+        "type": "number",
+        "name": "overlay_strength",
+        "label": "Dark overlay strength",
+        "help_text": "0 shows the photo as is; higher values darken it so the text reads better. 40 matches the approved design.",
+        "display": "slider",
+        "min": 0,
+        "max": 65,
+        "step": 1,
+        "suffix": "%",
+        "default": 42
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Banner style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "text_align",
+        "label": "Text alignment",
+        "display": "select",
+        "choices": [
+          [
+            "center",
+            "Center"
+          ],
+          [
+            "left",
+            "Left"
+          ]
+        ],
+        "default": "center"
+      },
+      {
+        "type": "number",
+        "name": "min_height",
+        "label": "Banner height on desktop",
+        "help_text": "Tablets cap at 540px and phones size to the content automatically.",
+        "display": "slider",
+        "min": 420,
+        "max": 900,
+        "step": 10,
+        "suffix": "px",
+        "default": 680
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 640,
+        "max": 1280,
+        "step": 10,
+        "suffix": "px",
+        "default": 980
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Text",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "highlight_color",
+            "label": "Headline highlight",
+            "show_opacity": false,
+            "default": {
+              "color": "#FF6A2B",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "button_background",
+            "label": "Button background",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "button_text",
+            "label": "Button text",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "fallback_background",
+            "label": "Background color when no image is set",
+            "show_opacity": false,
+            "default": {
+              "color": "#2A0B0E",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "note_color",
+            "label": "Proof line (\"Trusted by…\")",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "number",
+        "name": "note_opacity",
+        "label": "Proof line opacity",
+        "help_text": "How strongly the \"Trusted by…\" line shows. Lower is softer; 62 is the current look.",
+        "display": "slider",
+        "min": 10,
+        "max": 100,
+        "step": 1,
+        "suffix": "%",
+        "default": 62
+      },
+      {
+        "type": "boolean",
+        "name": "animate_on_load",
+        "label": "Fade-up animation on page load",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "help_text": "Turn off if the theme already loads these fonts.",
+        "display": "toggle",
+        "default": true
+      }
+    ]
+  }
+]

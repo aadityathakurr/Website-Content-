@@ -1,0 +1,243 @@
+<!doctype html><html><head>
+<meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>S&M module preview</title><style>body{margin:0;background:#FAFAFA}/* HotWax Systems | Module: S&M CTA
+   Self-contained: every class starts with .hwx-cta. The rules under .hwx-cta__form style the
+   HubSpot form markup (.hs-form, .hs-input, .hs-button) so the chosen form looks like the design. */
+
+.hwx-cta{
+  --hwx-cta-font:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-cta-section-bg,#fafafa);
+  padding-top:var(--hwx-cta-pad-top,0px);
+  padding-bottom:var(--hwx-cta-pad-bottom,60px);
+  font-family:var(--hwx-cta-font);
+}
+.hwx-cta *,.hwx-cta *::before,.hwx-cta *::after{box-sizing:border-box}
+
+.hwx-cta__wrap{
+  max-width:var(--hwx-cta-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+.hwx-cta__card{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:20px 40px;
+  align-items:center;
+  padding:42px 48px;
+  border-radius:var(--hwx-cta-radius,22px);
+  background:var(--hwx-cta-card-bg,#a22b2a);
+}
+.hwx-cta--shadow .hwx-cta__card{box-shadow:0 30px 60px -30px rgba(140,28,36,.45)}
+
+/* copy */
+.hwx-cta__title{
+  margin:0;
+  font:700 clamp(21px,2vw,26px)/1.25 var(--hwx-cta-font);
+  letter-spacing:-.01em;
+  color:var(--hwx-cta-title,#fff);
+}
+.hwx-cta__text{
+  margin-top:8px;
+  max-width:52ch;
+  font-size:14.5px;
+  font-weight:300;
+  line-height:1.6;
+  color:var(--hwx-cta-text,#fff);
+  opacity:var(--hwx-cta-text-opacity,.86);
+}
+.hwx-cta__text p{margin:0}
+.hwx-cta__text p + p{margin-top:8px}
+.hwx-cta__text a{color:inherit}
+
+/* HubSpot form: email field + button on one row */
+.hwx-cta__form .hs-form{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:10px 14px;
+  align-items:start;
+  margin:0;
+}
+.hwx-cta__form .hs-form fieldset{max-width:none!important;margin:0;padding:0;border:0}
+.hwx-cta__form .hs-form fieldset .hs-form-field,
+.hwx-cta__form .hs-form .hs-form-field{width:100%!important;float:none!important;margin:0;padding:0}
+.hwx-cta__form .hs-form .input{margin:0!important}
+.hwx-cta__form .hs-form-field > label{display:block;margin:0 0 6px;font-size:13px;font-weight:500;color:var(--hwx-cta-title,#fff)}
+.hwx-cta--hide-labels .hwx-cta__form .hs-form-field > label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hwx-cta__form .hs-form-required{color:inherit}
+
+.hwx-cta__form input[type="email"],
+.hwx-cta__form input[type="text"],
+.hwx-cta__form input[type="tel"],
+.hwx-cta__form .hs-input:not([type="checkbox"]):not([type="radio"]){
+  width:100%!important;
+  height:50px;
+  margin:0;
+  padding:0 18px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-input-bg,#fff);
+  color:var(--hwx-cta-input-text,#141112);
+  font:500 15px/1 var(--hwx-cta-font);
+  box-shadow:none;
+}
+.hwx-cta__form input::placeholder{color:#8b9298;opacity:1}
+.hwx-cta__form input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.45)}
+
+.hwx-cta__form .hs_submit,.hwx-cta__form .hs_submit .actions{margin:0;padding:0}
+.hwx-cta--hide-labels .hwx-cta__form .hs_submit{align-self:start}
+.hwx-cta:not(.hwx-cta--hide-labels) .hwx-cta__form .hs_submit{align-self:end}
+.hwx-cta__form .hs-button,
+.hwx-cta__form input[type="submit"],
+.hwx-cta__form button[type="submit"]{
+  height:50px;
+  margin:0;
+  padding:0 26px;
+  border:0;
+  border-radius:10px;
+  background:var(--hwx-cta-btn-bg,#e70000);
+  color:var(--hwx-cta-btn-text,#fff);
+  font:700 13.5px/1 var(--hwx-cta-font);
+  letter-spacing:.06em;
+  cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.4);
+  transition:background .2s, transform .2s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.hwx-cta--caps .hwx-cta__form .hs-button,
+.hwx-cta--caps .hwx-cta__form input[type="submit"],
+.hwx-cta--caps .hwx-cta__form button[type="submit"]{text-transform:uppercase;letter-spacing:.14em}
+.hwx-cta__form .hs-button:hover,
+.hwx-cta__form input[type="submit"]:hover,
+.hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a);transform:translateY(-1px)}
+
+/* anything else the form adds (errors, consent text, recaptcha) spans the full row */
+.hwx-cta__form .hs-form > :not(fieldset):not(.hs-form-field):not(.hs_submit){grid-column:1 / -1}
+.hwx-cta__form .hs-error-msgs{list-style:none;margin:8px 0 0;padding:0}
+.hwx-cta__form .hs-error-msg,.hwx-cta__form .hs-main-font-element{font-size:13px;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .legal-consent-container,.hwx-cta__form .hs-richtext{font-size:12px;line-height:1.5;color:var(--hwx-cta-text,#fff);opacity:.8}
+.hwx-cta__form .submitted-message{font-size:15px;line-height:1.6;color:var(--hwx-cta-title,#fff)}
+.hwx-cta__form .submitted-message p{margin:0}
+
+/* editor-only preview notice */
+.hwx-cta__notice{margin:0;font-size:12px;color:var(--hwx-cta-title,#fff);opacity:.75}
+.hwx-cta__placeholder input{cursor:default}
+
+/* scroll reveal (module.js) */
+.hwx-cta--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-cta--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 52px)}
+}
+@media (max-width:900px){
+  .hwx-cta__card{grid-template-columns:minmax(0,1fr);padding:26px 22px}
+}
+@media (max-width:640px){
+  .hwx-cta{padding-bottom:min(var(--hwx-cta-pad-bottom,60px), 44px)}
+}
+@media (max-width:480px){
+  .hwx-cta__card{padding:22px 18px;gap:16px}
+  .hwx-cta__title{font-size:20px}
+  .hwx-cta__text{font-size:14px}
+  .hwx-cta__form .hs-form{grid-template-columns:minmax(0,1fr);gap:10px}
+  .hwx-cta__form .hs-button,
+  .hwx-cta__form input[type="submit"],
+  .hwx-cta__form button[type="submit"]{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-cta *{transition:none!important}
+  .hwx-cta--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-cta .hwx-cta__text a,
+.hwx-cta .hwx-cta__text a:link,
+.hwx-cta .hwx-cta__text a:visited,
+.hwx-cta .hwx-cta__text a:hover,
+.hwx-cta .hwx-cta__text a:focus,
+.hwx-cta .hwx-cta__text a:active{color:inherit!important;text-decoration:underline}
+.hwx-cta .hwx-cta__form .hs-button,
+.hwx-cta .hwx-cta__form input[type="submit"],
+.hwx-cta .hwx-cta__form button[type="submit"]{background:var(--hwx-cta-btn-bg,#e70000)!important;color:var(--hwx-cta-btn-text,#fff)!important;border:0!important}
+.hwx-cta .hwx-cta__form .hs-button:hover,
+.hwx-cta .hwx-cta__form input[type="submit"]:hover,
+.hwx-cta .hwx-cta__form button[type="submit"]:hover{background:var(--hwx-cta-btn-hover,#ff1a1a)!important}
+</style></head><body>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+
+
+
+
+<section
+  class="hwx-cta hwx-cta--hide-labels hwx-cta--caps hwx-cta--shadow hwx-cta--reveal"
+  
+  style="
+    --hwx-cta-section-bg: #FAFAFA;
+    --hwx-cta-card-bg: #A22B2A;
+    --hwx-cta-title: #FFFFFF;
+    --hwx-cta-text: #FFFFFF;
+    --hwx-cta-text-opacity: 0.86;
+    --hwx-cta-input-bg: #FFFFFF;
+    --hwx-cta-input-text: #141112;
+    --hwx-cta-btn-bg: #E70000;
+    --hwx-cta-btn-hover: #FF1A1A;
+    --hwx-cta-btn-text: #FFFFFF;
+    --hwx-cta-pad-top: 0px;
+    --hwx-cta-pad-bottom: 60px;
+    --hwx-cta-width: 1180px;
+    --hwx-cta-radius: 22px;
+  ">
+  <div class="hwx-cta__wrap">
+    <div class="hwx-cta__card">
+
+      <div class="hwx-cta__copy">
+        
+        <h2 class="hwx-cta__title">Talk to an Apache OFBiz Expert</h2>
+        <div class="hwx-cta__text"><p>Have an Apache OFBiz system that needs attention? Connect with our Apache OFBiz experts to talk through upgrades, fixes, and ongoing support for your business.</p></div>
+      </div>
+
+      <div class="hwx-cta__form">
+        
+          
+          <form class="hs-form hwx-cta__placeholder" onsubmit="return false" aria-label="Form preview">
+            <div class="hs_email hs-form-field">
+              <label>Work email</label>
+              <div class="input"><input class="hs-input" type="email" placeholder="Email Address" disabled></div>
+            </div>
+            <div class="hs_submit"><div class="actions"><input class="hs-button primary" type="submit" value="Submit" disabled></div></div>
+            <p class="hwx-cta__notice">Choose a HubSpot form in the module's Form field. This preview is not shown on the live page.</p>
+          </form>
+        
+      </div>
+
+    </div>
+  </div>
+</section><div style="height:200px"></div><script>// HotWax Systems | Module: S&M CTA
+// Scroll reveal for the card. Runs only when "Reveal on scroll" is on, and only when the card
+// starts below the first screen. Form submission is handled by HubSpot, not by this file.
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var cards = document.querySelectorAll('.hwx-cta--reveal .hwx-cta__card');
+  if (!cards.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('is-hidden');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+
+  [].forEach.call(cards, function (card) {
+    if (card.getBoundingClientRect().top < window.innerHeight) return;
+    card.classList.add('is-hidden');
+    requestAnimationFrame(function () { card.classList.add('is-ready'); });
+    io.observe(card);
+  });
+})();
+</script></body></html>

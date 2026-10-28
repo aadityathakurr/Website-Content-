@@ -1,0 +1,28 @@
+/* 05-email-cta: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.cta-bar{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px 40px;align-items:center;padding:42px 48px;border-radius:22px;background:#A22B2A;box-shadow:0 30px 60px -30px rgba(140,28,36,.45)}
+.cta-bar__title{font:700 clamp(21px,2vw,26px)/1.25 var(--body);color:#fff;letter-spacing:-.01em}
+.cta-bar__copy p{margin-top:8px;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.86);max-width:52ch}
+.cta-bar__form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center}
+.cta-bar__form input{height:50px;border:0;border-radius:10px;padding:0 18px;background:#fff;font:500 15px/1 var(--body);color:var(--ink)}
+.cta-bar__form input::placeholder{color:#8b9298}
+.cta-bar__form input:focus{outline:none;box-shadow:0 0 0 3px rgba(255,255,255,.45)}
+.cta-bar__form button{height:50px;padding:0 26px;border:0;border-radius:10px;background:var(--red);color:#fff;font:700 13.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);transition:background .2s,transform .2s}
+.cta-bar__form button:hover{background:#ff1a1a;transform:translateY(-1px)}
+.cta-bar__form{position:relative}
+.cta-bar__msg{position:absolute;left:4px;top:100%;margin:10px 0 0;font-size:14px;color:#fff}
+@media (max-width:900px){
+  .cta-bar{grid-template-columns:1fr;padding:26px 22px}
+}
+@media (max-width:480px){
+  .cta-bar{padding:22px 18px;gap:16px}
+  .cta-bar__title{font-size:20px}
+  .cta-bar__copy p{font-size:14px}
+  .cta-bar__form{grid-template-columns:1fr;gap:10px}
+  .cta-bar__form button{width:100%}
+}
+
+/* spacing when this bar is its own HubSpot module (it used to sit inside the Services section) */
+.cta-bar-section{padding-bottom:60px}
+.cta-bar-section .cta-bar{margin-top:0}
+@media (max-width:1020px){.cta-bar-section{padding-bottom:52px}}
+@media (max-width:640px){.cta-bar-section{padding-bottom:44px}}

@@ -1,0 +1,129 @@
+/* HotWax Systems | Module: S&M How It Works
+   Self-contained: every class starts with .hwx-how, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables on the <section>. */
+
+.hwx-how{
+  --hwx-how-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-how-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hwx-how-gutter:max(20px, env(safe-area-inset-left,0px));
+  background:var(--hwx-how-bg,#fafafa);
+  color:var(--hwx-how-text,#4d4547);
+  font-family:var(--hwx-how-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-how-pad-top,60px);
+  padding-bottom:var(--hwx-how-pad-bottom,60px);
+  overflow-x:clip;
+}
+.hwx-how *,.hwx-how *::before,.hwx-how *::after{box-sizing:border-box}
+
+.hwx-how__wrap{
+  max-width:var(--hwx-how-width,1180px);
+  margin:0 auto;
+  padding-left:var(--hwx-how-gutter);
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+}
+
+/* heading block */
+.hwx-how__head{max-width:760px;display:grid;gap:18px;margin-bottom:52px}
+.hwx-how__title{
+  margin:0;
+  font-family:var(--hwx-how-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-how-ink,#141112);
+  text-wrap:balance;
+}
+/* chosen heading words turn red while the section is hovered (mouse only) */
+.hwx-how__hl{transition:color .35s ease, -webkit-text-fill-color .35s ease}
+@media (hover:hover){
+  .hwx-how--hover:hover .hwx-how__hl{color:var(--hwx-how-heading-hover,#e70000);-webkit-text-fill-color:var(--hwx-how-heading-hover,#e70000)}
+}
+.hwx-how__intro{font-size:18px;max-width:62ch}
+.hwx-how__intro p{margin:0}
+.hwx-how__intro p + p{margin-top:10px}
+.hwx-how__intro strong,.hwx-how__intro b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* steps */
+.hwx-how__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px}
+.hwx-how__step{position:relative;padding-top:28px;border-top:2px solid var(--hwx-how-line,#e6dfe0)}
+.hwx-how__step::before{
+  content:"";position:absolute;top:-2px;left:0;width:48px;height:2px;
+  background:var(--hwx-how-accent,#e70000);
+  transition:width .5s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover:hover) and (min-width:761px){
+  .hwx-how--hover .hwx-how__step:hover::before{width:100%}
+}
+.hwx-how__n{display:block;margin-bottom:16px;font:700 44px/1 var(--hwx-how-body)}
+.hwx-how--num-outline .hwx-how__n{color:transparent;-webkit-text-stroke:1.2px var(--hwx-how-number,#8c1c24)}
+.hwx-how--num-solid .hwx-how__n{color:var(--hwx-how-number,#8c1c24)}
+.hwx-how__step-title{margin:0;font:600 22px/1.12 var(--hwx-how-display);color:var(--hwx-how-ink,#141112)}
+.hwx-how__step-text{margin-top:10px;font-size:15px;line-height:1.7}
+.hwx-how__step-text p{margin:0}
+.hwx-how__step-text p + p{margin-top:8px}
+.hwx-how__step-text strong,.hwx-how__step-text b{color:var(--hwx-how-ink,#141112);font-weight:600}
+
+/* closing line */
+.hwx-how__closing{margin:40px 0 0;font-size:16px;color:var(--hwx-how-text,#4d4547)}
+.hwx-how__closing a{color:var(--hwx-how-link,#e70000);font-weight:600;text-decoration:none}
+.hwx-how__closing a:hover{text-decoration:underline}
+.hwx-how a:focus-visible{outline:3px solid #00a2e1;outline-offset:3px;border-radius:6px}
+
+
+/* loop copies made by module.js only take part in the phone carousel */
+@media (min-width:761px){.hwx-how__steps > .is-clone{display:none}.hwx-how__steps{transform:none!important}}
+
+/* scroll reveal (module.js) */
+.hwx-how--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-how--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 52px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 52px)}
+  .hwx-how--cols-4 .hwx-how__steps,.hwx-how--cols-3 .hwx-how__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 32px}
+}
+@media (max-width:760px){
+  .hwx-how__steps,.hwx-how--cols-2 .hwx-how__steps{grid-template-columns:minmax(0,1fr);gap:28px}
+
+  /* one full card at a time: module.js slides the list with transform (swipe and arrows) */
+  .hwx-how--carousel .hwx-how__viewport{overflow:hidden;padding:4px 0 6px;margin:-4px 0 -6px}
+  .hwx-how--carousel .hwx-how__steps{
+    display:flex;gap:14px;align-items:stretch;
+    touch-action:pan-y;user-select:none;-webkit-user-select:none;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1);
+    will-change:transform;
+  }
+  .hwx-how--carousel .hwx-how__steps.is-dragging{transition:none}
+  .hwx-how--carousel .hwx-how__step{
+    flex:0 0 100%;min-width:0;overflow:hidden;
+    background:var(--hwx-how-card,#fff);
+    border:1px solid var(--hwx-how-line,#e6dfe0);border-top:2px solid var(--hwx-how-line,#e6dfe0);
+    border-radius:18px;padding:24px 22px 26px;
+  }
+  .hwx-how--carousel .hwx-how__step::before{left:22px;top:0;width:40px;max-width:calc(100% - 44px);border-radius:0 0 2px 2px}
+  .hwx-how--carousel .hwx-how__step.is-current::before{width:calc(100% - 44px)}
+
+}
+@media (max-width:640px){
+  .hwx-how{padding-top:min(var(--hwx-how-pad-top,60px), 44px);padding-bottom:min(var(--hwx-how-pad-bottom,60px), 44px)}
+  .hwx-how__head{margin-bottom:36px}
+  .hwx-how__intro{font-size:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-how *{transition:none!important}
+  .hwx-how--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-how .hwx-how__closing a,
+.hwx-how .hwx-how__closing a:link,
+.hwx-how .hwx-how__closing a:visited,
+.hwx-how .hwx-how__closing a:hover,
+.hwx-how .hwx-how__closing a:focus,
+.hwx-how .hwx-how__closing a:active{color:var(--hwx-how-link,#e70000)!important;text-decoration:none}
+.hwx-how .hwx-how__closing a:hover{text-decoration:underline}

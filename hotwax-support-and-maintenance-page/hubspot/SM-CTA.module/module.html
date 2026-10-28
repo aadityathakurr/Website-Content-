@@ -1,0 +1,91 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M CTA (mid-page "Talk to an Apache OFBiz Expert" email bar)
+  The email field is a real HubSpot form picked in the module's Form field, so submissions land in the CRM.
+  New-editor forms load through HubSpot's new-form embed; legacy forms use the classic {% form %} tag (Form type field).
+  Field label ("Work email"), placeholder ("Email Address") and button text ("Submit") are set on that form.
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.title|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-cta__hl">')|replace(']', '</span>') %}
+
+<section
+  class="hwx-cta{% if module.hide_form_labels %} hwx-cta--hide-labels{% endif %}{% if module.style.button_uppercase %} hwx-cta--caps{% endif %}{% if module.style.card_shadow %} hwx-cta--shadow{% endif %}{% if module.style.reveal_on_scroll %} hwx-cta--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  style="
+    --hwx-cta-section-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-cta-card-bg: {{ c.card_background.color|default('#A22B2A') }};
+    --hwx-cta-title: {{ c.title_color.color|default('#FFFFFF') }};
+    --hwx-cta-heading-hover: {{ c.heading_hover_color.color|default('#FFB38A') }};
+    --hwx-cta-text: {{ c.text_color.color|default('#FFFFFF') }};
+    --hwx-cta-text-opacity: {{ (c.text_opacity|default(86)) / 100 }};
+    --hwx-cta-input-bg: {{ c.input_background.color|default('#FFFFFF') }};
+    --hwx-cta-input-text: {{ c.input_text.color|default('#141112') }};
+    --hwx-cta-btn-bg: {{ c.button_background.color|default('#E70000') }};
+    --hwx-cta-btn-hover: {{ c.button_hover.color|default('#FF1A1A') }};
+    --hwx-cta-btn-text: {{ c.button_text.color|default('#FFFFFF') }};
+    --hwx-cta-pad-top: {{ module.style.padding_top|default(0) }}px;
+    --hwx-cta-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-cta-width: {{ module.style.content_width|default(1180) }}px;
+    --hwx-cta-radius: {{ module.style.corner_radius|default(22) }}px;
+  ">
+  <div class="hwx-cta__wrap">
+    <div class="hwx-cta__card">
+
+      <div class="hwx-cta__copy">
+        {% set tag = module.title_tag|default('h2') %}
+        {% if module.title %}<{{ tag }} class="hwx-cta__title">{{ title }}</{{ tag }}>{% endif %}
+        {% if module.description %}<div class="hwx-cta__text">{{ module.description }}</div>{% endif %}
+      </div>
+
+      <div class="hwx-cta__form">
+        {% if module.form.form_id and module.form_type != 'legacy' %}
+          {# Forms built in HubSpot's NEW forms editor: the classic {% form %} tag renders nothing for them,
+             so they load through HubSpot's own new-form embed (account ID + data region). #}
+          {% set region = module.form_region or 'na2' %}
+          {{ require_js("https://js-" ~ region ~ ".hsforms.net/forms/embed/" ~ hub_id ~ ".js", { position: "footer", defer: true }) }}
+          <div class="hs-form-frame" data-region="{{ region }}" data-form-id="{{ module.form.form_id }}" data-portal-id="{{ hub_id }}"></div>
+        {% elif module.form.form_id %}
+          {# Forms built in HubSpot's older (legacy) form builder #}
+          {% form
+            form_to_use="{{ module.form.form_id }}"
+            response_response_type="{{ module.form.response_type }}"
+            response_message="{{ module.form.message }}"
+            response_redirect_id="{{ module.form.redirect_id }}"
+            response_redirect_url="{{ module.form.redirect_url }}"
+            gotowebinar_webinar_key="{{ module.form.gotowebinar_webinar_key }}"
+          %}
+        {% elif is_in_editor %}
+          {# Shown only inside the HubSpot editor until a form is chosen. Same markup as a HubSpot form, so it previews the real look. #}
+          <form class="hs-form hwx-cta__placeholder" onsubmit="return false" aria-label="Form preview">
+            <div class="hs_email hs-form-field">
+              <label>Work email</label>
+              <div class="input"><input class="hs-input" type="email" placeholder="Email Address" disabled></div>
+            </div>
+            <div class="hs_submit"><div class="actions"><input class="hs-button primary" type="submit" value="Submit" disabled></div></div>
+            <p class="hwx-cta__notice">Choose a HubSpot form in the module's Form field. This preview is not shown on the live page.</p>
+          </form>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>

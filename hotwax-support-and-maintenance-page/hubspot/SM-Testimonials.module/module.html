@@ -1,0 +1,118 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Testimonials ("What IT leaders say after working with us.")
+  Desktop: the first testimonial is the large featured card; the others show two at a time beside it and
+  rotate automatically when there are more than two (paused while the cursor is over them), so the featured
+  card never stretches (or all cards in an even grid). Phones: every testimonial is in the swipe / auto-slide carousel.
+  Quotes, names, roles, photos or initials and the closing link all come from the fields.
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.heading|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-voices__hl">')|replace(']', '</span>') %}
+{% set featured = module.style.layout == 'featured' and module.testimonials|length > 1 %}
+{% set foot = module.closing %}
+{% set rot = module.rotate %}
+{# desktop: more than two testimonials beside the featured card rotate two at a time #}
+{% set rotating = featured and rot.enabled and module.testimonials|length > 3 %}
+
+{% macro card(t, is_feature) %}
+  <figure class="hwx-voices__card{% if is_feature %} is-feature{% endif %}">
+    <div class="hwx-voices__qm" aria-hidden="true">&ldquo;</div>
+    <blockquote class="hwx-voices__quote">{{ t.quote|escape }}</blockquote>
+    <figcaption class="hwx-voices__who">
+      {% if t.photo and t.photo.src %}
+        <img class="hwx-voices__avatar" src="{{ t.photo.src }}" alt="" width="52" height="52" loading="lazy" decoding="async">
+      {% elif t.initials %}
+        <span class="hwx-voices__avatar" aria-hidden="true">{{ t.initials|escape }}</span>
+      {% endif %}
+      <div>
+        {% if t.person_name %}<b class="hwx-voices__name">{{ t.person_name|escape }}</b>{% endif %}
+        {% if t.role %}<span class="hwx-voices__role">{{ t.role|escape }}</span>{% endif %}
+      </div>
+    </figcaption>
+  </figure>
+{% endmacro %}
+
+<section
+  class="hwx-voices hwx-voices--{{ 'featured' if featured else 'grid' }}{% if module.carousel.mobile_carousel %} hwx-voices--carousel{% endif %}{% if module.style.hover_effects %} hwx-voices--hover{% endif %}{% if module.style.reveal_on_scroll %} hwx-voices--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  data-autoplay="{{ 'true' if module.carousel.autoplay else 'false' }}"
+  data-interval="{{ module.carousel.interval|default(5) }}"
+  style="
+    --hwx-voices-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-voices-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-voices-heading-hover: {{ c.heading_hover_color.color|default('#E70000') }};
+    --hwx-voices-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-voices-muted: {{ c.muted_color.color|default('#7A7173') }};
+    --hwx-voices-card: {{ c.card_background.color|default('#FFFFFF') }};
+    --hwx-voices-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-voices-feature: {{ c.feature_background.color|default('#8C1C24') }};
+    --hwx-voices-feature-text: {{ c.feature_text.color|default('#FFFFFF') }};
+    --hwx-voices-qm: {{ c.quote_mark.color|default('#E74000') }};
+    --hwx-voices-feature-qm: {{ c.feature_quote_mark.color|default('#FF8A5C') }};
+    --hwx-voices-avatar-bg: {{ c.avatar_background.color|default('#F3E9EA') }};
+    --hwx-voices-avatar-text: {{ c.avatar_text.color|default('#8C1C24') }};
+    --hwx-voices-link: {{ c.link_color.color|default('#E70000') }};
+    --hwx-voices-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-voices-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-voices-width: {{ module.style.content_width|default(1180) }}px;
+  ">
+  <div class="hwx-voices__wrap">
+
+    {% if module.heading %}
+      <div class="hwx-voices__head">
+        {% set tag = module.heading_tag|default('h2') %}
+        <{{ tag }} class="hwx-voices__title">{{ title }}</{{ tag }}>
+        {% if module.intro %}<div class="hwx-voices__intro">{{ module.intro }}</div>{% endif %}
+      </div>
+    {% endif %}
+
+    {% if module.testimonials %}
+      <div class="hwx-voices__viewport">
+      <div class="hwx-voices__list">
+        {% if featured %}
+          {{ card(module.testimonials[0], true) }}
+          <div class="hwx-voices__stack{% if rotating %} is-rotating{% endif %}"{% if rotating %} data-interval="{{ rot.seconds|default(6) }}" aria-live="polite"{% endif %}>
+            {% for t in module.testimonials %}{% if not loop.first %}{{ card(t, false) }}{% endif %}{% endfor %}
+          </div>
+        {% else %}
+          {% for t in module.testimonials %}{{ card(t, false) }}{% endfor %}
+        {% endif %}
+      </div>
+      </div>
+
+    {% endif %}
+
+    {% if foot.show_closing %}
+      {% set link = foot.link %}
+      <p class="hwx-voices__more">
+        {%- if foot.text_before %}{{ foot.text_before|escape }} {% endif -%}
+        {%- if foot.link_text -%}
+          <a href="{{ link.url.href or '#' }}"{% if link.open_in_new_tab %} target="_blank"{% endif %}{% if link.open_in_new_tab or link.no_follow %} rel="{% if link.no_follow %}nofollow {% endif %}{% if link.open_in_new_tab %}noopener{% endif %}"{% endif %}>
+            {{- foot.link_text|escape -}}
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {%- endif -%}
+      </p>
+    {% endif %}
+
+  </div>
+</section>

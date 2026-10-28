@@ -1,0 +1,15 @@
+{
+  "label": "S&M Banner",
+  "css_assets": [],
+  "external_js": [],
+  "global": false,
+  "help_text": "Banner for the Apache OFBiz Support and Maintenance (S&M) page. Every text, link, image, color and size is editable from the module fields.",
+  "host_template_types": [
+    "PAGE"
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "smart_type": "NOT_SMART",
+  "tags": [],
+  "is_available_for_new_content": true
+}

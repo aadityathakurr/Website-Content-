@@ -1,0 +1,501 @@
+[
+  {
+    "type": "text",
+    "name": "heading",
+    "label": "Headline",
+    "help_text": "Tip: put [square brackets] around any words to make them change color on hover. The brackets are not shown.",
+    "default": "What IT leaders say after working with us."
+  },
+  {
+    "type": "text",
+    "name": "heading_hover_words",
+    "label": "Words that change color on hover",
+    "help_text": "Comma separated, any letter case (for example: HotWax, one team). You can also put [square brackets] around words in the headline instead. Pick the color in Style > Colors > \"Heading words on hover\". Leave empty for none.",
+    "default": "IT leaders"
+  },
+  {
+    "type": "choice",
+    "name": "heading_tag",
+    "label": "Heading level",
+    "display": "select",
+    "choices": [
+      [
+        "h2",
+        "H2"
+      ],
+      [
+        "h3",
+        "H3"
+      ]
+    ],
+    "default": "h2"
+  },
+  {
+    "type": "richtext",
+    "name": "intro",
+    "label": "Intro (optional)",
+    "enabled_features": [
+      "bold",
+      "italic",
+      "link"
+    ],
+    "default": ""
+  },
+  {
+    "type": "group",
+    "name": "testimonials",
+    "label": "Testimonials",
+    "help_text": "With the Featured layout, the first one is the large red card. Drag to reorder.",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 3,
+      "sorting_label_field": "testimonials.person_name"
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "quote",
+        "label": "Quote",
+        "help_text": "Without quotation marks; the quote mark is added automatically.",
+        "default": "",
+        "allow_new_line": true,
+        "show_emoji_picker": false
+      },
+      {
+        "type": "text",
+        "name": "person_name",
+        "label": "Name",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "name": "role",
+        "label": "Title and company",
+        "default": ""
+      },
+      {
+        "type": "image",
+        "name": "photo",
+        "label": "Headshot (optional)",
+        "help_text": "Square, at least 104 x 104 px. Without a photo the initials are shown.",
+        "resizable": false,
+        "responsive": true,
+        "show_loading": false,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "type": "text",
+        "name": "initials",
+        "label": "Initials (shown when there is no headshot)",
+        "default": ""
+      }
+    ],
+    "default": [
+      {
+        "quote": "We selected HotWax Systems because the team brought extensive Apache OFBiz experience, particularly with bringing several of the founding members, authors and architects of the OFBiz open-source platform itself.",
+        "role": "Cabi",
+        "photo": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "initials": "KS",
+        "person_name": "Kris Shenk"
+      },
+      {
+        "quote": "HotWax Systems as an organization proved to be a skilled, trustworthy, and hardworking vendor.",
+        "role": "Sr. Manager, IT Applications Development · United",
+        "photo": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "initials": "MK",
+        "person_name": "Michael Knott"
+      },
+      {
+        "quote": "We needed a partner… to be creative, inspiring, patient, and excel at detail management.",
+        "role": "Program Manager · Herman Miller",
+        "photo": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "initials": "KG",
+        "person_name": "Kelli Gierz"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "closing",
+    "label": "Closing line",
+    "expanded": true,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "show_closing",
+        "label": "Show closing line",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "text",
+        "name": "text_before",
+        "label": "Text before the link",
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "See how other teams run on Apache OFBiz."
+      },
+      {
+        "type": "text",
+        "name": "link_text",
+        "label": "Link text",
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": "Read our industry case studies"
+      },
+      {
+        "type": "link",
+        "name": "link",
+        "label": "Link",
+        "supported_types": [
+          "EXTERNAL",
+          "CONTENT",
+          "FILE"
+        ],
+        "show_advanced_rel_options": true,
+        "visibility": {
+          "controlling_field_path": "closing.show_closing",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": {
+          "url": {
+            "content_id": null,
+            "type": "EXTERNAL",
+            "href": "https://www.hotwaxsystems.com/industry-case-studies"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "rotate",
+    "label": "Rotating cards (desktop)",
+    "expanded": false,
+    "help_text": "With the Featured layout and more than three testimonials, the cards beside the featured one show two at a time and change automatically. Pauses while the cursor is over the testimonials.",
+    "children": [
+      {
+        "type": "boolean",
+        "name": "enabled",
+        "label": "Rotate the cards beside the featured one",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "number",
+        "name": "seconds",
+        "label": "Seconds per pair",
+        "display": "slider",
+        "min": 3,
+        "max": 15,
+        "step": 1,
+        "suffix": "s",
+        "visibility": {
+          "controlling_field_path": "rotate.enabled",
+          "controlling_value_regex": "true",
+          "operator": "EQUAL"
+        },
+        "default": 6
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "carousel",
+    "label": "Phone carousel",
+    "expanded": false,
+    "children": [
+      {
+        "type": "boolean",
+        "name": "mobile_carousel",
+        "label": "One card at a time on phones (swipe + auto-slide)",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Off stacks the cards one under another."
+      },
+      {
+        "type": "boolean",
+        "name": "autoplay",
+        "label": "Auto-slide",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Pauses while the visitor touches the cards."
+      },
+      {
+        "type": "number",
+        "name": "interval",
+        "label": "Seconds per card",
+        "display": "slider",
+        "min": 2,
+        "max": 15,
+        "step": 1,
+        "suffix": "s",
+        "default": 5
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "section_id",
+    "label": "Section ID (anchor)",
+    "help_text": "Lets buttons link here with #voices. Letters, numbers and dashes only.",
+    "default": "voices"
+  },
+  {
+    "type": "group",
+    "name": "style",
+    "label": "Section style",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "type": "choice",
+        "name": "layout",
+        "label": "Desktop layout",
+        "display": "select",
+        "choices": [
+          [
+            "featured",
+            "Featured + stack"
+          ],
+          [
+            "grid",
+            "Even grid"
+          ]
+        ],
+        "default": "featured"
+      },
+      {
+        "type": "number",
+        "name": "padding_top",
+        "label": "Space above (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60,
+        "help_text": "Tablets cap at 52px and phones at 44px."
+      },
+      {
+        "type": "number",
+        "name": "padding_bottom",
+        "label": "Space below (desktop)",
+        "display": "slider",
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "suffix": "px",
+        "default": 60
+      },
+      {
+        "type": "number",
+        "name": "content_width",
+        "label": "Maximum content width",
+        "display": "slider",
+        "min": 720,
+        "max": 1400,
+        "step": 10,
+        "suffix": "px",
+        "default": 1180
+      },
+      {
+        "type": "group",
+        "name": "colors",
+        "label": "Colors",
+        "expanded": true,
+        "children": [
+          {
+            "type": "color",
+            "name": "section_background",
+            "label": "Section background",
+            "show_opacity": false,
+            "default": {
+              "color": "#FAFAFA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_color",
+            "label": "Headline, quotes, names",
+            "show_opacity": false,
+            "default": {
+              "color": "#141112",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "heading_hover_color",
+            "label": "Heading words on hover",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            },
+            "help_text": "Color of the chosen headline words while the section is hovered."
+          },
+          {
+            "type": "color",
+            "name": "text_color",
+            "label": "Body text",
+            "show_opacity": false,
+            "default": {
+              "color": "#4D4547",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "muted_color",
+            "label": "Titles under names",
+            "show_opacity": false,
+            "default": {
+              "color": "#7A7173",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "card_background",
+            "label": "Cards (desktop)",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "line_color",
+            "label": "Card borders",
+            "show_opacity": false,
+            "default": {
+              "color": "#E6DFE0",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "feature_background",
+            "label": "Featured card (desktop) and every card on phones",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "feature_text",
+            "label": "Text on maroon cards",
+            "show_opacity": false,
+            "default": {
+              "color": "#FFFFFF",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "quote_mark",
+            "label": "Quote mark",
+            "show_opacity": false,
+            "default": {
+              "color": "#E74000",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "feature_quote_mark",
+            "label": "Quote mark on maroon cards",
+            "show_opacity": false,
+            "default": {
+              "color": "#FF8A5C",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "avatar_background",
+            "label": "Initials circle",
+            "show_opacity": false,
+            "default": {
+              "color": "#F3E9EA",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "avatar_text",
+            "label": "Initials",
+            "show_opacity": false,
+            "default": {
+              "color": "#8C1C24",
+              "opacity": 100
+            }
+          },
+          {
+            "type": "color",
+            "name": "link_color",
+            "label": "Closing link",
+            "show_opacity": false,
+            "default": {
+              "color": "#E70000",
+              "opacity": 100
+            }
+          }
+        ]
+      },
+      {
+        "type": "boolean",
+        "name": "hover_effects",
+        "label": "Cards lift on hover",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "reveal_on_scroll",
+        "label": "Reveal on scroll",
+        "display": "toggle",
+        "default": true
+      },
+      {
+        "type": "boolean",
+        "name": "load_fonts",
+        "label": "Load Playfair Display and Montserrat",
+        "display": "toggle",
+        "default": true,
+        "help_text": "Turn off if the theme or another module already loads these fonts."
+      }
+    ]
+  }
+]

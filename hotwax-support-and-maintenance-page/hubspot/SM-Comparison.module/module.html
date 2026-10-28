@@ -1,0 +1,109 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Comparison ("Compare your options for Apache OFBiz support.")
+  Desktop: a four-column table (row label, two alternatives, HotWax highlighted).
+  Phones: one card per row with both alternatives first and the HotWax answer last (nothing to tap).
+  Column names, every row and every cell come from the fields.
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.heading|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-cmp__hl">')|replace(']', '</span>') %}
+{% set col = module.columns %}
+{% set mob = module.mobile %}
+
+{# Check icon used for every HotWax cell #}
+{% macro check(size) %}<svg class="hwx-cmp__ic" width="{{ size }}" height="{{ size }}" viewBox="0 0 22 22" aria-hidden="true"><path d="M11 1.5l8.2 4.75v9.5L11 20.5l-8.2-4.75v-9.5z" fill="currentColor"/><path d="M7 11.2l2.7 2.7 5.4-5.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endmacro %}
+
+<section
+  class="hwx-cmp{% if module.style.hover_effects %} hwx-cmp--hover{% endif %}{% if module.style.reveal_on_scroll %} hwx-cmp--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  style="
+    --hwx-cmp-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-cmp-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-cmp-heading-hover: {{ c.heading_hover_color.color|default('#E70000') }};
+    --hwx-cmp-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-cmp-muted: {{ c.muted_color.color|default('#7A7173') }};
+    --hwx-cmp-card: {{ c.card_background.color|default('#FFFFFF') }};
+    --hwx-cmp-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-cmp-us-head: {{ c.us_header_background.color|default('#8C1C24') }};
+    --hwx-cmp-us-head-text: {{ c.us_header_text.color|default('#FFFFFF') }};
+    --hwx-cmp-us-cell: {{ c.us_cell_background.color|default('#FFF6F3') }};
+    --hwx-cmp-us-border: {{ c.us_border.color|default('#F5D6CF') }};
+    --hwx-cmp-icon: {{ c.icon_color.color|default('#E70000') }};
+    --hwx-cmp-dot: {{ c.dot_color.color|default('#D6CBCC') }};
+    --hwx-cmp-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-cmp-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-cmp-width: {{ module.style.content_width|default(1180) }}px;
+  ">
+  <div class="hwx-cmp__wrap">
+
+    <div class="hwx-cmp__head">
+      {% set tag = module.heading_tag|default('h2') %}
+      {% if module.heading %}<{{ tag }} class="hwx-cmp__title">{{ title }}</{{ tag }}>{% endif %}
+      {% if module.intro %}<div class="hwx-cmp__intro">{{ module.intro }}</div>{% endif %}
+    </div>
+
+    {% if module.rows %}
+      {# ---------- desktop and tablet: table ---------- #}
+      <div class="hwx-cmp__table-wrap">
+        <table class="hwx-cmp__table">
+          <colgroup><col class="hwx-cmp__c-label"><col><col><col class="hwx-cmp__c-us"></colgroup>
+          <thead>
+            <tr>
+              <th scope="col"><span class="hwx-cmp__corner">{{ col.corner_label|escape }}</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">{{ col.option_a|escape }}</span></th>
+              <th scope="col"><span class="hwx-cmp__opt">{{ col.option_b|escape }}</span></th>
+              <th scope="col" class="hwx-cmp__us"><span class="hwx-cmp__us-name">{{ col.option_us|escape }}</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in module.rows %}
+              <tr>
+                <th scope="row">{{ row.row_label|escape }}</th>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>{{ row.option_a|escape }}</span></div></td>
+                <td><div class="hwx-cmp__cell"><span class="hwx-cmp__dot" aria-hidden="true"></span><span>{{ row.option_b|escape }}</span></div></td>
+                <td class="hwx-cmp__us"><div class="hwx-cmp__cell">{{ check(20) }}<span>{{ row.option_us|escape }}</span></div></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      {# ---------- phones: one card per row, both alternatives first, the HotWax answer last; nothing to tap ---------- #}
+      <div class="hwx-cmp__mobile">
+        {% for row in module.rows %}
+          <div class="hwx-cmp__m-row">
+            <p class="hwx-cmp__m-label">{{ row.row_label|escape }}</p>
+            <dl class="hwx-cmp__m-them">
+              <div><dt>{{ (mob.short_a or col.option_a)|escape }}</dt><dd>{{ row.option_a|escape }}</dd></div>
+              <div><dt>{{ (mob.short_b or col.option_b)|escape }}</dt><dd>{{ row.option_b|escape }}</dd></div>
+            </dl>
+            <div class="hwx-cmp__m-us">
+              <svg class="hwx-cmp__ic" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+              <p><span class="hwx-cmp__m-who">{{ col.option_us|escape }}</span>{{ row.option_us|escape }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

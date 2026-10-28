@@ -1,0 +1,116 @@
+/* HotWax Systems | Module: S&M Problem
+   Self-contained: every class starts with .hwx-problem, so it will not clash with the HubSpot theme.
+   Colors, spacing and widths come from the module fields through the CSS variables
+   set on the <section> in module.html. */
+
+.hwx-problem{
+  --hwx-problem-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --hwx-problem-body:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  background:var(--hwx-problem-bg,#fafafa);
+  color:var(--hwx-problem-text,#4d4547);
+  font-family:var(--hwx-problem-body);
+  font-weight:300;
+  line-height:1.7;
+  padding-top:var(--hwx-problem-pad-top,60px);
+  padding-bottom:var(--hwx-problem-pad-bottom,60px);
+}
+.hwx-problem *,.hwx-problem *::before,.hwx-problem *::after{box-sizing:border-box}
+
+.hwx-problem__wrap{
+  max-width:var(--hwx-problem-width,1180px);
+  margin:0 auto;
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:var(--hwx-problem-gap,64px);
+  align-items:center;
+}
+.hwx-problem--stacked .hwx-problem__wrap{grid-template-columns:minmax(0,1fr);gap:40px;max-width:min(var(--hwx-problem-width,1180px), 860px)}
+
+/* left: headline, lead, agitate line */
+.hwx-problem__head{display:grid;gap:18px}
+.hwx-problem__title{
+  margin:0;
+  font-family:var(--hwx-problem-display);
+  font-weight:700;
+  font-size:clamp(30px,3.6vw,46px);
+  line-height:1.12;
+  letter-spacing:-.01em;
+  color:var(--hwx-problem-ink,#141112);
+  text-wrap:balance;
+}
+.hwx-problem__hv{transition:color .35s ease}
+.hwx-problem--hover:hover .hwx-problem__hv{color:var(--hwx-problem-hover,#e70000)}
+
+.hwx-problem__lead{margin:0;font-size:18px;color:var(--hwx-problem-text,#4d4547)}
+
+.hwx-problem__agitate{
+  margin-top:12px;
+  font-size:19px;
+  line-height:1.75;
+  color:var(--hwx-problem-text,#4d4547);
+  max-width:58ch;
+}
+.hwx-problem__agitate--line{padding-left:18px;border-left:3px solid var(--hwx-problem-accent,#e70000)}
+.hwx-problem__agitate p{margin:0}
+.hwx-problem__agitate p + p{margin-top:10px}
+.hwx-problem__agitate strong,.hwx-problem__agitate b{color:var(--hwx-problem-ink,#141112);font-weight:600}
+.hwx-problem__agitate a{color:var(--hwx-problem-accent,#e70000)}
+
+/* right: list of signs */
+.hwx-problem__signs{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.hwx-problem__sign{
+  display:grid;
+  grid-template-columns:28px 1fr;
+  gap:14px;
+  padding:22px 0;
+  border-bottom:1px solid var(--hwx-problem-line,#e6dfe0);
+  font-size:18px;
+  font-weight:400;
+  line-height:1.55;
+  color:var(--hwx-problem-ink,#141112);
+}
+.hwx-problem__sign:first-child{border-top:1px solid var(--hwx-problem-line,#e6dfe0)}
+.hwx-problem__icon{margin-top:2px;color:var(--hwx-problem-icon,#e70000)}
+
+.hwx-problem--hover .hwx-problem__sign{transition:padding-left .25s ease}
+.hwx-problem--hover .hwx-problem__sign:hover{padding-left:6px}
+.hwx-problem--hover .hwx-problem__icon{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.hwx-problem--hover .hwx-problem__sign:hover .hwx-problem__icon{transform:rotate(30deg) scale(1.08)}
+
+/* scroll reveal (module.js adds .is-hidden only to items below the first screen) */
+.hwx-problem--reveal .is-hidden{opacity:0;transform:translateY(24px)}
+.hwx-problem--reveal .is-ready{transition:opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1)}
+
+@media (max-width:1020px){
+  .hwx-problem{
+    padding-top:min(var(--hwx-problem-pad-top,60px), 52px);
+    padding-bottom:min(var(--hwx-problem-pad-bottom,60px), 52px);
+  }
+}
+@media (max-width:900px){
+  .hwx-problem__wrap{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+@media (max-width:640px){
+  .hwx-problem{
+    padding-top:min(var(--hwx-problem-pad-top,60px), 44px);
+    padding-bottom:min(var(--hwx-problem-pad-bottom,60px), 44px);
+  }
+  .hwx-problem__lead{font-size:16px}
+  .hwx-problem__agitate{font-size:17px}
+  .hwx-problem__sign{font-size:16px;padding:18px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  .hwx-problem *{transition:none!important}
+  .hwx-problem--reveal .is-hidden{opacity:1;transform:none}
+}
+
+/* theme guard: HubSpot themes often color every link (a:link, a:visited) blue; these rules keep this
+   module's links in their own colors in every state, whatever the theme sets */
+.hwx-problem .hwx-problem__agitate a,
+.hwx-problem .hwx-problem__agitate a:link,
+.hwx-problem .hwx-problem__agitate a:visited,
+.hwx-problem .hwx-problem__agitate a:hover,
+.hwx-problem .hwx-problem__agitate a:focus,
+.hwx-problem .hwx-problem__agitate a:active{color:var(--hwx-problem-accent,#e70000)!important}

@@ -1,0 +1,7 @@
+/* 11-mobile-sticky-cta: module styles. Paste into this HubSpot module's module.css. Needs global/global.css. */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px max(16px, env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px));background:rgba(255,255,255,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s ease;display:none}
+.mbar .btn{width:100%;padding:15px}
+.mbar.show{transform:none}
+@media (max-width:760px){
+  .mbar{display:block}
+}

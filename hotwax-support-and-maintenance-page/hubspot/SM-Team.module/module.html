@@ -1,0 +1,133 @@
+{#
+  HotWax Systems | Apache OFBiz Support page
+  Module: S&M Team ("The Apache OFBiz team at HotWax Systems")
+  Top: kicker and headline on the left, intro and credential points on the right.
+  Below: a row of portrait person cards (3 at a time by default, 2 on tablets, 1 on phones) that moves one card
+  at a time in an endless loop, with arrows, auto-advance and swipe. Every person is a repeater item
+  (photo, Apache role, name, title, LinkedIn); the LinkedIn profile opens from the red "View profile" link
+  (and from the photo on phones).
+#}
+
+{% if module.style.load_fonts %}
+  {{ require_css("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap") }}
+{% endif %}
+
+{% set c = module.style.colors %}
+
+{# Headline hover words: these words change color while the section is hovered (mouse only). Two ways, both any letter case:
+   1. put [square brackets] around words in the headline text (the brackets are not shown), or
+   2. list words in "Words that change color on hover" (comma separated).
+   Each match is first marked with [ ], then every [ ] pair becomes a span.
+   (a dict is used because a plain variable set inside a for loop does not survive the loop) #}
+{% set t = {"html": module.heading|escape} %}
+{% if module.heading_hover_words %}
+  {% for phrase in module.heading_hover_words|split(',') %}
+    {% set p = phrase|trim|escape|replace('[', '')|replace(']', '')|replace('^', '') %}
+    {% set rx = p|replace('.', '[.]')|replace('?', '[?]')|replace('*', '[*]')|replace('+', '[+]')|replace('(', '[(]')|replace(')', '[)]')|replace('{', '[{]')|replace('}', '[}]')|replace('|', '[|]')|replace('$', '[$]') %}
+    {% if p %}{% do t.update({"html": t.html|regex_replace('(?i)' ~ rx, '[$0]')}) %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% set title = t.html|replace('[', '<span class="hwx-team__hl">')|replace(']', '</span>') %}
+{% set car = module.carousel %}
+{% set total = module.members|length %}
+
+<section
+  class="hwx-team{% if module.style.grayscale_photos %} hwx-team--gray{% endif %}{% if module.hide_intro_on_phones %} hwx-team--phone-no-intro{% endif %}{% if module.style.reveal_on_scroll %} hwx-team--reveal{% endif %}"
+  {% if module.section_id %}id="{{ module.section_id|escape }}"{% endif %}
+  data-autoplay="{{ 'true' if car.autoplay else 'false' }}"
+  data-interval="{{ car.interval|default(6) }}"
+  data-swipe="{{ 'true' if car.swipe else 'false' }}"
+  data-per="{{ car.cards_visible|default(3) }}"
+  style="
+    --hwx-team-bg: {{ c.section_background.color|default('#FAFAFA') }};
+    --hwx-team-ink: {{ c.heading_color.color|default('#141112') }};
+    --hwx-team-heading-hover: {{ c.heading_hover_color.color|default('#E70000') }};
+    --hwx-team-text: {{ c.text_color.color|default('#4D4547') }};
+    --hwx-team-kicker: {{ c.kicker_color.color|default('#E70000') }};
+    --hwx-team-icon: {{ c.icon_color.color|default('#E70000') }};
+    --hwx-team-role: {{ c.role_color.color|default('#8C1C24') }};
+    --hwx-team-role-hl: {{ c.highlight_role_color.color|default('#E70000') }};
+    --hwx-team-card: {{ c.card_background.color|default('#FFFFFF') }};
+    --hwx-team-line: {{ c.line_color.color|default('#E6DFE0') }};
+    --hwx-team-arrow-hover: {{ c.arrow_hover.color|default('#8C1C24') }};
+    --hwx-team-link: {{ c.profile_link_color.color|default('#E70000') }};
+    --hwx-team-pad-top: {{ module.style.padding_top|default(60) }}px;
+    --hwx-team-pad-bottom: {{ module.style.padding_bottom|default(60) }}px;
+    --hwx-team-width: {{ module.style.content_width|default(1180) }}px;
+    --hwx-team-per: {{ car.cards_visible|default(3) }};
+    --hwx-team-card-h: {{ module.style.card_height|default(540) }}px;
+    --hwx-team-photo-pos: {{ module.style.photo_focus|default('50% 18%') }};
+  ">
+  <div class="hwx-team__wrap">
+
+    <div class="hwx-team__copy">
+      <div class="hwx-team__lead">
+        {% if module.kicker %}<p class="hwx-team__kicker">{{ module.kicker|escape }}</p>{% endif %}
+        {% set tag = module.heading_tag|default('h2') %}
+        {% if module.heading %}<{{ tag }} class="hwx-team__title">{{ title }}</{{ tag }}>{% endif %}
+      </div>
+      <div class="hwx-team__more">
+      {% if module.intro %}<div class="hwx-team__intro">{{ module.intro }}</div>{% endif %}
+      {% if module.credentials %}
+        <ul class="hwx-team__creds">
+          {% for cred in module.credentials %}
+            {% if cred.cred_text %}
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.6l9 5.2v10.4l-9 5.2-9-5.2V6.8z" fill="currentColor"/></svg>
+                {# rich text arrives wrapped in <p>; unwrap it so each point stays one line next to its icon #}
+                <span>{{ cred.cred_text|replace('<p>', '')|replace('</p>', ' ')|trim }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      </div>
+    </div>
+
+    {% if total %}
+      <div class="hwx-team__carousel" aria-roledescription="carousel" aria-label="{{ (module.carousel_label or module.kicker)|escape }}">
+        <div class="hwx-team__stage">
+          <div class="hwx-team__track">
+          {% for m in module.members %}
+            <article class="hwx-team__card" aria-roledescription="slide" aria-label="{{ loop.index }} of {{ total }}">
+              <div class="hwx-team__photo">
+                {% if m.photo and m.photo.src %}
+                  <img src="{{ m.photo.src }}" alt="{{ (m.photo.alt or m.person_name)|escape }}" loading="lazy" decoding="async"{% if m.photo.width %} width="{{ m.photo.width }}" height="{{ m.photo.height }}"{% endif %}>
+                {% else %}
+                  <span class="hwx-team__initials" aria-hidden="true">{{ (m.person_name or '?')|truncate(1, true, '') }}</span>
+                {% endif %}
+              </div>
+              <div class="hwx-team__info">
+                {% if m.role %}<p class="hwx-team__role{% if m.highlight_role %} is-highlight{% endif %}">{{ m.role|escape }}</p>{% endif %}
+                {% if m.person_name %}<h3 class="hwx-team__name">{{ m.person_name|escape }}</h3>{% endif %}
+                {% if m.job_title %}<p class="hwx-team__job">{{ m.job_title|escape }}</p>{% endif %}
+                {% if m.linkedin and m.linkedin.href %}
+                  <a class="hwx-team__profile" href="{{ m.linkedin.href }}" target="_blank" rel="noopener" aria-label="{{ (module.profile_label or 'View profile')|escape }}: {{ m.person_name|escape }} on LinkedIn">
+                    {{- (module.profile_label or 'View profile')|escape -}}
+                    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+          </div>
+        </div>
+        {% if total > 1 %}
+          <div class="hwx-team__nav">
+            {% if car.show_arrows %}
+            <div class="hwx-team__arrows">
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--prev" aria-label="Previous person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="hwx-team__arrow hwx-team__arrow--next" aria-label="Next person">
+              <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
